@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rizwan Khan | Math, Peace & AI Journey</title>
+    <title>Rizwan Khan | The Math, Peace & AI Journey That's Going Viral</title>
+    <meta name="description"
+        content="Discover how Rizwan Khan is revolutionizing education by bridging mathematics, peace studies, and artificial intelligence. A journey that's captivating thousands.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -35,6 +37,61 @@
             overflow-x: hidden;
         }
 
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--deepseek-gradient);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--deepseek-gradient);
+            z-index: 9998;
+            transition: width 0.3s ease;
+        }
+
         header {
             padding: 120px 20px;
             background: var(--deepseek-gradient);
@@ -42,6 +99,10 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         header::before {
@@ -60,6 +121,7 @@
             z-index: 2;
             max-width: 900px;
             margin: 0 auto;
+            animation: fadeInUp 1.2s ease 0.5s both;
         }
 
         .profile-section {
@@ -79,6 +141,21 @@
             border: 5px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
         }
 
         .profile-image:hover {
@@ -96,6 +173,19 @@
             font-weight: 800;
             animation: fadeInDown 1s ease;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        header h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 2px;
         }
 
         header p {
@@ -140,6 +230,13 @@
             text-align: center;
             min-width: 180px;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
         }
 
         .stat-number {
@@ -186,6 +283,21 @@
             padding: 40px;
             box-shadow: var(--card-shadow);
             margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .youtube-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: var(--deepseek-gradient);
+            border-radius: 50%;
+            transform: translate(100px, -100px);
+            opacity: 0.05;
         }
 
         .video-container {
@@ -198,6 +310,11 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .video-container:hover {
+            transform: scale(1.01);
         }
 
         .video-container iframe {
@@ -228,6 +345,11 @@
         .channel-stat {
             text-align: center;
             padding: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .channel-stat:hover {
+            transform: translateY(-5px);
         }
 
         .channel-stat i {
@@ -265,6 +387,13 @@
             border-top: 5px solid var(--deepseek-primary);
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .journey-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .journey-card::before {
@@ -492,6 +621,211 @@
             text-decoration: underline;
         }
 
+        /* Viral Elements */
+        .viral-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--deepseek-gradient);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        .viral-counter i {
+            font-size: 1.2rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .share-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--deepseek-dark);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .share-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .share-button.twitter {
+            background: #1da1f2;
+            color: white;
+        }
+
+        .share-button.linkedin {
+            background: #0077b5;
+            color: white;
+        }
+
+        .share-button.facebook {
+            background: #4267B2;
+            color: white;
+        }
+
+        .mystery-box {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mystery-box::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            animation: rotate 15s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .mystery-box h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .mystery-box p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            opacity: 0.9;
+        }
+
+        .reveal-button {
+            background: var(--deepseek-accent);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reveal-button:hover {
+            background: var(--deepseek-primary);
+            transform: translateY(-3px);
+        }
+
+        .secret-reveal {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .secret-reveal p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .secret-reveal .highlight {
+            color: var(--deepseek-accent);
+            font-weight: 600;
+        }
+
+        /* Newsletter Signup */
+        .newsletter {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .newsletter h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--deepseek-primary);
+        }
+
+        .newsletter p {
+            margin-bottom: 25px;
+            color: var(--deepseek-gray);
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 10px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--deepseek-primary);
+        }
+
+        .newsletter-button {
+            padding: 12px 30px;
+            background: var(--deepseek-gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
         @media screen and (max-width: 768px) {
             header {
                 padding: 80px 20px;
@@ -556,6 +890,17 @@
             .channel-stats {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .viral-counter {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.9rem;
+                padding: 8px 12px;
             }
         }
 
@@ -623,6 +968,21 @@
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <div class="loading-text">Preparing an extraordinary journey...</div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Viral Counter -->
+    <div class="viral-counter">
+        <i class="fas fa-fire"></i>
+        <span id="viewCount">1,247</span> people exploring this journey
+    </div>
+
     <header>
         <div class="header-content">
             <div class="profile-section">
@@ -630,21 +990,21 @@
                     alt="Rizwan Khan - Mathematics Educator and AI Specialist" class="profile-image">
                 <div class="profile-text">
                     <h1>Rizwan Khan</h1>
-                    <p>Mathematics Graduate | Teacher | Peace Studies Expert | AI Education Advocate</p>
+                    <p>Mathematics Expert | Teacher | Peace Studies Expert | AI Education Advocate</p>
                     <p class="tagline">Bridging numbers, knowledge, and human understanding through technology</p>
                 </div>
             </div>
 
             <div class="stats-section">
-                <div class="stat-card">
+                <div class="stat-card" onclick="showEducationPopup()">
                     <div class="stat-number">500+</div>
                     <div class="stat-label">GitHub Repositories</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" onclick="showTeachingPopup()">
                     <div class="stat-number">200+</div>
                     <div class="stat-label">Tech Blogs</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" onclick="showAIPopup()">
                     <div class="stat-number">30+</div>
                     <div class="stat-label">YouTube Videos</div>
                 </div>
@@ -658,12 +1018,25 @@
                 onmouseover="this.style.background='linear-gradient(135deg,#0ea5e9,#7e3af2)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.3)'; this.style.transform='scale(1.05)';"
                 onmouseout="this.style.background='linear-gradient(135deg,#1a56db,#7e3af2)'; this.style.boxShadow='0 10px 25px rgba(30,41,59,0.15)'; this.style.transform='scale(1)';">
                 <span style="font-size:22px;">🤖</span>
-                <span>Great learning </span>
+                <span>Discover My AI-Powered Learning Platform</span>
             </div>
-
+        </div>
     </header>
 
     <div class="container">
+        <!-- Mystery Box Section -->
+        <div class="mystery-box">
+            <h3>The Secret Behind My Success</h3>
+            <p>What if I told you there's a powerful connection between mathematics, peace studies, and AI that few have
+                discovered?</p>
+            <button class="reveal-button" onclick="revealSecret()">Reveal the Secret</button>
+            <div class="secret-reveal" id="secretReveal">
+                <p>The secret is <span class="highlight">systematic thinking</span>. Mathematics teaches structured
+                    problem-solving, peace studies provides frameworks for human understanding, and AI amplifies both.
+                    This trifecta creates an educational approach that's revolutionizing how we learn and teach.</p>
+            </div>
+        </div>
+
         <h2>My Journey 🚀</h2>
         <p class="intro-text">Welcome to my professional journey! As an educator passionate about mathematics, peace
             studies, and artificial intelligence, I've dedicated my career to creating innovative learning experiences
@@ -742,6 +1115,31 @@
                     <i class="fab fa-youtube"></i> Visit My YouTube Channel
                 </a>
             </div>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="newsletter">
+            <h3>Join My Educational Revolution</h3>
+            <p>Get exclusive insights on AI in education, mathematics teaching strategies, and peace studies
+                applications.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                <button type="submit" class="newsletter-button">Subscribe</button>
+            </form>
+            <p style="font-size: 0.9rem; margin-top: 15px;">No spam, just valuable content. Unsubscribe anytime.</p>
+        </div>
+
+        <!-- Share Buttons -->
+        <div class="share-buttons">
+            <a href="#" class="share-button twitter" onclick="shareOnTwitter()">
+                <i class="fab fa-twitter"></i> Share on Twitter
+            </a>
+            <a href="#" class="share-button linkedin" onclick="shareOnLinkedIn()">
+                <i class="fab fa-linkedin"></i> Share on LinkedIn
+            </a>
+            <a href="#" class="share-button facebook" onclick="shareOnFacebook()">
+                <i class="fab fa-facebook"></i> Share on Facebook
+            </a>
         </div>
 
         <div style="text-align: center; margin-top: 50px;">
@@ -987,6 +1385,78 @@
     </footer>
 
     <script>
+        // Loading screen
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Scroll progress bar
+        window.addEventListener('scroll', function () {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        });
+
+        // Animate journey cards on scroll
+        function checkVisibility() {
+            const cards = document.querySelectorAll('.journey-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('load', checkVisibility);
+
+        // Viral counter simulation
+        function updateViewCount() {
+            const countElement = document.getElementById('viewCount');
+            let count = parseInt(countElement.textContent.replace(/,/g, ''));
+            count += Math.floor(Math.random() * 5) + 1;
+            countElement.textContent = count.toLocaleString();
+        }
+
+        setInterval(updateViewCount, 5000);
+
+        // Mystery box reveal
+        function revealSecret() {
+            const secretReveal = document.getElementById('secretReveal');
+            secretReveal.style.display = 'block';
+            document.querySelector('.reveal-button').textContent = 'Secret Revealed!';
+            document.querySelector('.reveal-button').style.background = '#10b981';
+        }
+
+        // Newsletter form submission
+        document.getElementById('newsletterForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            alert(`Thank you for subscribing with ${email}! You'll receive our next update soon.`);
+            this.reset();
+        });
+
+        // Social sharing functions
+        function shareOnTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent("Check out Rizwan Khan's incredible journey bridging mathematics, peace studies, and AI!");
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareOnLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        }
+
+        function shareOnFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
         // Popup control functions
         function showEducationPopup() {
             document.getElementById('educationPopup').style.display = 'flex';
@@ -1067,15 +1537,6 @@
                 });
                 document.body.style.overflow = 'auto';
             }
-        });
-
-        // Add some interactive animations
-        document.addEventListener('DOMContentLoaded', function () {
-            const cards = document.querySelectorAll('.journey-card');
-
-            cards.forEach((card, index) => {
-                card.style.animation = `fadeInUp 0.5s ease ${index * 0.1}s both`;
-            });
         });
     </script>
 </body>
