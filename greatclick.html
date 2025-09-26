@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AffiliateMath.xyz - AI Powered Hacks</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: #fff;
+        }
+
+        /* Main Layout */
+        .main {
+            padding: 30px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #ffcc00;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #f1f5f9;
+        }
+
+        /* Progress bar */
+        .progress {
+            background: #334155;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #ffcc00, #ff8c00);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .click-counter {
+            margin: 10px auto 30px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Hacks Grid */
+        .hack-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .hack-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .hack-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .hack-card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .hack-card h2 {
+            font-size: 1.2rem;
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+
+        .hack-card p {
+            display: none;
+            font-size: 0.95rem;
+            margin: 10px 0;
+            color: #f1f5f9;
+        }
+
+        .reveal-btn {
+            background: #ffcc00;
+            border: none;
+            color: #000;
+            padding: 10px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .reveal-btn:disabled {
+            background: #444;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        .links {
+            margin-top: 12px;
+            display: none;
+        }
+
+        .links a {
+            display: inline-block;
+            padding: 8px 14px;
+            margin: 5px;
+            background: #1d4ed8;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .links a:hover {
+            background: #ffcc00;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main -->
+    <main class="main">
+        <header>
+            <h1>🤖 Find the Great Click to Earn Money 🎮</h1>
+            <p>Unlock AI-powered affiliate marketing hacks and track your clicks!</p>
+        </header>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="click-counter">Total Clicks: <span id="clickCount">0</span></div>
+
+        <div class="hack-container" id="hackContainer"></div>
+    </main>
+
+    <script>
+        const hacks = [
+            { title: "Hack 1: Pick a Profitable Niche", img: "https://picsum.photos/400/200?random=1", desc: "Focus on one niche like Python, Math EdTech, or AI tools for higher trust.", links: [{ text: "Find Niches", url: "https://trends.google.com" }] },
+            { title: "Hack 2: SEO-Optimized Blog Content", img: "https://picsum.photos/400/200?random=2", desc: "Write keyword-rich blogs like 'Best Hosting for FastAPI' with affiliate links.", links: [{ text: "SEO Tools", url: "https://ahrefs.com" }] },
+            { title: "Hack 3: Comparison Pages", img: "https://picsum.photos/400/200?random=3", desc: "Create detailed product comparisons – they convert 10x better.", links: [{ text: "Affiliate Hosting", url: "https://partners.hostgator.com" }] },
+            { title: "Hack 4: Affiliate Math Formula Pages", img: "https://picsum.photos/400/200?random=4", desc: "Gamify ROI formulas + calculators and insert affiliate links.", links: [{ text: "ROI Guide", url: "https://www.investopedia.com/terms/r/returnoninvestment.asp" }] },
+            { title: "Hack 5: Email Funnel", img: "https://picsum.photos/400/200?random=5", desc: "Offer a free eBook to collect emails, then nurture with affiliate offers.", links: [{ text: "Email Tool", url: "https://mailchimp.com" }] },
+            { title: "Hack 6: YouTube + Blog Combo", img: "https://picsum.photos/400/200?random=6", desc: "Create YouTube tutorials + blogs for double ranking (Google + YouTube).", links: [{ text: "Start YouTube", url: "https://studio.youtube.com" }] },
+            { title: "Hack 7: Build Trust with Case Studies", img: "https://picsum.photos/400/200?random=7", desc: "Show results with case studies, not just 'Buy this now'.", links: [{ text: "Case Study Examples", url: "https://neilpatel.com/blog/case-study/" }] },
+            { title: "Hack 8: Affiliate-Friendly Tools", img: "https://picsum.photos/400/200?random=8", desc: "Use PrettyLinks or build your own FastAPI tracker to shorten and track links.", links: [{ text: "Pretty Links", url: "https://prettylinks.com" }] },
+            { title: "Hack 9: Community & Social Proof", img: "https://picsum.photos/400/200?random=9", desc: "Build a Telegram/Discord community to share tips + links.", links: [{ text: "Create Discord", url: "https://discord.com" }] },
+            { title: "Hack 10: Kaizen Strategy", img: "https://picsum.photos/400/200?random=10", desc: "Start small, test with 1–2 products, analyze, optimize, and scale.", links: [{ text: "Kaizen Philosophy", url: "https://www.kaizen.com" }] }
+        ];
+
+        const container = document.getElementById("hackContainer");
+        const progressBar = document.getElementById("progressBar");
+        const clickCountEl = document.getElementById("clickCount");
+        let unlocked = 0;
+        let totalClicks = 0;
+
+        hacks.forEach((hack, i) => {
+            const card = document.createElement("div");
+            card.className = "hack-card";
+
+            const img = document.createElement("img");
+            img.src = hack.img;
+
+            const title = document.createElement("h2");
+            title.textContent = hack.title;
+
+            const btn = document.createElement("button");
+            btn.className = "reveal-btn";
+            btn.textContent = "🎁 Find the Great Click";
+
+            const desc = document.createElement("p");
+            desc.textContent = hack.desc;
+
+            const linkBox = document.createElement("div");
+            linkBox.className = "links";
+            hack.links.forEach(link => {
+                const a = document.createElement("a");
+                a.href = link.url;
+                a.textContent = link.text;
+                a.target = "_blank";
+                linkBox.appendChild(a);
+            });
+
+            btn.addEventListener("click", () => {
+                if (desc.style.display === "block") return;
+                desc.style.display = "block";
+                linkBox.style.display = "block";
+                unlocked++;
+                totalClicks++;
+                clickCountEl.textContent = totalClicks;
+                const percent = (unlocked / hacks.length) * 100;
+                progressBar.style.width = percent + "%";
+                btn.textContent = "✅ Unlocked";
+                btn.disabled = true;
+            });
+
+            card.appendChild(img);
+            card.appendChild(title);
+            card.appendChild(btn);
+            card.appendChild(desc);
+            card.appendChild(linkBox);
+
+            container.appendChild(card);
+        });
+    </script>
+</body>
+
+</html>

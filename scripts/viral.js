@@ -392,9 +392,10 @@ function getPopupContent(popupId) {
         portfolioPopup: `
             <p>Complete digital portfolio showcasing all projects and achievements.</p>
             <div class="portfolio-links">
+                <a href="https://khanriyazi.github.io/portfolio-responsive-complete/" target="_blank">My Portfolio</a>
                 <a href="http://khan.affiliatemath.xyz/" target="_blank">AI Learning Platform</a>
-                <a href="https://github.com/KhanRiyazi" target="_blank">GitHub Repositories</a>
-                <a href="https://www.youtube.com/@ThisOne-007" target="_blank">YouTube Channel</a>
+                <a href="greatclick.html" target="_blank">To find the Great click</a>
+                <a href="main.html" target="_blank">FastAPI</a>
             </div>
         `
     };

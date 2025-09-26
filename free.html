@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rizwan Khan | The Math, Peace & AI Journey That's Going Viral</title>
+    <title>Rizwan Khan | AI-Powered Education Legacy - Mathematics, Peace & Technology</title>
     <meta name="description"
-        content="Discover how Rizwan Khan is revolutionizing education by bridging mathematics, peace studies, and artificial intelligence. A journey that's captivating thousands.">
+        content="Discover Rizwan Khan's revolutionary approach to education that bridges mathematics, peace studies, and artificial intelligence to create a lasting legacy in digital-age learning.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -21,6 +21,7 @@
             --deepseek-gradient: linear-gradient(135deg, var(--deepseek-primary), var(--deepseek-secondary));
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             --card-shadow: 0 10px 25px rgba(30, 41, 59, 0.1);
+            --ai-glow: 0 0 20px rgba(14, 165, 233, 0.3);
         }
 
         * {
@@ -826,6 +827,182 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
+        /* New AI Education Legacy Section */
+        .legacy-section {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: var(--card-shadow);
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .legacy-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--deepseek-gradient);
+        }
+
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .legacy-card {
+            background: var(--deepseek-light);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(30, 41, 59, 0.1);
+        }
+
+        .legacy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--ai-glow);
+        }
+
+        .legacy-card i {
+            font-size: 3rem;
+            background: var(--deepseek-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .legacy-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--deepseek-dark);
+        }
+
+        .legacy-card p {
+            color: var(--deepseek-gray);
+            font-size: 1rem;
+        }
+
+        /* AI Impact Visualization */
+        .ai-impact {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-impact::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, rgba(14, 165, 233, 0) 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .impact-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .impact-stat {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .impact-stat .number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: var(--deepseek-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .impact-stat .label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* AI Demo Section */
+        .ai-demo {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .demo-container {
+            background: var(--deepseek-light);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: left;
+            border-left: 5px solid var(--deepseek-primary);
+        }
+
+        .demo-question {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--deepseek-dark);
+        }
+
+        .demo-answer {
+            color: var(--deepseek-gray);
+            line-height: 1.6;
+        }
+
+        .demo-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            margin: 20px 0;
+            transition: border-color 0.3s;
+        }
+
+        .demo-input:focus {
+            border-color: var(--deepseek-primary);
+            outline: none;
+        }
+
+        .demo-button {
+            padding: 12px 30px;
+            background: var(--deepseek-gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .demo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
         @media screen and (max-width: 768px) {
             header {
                 padding: 80px 20px;
@@ -901,6 +1078,14 @@
                 right: 10px;
                 font-size: 0.9rem;
                 padding: 8px 12px;
+            }
+
+            .legacy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-stats {
+                flex-direction: column;
             }
         }
 
@@ -992,6 +1177,9 @@
                     <h1>Rizwan Khan</h1>
                     <p>Mathematics Expert | Teacher | Peace Studies Expert | AI Education Advocate</p>
                     <p class="tagline">Bridging numbers, knowledge, and human understanding through technology</p>
+                    <div class="ai-badge">
+                        <i class="fas fa-robot"></i> AI-Powered Education Pioneer
+                    </div>
                 </div>
             </div>
 
@@ -1007,6 +1195,10 @@
                 <div class="stat-card" onclick="showAIPopup()">
                     <div class="stat-number">30+</div>
                     <div class="stat-label">YouTube Videos</div>
+                </div>
+                <div class="stat-card" onclick="showLegacyPopup()">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Lives Impacted</div>
                 </div>
             </div>
 
@@ -1024,6 +1216,35 @@
     </header>
 
     <div class="container">
+        <!-- AI Education Legacy Section -->
+        <div class="legacy-section">
+            <h2>AI-Powered Education Legacy 🌟</h2>
+            <p class="intro-text">In the digital age, I'm pioneering a new approach to education that combines the
+                precision of mathematics, the wisdom of peace studies, and the transformative power of artificial
+                intelligence to create a lasting legacy in learning.</p>
+
+            <div class="legacy-grid">
+                <div class="legacy-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI-Enhanced Learning</h3>
+                    <p>Developing personalized learning pathways powered by artificial intelligence to adapt to each
+                        student's unique needs and pace.</p>
+                </div>
+                <div class="legacy-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Future-Ready Education</h3>
+                    <p>Preparing students for a world where AI is integrated into every profession, emphasizing critical
+                        thinking and adaptability.</p>
+                </div>
+                <div class="legacy-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Ethical AI Implementation</h3>
+                    <p>Ensuring that AI in education serves humanity, with frameworks for ethical use and inclusive
+                        access.</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Mystery Box Section -->
         <div class="mystery-box">
             <h3>The Secret Behind My Success</h3>
@@ -1033,14 +1254,42 @@
             <div class="secret-reveal" id="secretReveal">
                 <p>The secret is <span class="highlight">systematic thinking</span>. Mathematics teaches structured
                     problem-solving, peace studies provides frameworks for human understanding, and AI amplifies both.
-                    This trifecta creates an educational approach that's revolutionizing how we learn and teach.</p>
+                    This trifecta creates an educational approach that's revolutionizing how we learn and teach in the
+                    digital age.</p>
             </div>
+        </div>
+
+        <!-- AI Impact Visualization -->
+        <div class="ai-impact">
+            <h2 style="color: white;">The Impact of AI in Education</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">How artificial intelligence is transforming
+                learning experiences worldwide</p>
+
+            <div class="impact-stats">
+                <div class="impact-stat">
+                    <div class="number">47%</div>
+                    <div class="label">Increase in Engagement</div>
+                </div>
+                <div class="impact-stat">
+                    <div class="number">62%</div>
+                    <div class="label">Faster Learning</div>
+                </div>
+                <div class="impact-stat">
+                    <div class="number">89%</div>
+                    <div class="label">Personalization Success</div>
+                </div>
+            </div>
+
+            <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto; opacity: 0.9;">
+                Through platforms like AffiliateMath.xyz, we're demonstrating how AI can make education more accessible,
+                engaging, and effective for learners of all backgrounds.
+            </p>
         </div>
 
         <h2>My Journey 🚀</h2>
         <p class="intro-text">Welcome to my professional journey! As an educator passionate about mathematics, peace
             studies, and artificial intelligence, I've dedicated my career to creating innovative learning experiences
-            that empower students and transform education.</p>
+            that empower students and transform education for the digital age.</p>
 
         <div class="journey-grid">
             <div class="journey-card" onclick="showEducationPopup()">
@@ -1065,6 +1314,30 @@
                 <i class="fas fa-robot"></i>
                 <h3>AI Journey</h3>
                 <p>Integrating artificial intelligence with mathematics education</p>
+            </div>
+        </div>
+
+        <!-- AI Demo Section -->
+        <div class="ai-demo">
+            <h2>Experience AI-Powered Education</h2>
+            <p>See how artificial intelligence can enhance mathematical understanding</p>
+
+            <div class="demo-container">
+                <div class="demo-question">Question: How can AI help students struggling with algebraic concepts?</div>
+                <div class="demo-answer">
+                    AI can identify specific knowledge gaps through adaptive assessment, provide personalized practice
+                    problems, offer step-by-step explanations tailored to the student's learning style, and even predict
+                    which concepts they'll struggle with next based on patterns in their learning journey.
+                </div>
+            </div>
+
+            <div class="demo-container">
+                <div class="demo-question">Ask me about AI in education:</div>
+                <input type="text" class="demo-input" placeholder="Type your question here..." id="aiQuestion">
+                <button class="demo-button" onclick="generateAIResponse()">Get AI Insight</button>
+                <div id="aiResponse"
+                    style="margin-top: 20px; padding: 15px; background: #f1f5f9; border-radius: 10px; display: none;">
+                </div>
             </div>
         </div>
 
@@ -1145,6 +1418,9 @@
         <div style="text-align: center; margin-top: 50px;">
             <a href="javascript:void(0)" class="action-link" onclick="showPortfolioPopup()">
                 <i class="fas fa-folder-open"></i> View My Portfolio
+            </a>
+            <a href="javascript:void(0)" class="action-link secondary-link" onclick="showLegacyPopup()">
+                <i class="fas fa-seedling"></i> My Education Legacy
             </a>
         </div>
     </div>
@@ -1294,8 +1570,7 @@
 
                 <p>I founded <span class="highlight">AffiliateMath.xyz</span> to create a platform where AI and human
                     expertise work synergistically to empower learners. Our approach combines the analytical power of AI
-                    systems like <span class="highlight">DeepSeek</span> with the nuanced understanding of experienced
-                    educators.</p>
+                    systems with the nuanced understanding of experienced educators.</p>
 
                 <p>Key initiatives in my AI journey:</p>
                 <ul class="achievement-list">
@@ -1330,6 +1605,51 @@
         </div>
     </div>
 
+    <!-- Legacy Popup -->
+    <div id="legacyPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">My Education Legacy 🌟</h3>
+                <button class="close-btn" onclick="closeLegacyPopup()">×</button>
+            </div>
+            <div class="popup-body">
+                <p>My mission is to leave a lasting legacy in education by demonstrating how artificial intelligence,
+                    when combined with human wisdom, can create transformative learning experiences that prepare
+                    students for the challenges of the digital age.</p>
+
+                <p>Through my work at AffiliateMath.xyz and beyond, I'm building frameworks for AI-enhanced education
+                    that prioritize:</p>
+                <ul class="achievement-list">
+                    <li>Accessibility for learners of all backgrounds</li>
+                    <li>Personalization that respects individual learning styles</li>
+                    <li>Ethical implementation of AI technologies</li>
+                    <li>Integration of human values with technological advancement</li>
+                    <li>Preparation for future careers in an AI-driven world</li>
+                </ul>
+
+                <p>The digital age presents unprecedented opportunities to reimagine education. My legacy is about
+                    harnessing these opportunities to create learning experiences that are not only more effective but
+                    also more human-centered.</p>
+
+                <div class="tech-tags">
+                    <span class="tech-tag">Education Legacy</span>
+                    <span class="tech-tag">AI Ethics</span>
+                    <span class="tech-tag">Future of Learning</span>
+                    <span class="tech-tag">Digital Transformation</span>
+                </div>
+
+                <div class="action-links">
+                    <a href="http://affiliatemath.xyz" class="action-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Join the Movement
+                    </a>
+                    <a href="mailto:rizwan@affiliatemath.xyz" class="action-link secondary-link">
+                        <i class="fas fa-handshake"></i> Collaborate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Portfolio Popup -->
     <div id="portfolioPopup" class="popup">
         <div class="popup-content">
@@ -1342,8 +1662,8 @@
                     mathematics education.</p>
                 <p>My work focuses on creating innovative learning experiences that combine mathematical rigor with
                     cutting-edge technology to make education more engaging and accessible.</p>
-                <p>As a teacher who also learns from AI systems like <span class="highlight">DeepSeek</span>, I believe
-                    in the symbiotic relationship between human educators and artificial intelligence.</p>
+                <p>As a teacher who also learns from AI systems, I believe in the symbiotic relationship between human
+                    educators and artificial intelligence.</p>
 
                 <div class="tech-tags">
                     <span class="tech-tag">Mathematics Education</span>
@@ -1379,8 +1699,7 @@
         </div>
         <div class="deepseek-mention">
             Inspired by the elegance and intelligence of <a href="https://affiliatemath.xyz/" target="_blank">Artificial
-                Intelligence -
-                AI</a>
+                Intelligence - AI</a>
         </div>
     </footer>
 
@@ -1440,6 +1759,36 @@
             this.reset();
         });
 
+        // AI Demo Response Generator
+        function generateAIResponse() {
+            const question = document.getElementById('aiQuestion').value.toLowerCase();
+            const responseElement = document.getElementById('aiResponse');
+
+            if (!question) {
+                alert('Please enter a question about AI in education.');
+                return;
+            }
+
+            let response = '';
+
+            if (question.includes('personal') || question.includes('individual')) {
+                response = "AI enables truly personalized learning by analyzing each student's strengths, weaknesses, and learning patterns. It can adapt content difficulty, provide targeted practice, and even adjust teaching methods based on how a student learns best.";
+            } else if (question.includes('math') || question.includes('mathematics')) {
+                response = "In mathematics education, AI can break down complex problems into manageable steps, provide instant feedback, generate infinite practice problems at the appropriate difficulty level, and visualize abstract concepts to make them more tangible.";
+            } else if (question.includes('future') || question.includes('career')) {
+                response = "AI is preparing students for future careers by teaching computational thinking, problem-solving skills, and adaptability. It also exposes them to the technologies that will shape their professional lives, regardless of their chosen field.";
+            } else if (question.includes('teacher') || question.includes('educator')) {
+                response = "AI doesn't replace teachers but enhances their capabilities. It handles routine tasks like grading and provides data-driven insights, freeing up educators to focus on mentorship, emotional support, and creative teaching strategies.";
+            } else if (question.includes('ethical') || question.includes('concern')) {
+                response = "Ethical considerations in AI education include data privacy, algorithmic bias, and ensuring equitable access. My approach emphasizes transparency, human oversight, and designing systems that prioritize student wellbeing over efficiency metrics.";
+            } else {
+                response = "AI in education represents a paradigm shift in how we approach learning. By combining the scalability of technology with the nuance of human teaching, we can create educational experiences that are more engaging, effective, and accessible to diverse learners worldwide.";
+            }
+
+            responseElement.innerHTML = `<strong>AI Insight:</strong> ${response}`;
+            responseElement.style.display = 'block';
+        }
+
         // Social sharing functions
         function shareOnTwitter() {
             const url = encodeURIComponent(window.location.href);
@@ -1498,6 +1847,16 @@
             document.body.style.overflow = 'auto';
         }
 
+        function showLegacyPopup() {
+            document.getElementById('legacyPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLegacyPopup() {
+            document.getElementById('legacyPopup').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
         function showPortfolioPopup() {
             document.getElementById('portfolioPopup').style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -1512,7 +1871,7 @@
         window.onclick = function (event) {
             const popups = [
                 'educationPopup', 'teachingPopup', 'peacePopup',
-                'aiPopup', 'portfolioPopup'
+                'aiPopup', 'portfolioPopup', 'legacyPopup'
             ];
 
             popups.forEach(popupId => {
@@ -1529,7 +1888,7 @@
             if (event.key === 'Escape') {
                 const popups = [
                     'educationPopup', 'teachingPopup', 'peacePopup',
-                    'aiPopup', 'portfolioPopup'
+                    'aiPopup', 'portfolioPopup', 'legacyPopup'
                 ];
 
                 popups.forEach(popupId => {
