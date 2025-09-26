@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizwan Khan | The Math, Peace & AI Journey That's Going Viral</title>
+    <meta name="description"
+        content="Discover how Rizwan Khan is revolutionizing education by bridging mathematics, peace studies, and artificial intelligence. A journey that's captivating thousands.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --deepseek-primary: #1a56db;
+            --deepseek-secondary: #7e3af2;
+            --deepseek-accent: #0ea5e9;
+            --deepseek-dark: #1e293b;
+            --deepseek-light: #f8fafc;
+            --deepseek-gray: #64748b;
+            --deepseek-success: #10b981;
+            --deepseek-warning: #f59e0b;
+            --deepseek-gradient: linear-gradient(135deg, var(--deepseek-primary), var(--deepseek-secondary));
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 10px 25px rgba(30, 41, 59, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--deepseek-light);
+            color: var(--deepseek-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--deepseek-gradient);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--deepseek-gradient);
+            z-index: 9998;
+            transition: width 0.3s ease;
+        }
+
+        header {
+            padding: 120px 20px;
+            background: var(--deepseek-gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeInUp 1.2s ease 0.5s both;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-text {
+            text-align: left;
+            max-width: 500px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            animation: fadeInDown 1s ease;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        header h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 2px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            margin-top: 15px;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease 0.3s both;
+            opacity: 0.9;
+        }
+
+        .tagline {
+            font-style: italic;
+            margin-top: 10px;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .ai-badge {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .stats-section {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px 30px;
+            text-align: center;
+            min-width: 180px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            margin: 80px auto;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 40px;
+            color: var(--deepseek-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--deepseek-gradient);
+            border-radius: 2px;
+        }
+
+        .youtube-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .youtube-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: var(--deepseek-gradient);
+            border-radius: 50%;
+            transform: translate(100px, -100px);
+            opacity: 0.05;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            margin: 30px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .video-container:hover {
+            transform: scale(1.01);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-caption {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            color: var(--deepseek-gray);
+            font-size: 1.1rem;
+        }
+
+        .channel-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .channel-stat {
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .channel-stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .channel-stat i {
+            font-size: 2.5rem;
+            color: var(--deepseek-primary);
+            margin-bottom: 10px;
+        }
+
+        .channel-stat .number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--deepseek-dark);
+        }
+
+        .channel-stat .label {
+            font-size: 1rem;
+            color: var(--deepseek-gray);
+        }
+
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .journey-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
+            text-align: center;
+            cursor: pointer;
+            border-top: 5px solid var(--deepseek-primary);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .journey-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .journey-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--deepseek-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .journey-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .journey-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .journey-card i {
+            font-size: 3rem;
+            background: var(--deepseek-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .journey-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--deepseek-dark);
+        }
+
+        .journey-card p {
+            color: var(--deepseek-gray);
+            font-size: 1rem;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            padding: 20px;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 90%;
+            text-align: left;
+            animation: popIn 0.5s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--deepseek-light);
+        }
+
+        .popup-title {
+            font-size: 1.8rem;
+            color: var(--deepseek-primary);
+            font-weight: 700;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--deepseek-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .close-btn:hover {
+            background: var(--deepseek-secondary);
+            transform: rotate(90deg);
+        }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: var(--deepseek-gradient);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(30, 41, 59, 0.2);
+        }
+
+        .action-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(30, 41, 59, 0.3);
+        }
+
+        .action-link i {
+            margin-right: 8px;
+        }
+
+        .secondary-link {
+            background: transparent;
+            border: 2px solid var(--deepseek-primary);
+            color: var(--deepseek-primary);
+            margin-left: 15px;
+        }
+
+        .secondary-link:hover {
+            background: var(--deepseek-light);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--deepseek-dark);
+            color: white;
+            margin-top: 80px;
+            font-size: 1rem;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--deepseek-primary);
+            transform: translateY(-5px);
+        }
+
+        .deepseek-mention {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .deepseek-mention a {
+            color: var(--deepseek-accent);
+            text-decoration: none;
+        }
+
+        .deepseek-mention a:hover {
+            text-decoration: underline;
+        }
+
+        /* Viral Elements */
+        .viral-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--deepseek-gradient);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        .viral-counter i {
+            font-size: 1.2rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .share-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--deepseek-dark);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .share-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .share-button.twitter {
+            background: #1da1f2;
+            color: white;
+        }
+
+        .share-button.linkedin {
+            background: #0077b5;
+            color: white;
+        }
+
+        .share-button.facebook {
+            background: #4267B2;
+            color: white;
+        }
+
+        .mystery-box {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mystery-box::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            animation: rotate 15s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .mystery-box h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .mystery-box p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            opacity: 0.9;
+        }
+
+        .reveal-button {
+            background: var(--deepseek-accent);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reveal-button:hover {
+            background: var(--deepseek-primary);
+            transform: translateY(-3px);
+        }
+
+        .secret-reveal {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .secret-reveal p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .secret-reveal .highlight {
+            color: var(--deepseek-accent);
+            font-weight: 600;
+        }
+
+        /* Newsletter Signup */
+        .newsletter {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .newsletter h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--deepseek-primary);
+        }
+
+        .newsletter p {
+            margin-bottom: 25px;
+            color: var(--deepseek-gray);
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 10px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--deepseek-primary);
+        }
+
+        .newsletter-button {
+            padding: 12px 30px;
+            background: var(--deepseek-gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 80px 20px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-text {
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.1rem;
+            }
+
+            .stats-section {
+                gap: 20px;
+            }
+
+            .stat-card {
+                min-width: 140px;
+                padding: 15px 20px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .journey-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .popup-content {
+                padding: 25px;
+            }
+
+            .popup-title {
+                font-size: 1.5rem;
+            }
+
+            .action-links {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .secondary-link {
+                margin-left: 0;
+            }
+
+            .youtube-section {
+                padding: 25px;
+            }
+
+            .channel-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .viral-counter {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.9rem;
+                padding: 8px 12px;
+            }
+        }
+
+        .popup-body {
+            line-height: 1.7;
+        }
+
+        .popup-body p {
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(14, 165, 233, 0.2) 0%, rgba(14, 165, 233, 0) 100%);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tech-tag {
+            background: var(--deepseek-light);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--deepseek-primary);
+            border: 1px solid rgba(30, 41, 59, 0.1);
+        }
+
+        .achievement-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .achievement-list li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .achievement-list li::before {
+            content: "▸";
+            color: var(--deepseek-primary);
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        .action-links {
+            margin-top: 25px;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <div class="loading-text">Preparing an extraordinary journey...</div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Viral Counter -->
+    <div class="viral-counter">
+        <i class="fas fa-fire"></i>
+        <span id="viewCount">1,247</span> people exploring this journey
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="profile-section">
+                <img src="https://avatars.githubusercontent.com/u/155373555?s=400&u=a156b68eb8f983d5611f80bfc1f75dbe1deb73a6&v=4"
+                    alt="Rizwan Khan - Mathematics Educator and AI Specialist" class="profile-image">
+                <div class="profile-text">
+                    <h1>Rizwan Khan</h1>
+                    <p>Mathematics Expert | Teacher | Peace Studies Expert | AI Education Advocate</p>
+                    <p class="tagline">Bridging numbers, knowledge, and human understanding through technology</p>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-card" onclick="showEducationPopup()">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">GitHub Repositories</div>
+                </div>
+                <div class="stat-card" onclick="showTeachingPopup()">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Tech Blogs</div>
+                </div>
+                <div class="stat-card" onclick="showAIPopup()">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">YouTube Videos</div>
+                </div>
+            </div>
+
+            <div onclick="window.location='http://khan.affiliatemath.xyz/';" style="display:inline-flex; align-items:center; gap:10px; padding:14px 28px; 
+            background:linear-gradient(135deg,#1a56db,#7e3af2); color:#f8fafc; 
+            border-radius:50px; cursor:pointer; font-family:Segoe UI, Arial, sans-serif; 
+            font-size:18px; font-weight:600; text-decoration:none; 
+            box-shadow:0 10px 25px rgba(30,41,59,0.15); transition:all 0.3s ease;"
+                onmouseover="this.style.background='linear-gradient(135deg,#0ea5e9,#7e3af2)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.3)'; this.style.transform='scale(1.05)';"
+                onmouseout="this.style.background='linear-gradient(135deg,#1a56db,#7e3af2)'; this.style.boxShadow='0 10px 25px rgba(30,41,59,0.15)'; this.style.transform='scale(1)';">
+                <span style="font-size:22px;">🤖</span>
+                <span>Discover My AI-Powered Learning Platform</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Mystery Box Section -->
+        <div class="mystery-box">
+            <h3>The Secret Behind My Success</h3>
+            <p>What if I told you there's a powerful connection between mathematics, peace studies, and AI that few have
+                discovered?</p>
+            <button class="reveal-button" onclick="revealSecret()">Reveal the Secret</button>
+            <div class="secret-reveal" id="secretReveal">
+                <p>The secret is <span class="highlight">systematic thinking</span>. Mathematics teaches structured
+                    problem-solving, peace studies provides frameworks for human understanding, and AI amplifies both.
+                    This trifecta creates an educational approach that's revolutionizing how we learn and teach.</p>
+            </div>
+        </div>
+
+        <h2>My Journey 🚀</h2>
+        <p class="intro-text">Welcome to my professional journey! As an educator passionate about mathematics, peace
+            studies, and artificial intelligence, I've dedicated my career to creating innovative learning experiences
+            that empower students and transform education.</p>
+
+        <div class="journey-grid">
+            <div class="journey-card" onclick="showEducationPopup()">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Education</h3>
+                <p>Building strong foundations in mathematics and pedagogy</p>
+            </div>
+
+            <div class="journey-card" onclick="showTeachingPopup()">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h3>Teaching</h3>
+                <p>Inspiring students to love numbers and problem-solving</p>
+            </div>
+
+            <div class="journey-card" onclick="showPeacePopup()">
+                <i class="fas fa-peace"></i>
+                <h3>Conflict Resolution</h3>
+                <p>Applying mathematical thinking to human understanding</p>
+            </div>
+
+            <div class="journey-card" onclick="showAIPopup()">
+                <i class="fas fa-robot"></i>
+                <h3>AI Journey</h3>
+                <p>Integrating artificial intelligence with mathematics education</p>
+            </div>
+        </div>
+
+        <!-- YouTube Section -->
+        <div class="youtube-section">
+            <h2>My YouTube Channel</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Explore my educational content on AI, mathematics, and
+                technology</p>
+
+            <div class="video-container">
+                <!-- Replace with your actual YouTube video embed code -->
+                <iframe src="https://www.youtube.com/embed/AgElOQfhu0Y?si=Cuy84GhOck4uDMpl" title="Sample YouTube video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="video-caption">
+                "Mathematics Education in the Age of AI" - Exploring how artificial intelligence is transforming how we
+                teach and learn mathematics.
+            </div>
+
+            <div class="channel-stats">
+                <div class="channel-stat">
+                    <i class="fab fa-youtube"></i>
+                    <div class="number">30+</div>
+                    <div class="label">Videos</div>
+                </div>
+                <div class="channel-stat">
+                    <i class="fas fa-eye"></i>
+                    <div class="number">10K+</div>
+                    <div class="label">Views</div>
+                </div>
+                <div class="channel-stat">
+                    <i class="fas fa-users"></i>
+                    <div class="number">500+</div>
+                    <div class="label">Subscribers</div>
+                </div>
+                <div class="channel-stat">
+                    <i class="fas fa-clock"></i>
+                    <div class="number">15+</div>
+                    <div class="label">Hours of Content</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://www.youtube.com/@ThisOne-007" class="action-link" target="_blank">
+                    <i class="fab fa-youtube"></i> Visit My YouTube Channel
+                </a>
+            </div>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="newsletter">
+            <h3>Join My Educational Revolution</h3>
+            <p>Get exclusive insights on AI in education, mathematics teaching strategies, and peace studies
+                applications.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                <button type="submit" class="newsletter-button">Subscribe</button>
+            </form>
+            <p style="font-size: 0.9rem; margin-top: 15px;">No spam, just valuable content. Unsubscribe anytime.</p>
+        </div>
+
+        <!-- Share Buttons -->
+        <div class="share-buttons">
+            <a href="#" class="share-button twitter" onclick="shareOnTwitter()">
+                <i class="fab fa-twitter"></i> Share on Twitter
+            </a>
+            <a href="#" class="share-button linkedin" onclick="shareOnLinkedIn()">
+                <i class="fab fa-linkedin"></i> Share on LinkedIn
+            </a>
+            <a href="#" class="share-button facebook" onclick="shareOnFacebook()">
+                <i class="fab fa-facebook"></i> Share on Facebook
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="javascript:void(0)" class="action-link" onclick="showPortfolioPopup()">
+                <i class="fas fa-folder-open"></i> View My Portfolio
+            </a>
+        </div>
+    </div>
+
+    <!-- Education Popup -->
+    <div id="educationPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">Education 🎓</h3>
+                <button class="close-btn" onclick="closeEducationPopup()">×</button>
+            </div>
+            <div class="popup-body">
+                <p>My educational journey began with a deep fascination for mathematics and its applications in solving
+                    real-world problems. I graduated with a degree in Mathematics, which provided me with a strong
+                    theoretical foundation.</p>
+
+                <p>I then pursued a Bachelor of Education (B.Ed) in Mathematics, where I developed pedagogical skills
+                    and learned how to make complex mathematical concepts accessible to diverse learners. This
+                    combination of subject mastery and teaching methodology has been fundamental to my approach.</p>
+
+                <p>Throughout my education, I focused on:</p>
+                <ul class="achievement-list">
+                    <li>Advanced mathematical theory and applications</li>
+                    <li>Educational psychology and learning theories</li>
+                    <li>Curriculum development and instructional design</li>
+                    <li>Assessment strategies for mathematical proficiency</li>
+                </ul>
+
+                <div class="tech-tags">
+                    <span class="tech-tag">Mathematics</span>
+                    <span class="tech-tag">Pedagogy</span>
+                    <span class="tech-tag">Curriculum Design</span>
+                    <span class="tech-tag">Educational Theory</span>
+                </div>
+
+                <div class="action-links">
+                    <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" class="action-link" target="_blank">
+                        <i class="fab fa-linkedin"></i> View Credentials
+                    </a>
+                    <a href="mailto:rizwanrka826@gmail.com" class="action-link secondary-link">
+                        <i class="fas fa-envelope"></i> Discuss Education
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Teaching Popup -->
+    <div id="teachingPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">Teaching Experience 📘</h3>
+                <button class="close-btn" onclick="closeTeachingPopup()">×</button>
+            </div>
+            <div class="popup-body">
+                <p>As a mathematics teacher, I've had the privilege of inspiring hundreds of students to develop a
+                    genuine love for numbers and problem-solving. My teaching philosophy centers on creating engaging,
+                    accessible learning experiences that demystify mathematics.</p>
+
+                <p>I believe that every student has the capacity to excel in mathematics when provided with the right
+                    guidance, resources, and encouragement. My approach combines traditional teaching methods with
+                    innovative techniques to cater to diverse learning styles.</p>
+
+                <p>Key aspects of my teaching methodology:</p>
+                <ul class="achievement-list">
+                    <li>Student-centered learning environments</li>
+                    <li>Real-world application of mathematical concepts</li>
+                    <li>Differentiated instruction for varied learning needs</li>
+                    <li>Continuous assessment and feedback loops</li>
+                    <li>Building mathematical confidence and curiosity</li>
+                </ul>
+
+                <div class="tech-tags">
+                    <span class="tech-tag">Student Engagement</span>
+                    <span class="tech-tag">Differentiated Instruction</span>
+                    <span class="tech-tag">Assessment Strategies</span>
+                    <span class="tech-tag">Classroom Management</span>
+                </div>
+
+                <div class="action-links">
+                    <a href="https://www.affiliatemath.xyz/teaching-resources" class="action-link" target="_blank">
+                        <i class="fas fa-book-open"></i> Teaching Resources
+                    </a>
+                    <a href="mailto:rizwan@affiliatemath.xyz" class="action-link secondary-link">
+                        <i class="fas fa-chalkboard-teacher"></i> Teaching Consultation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Peace Studies Popup -->
+    <div id="peacePopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">Conflict Resolution & Peace Studies 🌿</h3>
+                <button class="close-btn" onclick="closePeacePopup()">×</button>
+            </div>
+            <div class="popup-body">
+                <p>My Post Graduate Diploma in Conflict Resolution & Peace Studies opened my eyes to the profound
+                    connections between mathematical thinking and human conflict resolution. I discovered that the same
+                    logical frameworks we use to solve equations can be applied to understanding and resolving human
+                    disagreements.</p>
+
+                <p>This interdisciplinary approach has allowed me to bridge the gap between quantitative reasoning and
+                    qualitative understanding, creating unique insights into how structured thinking can facilitate
+                    reconciliation and mutual understanding.</p>
+
+                <p>My work in this field focuses on:</p>
+                <ul class="achievement-list">
+                    <li>Applying mathematical models to conflict analysis</li>
+                    <li>Developing communication frameworks based on logical structures</li>
+                    <li>Teaching conflict resolution through systematic approaches</li>
+                    <li>Bridging STEM and humanities through peace education</li>
+                </ul>
+
+                <div class="tech-tags">
+                    <span class="tech-tag">Conflict Resolution</span>
+                    <span class="tech-tag">Peace Studies</span>
+                    <span class="tech-tag">Interdisciplinary Approaches</span>
+                    <span class="tech-tag">Mathematical Modeling</span>
+                </div>
+
+                <div class="action-links">
+                    <a href="https://www.affiliatemath.xyz/peace-studies" class="action-link" target="_blank">
+                        <i class="fas fa-peace"></i> Peace Resources
+                    </a>
+                    <a href="mailto:rizwan@affiliatemath.xyz" class="action-link secondary-link">
+                        <i class="fas fa-handshake"></i> Discuss Collaboration
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Journey Popup -->
+    <div id="aiPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">AI in Education 🤖</h3>
+                <button class="close-btn" onclick="closeAIPopup()">×</button>
+            </div>
+            <div class="popup-body">
+                <p>For the past five years, I've been at the forefront of integrating artificial intelligence into
+                    mathematics education. This journey began with recognizing AI's potential to transform how students
+                    learn and engage with mathematical concepts.</p>
+
+                <p>I founded <span class="highlight">AffiliateMath.xyz</span> to create a platform where AI and human
+                    expertise work synergistically to empower learners. Our approach combines the analytical power of AI
+                    systems like <span class="highlight">DeepSeek</span> with the nuanced understanding of experienced
+                    educators.</p>
+
+                <p>Key initiatives in my AI journey:</p>
+                <ul class="achievement-list">
+                    <li>Developing AI-powered personalized learning pathways</li>
+                    <li>Creating adaptive assessment systems that identify knowledge gaps</li>
+                    <li>Building conversational AI tutors for mathematics</li>
+                    <li>Training AI models on pedagogical best practices</li>
+                    <li>Researching ethical AI implementation in education</li>
+                    <li>Creating 500+ GitHub repositories with AI education tools</li>
+                    <li>Writing 200+ technical blogs on AI and education</li>
+                    <li>Producing 30+ YouTube videos on AI in mathematics</li>
+                </ul>
+
+                <div class="tech-tags">
+                    <span class="tech-tag">AI Education</span>
+                    <span class="tech-tag">Personalized Learning</span>
+                    <span class="tech-tag">DeepSeek AI</span>
+                    <span class="tech-tag">EdTech Innovation</span>
+                    <span class="tech-tag">GitHub</span>
+                    <span class="tech-tag">YouTube</span>
+                </div>
+
+                <div class="action-links">
+                    <a href="http://khan.affiliatemath.xyz/" class="action-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Visit AffiliateMath.xyz
+                    </a>
+                    <a href="main.html" class="action-link secondary-link" target="_blank">
+                        <i class="fab fa-github"></i> Great FastAPI
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Popup -->
+    <div id="portfolioPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">My Portfolio 📂</h3>
+                <button class="close-btn" onclick="closePortfolioPopup()">×</button>
+            </div>
+            <div class="popup-body">
+                <p>Welcome to my professional portfolio! Here, I showcase my projects and vision in AI-powered
+                    mathematics education.</p>
+                <p>My work focuses on creating innovative learning experiences that combine mathematical rigor with
+                    cutting-edge technology to make education more engaging and accessible.</p>
+                <p>As a teacher who also learns from AI systems like <span class="highlight">DeepSeek</span>, I believe
+                    in the symbiotic relationship between human educators and artificial intelligence.</p>
+
+                <div class="tech-tags">
+                    <span class="tech-tag">Mathematics Education</span>
+                    <span class="tech-tag">AI Integration</span>
+                    <span class="tech-tag">Pedagogy</span>
+                    <span class="tech-tag">Conflict Resolution</span>
+                    <span class="tech-tag">DeepSeek AI</span>
+                </div>
+
+                <div class="action-links">
+                    <a href="http://affiliatemath.xyz" class="action-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Visit AffiliateMath.xyz
+                    </a>
+                    <a href="mailto:rizwan@affiliatemath.xyz" class="action-link secondary-link">
+                        <i class="fas fa-envelope"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Rizwan Khan — Mathematics, Peace & AI in Education</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" aria-label="LinkedIn"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/RizwanA96852028" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/KhanRiyazi" aria-label="GitHub" target="_blank"><i
+                    class="fab fa-github"></i></a>
+            <a href="https://www.youtube.com/@ThisOne-007" aria-label="YouTube" target="_blank"><i
+                    class="fab fa-youtube"></i></a>
+            <a href="mailto:rizwanrka826@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="deepseek-mention">
+            Inspired by the elegance and intelligence of <a href="https://affiliatemath.xyz/" target="_blank">Artificial
+                Intelligence -
+                AI</a>
+        </div>
+    </footer>
+
+    <script>
+        // Loading screen
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Scroll progress bar
+        window.addEventListener('scroll', function () {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        });
+
+        // Animate journey cards on scroll
+        function checkVisibility() {
+            const cards = document.querySelectorAll('.journey-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('load', checkVisibility);
+
+        // Viral counter simulation
+        function updateViewCount() {
+            const countElement = document.getElementById('viewCount');
+            let count = parseInt(countElement.textContent.replace(/,/g, ''));
+            count += Math.floor(Math.random() * 5) + 1;
+            countElement.textContent = count.toLocaleString();
+        }
+
+        setInterval(updateViewCount, 5000);
+
+        // Mystery box reveal
+        function revealSecret() {
+            const secretReveal = document.getElementById('secretReveal');
+            secretReveal.style.display = 'block';
+            document.querySelector('.reveal-button').textContent = 'Secret Revealed!';
+            document.querySelector('.reveal-button').style.background = '#10b981';
+        }
+
+        // Newsletter form submission
+        document.getElementById('newsletterForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            alert(`Thank you for subscribing with ${email}! You'll receive our next update soon.`);
+            this.reset();
+        });
+
+        // Social sharing functions
+        function shareOnTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent("Check out Rizwan Khan's incredible journey bridging mathematics, peace studies, and AI!");
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareOnLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        }
+
+        function shareOnFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        // Popup control functions
+        function showEducationPopup() {
+            document.getElementById('educationPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEducationPopup() {
+            document.getElementById('educationPopup').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function showTeachingPopup() {
+            document.getElementById('teachingPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTeachingPopup() {
+            document.getElementById('teachingPopup').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function showPeacePopup() {
+            document.getElementById('peacePopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePeacePopup() {
+            document.getElementById('peacePopup').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function showAIPopup() {
+            document.getElementById('aiPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAIPopup() {
+            document.getElementById('aiPopup').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function showPortfolioPopup() {
+            document.getElementById('portfolioPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePortfolioPopup() {
+            document.getElementById('portfolioPopup').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close popup when clicking outside the content
+        window.onclick = function (event) {
+            const popups = [
+                'educationPopup', 'teachingPopup', 'peacePopup',
+                'aiPopup', 'portfolioPopup'
+            ];
+
+            popups.forEach(popupId => {
+                const popup = document.getElementById(popupId);
+                if (event.target === popup) {
+                    popup.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Add keyboard support for closing popups
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                const popups = [
+                    'educationPopup', 'teachingPopup', 'peacePopup',
+                    'aiPopup', 'portfolioPopup'
+                ];
+
+                popups.forEach(popupId => {
+                    document.getElementById(popupId).style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+
+</html>

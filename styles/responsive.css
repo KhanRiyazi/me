@@ -1,0 +1,333 @@
+/* Mobile First Responsive Design */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .hero-title {
+        font-size: 4rem;
+    }
+}
+
+/* Medium screens (992px to 1199px) */
+@media (max-width: 1199px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .footer-content {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+
+    .footer-content .link-group:last-child {
+        grid-column: 1 / -1;
+        margin-top: 30px;
+    }
+}
+
+/* Tablets (768px to 991px) */
+@media (max-width: 991px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .profile-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .newsletter-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+/* Small tablets and large phones (576px to 767px) */
+@media (max-width: 767px) {
+    .container {
+        max-width: 540px;
+        padding: 0 15px;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--bg-primary);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 50px;
+        transition: left 0.3s ease;
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .cta-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-button {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .viral-counter {
+        top: 10px;
+        left: 10px;
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    .floating-actions {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .journey-timeline::before {
+        left: 20px;
+    }
+
+    .timeline-marker {
+        margin-right: 20px;
+    }
+
+    .share-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .share-btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+}
+
+/* Small phones (575px and down) */
+@media (max-width: 575px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .tech-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .video-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mystery-box,
+    .newsletter-card {
+        padding: 30px 20px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .popup-content {
+        margin: 20px;
+        padding: 30px 20px;
+    }
+}
+
+/* Very small phones (320px to 374px) */
+@media (max-width: 374px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .tech-card,
+    .project-card {
+        padding: 20px;
+    }
+
+    .timeline-content {
+        padding: 20px;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .newsletter-button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+/* Orientation specific styles */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        min-height: 150vh;
+    }
+
+    .profile-section {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .viral-counter {
+        top: 5px;
+        left: 5px;
+        font-size: 0.7rem;
+    }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    .profile-image {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Print styles */
+@media print {
+
+    .floating-actions,
+    .viral-counter,
+    .nav-toggle,
+    .cta-button,
+    .share-section {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .hero-section {
+        min-height: auto;
+        page-break-after: always;
+    }
+
+    a::after {
+        content: " (" attr(href) ") ";
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark mode preference */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --bg-primary: #111827;
+        --bg-secondary: #1f2937;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .hover-lift:hover {
+        transform: none;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .cta-button:active,
+    .floating-btn:active {
+        transform: scale(0.95);
+    }
+}
+
+/* Foldable devices */
+@media (spanning: single-fold-vertical) {
+    .container {
+        max-width: calc(100vw - env(fold-width));
+    }
+}
