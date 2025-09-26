@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizwan Khan | The Math, Peace & AI Journey That's Going Viral</title>
+    <meta name="description"
+        content="Discover how Rizwan Khan is revolutionizing education by bridging mathematics, peace studies, and artificial intelligence. A journey that's captivating thousands.">
+    <meta name="keywords" content="Rizwan Khan, Mathematics, AI, Education, Peace Studies, EdTech, DeepSeek">
+    <meta name="author" content="Rizwan Khan">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Rizwan Khan | Math, Peace & AI Journey">
+    <meta property="og:description"
+        content="Discover how Rizwan Khan is revolutionizing education through mathematics, peace studies, and AI">
+    <meta property="og:image"
+        content="https://avatars.githubusercontent.com/u/155373555?s=400&u=a156b68eb8f983d5611f80bfc1f75dbe1deb73a6&v=4">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rizwan Khan | Math, Peace & AI Journey">
+    <meta name="twitter:description" content="Revolutionizing education through mathematics, peace studies, and AI">
+    <meta name="twitter:image"
+        content="https://avatars.githubusercontent.com/u/155373555?s=400&u=a156b68eb8f983d5611f80bfc1f75dbe1deb73a6&v=4">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="styles/main.css" as="style">
+    <link rel="preload" href="styles/animations.css" as="style">
+    <link rel="preload" href="scripts/main.js" as="script">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/popups.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-container">
+            <div class="ai-loader">
+                <div class="neural-node"></div>
+                <div class="neural-node"></div>
+                <div class="neural-node"></div>
+                <div class="neural-node"></div>
+            </div>
+            <div class="loading-text">
+                <span class="loading-dots">Initializing Digital Journey</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <button class="floating-btn theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="floating-btn scroll-top" id="scrollTop" aria-label="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Viral Counter -->
+    <div class="viral-counter">
+        <i class="fas fa-fire"></i>
+        <span id="viewCount">1,247</span> <span class="counter-label">exploring this journey</span>
+        <div class="live-pulse"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">🧠</span>
+                <span class="brand-text">Rizwan Khan</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#journey" class="nav-link">Journey</a></li>
+                <li><a href="#youtube" class="nav-link">YouTube</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="hero-section">
+        <canvas id="particleCanvas"></canvas>
+        <div class="header-content">
+            <div class="profile-section">
+                <div class="profile-image-container">
+                    <img src="https://avatars.githubusercontent.com/u/155373555?s=400&u=a156b68eb8f983d5611f80bfc1f75dbe1deb73a6&v=4"
+                        alt="Rizwan Khan - Mathematics Educator and AI Specialist" class="profile-image">
+                    <div class="profile-badge">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                </div>
+                <div class="profile-text">
+                    <h1 class="hero-title">Rizwan Khan</h1>
+                    <p class="hero-subtitle">Mathematics Expert | Teacher | Peace Studies Expert | AI Education Advocate
+                    </p>
+                    <p class="tagline">Bridging numbers, knowledge, and human understanding through technology</p>
+
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="500">0</span>
+                            <span class="stat-label">GitHub Repos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="200">0</span>
+                            <span class="stat-label">Tech Blogs</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="30">0</span>
+                            <span class="stat-label">YouTube Videos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <button class="cta-button primary" onclick="window.location='http://khan.affiliatemath.xyz/';">
+                    <span class="cta-icon">🚀</span>
+                    <span>Discover My AI-Powered Learning Platform</span>
+                </button>
+                <button class="cta-button secondary" onclick="showPortfolioPopup()">
+                    <span class="cta-icon">📂</span>
+                    <span>View Portfolio</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll to Explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Digital Transformation Section -->
+        <section class="digital-transformation">
+            <div class="container">
+                <h2 class="section-title">Digital Age Transformation</h2>
+                <p class="section-subtitle">How traditional education evolves with cutting-edge technology</p>
+
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI-Powered Learning</h3>
+                        <p>Adaptive algorithms that personalize educational pathways for each student</p>
+                        <div class="tech-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                            <span>85% Implementation</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-chart-network"></i>
+                        </div>
+                        <h3>Data Analytics</h3>
+                        <p>Real-time insights into student performance and learning patterns</p>
+                        <div class="tech-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 70%"></div>
+                            </div>
+                            <span>70% Implementation</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-vr-cardboard"></i>
+                        </div>
+                        <h3>Immersive Tech</h3>
+                        <p>VR/AR experiences that make abstract mathematical concepts tangible</p>
+                        <div class="tech-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                            <span>60% Implementation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mystery Box Section -->
+        <section class="mystery-section">
+            <div class="container">
+                <div class="mystery-box">
+                    <div class="mystery-content">
+                        <h3>The Secret Behind Digital Success</h3>
+                        <p>What if I told you there's a powerful connection between mathematics, peace studies, and AI
+                            that few have discovered?</p>
+                        <button class="reveal-button" id="revealSecret">
+                            <span class="button-text">Reveal the Secret</span>
+                            <span class="button-loader"></span>
+                        </button>
+                        <div class="secret-reveal" id="secretReveal">
+                            <p>The secret is <span class="highlight">systematic thinking</span>. Mathematics teaches
+                                structured problem-solving, peace studies provides frameworks for human understanding,
+                                and AI amplifies both. This trifecta creates an educational approach that's
+                                revolutionizing how we learn and teach.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Section -->
+        <section class="journey-section" id="journey">
+            <div class="container">
+                <h2 class="section-title">My Digital Journey 🚀</h2>
+                <p class="section-intro">Welcome to my professional evolution! As an educator passionate about
+                    mathematics, peace studies, and artificial intelligence, I've dedicated my career to creating
+                    innovative learning experiences that empower students and transform education.</p>
+
+                <div class="journey-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Education Foundation</h3>
+                            <span class="timeline-date">2010-2014</span>
+                            <p>Building strong foundations in mathematics and pedagogy with a focus on digital literacy
+                            </p>
+                            <button class="timeline-btn" onclick="showEducationPopup()">Explore</button>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Teaching Innovation</h3>
+                            <span class="timeline-date">2015-2018</span>
+                            <p>Integrating technology into classroom instruction and developing digital teaching
+                                methodologies</p>
+                            <button class="timeline-btn" onclick="showTeachingPopup()">Explore</button>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Peace Studies Integration</h3>
+                            <span class="timeline-date">2019-2020</span>
+                            <p>Applying mathematical thinking to conflict resolution in digital spaces</p>
+                            <button class="timeline-btn" onclick="showPeacePopup()">Explore</button>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>AI Revolution</h3>
+                            <span class="timeline-date">2021-Present</span>
+                            <p>Leading the integration of artificial intelligence with mathematics education</p>
+                            <button class="timeline-btn" onclick="showAIPopup()">Explore</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- YouTube Section -->
+        <section class="youtube-section" id="youtube">
+            <div class="container">
+                <h2 class="section-title">Digital Content Creation</h2>
+                <p class="section-subtitle">Exploring AI, mathematics, and technology through video content</p>
+
+                <div class="video-showcase">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/AgElOQfhu0Y?si=Cuy84GhOck4uDMpl"
+                            title="Mathematics Education in the Age of AI"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <div class="video-stats">
+                        <div class="stat-card">
+                            <i class="fab fa-youtube"></i>
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">Videos Created</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-eye"></i>
+                            <div class="stat-number">10K+</div>
+                            <div class="stat-label">Total Views</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-users"></i>
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Subscribers</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-clock"></i>
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Hours of Content</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-cta">
+                        <a href="https://www.youtube.com/@ThisOne-007" class="action-link" target="_blank">
+                            <i class="fab fa-youtube"></i> Visit My YouTube Channel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <h2 class="section-title">Digital Projects & Innovations</h2>
+                <p class="section-subtitle">Transforming education through technology and AI</p>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>AffiliateMath.xyz</h3>
+                            <p>AI-powered mathematics learning platform with personalized pathways</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">AI</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">EdTech</span>
+                            </div>
+                            <a href="http://khan.affiliatemath.xyz/" class="project-link" target="_blank">
+                                Explore Platform <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Digital Teaching Resources</h3>
+                            <p>500+ GitHub repositories with AI education tools and resources</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">GitHub</span>
+                                <span class="tech-tag">Open Source</span>
+                                <span class="tech-tag">Education</span>
+                            </div>
+                            <a href="https://github.com/KhanRiyazi" class="project-link" target="_blank">
+                                View Repositories <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-blog"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Tech Blog Network</h3>
+                            <p>200+ technical blogs on AI, mathematics, and educational technology</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Blogging</span>
+                                <span class="tech-tag">Content Creation</span>
+                                <span class="tech-tag">AI Education</span>
+                            </div>
+                            <a href="#" class="project-link">
+                                Read Blogs <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-card">
+                    <div class="newsletter-content">
+                        <h3>Join the Educational Revolution</h3>
+                        <p>Get exclusive insights on AI in education, mathematics teaching strategies, and digital
+                            transformation in learning.</p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <div class="input-group">
+                                <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                                <button type="submit" class="newsletter-button">
+                                    <span class="button-text">Subscribe</span>
+                                    <span class="button-loader"></span>
+                                </button>
+                            </div>
+                        </form>
+                        <p class="newsletter-note">No spam, just valuable content. Unsubscribe anytime.</p>
+                    </div>
+                    <div class="newsletter-graphic">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Share Section -->
+        <section class="share-section">
+            <div class="container">
+                <h3>Spread the Knowledge</h3>
+                <p>Help others discover this journey by sharing on your networks</p>
+                <div class="share-buttons">
+                    <button class="share-btn twitter" onclick="shareOnTwitter()">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </button>
+                    <button class="share-btn linkedin" onclick="shareOnLinkedIn()">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </button>
+                    <button class="share-btn facebook" onclick="shareOnFacebook()">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </button>
+                    <button class="share-btn copy-link" onclick="copyPageLink()">
+                        <i class="fas fa-link"></i> Copy Link
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="brand-icon">🧠</span>
+                    <span class="brand-text">Rizwan Khan</span>
+                    <p>Mathematics, Peace & AI in Education</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Explore</h4>
+                        <a href="#journey">My Journey</a>
+                        <a href="#youtube">YouTube</a>
+                        <a href="#projects">Projects</a>
+                        <a href="http://khan.affiliatemath.xyz/">AI Platform</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Connect</h4>
+                        <a href="https://www.linkedin.com/in/rizwan-ali-389660156/">LinkedIn</a>
+                        <a href="https://github.com/KhanRiyazi">GitHub</a>
+                        <a href="https://www.youtube.com/@ThisOne-007">YouTube</a>
+                        <a href="mailto:rizwanrka826@gmail.com">Email</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Resources</h4>
+                        <a href="#">Teaching Materials</a>
+                        <a href="#">AI Resources</a>
+                        <a href="#">Blog Posts</a>
+                        <a href="#">Research Papers</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rizwan Khan. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://x.com/RizwanA96852028" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://github.com/KhanRiyazi" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@ThisOne-007" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="mailto:rizwanrka826@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/animations.js"></script>
+    <script src="scripts/viral.js"></script>
+
+    <script>
+        // Additional inline script to handle popup functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Remove existing popup divs since we're creating them dynamically
+            const existingPopups = ['educationPopup', 'teachingPopup', 'peacePopup', 'aiPopup', 'portfolioPopup'];
+            existinguPopups.forEach(id => {
+                const popup = document.getElementById(id);
+                if (popup) popup.remove();
+            });
+        });
+    </script>
+</body>
+
+</html>
