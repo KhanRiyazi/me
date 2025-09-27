@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI Mastery - AI Learning Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #b967ff;
+            --neon-pink: #ff2a6d;
+            --dark-bg: #0a0a16;
+            --darker-bg: #050510;
+            --card-bg: #13132e;
+            --text-light: #e0e0ff;
+            --text-lighter: #ffffff;
+            --gradient-1: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            --gradient-2: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            --shadow-glow: 0 0 15px rgba(0, 243, 255, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(185, 103, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.1) 0%, transparent 20%);
+        }
+
+        .neural-network {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .neuron {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .connection {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--neon-purple), transparent);
+            transform-origin: left center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        header {
+            background: rgba(10, 10, 22, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            color: var(--neon-blue);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 0 4rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: var(--text-light);
+        }
+
+        .ai-badge {
+            display: inline-block;
+            background: rgba(185, 103, 255, 0.2);
+            border: 1px solid var(--neon-purple);
+            border-radius: 30px;
+            padding: 8px 20px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--neon-purple);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 243, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--gradient-2);
+            box-shadow: 0 5px 15px rgba(255, 42, 109, 0.3);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 8px 25px rgba(255, 42, 109, 0.5);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::after {
+            left: 100%;
+        }
+
+        .section {
+            margin-bottom: 5rem;
+            padding: 3rem 2rem;
+            background: rgba(19, 19, 46, 0.6);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-1);
+            border-radius: 3px;
+        }
+
+        .learning-path {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .path-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(185, 103, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .path-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-1);
+        }
+
+        .path-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--neon-blue);
+        }
+
+        .path-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .path-card h3 i {
+            font-size: 1.8rem;
+        }
+
+        .nested-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .nested-btn {
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            border-radius: 10px;
+            padding: 12px 15px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nested-btn:hover {
+            background: rgba(0, 243, 255, 0.2);
+            border-color: var(--neon-blue);
+            transform: scale(1.05);
+        }
+
+        .popup-content {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            background: var(--darker-bg);
+            border-radius: 15px;
+            padding: 2.5rem;
+            z-index: 1000;
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.3);
+            border: 1px solid var(--neon-blue);
+            animation: popupAppear 0.5s ease;
+        }
+
+        @keyframes popupAppear {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .popup-header h3 {
+            color: var(--neon-blue);
+            font-size: 1.5rem;
+        }
+
+        .close-popup {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-popup:hover {
+            color: var(--neon-pink);
+        }
+
+        .popup-body {
+            line-height: 1.7;
+        }
+
+        .code-snippet {
+            background: #1a1a2e;
+            border-left: 4px solid var(--neon-blue);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 16, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resource-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(185, 103, 255, 0.2);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-purple);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .resource-card i {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .resource-card h3 {
+            margin-bottom: 1rem;
+            color: var(--text-lighter);
+        }
+
+        .resource-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card a:hover {
+            color: var(--neon-pink);
+        }
+
+        footer {
+            background: var(--darker-bg);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--neon-blue);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--neon-blue);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .learning-path {
+                grid-template-columns: 1fr;
+            }
+
+            .nested-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Neural Network Background -->
+    <div class="neural-network" id="neuralNetwork"></div>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span>FastAPI Mastery</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#learning-path">Learning Path</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <div class="ai-badge">
+                <i class="fas fa-robot"></i> AI-Powered Learning Experience
+            </div>
+            <h1>Master FastAPI with Neural-Inspired Learning</h1>
+            <p>Experience an interactive journey through FastAPI concepts with AI-inspired interfaces, nested learning
+                modules, and adaptive content delivery.</p>
+            <button class="btn" id="startJourney">
+                <i class="fas fa-rocket"></i> Begin Neural Journey
+            </button>
+            <button class="btn btn-secondary" id="exploreModules">
+                <i class="fas fa-layer-group"></i> Explore Learning Modules
+            </button>
+        </section>
+
+        <section class="section" id="learning-path">
+            <h2 class="section-title">AI Learning Path</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Click on the nested buttons to explore each concept in
+                depth. Our AI system adapts to your learning pace.</p>
+
+            <div class="learning-path">
+                <div class="path-card">
+                    <h3><i class="fas fa-cogs"></i> FastAPI Fundamentals</h3>
+                    <p>Build a strong foundation with core FastAPI concepts and patterns.</p>
+
+                    <div class="nested-buttons">
+                        <button class="nested-btn" data-popup="fundamentals-1">
+                            <i class="fas fa-bolt"></i> Quick Start
+                        </button>
+                        <button class="nested-btn" data-popup="fundamentals-2">
+                            <i class="fas fa-shield-alt"></i> Type Safety
+                        </button>
+                        <button class="nested-btn" data-popup="fundamentals-3">
+                            <i class="fas fa-book"></i> Auto Docs
+                        </button>
+                        <button class="nested-btn" data-popup="fundamentals-4">
+                            <i class="fas fa-puzzle-piece"></i> Dependency Injection
+                        </button>
+                    </div>
+                </div>
+
+                <div class="path-card">
+                    <h3><i class="fas fa-chart-line"></i> Advanced Patterns</h3>
+                    <p>Master sophisticated API design patterns and optimization techniques.</p>
+
+                    <div class="nested-buttons">
+                        <button class="nested-btn" data-popup="advanced-1">
+                            <i class="fas fa-tachometer-alt"></i> Performance
+                        </button>
+                        <button class="nested-btn" data-popup="advanced-2">
+                            <i class="fas fa-database"></i> Data Modeling
+                        </button>
+                        <button class="nested-btn" data-popup="advanced-3">
+                            <i class="fas fa-user-lock"></i> Authentication
+                        </button>
+                        <button class="nested-btn" data-popup="advanced-4">
+                            <i class="fas fa-network-wired"></i> WebSockets
+                        </button>
+                    </div>
+                </div>
+
+                <div class="path-card">
+                    <h3><i class="fas fa-cloud-upload-alt"></i> Deployment & Scaling</h3>
+                    <p>Learn to deploy and scale your FastAPI applications effectively.</p>
+
+                    <div class="nested-buttons">
+                        <button class="nested-btn" data-popup="deployment-1">
+                            <i class="fab fa-docker"></i> Containerization
+                        </button>
+                        <button class="nested-btn" data-popup="deployment-2">
+                            <i class="fas fa-server"></i> Server Config
+                        </button>
+                        <button class="nested-btn" data-popup="deployment-3">
+                            <i class="fas fa-expand-arrows-alt"></i> Scaling
+                        </button>
+                        <button class="nested-btn" data-popup="deployment-4">
+                            <i class="fas fa-shield-virus"></i> Security
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="resources">
+            <h2 class="section-title">AI-Curated Resources</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Our neural network has analyzed thousands of resources
+                to bring you the most effective learning materials.</p>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Official Documentation</h3>
+                    <p>Comprehensive guides and API references</p>
+                    <a href="https://fastapi.tiangolo.com" target="_blank">Explore Docs <i
+                            class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fab fa-github"></i>
+                    <h3>GitHub Repository</h3>
+                    <p>Source code, issues, and contributions</p>
+                    <a href="https://github.com/tiangolo/fastapi" target="_blank">View Code <i
+                            class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Forum</h3>
+                    <p>Connect with other FastAPI developers</p>
+                    <a href="https://github.com/tiangolo/fastapi/discussions" target="_blank">Join Discussion <i
+                            class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Tutorials</h3>
+                    <p>Visual learning for complex concepts</p>
+                    <a href="https://fastapi.tiangolo.com/tutorial/" target="_blank">Watch Tutorials <i
+                            class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Popup Modals -->
+    <div class="overlay" id="overlay"></div>
+
+    <div class="popup-content" id="fundamentals-1">
+        <div class="popup-header">
+            <h3><i class="fas fa-bolt"></i> FastAPI Quick Start</h3>
+            <button class="close-popup">&times;</button>
+        </div>
+        <div class="popup-body">
+            <p>Get your first FastAPI application running in minutes with this quick start guide.</p>
+
+            <div class="code-snippet">
+                # Install FastAPI and Uvicorn<br>
+                pip install fastapi uvicorn<br><br>
+
+                # Create main.py<br>
+                from fastapi import FastAPI<br><br>
+
+                app = FastAPI()<br><br>
+
+                @app.get("/")<br>
+                def read_root():<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return {"Hello": "World"}<br><br>
+
+                # Run the server<br>
+                uvicorn main:app --reload
+            </div>
+
+            <p>Visit <code>http://localhost:8000</code> to see your API in action, and
+                <code>http://localhost:8000/docs</code> for interactive documentation.</p>
+        </div>
+    </div>
+
+    <div class="popup-content" id="fundamentals-2">
+        <div class="popup-header">
+            <h3><i class="fas fa-shield-alt"></i> Type Safety with Pydantic</h3>
+            <button class="close-popup">&times;</button>
+        </div>
+        <div class="popup-body">
+            <p>FastAPI uses Python type hints and Pydantic models for automatic data validation, serialization, and
+                documentation.</p>
+
+            <div class="code-snippet">
+                from pydantic import BaseModel<br>
+                from typing import Optional<br><br>
+
+                class Item(BaseModel):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;name: str<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;description: Optional[str] = None<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;price: float<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;tax: Optional[float] = None<br><br>
+
+                @app.post("/items/")<br>
+                def create_item(item: Item):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return item
+            </div>
+
+            <p>FastAPI will automatically validate incoming requests and generate API documentation based on your type
+                hints.</p>
+        </div>
+    </div>
+
+    <div class="popup-content" id="advanced-1">
+        <div class="popup-header">
+            <h3><i class="fas fa-tachometer-alt"></i> Performance Optimization</h3>
+            <button class="close-popup">&times;</button>
+        </div>
+        <div class="popup-body">
+            <p>FastAPI is one of the fastest Python frameworks available. Here's how to maximize performance:</p>
+
+            <div class="code-snippet">
+                # Use async/await for I/O operations<br>
+                import asyncio<br><br>
+
+                @app.get("/slow-operation/")<br>
+                async def slow_operation():<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;# Simulate a slow I/O operation<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;await asyncio.sleep(1)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return {"status": "completed"}<br><br>
+
+                # Use Pydantic's ORM mode for database operations<br>
+                class User(BaseModel):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;id: int<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;name: str<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;email: str<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;class Config:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orm_mode = True
+            </div>
+
+            <p>Other optimizations include using response models, background tasks, and connection pooling.</p>
+        </div>
+    </div>
+
+    <div class="popup-content" id="deployment-1">
+        <div class="popup-header">
+            <h3><i class="fab fa-docker"></i> Containerization with Docker</h3>
+            <button class="close-popup">&times;</button>
+        </div>
+        <div class="popup-body">
+            <p>Containerizing your FastAPI application ensures consistent deployment across environments.</p>
+
+            <div class="code-snippet">
+                # Dockerfile<br>
+                FROM python:3.9<br><br>
+
+                WORKDIR /code<br><br>
+
+                COPY ./requirements.txt /code/requirements.txt<br>
+                RUN pip install --no-cache-dir --upgrade -r requirements.txt<br><br>
+
+                COPY ./app /code/app<br><br>
+
+                CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]<br><br>
+
+                # docker-compose.yml for additional services<br>
+                version: "3.8"<br>
+                services:<br>
+                &nbsp;&nbsp;web:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;build: .<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;ports:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "8000:80"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;depends_on:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- db<br>
+                &nbsp;&nbsp;db:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;image: postgres:13<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;environment:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- POSTGRES_DB=myapp
+            </div>
+
+            <p>Build and run with <code>docker build -t myapp .</code> and <code>docker run -p 8000:80 myapp</code></p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span>FastAPI Mastery</span>
+            </div>
+            <p>An AI-inspired learning experience for mastering FastAPI</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2023 FastAPI Mastery. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Create neural network background
+        function createNeuralNetwork() {
+            const container = document.getElementById('neuralNetwork');
+            const neurons = [];
+            const connections = [];
+
+            // Create neurons
+            for (let i = 0; i < 30; i++) {
+                const neuron = document.createElement('div');
+                neuron.className = 'neuron';
+
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+
+                neuron.style.left = `${x}%`;
+                neuron.style.top = `${y}%`;
+
+                // Random animation
+                const size = 4 + Math.random() * 4;
+                neuron.style.width = `${size}px`;
+                neuron.style.height = `${size}px`;
+
+                const animationDuration = 3 + Math.random() * 5;
+                neuron.style.animation = `pulse ${animationDuration}s infinite alternate`;
+
+                container.appendChild(neuron);
+                neurons.push({ element: neuron, x, y });
+            }
+
+            // Create connections between nearby neurons
+            for (let i = 0; i < neurons.length; i++) {
+                for (let j = i + 1; j < neurons.length; j++) {
+                    const neuron1 = neurons[i];
+                    const neuron2 = neurons[j];
+
+                    // Calculate distance
+                    const dx = neuron1.x - neuron2.x;
+                    const dy = neuron1.y - neuron2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    // Only connect if neurons are close enough
+                    if (distance < 20) {
+                        const connection = document.createElement('div');
+                        connection.className = 'connection';
+
+                        // Position and rotate the connection
+                        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                        const length = distance;
+
+                        connection.style.width = `${length}%`;
+                        connection.style.left = `${neuron1.x}%`;
+                        connection.style.top = `${neuron1.y}%`;
+                        connection.style.transform = `rotate(${angle}deg)`;
+
+                        // Random animation
+                        const animationDelay = Math.random() * 5;
+                        connection.style.animation = `glow 2s ${animationDelay}s infinite alternate`;
+
+                        container.appendChild(connection);
+                        connections.push(connection);
+                    }
+                }
+            }
+
+            // Add CSS for animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { opacity: 0.3; transform: scale(1); }
+                    100% { opacity: 1; transform: scale(1.5); }
+                }
+                
+                @keyframes glow {
+                    0% { opacity: 0.1; }
+                    100% { opacity: 0.5; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Popup functionality
+        function setupPopups() {
+            const overlay = document.getElementById('overlay');
+            const popups = document.querySelectorAll('.popup-content');
+            const nestedButtons = document.querySelectorAll('.nested-btn');
+            const closeButtons = document.querySelectorAll('.close-popup');
+
+            // Open popup when nested button is clicked
+            nestedButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const popupId = this.getAttribute('data-popup');
+                    const popup = document.getElementById(popupId);
+
+                    if (popup) {
+                        overlay.style.display = 'block';
+                        popup.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            // Close popup when close button is clicked
+            closeButtons.forEach(button => {
+                button.addEventListener('click', closeAllPopups);
+            });
+
+            // Close popup when overlay is clicked
+            overlay.addEventListener('click', closeAllPopups);
+
+            // Close popup with Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeAllPopups();
+                }
+            });
+
+            function closeAllPopups() {
+                overlay.style.display = 'none';
+                popups.forEach(popup => {
+                    popup.style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Mobile menu functionality
+        function setupMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const nav = document.querySelector('nav ul');
+
+            if (mobileMenu) {
+                mobileMenu.addEventListener('click', function () {
+                    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                });
+
+                // Adjust for window resize
+                window.addEventListener('resize', function () {
+                    if (window.innerWidth > 768) {
+                        nav.style.display = 'flex';
+                    } else {
+                        nav.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        function setupSmoothScrolling() {
+            const navLinks = document.querySelectorAll('nav a');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            createNeuralNetwork();
+            setupPopups();
+            setupMobileMenu();
+            setupSmoothScrolling();
+
+            // Add animation to hero buttons
+            const heroButtons = document.querySelectorAll('.hero .btn');
+            heroButtons.forEach((button, index) => {
+                button.style.animationDelay = `${index * 0.2}s`;
+                button.style.animation = `fadeInUp 0.8s ease forwards`;
+            });
+
+            // Add CSS for button animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .hero .btn {
+                    opacity: 0;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+
+</html>
