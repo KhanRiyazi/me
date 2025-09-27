@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive FastAPI Learning Path</title>
+    <style>
+        :root {
+            --primary: #009688;
+            --primary-dark: #00796b;
+            --secondary: #ff9800;
+            --light: #f5f5f5;
+            --dark: #333;
+            --gray: #757575;
+            --success: #4caf50;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --warning: #ffc107;
+            --info: #2196f3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 2rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 8s infinite linear;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary-dark);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 0.5rem;
+            color: var(--primary);
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin: 1rem 0 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sidebar {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .main-content {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            min-height: 500px;
+        }
+
+        .module-nav {
+            list-style: none;
+        }
+
+        .module-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to right, #f5f5f5, #e0e0e0);
+            border: none;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-btn.completed::after {
+            content: "✓";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(to right, #f5f5f5, #e0e0e0);
+            color: var(--dark);
+        }
+
+        .btn-success {
+            background: linear-gradient(to right, var(--success), #8bc34a);
+            color: white;
+        }
+
+        .btn-warning {
+            background: linear-gradient(to right, var(--warning), #ffb300);
+            color: var(--dark);
+        }
+
+        .btn-info {
+            background: linear-gradient(to right, var(--info), #1976d2);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-container {
+            margin: 2rem 0;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--success), #8bc34a);
+            width: 0%;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .resource-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--secondary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .interactive-element {
+            background-color: #e3f2fd;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+            line-height: 1.4;
+        }
+
+        .code-keyword {
+            color: #ff79c6;
+        }
+
+        .code-function {
+            color: #50fa7b;
+        }
+
+        .code-string {
+            color: #f1fa8c;
+        }
+
+        .code-comment {
+            color: #6272a4;
+        }
+
+        .achievement {
+            background-color: #e8f5e9;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .achievement-icon {
+            font-size: 2rem;
+            color: var(--success);
+        }
+
+        .motivation-box {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            text-align: center;
+            border: 1px dashed var(--primary);
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            color: var(--primary-dark);
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .topic-btn {
+            padding: 1rem;
+            background: linear-gradient(to right, #f5f5f5, #e0e0e0);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .topic-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .topic-btn.completed {
+            background: linear-gradient(to right, var(--success), #8bc34a);
+            color: white;
+        }
+
+        .exercise {
+            background-color: #fff3e0;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .quiz {
+            background-color: #e8f5e9;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--success);
+        }
+
+        .quiz-question {
+            margin-bottom: 1rem;
+        }
+
+        .quiz-option {
+            display: block;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background-color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .quiz-option:hover {
+            background-color: #f5f5f5;
+        }
+
+        .quiz-option.correct {
+            background-color: #c8e6c9;
+        }
+
+        .quiz-option.incorrect {
+            background-color: #ffcdd2;
+        }
+
+        .celebrate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--secondary);
+            opacity: 0;
+        }
+
+        /* New styles for enhanced features */
+        .intelligent-tip {
+            background-color: #e1f5fe;
+            border-left: 4px solid var(--info);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+            display: none;
+        }
+
+        .code-editor {
+            background-color: #2d2d2d;
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .editor-header {
+            background-color: #1e1e1e;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .editor-body {
+            padding: 1rem;
+        }
+
+        .editor-textarea {
+            width: 100%;
+            min-height: 150px;
+            background-color: #1e1e1e;
+            color: #f8f8f2;
+            border: none;
+            font-family: 'Courier New', monospace;
+            resize: vertical;
+            padding: 0.5rem;
+        }
+
+        .editor-output {
+            background-color: #1e1e1e;
+            color: #f8f8f2;
+            padding: 0.5rem;
+            min-height: 50px;
+            border-top: 1px solid #444;
+            margin-top: 0.5rem;
+            white-space: pre-wrap;
+        }
+
+        .personalized-recommendation {
+            background-color: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .learning-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .stat-card {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .adaptive-path {
+            background-color: #e8f5e9;
+            border-left: 4px solid var(--success);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--success);
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            z-index: 1001;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .floating-action-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .floating-action-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .daily-goal {
+            background-color: #fff8e1;
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .learning-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-action-btn {
+                bottom: 10px;
+                right: 10px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Your Interactive FastAPI Learning Journey</h1>
+            <p>Step-by-step guidance with intelligent learning modules</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="dashboard">
+            <div class="sidebar">
+                <h2>Learning Path</h2>
+                <ul class="module-nav">
+                    <li><button class="nav-btn active" data-target="welcome">🚀 Welcome & Motivation</button></li>
+                    <li><button class="nav-btn" data-target="foundation">① Python Foundation</button></li>
+                    <li><button class="nav-btn" data-target="web-basics">② Web Fundamentals</button></li>
+                    <li><button class="nav-btn" data-target="fastapi-core">③ FastAPI Core Concepts</button></li>
+                    <li><button class="nav-btn" data-target="advanced">④ Advanced FastAPI</button></li>
+                    <li><button class="nav-btn" data-target="deployment">⑤ Deployment & Jobs</button></li>
+                    <li><button class="nav-btn" data-target="resources">📚 Free Resources</button></li>
+                    <li><button class="nav-btn" data-target="action-plan">📅 30-Day Action Plan</button></li>
+                </ul>
+
+                <div class="progress-container">
+                    <h3>Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress" id="progress-bar"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>Beginner</span>
+                        <span id="progress-percent">0%</span>
+                        <span>Job Ready</span>
+                    </div>
+
+                    <div class="learning-stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="topics-completed">0</div>
+                            <div class="stat-label">Topics Completed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="days-active">1</div>
+                            <div class="stat-label">Days Active</div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary" id="update-progress" style="width: 100%; margin-top: 1rem;">Update
+                        Progress</button>
+                </div>
+
+                <div class="intelligent-tip" id="intelligent-tip">
+                    <h4>💡 Intelligent Tip</h4>
+                    <p id="tip-content">Based on your progress, I recommend focusing on...</p>
+                </div>
+
+                <div class="motivation-box">
+                    <p>"The expert in anything was once a beginner."</p>
+                    <p>- Helen Hayes</p>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <!-- Welcome Section -->
+                <div class="content-section active" id="welcome">
+                    <h2>Welcome to Your FastAPI Journey!</h2>
+                    <p>I understand you're facing challenges, but remember: your determination is your greatest asset.
+                        Many successful developers started with limited resources.</p>
+
+                    <div class="interactive-element">
+                        <h3>Why FastAPI is Perfect for You:</h3>
+                        <ul>
+                            <li>✅ High demand in the job market</li>
+                            <li>✅ Excellent documentation with examples</li>
+                            <li>✅ Modern and efficient</li>
+                            <li>✅ Great for building portfolio projects</li>
+                        </ul>
+                    </div>
+
+                    <div class="personalized-recommendation">
+                        <h3>📊 Your Personalized Learning Path</h3>
+                        <p>Based on your goals, I've created an adaptive learning plan that will adjust as you progress.
+                        </p>
+                        <p><strong>Estimated completion:</strong> <span id="estimated-completion">5-6 months</span></p>
+                    </div>
+
+                    <div class="achievement">
+                        <div class="achievement-icon">🎯</div>
+                        <div>
+                            <h3>Your First Achievement!</h3>
+                            <p>By starting this journey, you've already taken the most important step. Let's build
+                                momentum together.</p>
+                        </div>
+                    </div>
+
+                    <div class="daily-goal">
+                        <h3>🎯 Today's Goal</h3>
+                        <p id="daily-goal-text">Complete the Python Basics section and try the interactive code editor.
+                        </p>
+                        <button class="btn btn-primary" id="set-daily-goal">Set Custom Goal</button>
+                    </div>
+
+                    <div class="step-buttons">
+                        <button class="btn btn-primary" data-next="foundation">
+                            Start Learning Path <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Foundation Section -->
+                <div class="content-section" id="foundation">
+                    <h2>Python Foundation (1-2 months)</h2>
+                    <p>Strong fundamentals are crucial. Let's build your Python knowledge step by step.</p>
+
+                    <div class="interactive-element">
+                        <h3>What You'll Learn:</h3>
+                        <div class="topic-grid">
+                            <button class="topic-btn" data-topic="python-basics">Variables & Data Types</button>
+                            <button class="topic-btn" data-topic="control-structures">Control Structures</button>
+                            <button class="topic-btn" data-topic="functions">Functions</button>
+                            <button class="topic-btn" data-topic="oop">OOP Basics</button>
+                            <button class="topic-btn" data-topic="file-handling">File Handling</button>
+                            <button class="topic-btn" data-topic="error-handling">Error Handling</button>
+                        </div>
+
+                        <div id="python-basics" class="resource-card" style="display: none;">
+                            <h4>Variables & Data Types</h4>
+                            <p>Learn how to store and manipulate data in Python.</p>
+                            <div class="code-block">
+                                <span class="code-comment"># Example: Variables in Python</span><br>
+                                name = <span class="code-string">"FastAPI Learner"</span><br>
+                                age = 25<br>
+                                is_beginner = True<br>
+                                <br>
+                                <span class="code-function">print</span>(<span class="code-string">f"Hello {name}, you
+                                    are {age} years old."</span>)
+                            </div>
+
+                            <div class="code-editor">
+                                <div class="editor-header">
+                                    <span>Try It Yourself</span>
+                                    <button class="btn btn-info btn-sm" id="run-python-basics">Run Code</button>
+                                </div>
+                                <div class="editor-body">
+                                    <textarea class="editor-textarea" id="python-basics-code"># Edit this code and click Run
+name = "FastAPI Learner"
+age = 25
+is_beginner = True
+
+print(f"Hello {name}, you are {age} years old.")</textarea>
+                                    <div class="editor-output" id="python-basics-output"></div>
+                                </div>
+                            </div>
+
+                            <div class="exercise">
+                                <h4>Challenge:</h4>
+                                <p>Create variables for your name, age, and a boolean indicating if you're learning
+                                    FastAPI. Then print a message using these variables.</p>
+                                <button class="btn btn-secondary" data-action="show-solution"
+                                    data-solution="python-basics-solution">Show Solution</button>
+                                <div id="python-basics-solution" style="display: none; margin-top: 1rem;">
+                                    <div class="code-block">
+                                        my_name = <span class="code-string">"Your Name"</span><br>
+                                        my_age = 25 <span class="code-comment"># Replace with your age</span><br>
+                                        learning_fastapi = True<br>
+                                        <br>
+                                        <span class="code-function">print</span>(<span class="code-string">f"Hello, I'm
+                                            {my_name}. I'm {my_age} years old and learning FastAPI:
+                                            {learning_fastapi}"</span>)
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" data-action="complete-topic" data-topic="python-basics">Mark
+                                as Completed</button>
+                        </div>
+
+                        <div id="control-structures" class="resource-card" style="display: none;">
+                            <h4>Control Structures</h4>
+                            <p>Learn how to control the flow of your program with conditionals and loops.</p>
+                            <div class="code-block">
+                                <span class="code-comment"># If-else example</span><br>
+                                age = 20<br>
+                                <span class="code-keyword">if</span> age >= 18:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span
+                                    class="code-string">"You are an adult"</span>)<br>
+                                <span class="code-keyword">else</span>:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span
+                                    class="code-string">"You are a minor"</span>)<br>
+                                <br>
+                                <span class="code-comment"># For loop example</span><br>
+                                <span class="code-keyword">for</span> i <span class="code-keyword">in</span> <span
+                                    class="code-function">range</span>(5):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span
+                                    class="code-string">f"Number: {i}"</span>)
+                            </div>
+
+                            <div class="code-editor">
+                                <div class="editor-header">
+                                    <span>Practice Control Structures</span>
+                                    <button class="btn btn-info btn-sm" id="run-control-structures">Run Code</button>
+                                </div>
+                                <div class="editor-body">
+                                    <textarea class="editor-textarea" id="control-structures-code"># Try modifying this code
+age = 20
+
+if age >= 18:
+    print("You are an adult")
+else:
+    print("You are a minor")
+
+print("\nCounting from 1 to 5:")
+for i in range(1, 6):
+    print(f"Number: {i}")</textarea>
+                                    <div class="editor-output" id="control-structures-output"></div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary" data-action="complete-topic"
+                                data-topic="control-structures">Mark as Completed</button>
+                        </div>
+                    </div>
+
+                    <div class="quiz">
+                        <h3>Python Basics Quiz</h3>
+                        <div class="quiz-question">
+                            <p>1. Which of the following is a valid variable name in Python?</p>
+                            <div class="quiz-option" data-correct="true">my_variable</div>
+                            <div class="quiz-option" data-correct="false">2nd_variable</div>
+                            <div class="quiz-option" data-correct="false">my-variable</div>
+                            <div class="quiz-option" data-correct="false">variable name</div>
+                        </div>
+                        <div class="quiz-question">
+                            <p>2. What does the following code print?<br><code>print(3 + 4 * 2)</code></p>
+                            <div class="quiz-option" data-correct="false">14</div>
+                            <div class="quiz-option" data-correct="true">11</div>
+                            <div class="quiz-option" data-correct="false">10</div>
+                            <div class="quiz-option" data-correct="false">Error</div>
+                        </div>
+                        <button class="btn btn-primary" id="check-quiz">Check Answers</button>
+                    </div>
+
+                    <div class="adaptive-path">
+                        <h3>🔍 Adaptive Learning Path</h3>
+                        <p>Based on your quiz performance, I'll adjust the difficulty of upcoming exercises to match
+                            your skill level.</p>
+                        <p id="difficulty-level">Current difficulty: <strong>Beginner</strong></p>
+                    </div>
+
+                    <div class="step-buttons">
+                        <button class="btn btn-secondary" data-prev="welcome">
+                            <span>←</span> Previous
+                        </button>
+                        <button class="btn btn-primary" data-next="web-basics">
+                            Next Topic <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Web Basics Section -->
+                <div class="content-section" id="web-basics">
+                    <h2>Web Fundamentals (1 month)</h2>
+                    <p>Understand how the web works before diving into FastAPI.</p>
+
+                    <div class="interactive-element">
+                        <h3>Key Concepts:</h3>
+                        <div class="topic-grid">
+                            <button class="topic-btn" data-topic="http">HTTP Protocols</button>
+                            <button class="topic-btn" data-topic="rest">REST API Principles</button>
+                            <button class="topic-btn" data-topic="json">JSON Format</button>
+                            <button class="topic-btn" data-topic="html-css">HTML/CSS Basics</button>
+                        </div>
+
+                        <div id="http" class="resource-card" style="display: none;">
+                            <h4>HTTP Protocols</h4>
+                            <p>HTTP is the foundation of data communication on the web.</p>
+                            <ul>
+                                <li><strong>GET</strong> - Retrieve data</li>
+                                <li><strong>POST</strong> - Send data to create</li>
+                                <li><strong>PUT</strong> - Update existing data</li>
+                                <li><strong>DELETE</strong> - Remove data</li>
+                            </ul>
+                            <div class="exercise">
+                                <h4>Practice:</h4>
+                                <p>Think of a social media app. Which HTTP methods would be used for:</p>
+                                <ul>
+                                    <li>Loading your feed? <button class="btn btn-secondary mini-btn"
+                                            data-answer="GET">Show Answer</button></li>
+                                    <li>Creating a new post? <button class="btn btn-secondary mini-btn"
+                                            data-answer="POST">Show Answer</button></li>
+                                    <li>Editing a post? <button class="btn btn-secondary mini-btn"
+                                            data-answer="PUT">Show Answer</button></li>
+                                    <li>Deleting a post? <button class="btn btn-secondary mini-btn"
+                                            data-answer="DELETE">Show Answer</button></li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-primary" data-action="complete-topic" data-topic="http">Mark as
+                                Completed</button>
+                        </div>
+
+                        <div id="rest" class="resource-card" style="display: none;">
+                            <h4>REST API Principles</h4>
+                            <p>REST (Representational State Transfer) is an architectural style for designing networked
+                                applications.</p>
+                            <ul>
+                                <li><strong>Stateless</strong> - Each request contains all information needed</li>
+                                <li><strong>Client-Server</strong> - Separation of concerns</li>
+                                <li><strong>Cacheable</strong> - Responses can be cached</li>
+                                <li><strong>Uniform Interface</strong> - Consistent API design</li>
+                            </ul>
+                            <button class="btn btn-primary" data-action="complete-topic" data-topic="rest">Mark as
+                                Completed</button>
+                        </div>
+                    </div>
+
+                    <div class="step-buttons">
+                        <button class="btn btn-secondary" data-prev="foundation">
+                            <span>←</span> Previous
+                        </button>
+                        <button class="btn btn-primary" data-next="fastapi-core">
+                            Next Topic <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- FastAPI Core Section -->
+                <div class="content-section" id="fastapi-core">
+                    <h2>FastAPI Core Concepts (2 months)</h2>
+                    <p>Now the exciting part! Let's dive into FastAPI.</p>
+
+                    <div class="interactive-element">
+                        <h3>Core Topics:</h3>
+                        <div class="topic-grid">
+                            <button class="topic-btn" data-topic="first-api">Your First API</button>
+                            <button class="topic-btn" data-topic="parameters">Path & Query Parameters</button>
+                            <button class="topic-btn" data-topic="pydantic">Pydantic Models</button>
+                            <button class="topic-btn" data-topic="crud">CRUD Operations</button>
+                        </div>
+
+                        <div id="first-api" class="resource-card" style="display: none;">
+                            <h4>Creating Your First API Endpoint</h4>
+                            <div class="code-block">
+                                <span class="code-keyword">from</span> fastapi <span class="code-keyword">import</span>
+                                FastAPI<br>
+                                <br>
+                                app = FastAPI()<br>
+                                <br>
+                                @app.get(<span class="code-string">"/"</span>)<br>
+                                <span class="code-keyword">def</span> <span
+                                    class="code-function">read_root</span>():<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> {<span
+                                    class="code-string">"Hello"</span>: <span class="code-string">"World"</span>}<br>
+                                <br>
+                                @app.get(<span class="code-string">"/items/{item_id}"</span>)<br>
+                                <span class="code-keyword">def</span> <span
+                                    class="code-function">read_item</span>(item_id: int, q: str = None):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> {<span
+                                    class="code-string">"item_id"</span>: item_id, <span class="code-string">"q"</span>:
+                                q}
+                            </div>
+                            <p>This creates two endpoints: a simple greeting and an item lookup.</p>
+                            <div class="exercise">
+                                <h4>Try It Yourself:</h4>
+                                <p>Create a new endpoint that returns your name when you visit <code>/myname</code></p>
+                                <button class="btn btn-secondary" data-action="show-solution"
+                                    data-solution="first-api-solution">Show Solution</button>
+                                <div id="first-api-solution" style="display: none; margin-top: 1rem;">
+                                    <div class="code-block">
+                                        @app.get(<span class="code-string">"/myname"</span>)<br>
+                                        <span class="code-keyword">def</span> <span
+                                            class="code-function">get_my_name</span>():<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> {<span
+                                            class="code-string">"name"</span>: <span class="code-string">"Your
+                                            Name"</span>}
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" data-action="complete-topic" data-topic="first-api">Mark as
+                                Completed</button>
+                        </div>
+
+                        <div id="parameters" class="resource-card" style="display: none;">
+                            <h4>Path & Query Parameters</h4>
+                            <p>Path parameters are part of the URL path, while query parameters come after the ? in the
+                                URL.</p>
+                            <div class="code-block">
+                                <span class="code-comment"># Path parameter</span><br>
+                                @app.get(<span class="code-string">"/users/{user_id}"</span>)<br>
+                                <span class="code-keyword">def</span> <span
+                                    class="code-function">get_user</span>(user_id: int):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment"># user_id is extracted from the
+                                    URL</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> {<span
+                                    class="code-string">"user_id"</span>: user_id}<br>
+                                <br>
+                                <span class="code-comment"># Query parameters</span><br>
+                                @app.get(<span class="code-string">"/items/"</span>)<br>
+                                <span class="code-keyword">def</span> <span class="code-function">get_items</span>(skip:
+                                int = 0, limit: int = 10):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment"># skip and limit are query parameters
+                                    with default values</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> {<span
+                                    class="code-string">"skip"</span>: skip, <span class="code-string">"limit"</span>:
+                                limit}
+                            </div>
+                            <button class="btn btn-primary" data-action="complete-topic" data-topic="parameters">Mark as
+                                Completed</button>
+                        </div>
+                    </div>
+
+                    <div class="step-buttons">
+                        <button class="btn btn-secondary" data-prev="web-basics">
+                            <span>←</span> Previous
+                        </button>
+                        <button class="btn btn-primary" data-next="advanced">
+                            Next Topic <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Advanced Section -->
+                <div class="content-section" id="advanced">
+                    <h2>Advanced FastAPI (2 months)</h2>
+                    <p>Expand your skills with database integration and authentication.</p>
+
+                    <div class="interactive-element">
+                        <h3>Advanced Topics:</h3>
+                        <div class="topic-grid">
+                            <button class="topic-btn" data-topic="database">Database Integration</button>
+                            <button class="topic-btn" data-topic="authentication">Authentication</button>
+                            <button class="topic-btn" data-topic="middleware">Middleware</button>
+                            <button class="topic-btn" data-topic="testing">Testing</button>
+                        </div>
+
+                        <div id="database" class="resource-card" style="display: none;">
+                            <h4>Database Integration</h4>
+                            <p>Connect FastAPI to databases like SQLite, PostgreSQL, or MongoDB.</p>
+                            <div class="code-block">
+                                <span class="code-comment"># Example with SQLite</span><br>
+                                <span class="code-keyword">import</span> sqlite3<br>
+                                <br>
+                                <span class="code-keyword">def</span> <span
+                                    class="code-function">get_db_connection</span>():<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;conn = sqlite3.connect(<span
+                                    class="code-string">'database.db'</span>)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;conn.row_factory = sqlite3.Row<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> conn<br>
+                                <br>
+                                @app.get(<span class="code-string">"/users/{user_id}"</span>)<br>
+                                <span class="code-keyword">def</span> <span
+                                    class="code-function">get_user</span>(user_id: int):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;conn = get_db_connection()<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;user = conn.execute(<span class="code-string">'SELECT * FROM
+                                    users WHERE id = ?'</span>, (user_id,)).fetchone()<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;conn.close()<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> dict(user) <span
+                                    class="code-keyword">if</span> user <span class="code-keyword">else</span> None
+                            </div>
+                            <button class="btn btn-primary" data-action="complete-topic" data-topic="database">Mark as
+                                Completed</button>
+                        </div>
+                    </div>
+
+                    <div class="step-buttons">
+                        <button class="btn btn-secondary" data-prev="fastapi-core">
+                            <span>←</span> Previous
+                        </button>
+                        <button class="btn btn-primary" data-next="deployment">
+                            Next Topic <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Deployment Section -->
+                <div class="content-section" id="deployment">
+                    <h2>Deployment & Job Preparation (1-2 months)</h2>
+                    <p>Learn to deploy your applications and prepare for job applications.</p>
+
+                    <div class="interactive-element">
+                        <h3>Key Areas:</h3>
+                        <div class="topic-grid">
+                            <button class="topic-btn" data-topic="docker">Docker Basics</button>
+                            <button class="topic-btn" data-topic="cloud">Cloud Deployment</button>
+                            <button class="topic-btn" data-topic="portfolio">Portfolio Building</button>
+                            <button class="topic-btn" data-topic="job-search">Job Search</button>
+                        </div>
+
+                        <div id="docker" class="resource-card" style="display: none;">
+                            <h4>Docker Basics</h4>
+                            <p>Docker helps you package your application with all its dependencies.</p>
+                            <div class="code-block">
+                                <span class="code-comment"># Dockerfile example for FastAPI</span><br>
+                                FROM python:3.9<br>
+                                <br>
+                                WORKDIR /code<br>
+                                <br>
+                                COPY ./requirements.txt /code/requirements.txt<br>
+                                <br>
+                                RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt<br>
+                                <br>
+                                COPY ./app /code/app<br>
+                                <br>
+                                CMD [<span class="code-string">"uvicorn"</span>, <span
+                                    class="code-string">"app.main:app"</span>, <span
+                                    class="code-string">"--host"</span>, <span class="code-string">"0.0.0.0"</span>,
+                                <span class="code-string">"--port"</span>, <span class="code-string">"80"</span>]
+                            </div>
+                            <button class="btn btn-primary" data-action="complete-topic" data-topic="docker">Mark as
+                                Completed</button>
+                        </div>
+                    </div>
+
+                    <div class="step-buttons">
+                        <button class="btn btn-secondary" data-prev="advanced">
+                            <span>←</span> Previous
+                        </button>
+                        <button class="btn btn-primary" data-next="resources">
+                            Next Topic <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Resources Section -->
+                <div class="content-section" id="resources">
+                    <h2>Free Learning Resources</h2>
+                    <p>All these resources are completely free and high-quality.</p>
+
+                    <div class="resource-card">
+                        <h3>Python Fundamentals</h3>
+                        <button class="btn btn-primary" data-resource="python-tutorial">Open Python Tutorial</button>
+                        <button class="btn btn-primary" data-resource="python-practice">Practice Exercises</button>
+                        <button class="btn btn-primary" data-resource="python-video">Video Course</button>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3>FastAPI Specific</h3>
+                        <button class="btn btn-primary" data-resource="fastapi-docs">Official Documentation</button>
+                        <button class="btn btn-primary" data-resource="fastapi-course">YouTube Course</button>
+                        <button class="btn btn-primary" data-resource="fastapi-examples">Example Projects</button>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3>General Programming</h3>
+                        <button class="btn btn-primary" data-resource="freecodecamp">FreeCodeCamp</button>
+                        <button class="btn btn-primary" data-resource="github">GitHub Learning</button>
+                        <button class="btn btn-primary" data-resource="stackoverflow">Stack Overflow</button>
+                    </div>
+
+                    <div class="step-buttons">
+                        <button class="btn btn-secondary" data-prev="deployment">
+                            <span>←</span> Previous
+                        </button>
+                        <button class="btn btn-primary" data-next="action-plan">
+                            Next Topic <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Plan Section -->
+                <div class="content-section" id="action-plan">
+                    <h2>30-Day Action Plan</h2>
+                    <p>A structured plan to keep you on track.</p>
+
+                    <div class="interactive-element">
+                        <h3>Weekly Breakdown:</h3>
+                        <div class="topic-grid">
+                            <button class="topic-btn" data-topic="week1">Week 1: Python Basics</button>
+                            <button class="topic-btn" data-topic="week2">Week 2: Core Concepts</button>
+                            <button class="topic-btn" data-topic="week3">Week 3: Web & API Basics</button>
+                            <button class="topic-btn" data-topic="week4">Week 4: First Project</button>
+                        </div>
+
+                        <div id="week1" class="resource-card" style="display: none;">
+                            <h4>Week 1: Python Basics</h4>
+                            <ul>
+                                <li>Day 1-2: Variables, data types, basic operations</li>
+                                <li>Day 3-4: Control structures (if, for, while)</li>
+                                <li>Day 5-6: Functions and modules</li>
+                                <li>Day 7: Review and practice</li>
+                            </ul>
+                            <button class="btn btn-primary" data-action="start-week" data-week="1">Start This
+                                Week</button>
+                        </div>
+
+                        <div id="week2" class="resource-card" style="display: none;">
+                            <h4>Week 2: Core Concepts</h4>
+                            <ul>
+                                <li>Day 1-2: Data structures (lists, dictionaries)</li>
+                                <li>Day 3-4: Object-Oriented Programming basics</li>
+                                <li>Day 5-6: File handling and exceptions</li>
+                                <li>Day 7: Build a small console application</li>
+                            </ul>
+                            <button class="btn btn-primary" data-action="start-week" data-week="2">Start This
+                                Week</button>
+                        </div>
+                    </div>
+
+                    <div class="motivation-box">
+                        <p class="quote">"The secret of getting ahead is getting started."</p>
+                        <p>- Mark Twain</p>
+                    </div>
+
+                    <div class="step-buttons">
+                        <button class="btn btn-secondary" data-prev="resources">
+                            <span>←</span> Previous
+                        </button>
+                        <button class="btn btn-primary" data-next="welcome">
+                            Back to Start <span>→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        <span id="notification-text">Achievement unlocked!</span>
+    </div>
+
+    <div class="floating-action-btn" id="fab">
+        💡
+    </div>
+
+    <div class="celebrate" id="celebration"></div>
+
+    <footer>
+        <div class="container">
+            <p>This intelligent learning platform adapts to your progress and provides personalized recommendations to
+                help you master FastAPI efficiently.</p>
+            <p>Remember: Consistency is more important than intensity. Even 30 minutes daily will bring results.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Navigation between sections
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const contentSections = document.querySelectorAll('.content-section');
+            const nextButtons = document.querySelectorAll('[data-next]');
+            const prevButtons = document.querySelectorAll('[data-prev]');
+
+            // Progress tracking
+            const progressBar = document.getElementById('progress-bar');
+            const progressPercent = document.getElementById('progress-percent');
+            const updateProgressBtn = document.getElementById('update-progress');
+            const topicsCompletedEl = document.getElementById('topics-completed');
+            const daysActiveEl = document.getElementById('days-active');
+
+            // Topic buttons
+            const topicButtons = document.querySelectorAll('.topic-btn');
+
+            // Intelligent features
+            const intelligentTip = document.getElementById('intelligent-tip');
+            const tipContent = document.getElementById('tip-content');
+            const dailyGoalText = document.getElementById('daily-goal-text');
+            const setDailyGoalBtn = document.getElementById('set-daily-goal');
+            const estimatedCompletion = document.getElementById('estimated-completion');
+            const difficultyLevel = document.getElementById('difficulty-level');
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notification-text');
+            const fab = document.getElementById('fab');
+
+            // Code editors
+            const runPythonBasicsBtn = document.getElementById('run-python-basics');
+            const pythonBasicsCode = document.getElementById('python-basics-code');
+            const pythonBasicsOutput = document.getElementById('python-basics-output');
+            const runControlStructuresBtn = document.getElementById('run-control-structures');
+            const controlStructuresCode = document.getElementById('control-structures-code');
+            const controlStructuresOutput = document.getElementById('control-structures-output');
+
+            // Load progress from localStorage or set to 0
+            let progress = parseInt(localStorage.getItem('fastapiProgress')) || 0;
+            let completedTopics = JSON.parse(localStorage.getItem('completedTopics')) || [];
+            let daysActive = parseInt(localStorage.getItem('daysActive')) || 1;
+            let lastActiveDate = localStorage.getItem('lastActiveDate') || new Date().toDateString();
+            let quizPerformance = JSON.parse(localStorage.getItem('quizPerformance')) || { correct: 0, total: 0 };
+            let dailyGoal = localStorage.getItem('dailyGoal') || "Complete the Python Basics section and try the interactive code editor.";
+
+            // Check if it's a new day
+            const today = new Date().toDateString();
+            if (today !== lastActiveDate) {
+                daysActive++;
+                localStorage.setItem('daysActive', daysActive);
+                localStorage.setItem('lastActiveDate', today);
+                showNotification(`Welcome back! This is day ${daysActive} of your learning journey.`);
+            }
+
+            // Initialize UI
+            updateProgressBar(progress);
+            updateCompletedTopics();
+            updateLearningStats();
+            updateDailyGoal();
+            updateIntelligentTip();
+            updateEstimatedCompletion();
+
+            // Navigation between modules
+            navButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const targetId = this.getAttribute('data-target');
+
+                    // Update active nav button
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Show corresponding content section
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        }
+                    });
+
+                    // Update intelligent tip based on current section
+                    updateIntelligentTip();
+                });
+            });
+
+            // Next button functionality
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const nextSectionId = this.getAttribute('data-next');
+                    const nextNavButton = document.querySelector(`[data-target="${nextSectionId}"]`);
+
+                    if (nextNavButton) {
+                        nextNavButton.click();
+                    }
+                });
+            });
+
+            // Previous button functionality
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const prevSectionId = this.getAttribute('data-prev');
+                    const prevNavButton = document.querySelector(`[data-target="${prevSectionId}"]`);
+
+                    if (prevNavButton) {
+                        prevNavButton.click();
+                    }
+                });
+            });
+
+            // Topic button functionality
+            topicButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const topic = this.getAttribute('data-topic');
+                    const topicElement = document.getElementById(topic);
+
+                    if (topicElement) {
+                        // Hide all topic content in the same section
+                        const parentSection = this.closest('.interactive-element');
+                        const allTopics = parentSection.querySelectorAll('.resource-card');
+                        allTopics.forEach(el => {
+                            el.style.display = 'none';
+                        });
+
+                        // Show the selected topic
+                        topicElement.style.display = 'block';
+                    }
+                });
+            });
+
+            // Complete topic functionality
+            document.addEventListener('click', function (e) {
+                if (e.target.hasAttribute('data-action')) {
+                    const action = e.target.getAttribute('data-action');
+
+                    if (action === 'complete-topic') {
+                        const topic = e.target.getAttribute('data-topic');
+                        if (!completedTopics.includes(topic)) {
+                            completedTopics.push(topic);
+                            localStorage.setItem('completedTopics', JSON.stringify(completedTopics));
+
+                            // Update progress (each topic adds 2% to progress)
+                            progress = Math.min(100, progress + 2);
+                            localStorage.setItem('fastapiProgress', progress);
+                            updateProgressBar(progress);
+                            updateLearningStats();
+                            updateIntelligentTip();
+                            updateEstimatedCompletion();
+
+                            // Visual feedback
+                            e.target.textContent = '✓ Completed!';
+                            e.target.disabled = true;
+                            e.target.classList.remove('btn-primary');
+                            e.target.classList.add('btn-success');
+
+                            // Update topic button
+                            const topicBtn = document.querySelector(`.topic-btn[data-topic="${topic}"]`);
+                            if (topicBtn) {
+                                topicBtn.classList.add('completed');
+                            }
+
+                            // Show achievement notification
+                            showNotification(`Great job! You've completed "${topic}".`);
+
+                            // Celebrate if progress reaches certain milestones
+                            if (progress % 20 === 0) {
+                                celebrateProgress(progress);
+                            }
+                        }
+                    }
+
+                    // Show solution functionality
+                    if (action === 'show-solution') {
+                        const solutionId = e.target.getAttribute('data-solution');
+                        const solutionElement = document.getElementById(solutionId);
+                        if (solutionElement) {
+                            if (solutionElement.style.display === 'block') {
+                                solutionElement.style.display = 'none';
+                                e.target.textContent = 'Show Solution';
+                            } else {
+                                solutionElement.style.display = 'block';
+                                e.target.textContent = 'Hide Solution';
+                            }
+                        }
+                    }
+
+                    // Start week functionality
+                    if (action === 'start-week') {
+                        const week = e.target.getAttribute('data-week');
+                        alert(`Great! You're starting Week ${week}. Remember to set small daily goals.`);
+                    }
+                }
+
+                // Resource buttons
+                if (e.target.hasAttribute('data-resource')) {
+                    const resource = e.target.getAttribute('data-resource');
+                    const resourceUrls = {
+                        'python-tutorial': 'https://www.learnpython.org/',
+                        'python-practice': 'https://www.hackerrank.com/domains/tutorials/10-days-of-python',
+                        'python-video': 'https://www.youtube.com/watch?v=rfscVS0vtbw',
+                        'fastapi-docs': 'https://fastapi.tiangolo.com/tutorial/',
+                        'fastapi-course': 'https://www.youtube.com/watch?v=GN6ICac3OXY',
+                        'fastapi-examples': 'https://fastapi.tiangolo.com/tutorial/',
+                        'freecodecamp': 'https://www.freecodecamp.org/',
+                        'github': 'https://github.com/',
+                        'stackoverflow': 'https://stackoverflow.com/'
+                    };
+
+                    if (resourceUrls[resource]) {
+                        if (confirm('You are about to open an external resource. Continue?')) {
+                            window.open(resourceUrls[resource], '_blank');
+                        }
+                    }
+                }
+
+                // Quiz functionality
+                if (e.target.id === 'check-quiz') {
+                    const quizOptions = document.querySelectorAll('.quiz-option');
+                    let correctAnswers = 0;
+                    let totalQuestions = 0;
+
+                    quizOptions.forEach(option => {
+                        if (option.hasAttribute('data-correct')) {
+                            totalQuestions++;
+                            const isCorrect = option.getAttribute('data-correct') === 'true';
+
+                            if (isCorrect) {
+                                option.classList.add('correct');
+                                correctAnswers++;
+                            } else {
+                                option.classList.add('incorrect');
+                            }
+                        }
+                    });
+
+                    // Update quiz performance
+                    quizPerformance.correct += correctAnswers;
+                    quizPerformance.total += totalQuestions;
+                    localStorage.setItem('quizPerformance', JSON.stringify(quizPerformance));
+
+                    // Adjust difficulty based on performance
+                    updateDifficultyLevel();
+
+                    alert(`You got ${correctAnswers} out of ${totalQuestions} correct!`);
+                    e.target.disabled = true;
+                }
+
+                // Mini answer buttons
+                if (e.target.classList.contains('mini-btn')) {
+                    const answer = e.target.getAttribute('data-answer');
+                    alert(`The answer is: ${answer}`);
+                }
+            });
+
+            // Update progress button
+            updateProgressBtn.addEventListener('click', function () {
+                const newProgress = prompt('Enter your current progress percentage (0-100):', progress);
+                if (newProgress !== null && !isNaN(newProgress) && newProgress >= 0 && newProgress <= 100) {
+                    progress = parseInt(newProgress);
+                    localStorage.setItem('fastapiProgress', progress);
+                    updateProgressBar(progress);
+                    updateIntelligentTip();
+                    updateEstimatedCompletion();
+                    showNotification('Progress updated successfully!');
+                } else if (newProgress !== null) {
+                    alert('Please enter a valid number between 0 and 100.');
+                }
+            });
+
+            // Set daily goal
+            setDailyGoalBtn.addEventListener('click', function () {
+                const newGoal = prompt('Enter your daily goal:', dailyGoal);
+                if (newGoal !== null && newGoal.trim() !== '') {
+                    dailyGoal = newGoal.trim();
+                    localStorage.setItem('dailyGoal', dailyGoal);
+                    updateDailyGoal();
+                    showNotification('Daily goal updated!');
+                }
+            });
+
+            // Floating action button - intelligent tip
+            fab.addEventListener('click', function () {
+                intelligentTip.style.display = intelligentTip.style.display === 'block' ? 'none' : 'block';
+            });
+
+            // Code execution functionality (simulated)
+            if (runPythonBasicsBtn) {
+                runPythonBasicsBtn.addEventListener('click', function () {
+                    const code = pythonBasicsCode.value;
+                    // Simulate code execution
+                    pythonBasicsOutput.textContent = "Running your code...\n\n";
+
+                    // Simple simulation of Python execution
+                    setTimeout(() => {
+                        try {
+                            // Extract print statements and simulate output
+                            const printStatements = code.match(/print\([^)]*\)/g);
+                            if (printStatements) {
+                                printStatements.forEach(stmt => {
+                                    // Extract content between quotes
+                                    const content = stmt.match(/\(['"](.*)['"]\)/);
+                                    if (content) {
+                                        pythonBasicsOutput.textContent += content[1] + '\n';
+                                    } else {
+                                        // Handle f-strings and variables (simplified)
+                                        pythonBasicsOutput.textContent += "Hello FastAPI Learner, you are 25 years old.\n";
+                                    }
+                                });
+                            } else {
+                                pythonBasicsOutput.textContent += "No output (add print statements to see results)";
+                            }
+                        } catch (error) {
+                            pythonBasicsOutput.textContent = "Error: " + error.message;
+                        }
+                    }, 500);
+                });
+            }
+
+            if (runControlStructuresBtn) {
+                runControlStructuresBtn.addEventListener('click', function () {
+                    const code = controlStructuresCode.value;
+                    controlStructuresOutput.textContent = "Running your code...\n\n";
+
+                    setTimeout(() => {
+                        try {
+                            // Simple simulation based on common patterns
+                            if (code.includes('age = 20') && code.includes('if age >= 18')) {
+                                controlStructuresOutput.textContent += "You are an adult\n\n";
+                            }
+
+                            if (code.includes('for i in range')) {
+                                controlStructuresOutput.textContent += "Counting from 1 to 5:\n";
+                                for (let i = 1; i <= 5; i++) {
+                                    controlStructuresOutput.textContent += `Number: ${i}\n`;
+                                }
+                            }
+                        } catch (error) {
+                            controlStructuresOutput.textContent = "Error: " + error.message;
+                        }
+                    }, 500);
+                });
+            }
+
+            function updateProgressBar(value) {
+                progressBar.style.width = value + '%';
+                progressPercent.textContent = value + '%';
+
+                // Update nav buttons to show completion
+                const completionThresholds = [
+                    { section: 'foundation', threshold: 20 },
+                    { section: 'web-basics', threshold: 40 },
+                    { section: 'fastapi-core', threshold: 60 },
+                    { section: 'advanced', threshold: 80 },
+                    { section: 'deployment', threshold: 100 }
+                ];
+
+                completionThresholds.forEach(item => {
+                    const navButton = document.querySelector(`[data-target="${item.section}"]`);
+                    if (navButton) {
+                        if (value >= item.threshold) {
+                            navButton.classList.add('completed');
+                        } else {
+                            navButton.classList.remove('completed');
+                        }
+                    }
+                });
+            }
+
+            function updateLearningStats() {
+                topicsCompletedEl.textContent = completedTopics.length;
+                daysActiveEl.textContent = daysActive;
+            }
+
+            function updateDailyGoal() {
+                dailyGoalText.textContent = dailyGoal;
+            }
+
+            function updateIntelligentTip() {
+                // Show intelligent tips based on progress and current section
+                intelligentTip.style.display = 'block';
+
+                if (progress < 20) {
+                    tipContent.textContent = "Focus on mastering Python fundamentals. Strong basics will make learning FastAPI much easier.";
+                } else if (progress < 40) {
+                    tipContent.textContent = "Great progress! Now try building small Python projects to reinforce your learning.";
+                } else if (progress < 60) {
+                    tipContent.textContent = "You're ready to dive into FastAPI. Start with simple endpoints and gradually add complexity.";
+                } else if (progress < 80) {
+                    tipContent.textContent = "Consider building a portfolio project. Real-world applications are the best way to learn.";
+                } else {
+                    tipContent.textContent = "You're almost there! Focus on deployment and preparing for job applications.";
+                }
+            }
+
+            function updateEstimatedCompletion() {
+                // Adjust estimated completion based on progress and activity
+                const baseEstimate = 5; // months
+                const adjustedEstimate = Math.max(2, baseEstimate - (progress / 25));
+                estimatedCompletion.textContent = `${adjustedEstimate.toFixed(1)} months`;
+            }
+
+            function updateDifficultyLevel() {
+                // Adjust difficulty based on quiz performance
+                const accuracy = quizPerformance.total > 0 ? quizPerformance.correct / quizPerformance.total : 0;
+
+                if (accuracy > 0.8) {
+                    difficultyLevel.innerHTML = 'Current difficulty: <strong>Advanced</strong>';
+                } else if (accuracy > 0.6) {
+                    difficultyLevel.innerHTML = 'Current difficulty: <strong>Intermediate</strong>';
+                } else {
+                    difficultyLevel.innerHTML = 'Current difficulty: <strong>Beginner</strong>';
+                }
+            }
+
+            function updateCompletedTopics() {
+                // Update UI to reflect completed topics
+                completedTopics.forEach(topic => {
+                    const completeButton = document.querySelector(`[data-topic="${topic}"]`);
+                    if (completeButton) {
+                        completeButton.textContent = '✓ Completed!';
+                        completeButton.disabled = true;
+                        completeButton.classList.remove('btn-primary');
+                        completeButton.classList.add('btn-success');
+                    }
+
+                    const topicBtn = document.querySelector(`.topic-btn[data-topic="${topic}"]`);
+                    if (topicBtn) {
+                        topicBtn.classList.add('completed');
+                    }
+                });
+            }
+
+            function showNotification(message) {
+                notificationText.textContent = message;
+                notification.style.display = 'block';
+
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+            }
+
+            function celebrateProgress(progress) {
+                const celebration = document.getElementById('celebration');
+                celebration.style.display = 'block';
+
+                // Create confetti
+                for (let i = 0; i < 100; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.animationDelay = Math.random() * 5 + 's';
+                    confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                    confetti.style.backgroundColor = getRandomColor();
+                    celebration.appendChild(confetti);
+                }
+
+                // Add celebration style
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes fall {
+                        0% { top: -10px; opacity: 1; transform: rotate(0deg); }
+                        100% { top: 100vh; opacity: 0; transform: rotate(360deg); }
+                    }
+                `;
+                document.head.appendChild(style);
+
+                // Hide celebration after 3 seconds
+                setTimeout(() => {
+                    celebration.style.display = 'none';
+                    celebration.innerHTML = '';
+                }, 3000);
+            }
+
+            function getRandomColor() {
+                const colors = ['#009688', '#ff9800', '#4caf50', '#2196f3', '#e91e63'];
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+        });
+    </script>
+</body>
+
+</html>

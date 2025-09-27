@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AI FastAPI Learning Platform — ML & Deep Learning Focus</title>
+    <style>
+        /* ---------- ENHANCED THEME ---------- */
+        :root {
+            --bg: #071126;
+            --card: #0b1522;
+            --muted: #9fb4c9;
+            --accent: #1a56db;
+            --accent2: #0ea5e9;
+            --glow: #22c55e;
+            --ml-color: #ff6b6b;
+            --dl-color: #9c88ff;
+            --glass: rgba(255, 255, 255, 0.04);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(180deg, var(--bg), #021024 120%);
+            color: var(--muted);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            display: flex;
+            gap: 20px;
+        }
+
+        /* ---------- SIDEBAR ---------- */
+        .sidebar {
+            width: 320px;
+            padding: 28px;
+            border-right: 1px solid rgba(255, 255, 255, 0.03);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .brand {
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .brand .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            box-shadow: 0 0 14px rgba(26, 86, 219, 0.32);
+        }
+
+        .bio {
+            font-size: 13px;
+            color: #cbdbea;
+            margin-bottom: 14px;
+        }
+
+        .progress-wrap {
+            margin-top: 8px;
+            margin-bottom: 18px
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--glow), #a3f7c0);
+            transition: width .5s ease;
+            box-shadow: 0 0 18px rgba(34, 197, 94, 0.18)
+        }
+
+        .resources {
+            margin-top: 18px;
+            font-size: 13px
+        }
+
+        .resources h4 {
+            color: #e6f0ff;
+            margin: 8px 0
+        }
+
+        .resource-item {
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            margin-bottom: 10px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .resource-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .muted-small {
+            font-size: 12px;
+            color: #8fa7bf
+        }
+
+        .footer-note {
+            position: absolute;
+            bottom: 18px;
+            width: 260px;
+            font-size: 12px;
+            color: #7f9fb9
+        }
+
+        /* ---------- MAIN ---------- */
+        .main {
+            flex: 1;
+            padding: 28px;
+            overflow: auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            color: white;
+            margin: 0;
+            font-size: 20px;
+            letter-spacing: 0.2px
+        }
+
+        .kicker {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px
+        }
+
+        /* ---------- CARD ---------- */
+        .hack {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 18px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            transition: transform .22s ease, box-shadow .22s ease;
+            cursor: pointer;
+        }
+
+        .hack:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 40px rgba(10, 30, 60, 0.45)
+        }
+
+        .hack h2 {
+            color: var(--accent2);
+            margin: 0 0 6px;
+            font-size: 16px
+        }
+
+        .hack.ml h2 {
+            color: var(--ml-color);
+        }
+
+        .hack.dl h2 {
+            color: var(--dl-color);
+        }
+
+        .hack p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .steps {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* button look (suspense) */
+        .btn-step {
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            color: white;
+            border: none;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: 0 6px 18px rgba(10, 40, 100, 0.16);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            transform-origin: left center;
+            transition: transform .18s cubic-bezier(.2, .9, .3, 1), opacity .18s;
+            font-size: 13px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .btn-step.ml {
+            background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+        }
+
+        .btn-step.dl {
+            background: linear-gradient(90deg, #9c88ff, #8c7ae6);
+        }
+
+        .btn-step.locked {
+            background: linear-gradient(90deg, #16283e, #0c1b2b);
+            color: #7f9fb9;
+            opacity: .85;
+            box-shadow: none;
+            cursor: not-allowed
+        }
+
+        .btn-step .meta {
+            font-size: 12px;
+            color: #d6eef5;
+            opacity: .9
+        }
+
+        .btn-step .hint {
+            font-size: 12px;
+            color: #bfefff;
+            opacity: .9
+        }
+
+        /* ai bubble / content */
+        .ai-bubble {
+            margin-top: 8px;
+            padding: 12px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border-left: 4px solid var(--glow);
+            font-size: 13px;
+            color: #d9eef0;
+            display: none;
+            animation: fadeIn .36s ease both;
+        }
+
+        .ai-bubble.ml {
+            border-left-color: var(--ml-color);
+        }
+
+        .ai-bubble.dl {
+            border-left-color: var(--dl-color);
+        }
+
+        .codebox {
+            margin-top: 8px;
+            background: #041027;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 13px;
+            color: #cfe7ff;
+            overflow: auto;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            line-height: 1.4;
+        }
+
+        .code-key {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-top: 8px;
+            color: #bfefff
+        }
+
+        /* simulator area */
+        .sim {
+            margin-top: 18px;
+            border-radius: 12px;
+            padding: 14px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.008));
+            border: 1px solid rgba(255, 255, 255, 0.02)
+        }
+
+        .sim h4 {
+            margin: 0 0 8px;
+            color: #ccdff3
+        }
+
+        .console {
+            background: #001223;
+            border-radius: 8px;
+            padding: 10px;
+            font-family: ui-monospace, monospace;
+            color: #7fe3cb;
+            font-size: 13px;
+            height: 120px;
+            overflow: auto;
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            line-height: 1.4;
+        }
+
+        /* small helpers */
+        .row {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .pill {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 6px 8px;
+            border-radius: 999px;
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        .ml-pill {
+            background: rgba(255, 107, 107, 0.1);
+            color: var(--ml-color);
+        }
+
+        .dl-pill {
+            background: rgba(156, 136, 255, 0.1);
+            color: var(--dl-color);
+        }
+
+        .section-title {
+            margin-top: 28px;
+            margin-bottom: 14px;
+            color: white;
+            font-size: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 8px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        @media(max-width:980px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            .sidebar {
+                display: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SIDEBAR (Resources + Progress) -->
+    <aside class="sidebar">
+        <div class="brand"><span class="dot"></span> AI FastAPI Lab</div>
+        <div class="bio">An interactive, click-to-learn environment for FastAPI — step-by-step unlocking, code preview
+            and a local simulator to practice.</div>
+
+        <div class="progress-wrap">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div class="muted-small">Course Progress</div>
+                <div class="muted-small" id="progress-label">0%</div>
+            </div>
+            <div class="progress-bar" aria-hidden="true">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+
+        <div class="resources">
+            <h4>Top learning sources (trusted)</h4>
+            <div class="resource-item" onclick="openResource('fastapi')">
+                <div style="font-weight:600">FastAPI — Official docs</div>
+                <div class="muted-small">Complete reference & tutorials. (Official)</div>
+            </div>
+            <div class="resource-item" onclick="openResource('fullstack')">
+                <div style="font-weight:600">Full-stack FastAPI template</div>
+                <div class="muted-small">Production-ready template (backend + frontend + DB).</div>
+            </div>
+            <div class="resource-item" onclick="openResource('realpython')">
+                <div style="font-weight:600">Real Python — Guides</div>
+                <div class="muted-small">Beginner-friendly, practical tutorials.</div>
+            </div>
+            <div class="resource-item" onclick="openResource('testdriven')">
+                <div style="font-weight:600">TestDriven.io — Courses</div>
+                <div class="muted-small">TDD, Docker and deployment focused tutorials.</div>
+            </div>
+
+            <div style="margin-top:14px">
+                <div class="muted-small">Tip: follow the official docs alongside hands-on tasks — it keeps you accurate
+                    and current.</div>
+            </div>
+        </div>
+
+        <div class="section-title">AI/ML Libraries</div>
+        <div class="resources">
+            <div class="resource-item" onclick="openResource('pytorch')">
+                <div style="font-weight:600">PyTorch</div>
+                <div class="muted-small">Deep learning framework with dynamic computation graphs.</div>
+            </div>
+            <div class="resource-item" onclick="openResource('tensorflow')">
+                <div style="font-weight:600">TensorFlow</div>
+                <div class="muted-small">End-to-end platform for machine learning.</div>
+            </div>
+            <div class="resource-item" onclick="openResource('scikit')">
+                <div style="font-weight:600">Scikit-learn</div>
+                <div class="muted-small">Machine learning library for classical algorithms.</div>
+            </div>
+            <div class="resource-item" onclick="openResource('huggingface')">
+                <div style="font-weight:600">Hugging Face</div>
+                <div class="muted-small">State-of-the-art NLP models and transformers.</div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            Sources cited in-app (official docs, template & tutorials). If you want direct links added into the page (or
+            downloadable cheat-sheets), I can add them.
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+        <header>
+            <div>
+                <h1>AI FastAPI Learning Zone</h1>
+                <div class="kicker">Click a hack → follow the suspended steps → unlock deeper tasks</div>
+            </div>
+            <div class="row">
+                <div class="pill">Mode: Interactive</div>
+                <div class="pill" id="stage-pill">Stage 1</div>
+                <div class="pill ml-pill">ML Focus</div>
+                <div class="pill dl-pill">DL Focus</div>
+            </div>
+        </header>
+
+        <section class="grid" id="hacks-grid">
+            <!-- HACK CARD: Hello World -->
+            <article class="hack" data-hack="hello" onclick="openHack(event,'hello')">
+                <h2>Hack 1 — Hello World (FastAPI basics)</h2>
+                <p>Install → create app → run. Start simple and unlock the rest.</p>
+
+                <div class="steps" id="hello-steps">
+                    <button class="btn-step" id="hello-step1" onclick="useStep(event,'hello',1)">
+                        <span>Step 1 — Install fastapi + uvicorn</span>
+                        <span class="meta">Quick</span>
+                    </button>
+
+                    <button class="btn-step locked" id="hello-step2" onclick="useStep(event,'hello',2)">
+                        <span>Step 2 — Write the app</span>
+                        <span class="meta">Locked</span>
+                    </button>
+
+                    <button class="btn-step locked" id="hello-step3" onclick="useStep(event,'hello',3)">
+                        <span>Step 3 — Run & Explore docs</span>
+                        <span class="meta">Locked</span>
+                    </button>
+
+                    <div class="ai-bubble" id="hello-b1">
+                        <div><strong>AI Mentor:</strong> Run <span class="code-key">pip install fastapi uvicorn</span>
+                            in your env (or use a venv).</div>
+                        <div class="codebox">pip install fastapi uvicorn</div>
+                        <div style="margin-top:8px;font-size:13px;color:#9fe4d3">Press <strong>Next</strong> below to
+                            unlock the next step.</div>
+                        <div style="margin-top:10px"><button class="btn-step" onclick="unlockNext('hello',2)">Next
+                                →</button></div>
+                    </div>
+
+                    <div class="ai-bubble" id="hello-b2">
+                        <div><strong>AI Mentor:</strong> Create <code>main.py</code> with this minimal API:</div>
+                        <div class="codebox">
+                            from fastapi import FastAPI
+
+                            app = FastAPI()
+
+                            @app.get("/")
+                            def read_root():
+                            return {"message":"Hello World"}
+                        </div>
+                        <div style="margin-top:10px"><button class="btn-step" onclick="unlockNext('hello',3)">Next
+                                →</button></div>
+                    </div>
+
+                    <div class="ai-bubble" id="hello-b3">
+                        <div><strong>AI Mentor:</strong> Run the server:</div>
+                        <div class="codebox">uvicorn main:app --reload</div>
+                        <div style="margin-top:8px">Open <code>http://127.0.0.1:8000/docs</code> to see the automatic
+                            Swagger UI. Try the GET endpoint!</div>
+                        <div style="margin-top:8px;"><button class="btn-step" onclick="completeStep('hello',3)">Mark
+                                Complete</button></div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- HACK CARD: Routes & Methods -->
+            <article class="hack" data-hack="routes" onclick="openHack(event,'routes')">
+                <h2>Hack 2 — Routes & Methods</h2>
+                <p>Learn GET/POST/PUT/DELETE patterns and path/query params.</p>
+
+                <div class="steps" id="routes-steps">
+                    <button class="btn-step locked" id="routes-step1" onclick="useStep(event,'routes',1)">
+                        <span>Step 1 — Path & Query parameters</span><span class="meta">Locked</span>
+                    </button>
+
+                    <button class="btn-step locked" id="routes-step2" onclick="useStep(event,'routes',2)">
+                        <span>Step 2 — POST & request body</span><span class="meta">Locked</span>
+                    </button>
+
+                    <button class="btn-step locked" id="routes-step3" onclick="useStep(event,'routes',3)">
+                        <span>Step 3 — Full CRUD</span><span class="meta">Locked</span>
+                    </button>
+
+                    <div class="ai-bubble" id="routes-b1">
+                        <div><strong>AI Mentor:</strong> Example: Path + Query</div>
+                        <div class="codebox">
+                            @app.get("/items/{item_id}")
+                            def read_item(item_id: int, q: str | None = None):
+                            return {"item_id": item_id, "q": q}
+                        </div>
+                        <div style="margin-top:6px"><button class="btn-step" onclick="unlockNext('routes',2)">Next
+                                →</button></div>
+                    </div>
+
+                    <div class="ai-bubble" id="routes-b2">
+                        <div><strong>AI Mentor:</strong> Example: POST body</div>
+                        <div class="codebox">
+                            from pydantic import BaseModel
+
+                            class Item(BaseModel):
+                            name: str
+                            price: float
+
+                            @app.post("/items/")
+                            def create_item(item: Item):
+                            return item
+                        </div>
+                        <div style="margin-top:6px"><button class="btn-step" onclick="unlockNext('routes',3)">Next
+                                →</button></div>
+                    </div>
+
+                    <div class="ai-bubble" id="routes-b3">
+                        <div><strong>AI Mentor:</strong> Combine with in-memory CRUD or DB to practice.</div>
+                        <div class="codebox">// Implement update/delete endpoints and test with curl or Swagger UI</div>
+                        <div style="margin-top:6px"><button class="btn-step" onclick="completeStep('routes',3)">Mark
+                                Complete</button></div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- HACK CARD: ML Model Integration -->
+            <article class="hack ml" data-hack="ml" onclick="openHack(event,'ml')">
+                <h2>Hack 3 — ML Model Integration</h2>
+                <p>Integrate scikit-learn models with FastAPI endpoints.</p>
+
+                <div class="steps" id="ml-steps">
+                    <button class="btn-step ml locked" id="ml-step1" onclick="useStep(event,'ml',1)">
+                        <span>Step 1 — Load a pre-trained model</span><span class="meta">Locked</span>
+                    </button>
+                    <button class="btn-step ml locked" id="ml-step2" onclick="useStep(event,'ml',2)">
+                        <span>Step 2 — Create prediction endpoint</span><span class="meta">Locked</span>
+                    </button>
+                    <button class="btn-step ml locked" id="ml-step3" onclick="useStep(event,'ml',3)">
+                        <span>Step 3 — Model validation & testing</span><span class="meta">Locked</span>
+                    </button>
+
+                    <div class="ai-bubble ml" id="ml-b1">
+                        <div><strong>AI Mentor:</strong> Load a scikit-learn model and prepare it for predictions.</div>
+                        <div class="codebox">
+                            import joblib
+                            import numpy as np
+
+                            # Load your pre-trained model
+                            model = joblib.load('model.pkl')
+
+                            # Define input schema
+                            class PredictionInput(BaseModel):
+                            features: list[float]
+                        </div>
+                        <div style="margin-top:6px"><button class="btn-step ml" onclick="unlockNext('ml',2)">Next
+                                →</button></div>
+                    </div>
+
+                    <div class="ai-bubble ml" id="ml-b2">
+                        <div><strong>AI Mentor:</strong> Create an endpoint that accepts input and returns predictions.
+                        </div>
+                        <div class="codebox">
+                            @app.post("/predict")
+                            def predict(input_data: PredictionInput):
+                            # Convert input to numpy array
+                            features = np.array(input_data.features).reshape(1, -1)
+
+                            # Make prediction
+                            prediction = model.predict(features)
+
+                            return {"prediction": prediction.tolist()[0]}
+                        </div>
+                        <div style="margin-top:6px"><button class="btn-step ml" onclick="unlockNext('ml',3)">Next
+                                →</button></div>
+                    </div>
+
+                    <div class="ai-bubble ml" id="ml-b3">
+                        <div><strong>AI Mentor:</strong> Add validation and error handling for robust ML APIs.</div>
+                        <div class="codebox">
+                            from fastapi import HTTPException
+
+                            @app.post("/predict")
+                            def predict(input_data: PredictionInput):
+                            try:
+                            features = np.array(input_data.features).reshape(1, -1)
+
+                            # Validate input shape matches model expectations
+                            if features.shape[1] != model.n_features_in_:
+                            raise HTTPException(status_code=400,
+                            detail=f"Expected {model.n_features_in_} features")
+
+                            prediction = model.predict(features)
+                            return {"prediction": prediction.tolist()[0]}
+                            except Exception as e:
+                            raise HTTPException(status_code=500, detail=str(e))
+                        </div>
+                        <div style="margin-top:6px"><button class="btn-step ml" onclick="completeStep('ml',3)">Mark
+                                Complete</button></div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- HACK CARD: Deep Learning API -->
+            <article class="hack dl" data-hack="dl" onclick="openHack(event,'dl')">
+                <h2>Hack 4 — Deep Learning API</h2>
+                <p>Serve PyTorch/TensorFlow models with FastAPI.</p>
+
+                <div class="steps" id="dl-steps">
+                    <button class="btn-step dl locked" id="dl-step1" onclick="useStep(event,'dl',1)">
+                        <span>Step 1 — Load DL model</span><span class="meta">Locked</span>
+                    </button>
+                    <button class="btn-step dl locked" id="dl-step2" onclick="useStep(event,'dl',2)">
+                        <span>Step 2 — Image/text preprocessing</span><span class="meta">Locked</span>
+                    </button>
+                    <button class="btn-step dl locked" id="dl-step3" onclick="useStep(event,'dl',3)">
+                        <span>Step 3 — Async model inference</span><span class="meta">Locked</span>
+                    </button>
+
+                    <div class="ai-bubble dl" id="dl-b1">
+                        <div><strong>AI Mentor:</strong> Load a PyTorch model and set it to evaluation mode.</div>
+                        <div class="codebox">
+                            import torch
+                            import torchvision.models as models
+
+                            # Load a pre-trained model
+                            model = models.resnet50(pretrained=True)
+                            model.eval()
+
+                            # Define transformation pipeline
+                            from torchvision import transforms
+                            transform = transforms.Compose([
+                            transforms.Resize(256),
+                            transforms.CenterCrop(224),
+                            transforms.ToTensor(),
+                            transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                            std=[0.229, 0.224, 0.225]),
+                            ])
+                        </div>
+                        <div style="margin-top:6px"><button class="btn-step dl" onclick="unlockNext('dl',2)">Next
+                                →</button></div>
+                    </div>
+
+                    <div class="ai-bubble dl" id="dl-b2">
+                        <div><strong>AI Mentor:</strong> Create an endpoint that accepts image uploads.</div>
+                        <div class="codebox">
+                            from fastapi import UploadFile, File
+                            from PIL import Image
+                            import io
+
+                            @app.post("/classify")
+                            async def classify_image(file: UploadFile = File(...)):
+                            # Read and preprocess image
+                            image_data = await file.read()
+                            image = Image.open(io.BytesIO(image_data))
+                            input_tensor = transform(image).unsqueeze(0)
+
+                            # Make prediction
+                            with torch.no_grad():
+                            outputs = model(input_tensor)
+                            _, predicted = outputs.max(1)
+
+                            return {"class_id": predicted.item()}
+                        </div>
+                        <div style="margin-top:6px"><button class="btn-step dl" onclick="unlockNext('dl',3)">Next
+                                →</button></div>
+                    </div>
+
+                    <div class="ai-bubble dl" id="dl-b3">
+                        <div><strong>AI Mentor:</strong> Optimize for high-throughput with async operations.</div>
+                        <div class="codebox">
+                            import asyncio
+                            from concurrent.futures import ThreadPoolExecutor
+
+                            # Create a thread pool for CPU-bound operations
+                            executor = ThreadPoolExecutor(max_workers=4)
+
+                            @app.post("/classify")
+                            async def classify_image(file: UploadFile = File(...)):
+                            loop = asyncio.get_event_loop()
+
+                            # Read file asynchronously
+                            image_data = await file.read()
+
+                            # Run preprocessing and inference in thread pool
+                            result = await loop.run_in_executor(
+                            executor, process_image, image_data
+                            )
+
+                            return result
+
+                            def process_image(image_data):
+                            # CPU-intensive operations
+                            image = Image.open(io.BytesIO(image_data))
+                            input_tensor = transform(image).unsqueeze(0)
+
+                            with torch.no_grad():
+                            outputs = model(input_tensor)
+                            _, predicted = outputs.max(1)
+
+                            return {"class_id": predicted.item()}
+                        </div>
+                        <div style="margin-top:6px"><button class="btn-step dl" onclick="completeStep('dl',3)">Mark
+                                Complete</button></div>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- SIMULATOR / OUTPUT -->
+        <section class="sim" id="simulator">
+            <h4>API Simulator (fast feedback)</h4>
+            <div class="muted-small">This console simulates expected responses for the code examples above (for demo
+                purposes).</div>
+            <div class="console" id="console">Console ready — click Step 3 in a hack to simulate output.</div>
+        </section>
+
+    </main>
+
+    <script>
+        /* ========= Platform logic =========
+           - Steps start locked except first for stage 1.
+           - Clicking step shows AI bubble and can unlock the next step.
+           - Progress = total completed steps / total steps
+        */
+
+        // configuration: hacks -> steps count
+        const CONFIG = {
+            hello: { steps: 3, completed: 0 },
+            routes: { steps: 3, completed: 0 },
+            ml: { steps: 3, completed: 0 },
+            dl: { steps: 3, completed: 0 },
+        };
+
+        // Resource URLs (would be replaced with actual links)
+        const RESOURCES = {
+            fastapi: "https://fastapi.tiangolo.com/",
+            fullstack: "https://github.com/tiangolo/full-stack-fastapi-template",
+            realpython: "https://realpython.com/fastapi-python-web-apis/",
+            testdriven: "https://testdriven.io/blog/topics/fastapi/",
+            pytorch: "https://pytorch.org/",
+            tensorflow: "https://www.tensorflow.org/",
+            scikit: "https://scikit-learn.org/",
+            huggingface: "https://huggingface.co/"
+        };
+
+        // initialize UI: hide all step contents and lock except first global unlock
+        document.addEventListener('DOMContentLoaded', () => {
+            // hide bubbles
+            Object.keys(CONFIG).forEach(h => {
+                for (let i = 1; i <= CONFIG[h].steps; i++) {
+                    const b = document.getElementById(`${h}-b${i}`);
+                    if (b) b.style.display = 'none';
+                    const sbtn = document.getElementById(`${h}-step${i}`);
+                    if (!sbtn) continue;
+                    // lock everything initially except the very first step of the first hack
+                    if (h === 'hello' && i === 1) {
+                        sbtn.classList.remove('locked');
+                    } else {
+                        sbtn.classList.add('locked');
+                    }
+                }
+            });
+            updateProgressUI();
+        });
+
+        // openHack simply expands the steps container visually (no external navigation)
+        function openHack(e, hack) {
+            // stop if clicking inner buttons
+            if (e.target.closest('button')) return;
+            const container = document.getElementById(`${hack}-steps`);
+            if (!container) return;
+            container.style.display = (container.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        // useStep: show bubble of that step
+        function useStep(e, hack, step) {
+            e.stopPropagation();
+            const btn = document.getElementById(`${hack}-step${step}`);
+            if (!btn || btn.classList.contains('locked')) {
+                // small shake to indicate locked
+                if (btn) {
+                    btn.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-6px)' }, { transform: 'translateX(6px)' }, { transform: 'translateX(0)' }], { duration: 260 });
+                }
+                return;
+            }
+            // show the mentor bubble
+            const bubble = document.getElementById(`${hack}-b${step}`);
+            if (bubble) {
+                // Hide all other bubbles in this hack
+                for (let i = 1; i <= CONFIG[hack].steps; i++) {
+                    const otherBubble = document.getElementById(`${hack}-b${i}`);
+                    if (otherBubble && otherBubble !== bubble) {
+                        otherBubble.style.display = 'none';
+                    }
+                }
+
+                bubble.style.display = 'block';
+                bubble.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        // unlockNext: unlocks next step and updates UI
+        function unlockNext(hack, nextStep) {
+            const nextBtn = document.getElementById(`${hack}-step${nextStep}`);
+            if (nextBtn) {
+                nextBtn.classList.remove('locked');
+                // animate to celebrate
+                nextBtn.animate([{ transform: 'scale(.98)' }, { transform: 'scale(1.04)' }, { transform: 'scale(1)' }], { duration: 320 });
+            }
+            markCompletedPartial(hack, nextStep - 1);
+        }
+
+        // markCompletedPartial: mark a step as completed but keep lesson open
+        function markCompletedPartial(hack, step) {
+            if (step < 1) return;
+            const key = `${hack}:${step}`;
+            // store completed visually and in CONFIG
+            CONFIG[hack].completed = Math.max(CONFIG[hack].completed, step);
+            // add small badge on the step button
+            const sbtn = document.getElementById(`${hack}-step${step}`);
+            if (sbtn && !sbtn.dataset.done) {
+                const badge = document.createElement('span');
+                badge.textContent = '✓';
+                badge.style.marginLeft = '8px';
+                sbtn.appendChild(badge);
+                sbtn.dataset.done = '1';
+            }
+            updateProgressUI();
+        }
+
+        // completeStep: finalizes the step and pushes a console simulation
+        function completeStep(hack, step) {
+            markCompletedPartial(hack, step);
+            const consoleEl = document.getElementById('console');
+
+            // Generate appropriate console output based on the hack
+            let output = '';
+            const timestamp = new Date().toLocaleTimeString();
+
+            switch (hack) {
+                case 'hello':
+                    output = `[${timestamp}] Server started at http://127.0.0.1:8000\n[${timestamp}] API docs available at http://127.0.0.1:8000/docs`;
+                    break;
+                case 'routes':
+                    output = `[${timestamp}] CRUD endpoints created: GET /items, POST /items, PUT /items/{id}, DELETE /items/{id}`;
+                    break;
+                case 'ml':
+                    output = `[${timestamp}] ML model loaded successfully\n[${timestamp}] Prediction endpoint ready at /predict`;
+                    break;
+                case 'dl':
+                    output = `[${timestamp}] Deep learning model loaded\n[${timestamp}] Image classification endpoint ready at /classify`;
+                    break;
+                default:
+                    output = `[${timestamp}] Completed ${hack.toUpperCase()} — well done!`;
+            }
+
+            consoleEl.innerHTML += `\n${output}`;
+            consoleEl.scrollTop = consoleEl.scrollHeight;
+
+            // if last step finished, unlock the first step of the next hack automatically
+            if (step === CONFIG[hack].steps) {
+                const hackOrder = Object.keys(CONFIG);
+                const idx = hackOrder.indexOf(hack);
+                if (idx >= 0 && idx < hackOrder.length - 1) {
+                    const nextHack = hackOrder[idx + 1];
+                    // unlock step 1 of next hack
+                    const nextBtn = document.getElementById(`${nextHack}-step1`);
+                    if (nextBtn) nextBtn.classList.remove('locked');
+                    // update UI stage pill
+                    document.getElementById('stage-pill').textContent = `Stage ${idx + 2}`;
+                }
+            } else {
+                // otherwise mark partial and update
+                markCompletedPartial(hack, step);
+            }
+        }
+
+        // progress calculation
+        function updateProgressUI() {
+            let total = 0, done = 0;
+            Object.keys(CONFIG).forEach(k => {
+                total += CONFIG[k].steps;
+                done += CONFIG[k].completed;
+            });
+            const pct = Math.round((done / total) * 100);
+            document.getElementById('progress').style.width = pct + '%';
+            document.getElementById('progress-label').textContent = pct + '%';
+        }
+
+        // Open resource links (in a real implementation, these would open in new tabs)
+        function openResource(resource) {
+            const url = RESOURCES[resource];
+            if (url) {
+                // In a real implementation, we would open the URL
+                // window.open(url, '_blank');
+
+                // For demo purposes, show a message
+                const consoleEl = document.getElementById('console');
+                consoleEl.innerHTML += `\n[${new Date().toLocaleTimeString()}] Opening resource: ${resource}`;
+                consoleEl.scrollTop = consoleEl.scrollHeight;
+            }
+        }
+
+        /* Prevent click bubbling from buttons to card */
+        document.querySelectorAll('.btn-step').forEach(b => {
+            b.addEventListener('click', e => e.stopPropagation());
+        });
+
+        // Optional: keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'l' && e.ctrlKey) { // ctrl+l to simulate completing hello step3
+                completeStep('hello', 3);
+                alert('Simulated completion: hello step 3');
+            }
+        });
+    </script>
+</body>
+
+</html>
