@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Mentor: Your Path to AI Mastery</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a3a, #2c3e50);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #bdc3c7;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .principles {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .principle {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .principle h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .learning-path {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stage {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stage-number {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom-left-radius: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .stage h2 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            padding-right: 60px;
+        }
+
+        .stage-content {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .stage-content h4 {
+            color: var(--success);
+            margin: 1rem 0 0.5rem;
+        }
+
+        .stage-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stage-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .reveal-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: block;
+            margin: 1rem auto 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-btn:hover {
+            background: #c0392b;
+            transform: scale(1.05);
+        }
+
+        .test-section {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+            display: none;
+        }
+
+        .test-section h2 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .question {
+            margin-bottom: 1.5rem;
+        }
+
+        .options {
+            display: grid;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .option.selected {
+            background: rgba(46, 204, 113, 0.3);
+            border: 1px solid var(--success);
+        }
+
+        .submit-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: block;
+            margin: 1.5rem auto 0;
+        }
+
+        .submit-btn:hover {
+            background: #27ae60;
+            transform: scale(1.05);
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        .progress-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 10px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            width: 0%;
+            transition: width 0.5s;
+        }
+
+        .entrepreneur-tip {
+            background: rgba(52, 152, 219, 0.2);
+            border-left: 4px solid var(--secondary);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .principles {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .learning-path {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Mentor: Your Path to AI Mastery</h1>
+            <p class="subtitle">A step-by-step journey from FastAPI to NLP, following Kaizen (continuous improvement)
+                and KISS (keep it simple) principles. Think like an AI entrepreneur, not just a coder.</p>
+
+            <div class="principles">
+                <div class="principle">
+                    <h3>Kaizen Principle</h3>
+                    <p>Small, continuous improvements lead to mastery. Focus on consistent progress, not perfection.</p>
+                </div>
+                <div class="principle">
+                    <h3>KISS Principle</h3>
+                    <p>Keep It Simple, Stupid. Avoid complexity. Master fundamentals before advanced concepts.</p>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </header>
+
+        <div class="learning-path">
+            <!-- Stage 1: FastAPI -->
+            <div class="stage">
+                <div class="stage-number">1</div>
+                <h2>FastAPI Fundamentals</h2>
+                <p>Build robust APIs to serve your AI models</p>
+
+                <button class="reveal-btn" onclick="revealContent(1)">Reveal Learning Path</button>
+
+                <div class="stage-content" id="stage1">
+                    <h4>Key Concepts</h4>
+                    <ul>
+                        <li>API design and REST principles</li>
+                        <li>Request/response models</li>
+                        <li>Data validation with Pydantic</li>
+                        <li>Authentication and security</li>
+                        <li>Documentation with Swagger UI</li>
+                    </ul>
+
+                    <h4>Hands-on Exercises</h4>
+                    <ul>
+                        <li>Create a simple "Hello World" API</li>
+                        <li>Build a CRUD API for a simple database</li>
+                        <li>Add authentication to your API</li>
+                        <li>Create API documentation</li>
+                    </ul>
+
+                    <h4>Practical Project</h4>
+                    <p>Build a Book Recommendation API that suggests books based on user preferences.</p>
+
+                    <h4>Best Resources</h4>
+                    <ul>
+                        <li>FastAPI Official Documentation</li>
+                        <li>"FastAPI" by William S. Vincent</li>
+                        <li>TestDriven.io FastAPI courses</li>
+                    </ul>
+
+                    <div class="entrepreneur-tip">
+                        <strong>AI Entrepreneur Thinking:</strong> How can your API create value? Think about
+                        monetization strategies like API-as-a-service or integration with existing platforms.
+                    </div>
+
+                    <button class="reveal-btn" onclick="startTest(1)">Test Your Knowledge</button>
+                </div>
+            </div>
+
+            <!-- Stage 2: Machine Learning -->
+            <div class="stage">
+                <div class="stage-number">2</div>
+                <h2>Machine Learning</h2>
+                <p>Teach computers to learn from data</p>
+
+                <button class="reveal-btn" onclick="revealContent(2)">Reveal Learning Path</button>
+
+                <div class="stage-content" id="stage2">
+                    <h4>Key Concepts</h4>
+                    <ul>
+                        <li>Supervised vs. unsupervised learning</li>
+                        <li>Regression and classification</li>
+                        <li>Feature engineering</li>
+                        <li>Model evaluation metrics</li>
+                        <li>Bias-variance tradeoff</li>
+                    </ul>
+
+                    <h4>Hands-on Exercises</h4>
+                    <ul>
+                        <li>Implement linear regression from scratch</li>
+                        <li>Build a spam classifier</li>
+                        <li>Create a recommendation system</li>
+                        <li>Optimize model hyperparameters</li>
+                    </ul>
+
+                    <h4>Practical Project</h4>
+                    <p>Develop a House Price Prediction model using real estate data.</p>
+
+                    <h4>Best Resources</h4>
+                    <ul>
+                        <li>"Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow"</li>
+                        <li>Andrew Ng's Machine Learning course</li>
+                        <li>Kaggle Learn courses</li>
+                    </ul>
+
+                    <div class="entrepreneur-tip">
+                        <strong>AI Entrepreneur Thinking:</strong> Identify business problems that ML can solve.
+                        Consider creating a specialized ML service for a specific industry like healthcare or finance.
+                    </div>
+
+                    <button class="reveal-btn" onclick="startTest(2)">Test Your Knowledge</button>
+                </div>
+            </div>
+
+            <!-- Stage 3: Deep Learning -->
+            <div class="stage">
+                <div class="stage-number">3</div>
+                <h2>Deep Learning</h2>
+                <p>Neural networks for complex pattern recognition</p>
+
+                <button class="reveal-btn" onclick="revealContent(3)">Reveal Learning Path</button>
+
+                <div class="stage-content" id="stage3">
+                    <h4>Key Concepts</h4>
+                    <ul>
+                        <li>Neural network architecture</li>
+                        <li>Activation functions</li>
+                        <li>Backpropagation and gradient descent</li>
+                        <li>Convolutional Neural Networks (CNNs)</li>
+                        <li>Recurrent Neural Networks (RNNs)</li>
+                    </ul>
+
+                    <h4>Hands-on Exercises</h4>
+                    <ul>
+                        <li>Build a neural network from scratch with NumPy</li>
+                        <li>Create an image classifier with CNNs</li>
+                        <li>Implement text generation with RNNs</li>
+                        <li>Use transfer learning for custom tasks</li>
+                    </ul>
+
+                    <h4>Practical Project</h4>
+                    <p>Build an Image Recognition System that identifies objects in real-time.</p>
+
+                    <h4>Best Resources</h4>
+                    <ul>
+                        <li>"Deep Learning" by Ian Goodfellow</li>
+                        <li>Fast.ai Practical Deep Learning course</li>
+                        <li>TensorFlow and PyTorch documentation</li>
+                    </ul>
+
+                    <div class="entrepreneur-tip">
+                        <strong>AI Entrepreneur Thinking:</strong> Deep learning models require significant
+                        computational resources. Consider cloud-based solutions and explore B2B applications where
+                        accuracy justifies higher costs.
+                    </div>
+
+                    <button class="reveal-btn" onclick="startTest(3)">Test Your Knowledge</button>
+                </div>
+            </div>
+
+            <!-- Stage 4: NLP -->
+            <div class="stage">
+                <div class="stage-number">4</div>
+                <h2>Natural Language Processing</h2>
+                <p>Understand and generate human language</p>
+
+                <button class="reveal-btn" onclick="revealContent(4)">Reveal Learning Path</button>
+
+                <div class="stage-content" id="stage4">
+                    <h4>Key Concepts</h4>
+                    <ul>
+                        <li>Tokenization and text preprocessing</li>
+                        <li>Word embeddings (Word2Vec, GloVe)</li>
+                        <li>Transformers and attention mechanisms</li>
+                        <li>Named Entity Recognition (NER)</li>
+                        <li>Sentiment analysis</li>
+                    </ul>
+
+                    <h4>Hands-on Exercises</h4>
+                    <ul>
+                        <li>Build a sentiment analysis tool</li>
+                        <li>Create a text summarizer</li>
+                        <li>Implement a chatbot</li>
+                        <li>Fine-tune a transformer model</li>
+                    </ul>
+
+                    <h4>Practical Project</h4>
+                    <p>Develop a Smart Content Analyzer that extracts key insights from documents.</p>
+
+                    <h4>Best Resources</h4>
+                    <ul>
+                        <li>"Speech and Language Processing" by Jurafsky & Martin</li>
+                        <li>Hugging Face Transformers course</li>
+                        <li>Stanford CS224N: NLP with Deep Learning</li>
+                    </ul>
+
+                    <div class="entrepreneur-tip">
+                        <strong>AI Entrepreneur Thinking:</strong> NLP has massive applications in customer service,
+                        content creation, and data analysis. Consider creating specialized tools for specific industries
+                        or integrating with existing platforms.
+                    </div>
+
+                    <button class="reveal-btn" onclick="startTest(4)">Test Your Knowledge</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Section -->
+        <div class="test-section" id="testSection">
+            <h2 id="testTitle">Test Your Knowledge</h2>
+            <div id="testQuestions"></div>
+            <button class="submit-btn" onclick="submitTest()">Submit Answers</button>
+            <div class="result" id="testResult"></div>
+        </div>
+    </div>
+
+    <script>
+        // Track user progress
+        let progress = 0;
+        const progressBar = document.getElementById('progressBar');
+
+        // Update progress bar
+        function updateProgress() {
+            progressBar.style.width = progress + '%';
+        }
+
+        // Reveal content for each stage
+        function revealContent(stageNumber) {
+            const content = document.getElementById(`stage${stageNumber}`);
+            content.style.display = 'block';
+
+            // Update progress
+            progress += 25;
+            updateProgress();
+
+            // Scroll to content
+            content.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Test questions for each stage
+        const testQuestions = {
+            1: [
+                {
+                    question: "What is the main advantage of FastAPI over Flask for building APIs?",
+                    options: [
+                        "Automatic data validation and documentation",
+                        "It's written in JavaScript",
+                        "It doesn't require any dependencies",
+                        "It only works with MongoDB"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Which Python library does FastAPI use for data validation?",
+                    options: ["NumPy", "Pandas", "Pydantic", "Scikit-learn"],
+                    correct: 2
+                },
+                {
+                    question: "What is the primary purpose of an API in AI applications?",
+                    options: [
+                        "To serve machine learning models to clients",
+                        "To train deep learning models faster",
+                        "To replace databases entirely",
+                        "To write code automatically"
+                    ],
+                    correct: 0
+                }
+            ],
+            2: [
+                {
+                    question: "What is the difference between supervised and unsupervised learning?",
+                    options: [
+                        "Supervised uses labeled data, unsupervised uses unlabeled data",
+                        "Supervised is faster, unsupervised is more accurate",
+                        "Supervised requires GPUs, unsupervised doesn't",
+                        "There is no difference"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Which metric would you use to evaluate a classification model?",
+                    options: ["Mean Absolute Error", "R-squared", "Accuracy", "All of the above"],
+                    correct: 2
+                },
+                {
+                    question: "What is feature engineering?",
+                    options: [
+                        "Creating new input features from existing data",
+                        "Designing the UI for a machine learning app",
+                        "Building the infrastructure for model deployment",
+                        "Writing the code for neural networks"
+                    ],
+                    correct: 0
+                }
+            ],
+            3: [
+                {
+                    question: "What is the purpose of an activation function in a neural network?",
+                    options: [
+                        "To introduce non-linearity into the network",
+                        "To speed up the training process",
+                        "To reduce memory usage",
+                        "To connect different layers"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Which type of neural network is best suited for image recognition?",
+                    options: ["RNN", "CNN", "LSTM", "Transformer"],
+                    correct: 1
+                },
+                {
+                    question: "What is transfer learning?",
+                    options: [
+                        "Using a pre-trained model as a starting point for a new task",
+                        "Moving a model from one programming language to another",
+                        "Training a model on multiple GPUs simultaneously",
+                        "Converting a model to work on mobile devices"
+                    ],
+                    correct: 0
+                }
+            ],
+            4: [
+                {
+                    question: "What is tokenization in NLP?",
+                    options: [
+                        "Splitting text into smaller units like words or subwords",
+                        "Converting text to numbers",
+                        "Translating between languages",
+                        "Identifying people and places in text"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Which architecture revolutionized NLP in recent years?",
+                    options: ["CNNs", "RNNs", "Transformers", "Autoencoders"],
+                    correct: 2
+                },
+                {
+                    question: "What is Named Entity Recognition (NER)?",
+                    options: [
+                        "Identifying and classifying entities in text (people, organizations, etc.)",
+                        "Recognizing the sentiment of a text",
+                        "Generating new text based on a prompt",
+                        "Translating text between languages"
+                    ],
+                    correct: 0
+                }
+            ]
+        };
+
+        // Start test for a specific stage
+        function startTest(stageNumber) {
+            const testSection = document.getElementById('testSection');
+            const testTitle = document.getElementById('testTitle');
+            const testQuestionsContainer = document.getElementById('testQuestions');
+
+            // Set test title
+            testTitle.textContent = `Stage ${stageNumber} Knowledge Test`;
+
+            // Clear previous questions
+            testQuestionsContainer.innerHTML = '';
+
+            // Add questions
+            testQuestions[stageNumber].forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <h3>${index + 1}. ${q.question}</h3>
+                    <div class="options">
+                        ${q.options.map((option, optIndex) => `
+                            <div class="option" onclick="selectOption(this, ${index}, ${optIndex})">${option}</div>
+                        `).join('')}
+                    </div>
+                `;
+                testQuestionsContainer.appendChild(questionDiv);
+            });
+
+            // Store current test info
+            testSection.dataset.currentStage = stageNumber;
+            testSection.dataset.userAnswers = JSON.stringify(new Array(testQuestions[stageNumber].length).fill(null));
+
+            // Show test section
+            testSection.style.display = 'block';
+            testSection.scrollIntoView({ behavior: 'smooth' });
+
+            // Hide result
+            document.getElementById('testResult').style.display = 'none';
+        }
+
+        // Select an option in the test
+        function selectOption(element, questionIndex, optionIndex) {
+            // Deselect all options in this question
+            const options = element.parentElement.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+
+            // Select clicked option
+            element.classList.add('selected');
+
+            // Store user's answer
+            const userAnswers = JSON.parse(document.getElementById('testSection').dataset.userAnswers);
+            userAnswers[questionIndex] = optionIndex;
+            document.getElementById('testSection').dataset.userAnswers = JSON.stringify(userAnswers);
+        }
+
+        // Submit test and show results
+        function submitTest() {
+            const testSection = document.getElementById('testSection');
+            const stageNumber = parseInt(testSection.dataset.currentStage);
+            const userAnswers = JSON.parse(testSection.dataset.userAnswers);
+            const questions = testQuestions[stageNumber];
+
+            // Calculate score
+            let correct = 0;
+            userAnswers.forEach((answer, index) => {
+                if (answer === questions[index].correct) {
+                    correct++;
+                }
+            });
+
+            const score = Math.round((correct / questions.length) * 100);
+
+            // Display result
+            const resultDiv = document.getElementById('testResult');
+            resultDiv.innerHTML = `
+                <h3>Test Results: ${score}%</h3>
+                <p>You got ${correct} out of ${questions.length} questions correct.</p>
+                ${score >= 70 ?
+                    '<p style="color: #2ecc71; margin-top: 10px;">Great job! You\'re ready to move to the next stage.</p>' :
+                    '<p style="color: #e74c3c; margin-top: 10px;">Review the material and try again. Kaizen principle: continuous improvement!</p>'
+                }
+            `;
+            resultDiv.style.display = 'block';
+
+            // Update progress if passed
+            if (score >= 70) {
+                progress = Math.min(100, progress + 10);
+                updateProgress();
+            }
+        }
+    </script>
+</body>
+
+</html>

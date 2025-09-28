@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Mentor Dashboard</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #f3f4f6;
+            --text-dark: #111827;
+            --text-light: #6b7280;
+            --success: #16a34a;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9fafb;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: var(--primary);
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .accordion {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        .accordion p {
+            margin: 0.5rem 0;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        .done-btn {
+            background: var(--success);
+        }
+
+        .progress-container {
+            background: var(--secondary);
+            border-radius: 20px;
+            margin: 2rem 0;
+            height: 20px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--primary);
+            transition: width 0.4s ease;
+        }
+
+        .notification {
+            display: none;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 6px;
+            background: var(--secondary);
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .arrow {
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .arrow.rotate {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>AI Mentor Dashboard</h1>
+        <p>Learn FastAPI → Machine Learning → Deep Learning → NLP</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Progress Tracker -->
+        <h2>Progress</h2>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <!-- Stage Template -->
+        <div class="card">
+            <h2 onclick="toggleAccordion(this)">
+                Stage 1: FastAPI <span class="arrow">▶</span>
+            </h2>
+            <div class="accordion">
+                <p><b>Concept:</b> FastAPI is a modern Python framework for building fast web APIs.</p>
+                <button class="btn" onclick="showNote('Learn routes, requests, responses')">Exercises</button>
+                <button class="btn" onclick="showNote('Project: Build a To-Do API with FastAPI')">Project</button>
+                <button class="btn" onclick="showNote('Docs: https://fastapi.tiangolo.com/')">Resources</button>
+                <button class="btn done-btn" onclick="markDone(1)">Mark as Done</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 onclick="toggleAccordion(this)">
+                Stage 2: Machine Learning <span class="arrow">▶</span>
+            </h2>
+            <div class="accordion">
+                <p><b>Concept:</b> ML lets computers learn from data and make predictions.</p>
+                <button class="btn" onclick="showNote('Try training a simple linear regression')">Exercises</button>
+                <button class="btn" onclick="showNote('Project: Predict house prices')">Project</button>
+                <button class="btn" onclick="showNote('Book: Hands-On ML with Scikit-Learn')">Resources</button>
+                <button class="btn done-btn" onclick="markDone(2)">Mark as Done</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 onclick="toggleAccordion(this)">
+                Stage 3: Deep Learning <span class="arrow">▶</span>
+            </h2>
+            <div class="accordion">
+                <p><b>Concept:</b> Deep Learning uses neural networks to find patterns in big data.</p>
+                <button class="btn" onclick="showNote('Build a small neural net with Keras')">Exercises</button>
+                <button class="btn" onclick="showNote('Project: Digit recognizer with MNIST')">Project</button>
+                <button class="btn" onclick="showNote('Course: DeepLearning.ai by Andrew Ng')">Resources</button>
+                <button class="btn done-btn" onclick="markDone(3)">Mark as Done</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 onclick="toggleAccordion(this)">
+                Stage 4: NLP <span class="arrow">▶</span>
+            </h2>
+            <div class="accordion">
+                <p><b>Concept:</b> NLP teaches computers to understand and use human language.</p>
+                <button class="btn" onclick="showNote('Tokenize sentences and count words')">Exercises</button>
+                <button class="btn" onclick="showNote('Project: Build a chatbot')">Project</button>
+                <button class="btn" onclick="showNote('Library: Hugging Face Transformers')">Resources</button>
+                <button class="btn done-btn" onclick="markDone(4)">Mark as Done</button>
+            </div>
+        </div>
+
+        <!-- Inline Notification -->
+        <div id="notification" class="notification"></div>
+
+    </div>
+
+    <script>
+        let doneStages = [];
+
+        function toggleAccordion(el) {
+            const acc = el.nextElementSibling;
+            const arrow = el.querySelector('.arrow');
+            if (acc.style.maxHeight) {
+                acc.style.maxHeight = null;
+                arrow.classList.remove('rotate');
+            } else {
+                acc.style.maxHeight = acc.scrollHeight + "px";
+                arrow.classList.add('rotate');
+            }
+        }
+
+        function showNote(msg) {
+            const note = document.getElementById("notification");
+            note.textContent = msg;
+            note.style.display = "block";
+            setTimeout(() => note.style.display = "none", 2500);
+        }
+
+        function markDone(stage) {
+            if (!doneStages.includes(stage)) {
+                doneStages.push(stage);
+            }
+            updateProgress();
+            showNote("Stage " + stage + " marked as done!");
+        }
+
+        function updateProgress() {
+            const percent = (doneStages.length / 4) * 100;
+            document.getElementById("progress-bar").style.width = percent + "%";
+        }
+    </script>
+</body>
+
+</html>
