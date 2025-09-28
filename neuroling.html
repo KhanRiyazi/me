@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizwan Khan | AI Learning Journey: Python APIs to Deep Learning</title>
+    <meta name="description"
+        content="Explore Rizwan Khan's journey through AI, machine learning, deep learning, and Python API development. A comprehensive learning path for aspiring AI specialists.">
+    <meta name="keywords"
+        content="Rizwan Khan, AI, Machine Learning, Deep Learning, Python, API Development, Neural Networks, Algorithms">
+    <meta name="author" content="Rizwan Khan">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Rizwan Khan | AI Learning Journey">
+    <meta property="og:description" content="From Python APIs to Deep Learning: A comprehensive AI learning journey">
+    <meta property="og:image"
+        content="https://avatars.githubusercontent.com/u/155373555?s=400&u=a156b68eb8f983d5611f80bfc1f75dbe1deb73a6&v=4">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rizwan Khan | AI Learning Journey">
+    <meta name="twitter:description" content="From Python APIs to Deep Learning: A comprehensive AI learning journey">
+    <meta name="twitter:image"
+        content="https://avatars.githubusercontent.com/u/155373555?s=400&u=a156b68eb8f983d5611f80bfc1f75dbe1deb73a6&v=4">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --primary-color: #1a56db;
+            --secondary-color: #7e3af2;
+            --accent-color: #0ea5e9;
+            --ai-color: #10b981;
+            --ml-color: #f59e0b;
+            --dl-color: #8b5cf6;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --gray-color: #64748b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --ai-gradient: linear-gradient(135deg, var(--ai-color), var(--dl-color));
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 10px 25px rgba(30, 41, 59, 0.1);
+            --ai-glow: 0 0 20px rgba(16, 185, 129, 0.3);
+
+            /* Background and Text */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --code-bg: #0f172a;
+            --code-text: #e2e8f0;
+        }
+
+        /* Dark Theme Variables */
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            --code-bg: #1e293b;
+            --code-text: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        code,
+        pre {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        pre {
+            padding: 15px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid var(--ai-color);
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--ai-gradient);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-container {
+            text-align: center;
+            color: white;
+        }
+
+        .ai-loader {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .neural-node {
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .neural-node:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .neural-node:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .neural-node:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.5);
+                opacity: 0.7;
+            }
+        }
+
+        .loading-text {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: white;
+            width: 0%;
+            animation: loading 2s ease-in-out forwards;
+        }
+
+        @keyframes loading {
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--ai-gradient);
+            z-index: 9998;
+            transition: width 0.3s ease;
+        }
+
+        /* Floating Action Buttons */
+        .floating-actions {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .floating-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .floating-btn.theme-toggle {
+            background: var(--accent-color);
+        }
+
+        .floating-btn.scroll-top {
+            background: var(--secondary-color);
+        }
+
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .main-nav {
+            background: rgba(15, 23, 42, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .brand-icon {
+            font-size: 1.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--ai-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--ai-color);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        /* Header Section */
+        .hero-section {
+            padding: 150px 20px 100px;
+            background: var(--ai-gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .profile-image-container {
+            position: relative;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background: var(--ai-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-text {
+            text-align: left;
+            max-width: 500px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .tagline {
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .cta-section {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .cta-button.primary {
+            background: white;
+            color: var(--ai-color);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .scroll-arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: rotate(45deg);
+            margin: 10px auto 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: rotate(45deg) translateY(0);
+            }
+
+            50% {
+                transform: rotate(45deg) translateY(-10px);
+            }
+        }
+
+        /* Main Content Sections */
+        .main-content {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--ai-gradient);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* AI Learning Path Section */
+        .learning-path {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .path-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .path-stage {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .path-stage:hover {
+            transform: translateY(-5px);
+        }
+
+        .stage-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--ai-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .stage-content {
+            flex: 1;
+        }
+
+        .stage-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .stage-content p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .stage-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tech-tag {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .stage-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--ai-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s;
+        }
+
+        .stage-link:hover {
+            gap: 10px;
+        }
+
+        /* Code Examples Section */
+        .code-section {
+            padding: 80px 0;
+        }
+
+        .code-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .code-tab {
+            padding: 10px 20px;
+            background: var(--bg-secondary);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .code-tab.active {
+            background: var(--ai-color);
+            color: white;
+        }
+
+        .code-container {
+            background: var(--code-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .code-header {
+            background: var(--dark-color);
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-title {
+            color: white;
+            font-weight: 500;
+        }
+
+        .code-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .code-action {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .code-action:hover {
+            color: white;
+        }
+
+        .code-content {
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        .code-content pre {
+            margin: 0;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            height: 150px;
+            background: var(--ai-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--ai-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s;
+        }
+
+        .project-link:hover {
+            gap: 10px;
+        }
+
+        /* Resources Section */
+        .resources-section {
+            padding: 80px 0;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .resource-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .resource-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--ai-color);
+        }
+
+        .resource-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .resource-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--ai-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .main-footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-brand .brand-icon {
+            font-size: 2rem;
+        }
+
+        .footer-brand .brand-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .link-group h4 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .link-group a {
+            display: block;
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .link-group a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--ai-color);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid var(--border-color);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-text {
+                text-align: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .cta-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .path-stage {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .projects-grid,
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero-section {
+                padding: 120px 20px 80px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-container">
+            <div class="ai-loader">
+                <div class="neural-node"></div>
+                <div class="neural-node"></div>
+                <div class="neural-node"></div>
+                <div class="neural-node"></div>
+            </div>
+            <div class="loading-text">Initializing AI Learning Journey</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <button class="floating-btn theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="floating-btn scroll-top" id="scrollTop" aria-label="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">🧠</span>
+                <span class="brand-text">Rizwan Khan</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#learning-path" class="nav-link">Learning Path</a></li>
+                <li><a href="#code" class="nav-link">Code Examples</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#resources" class="nav-link">Resources</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="hero-section">
+        <div class="header-content">
+            <div class="profile-section">
+                <div class="profile-image-container">
+                    <img src="https://avatars.githubusercontent.com/u/155373555?s=400&u=a156b68eb8f983d5611f80bfc1f75dbe1deb73a6&v=4"
+                        alt="Rizwan Khan - AI & Machine Learning Specialist" class="profile-image">
+                    <div class="profile-badge">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                </div>
+                <div class="profile-text">
+                    <h1 class="hero-title">Rizwan Khan</h1>
+                    <p class="hero-subtitle">AI & Machine Learning Specialist | Python Developer | Educator</p>
+                    <p class="tagline">From Python APIs to Deep Learning: My Journey Through AI</p>
+
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="500">0</span>
+                            <span class="stat-label">GitHub Repos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="200">0</span>
+                            <span class="stat-label">Tech Blogs</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="30">0</span>
+                            <span class="stat-label">AI Projects</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <button class="cta-button primary" onclick="window.location='http://khan.affiliatemath.xyz/';">
+                    <span class="cta-icon">🚀</span>
+                    <span>Explore My AI Platform</span>
+                </button>
+                <button class="cta-button secondary" onclick="scrollToSection('learning-path')">
+                    <span class="cta-icon">📚</span>
+                    <span>Start Learning Journey</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll to Explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- AI Learning Path Section -->
+        <section class="learning-path" id="learning-path">
+            <div class="container">
+                <h2 class="section-title">AI Learning Journey</h2>
+                <p class="section-subtitle">From Python fundamentals to advanced deep learning algorithms</p>
+
+                <div class="path-container">
+                    <div class="path-stage">
+                        <div class="stage-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div class="stage-content">
+                            <h3>Python Fundamentals & APIs</h3>
+                            <p>Mastering Python programming, data structures, and building RESTful APIs with FastAPI and
+                                Flask.</p>
+                            <div class="stage-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">Flask</span>
+                                <span class="tech-tag">REST APIs</span>
+                            </div>
+                            <a href="#" class="stage-link" onclick="showCodeExample('python')">
+                                View Code Example <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="path-stage">
+                        <div class="stage-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="stage-content">
+                            <h3>Data Science & Machine Learning</h3>
+                            <p>Exploring data analysis, visualization, and implementing machine learning algorithms with
+                                scikit-learn.</p>
+                            <div class="stage-tech">
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">NumPy</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">Matplotlib</span>
+                            </div>
+                            <a href="#" class="stage-link" onclick="showCodeExample('ml')">
+                                View Code Example <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="path-stage">
+                        <div class="stage-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="stage-content">
+                            <h3>Deep Learning & Neural Networks</h3>
+                            <p>Building and training neural networks with TensorFlow and PyTorch for complex AI tasks.
+                            </p>
+                            <div class="stage-tech">
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">Keras</span>
+                                <span class="tech-tag">CNN/RNN</span>
+                            </div>
+                            <a href="#" class="stage-link" onclick="showCodeExample('dl')">
+                                View Code Example <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="path-stage">
+                        <div class="stage-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="stage-content">
+                            <h3>Advanced AI Algorithms</h3>
+                            <p>Implementing advanced algorithms like GANs, reinforcement learning, and natural language
+                                processing.</p>
+                            <div class="stage-tech">
+                                <span class="tech-tag">GANs</span>
+                                <span class="tech-tag">Reinforcement Learning</span>
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">Computer Vision</span>
+                            </div>
+                            <a href="#" class="stage-link" onclick="showCodeExample('advanced')">
+                                View Code Example <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Examples Section -->
+        <section class="code-section" id="code">
+            <div class="container">
+                <h2 class="section-title">AI Code Examples</h2>
+                <p class="section-subtitle">Practical implementations of AI algorithms and techniques</p>
+
+                <div class="code-tabs" id="codeTabs">
+                    <button class="code-tab active" data-tab="python">Python API</button>
+                    <button class="code-tab" data-tab="ml">Machine Learning</button>
+                    <button class="code-tab" data-tab="dl">Deep Learning</button>
+                    <button class="code-tab" data-tab="advanced">Advanced AI</button>
+                </div>
+
+                <div class="code-container">
+                    <div class="code-header">
+                        <div class="code-title" id="codeTitle">FastAPI Example</div>
+                        <div class="code-actions">
+                            <button class="code-action" onclick="copyCode()">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-content">
+                        <pre id="codeContent"><code>from fastapi import FastAPI
+from pydantic import BaseModel
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+import joblib
+
+app = FastAPI(title="AI Prediction API")
+
+# Sample ML model (in practice, you would load a trained model)
+model = RandomForestClassifier()
+
+class PredictionRequest(BaseModel):
+    features: list
+
+class PredictionResponse(BaseModel):
+    prediction: int
+    confidence: float
+
+@app.post("/predict", response_model=PredictionResponse)
+async def predict(request: PredictionRequest):
+    features = np.array(request.features).reshape(1, -1)
+    
+    # This is a simplified example - in practice, use a trained model
+    prediction = model.predict(features)[0]
+    probabilities = model.predict_proba(features)[0]
+    confidence = float(np.max(probabilities))
+    
+    return PredictionResponse(
+        prediction=int(prediction),
+        confidence=confidence
+    )
+
+@app.get("/")
+async def root():
+    return {"message": "AI Prediction API is running!"}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <h2 class="section-title">AI Projects</h2>
+                <p class="section-subtitle">Practical applications of AI and machine learning</p>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>AffiliateMath.xyz</h3>
+                            <p>AI-powered mathematics learning platform with personalized pathways using machine
+                                learning algorithms.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">ML</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">React</span>
+                            </div>
+                            <a href="http://khan.affiliatemath.xyz/" class="project-link" target="_blank">
+                                Explore Platform <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Stock Prediction AI</h3>
+                            <p>Deep learning model for stock price prediction using LSTM networks and technical
+                                indicators.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">LSTM</span>
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">Finance</span>
+                            </div>
+                            <a href="https://github.com/KhanRiyazi" class="project-link" target="_blank">
+                                View Code <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>NLP Text Analyzer</h3>
+                            <p>Natural Language Processing tool for sentiment analysis, text classification, and entity
+                                recognition.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">Transformers</span>
+                                <span class="tech-tag">spaCy</span>
+                                <span class="tech-tag">BERT</span>
+                            </div>
+                            <a href="https://github.com/KhanRiyazi" class="project-link" target="_blank">
+                                View Code <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="resources-section" id="resources">
+            <div class="container">
+                <h2 class="section-title">Learning Resources</h2>
+                <p class="section-subtitle">Tools, libraries, and materials for your AI journey</p>
+
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3>Python Libraries</h3>
+                        <p>Essential Python libraries for AI and data science: NumPy, Pandas, Matplotlib, Scikit-learn.
+                        </p>
+                        <a href="https://pytorch.org/" class="resource-link" target="_blank">
+                            Explore <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Online Courses</h3>
+                        <p>Structured learning paths from Coursera, Udemy, and fast.ai for mastering AI concepts.</p>
+                        <a href="https://www.coursera.org/specializations/deep-learning" class="resource-link"
+                            target="_blank">
+                            Explore <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Development Tools</h3>
+                        <p>Jupyter Notebooks, VS Code, PyCharm, and other tools for AI development and experimentation.
+                        </p>
+                        <a href="https://jupyter.org/" class="resource-link" target="_blank">
+                            Explore <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Community</h3>
+                        <p>Join AI communities on GitHub, Stack Overflow, and Reddit to collaborate and learn from
+                            others.</p>
+                        <a href="https://github.com/topics/machine-learning" class="resource-link" target="_blank">
+                            Explore <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="brand-icon">🧠</span>
+                    <span class="brand-text">Rizwan Khan</span>
+                    <p>AI, Machine Learning & Deep Learning</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Explore</h4>
+                        <a href="#learning-path">Learning Path</a>
+                        <a href="#code">Code Examples</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#resources">Resources</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Connect</h4>
+                        <a href="https://www.linkedin.com/in/rizwan-ali-389660156/">LinkedIn</a>
+                        <a href="https://github.com/KhanRiyazi">GitHub</a>
+                        <a href="https://www.youtube.com/@ThisOne-007">YouTube</a>
+                        <a href="mailto:rizwanrka826@gmail.com">Email</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Resources</h4>
+                        <a href="http://khan.affiliatemath.xyz/">AI Platform</a>
+                        <a href="https://github.com/KhanRiyazi">Code Repositories</a>
+                        <a href="https://learning123hub.blogspot.com/">Tech Blog</a>
+                        <a href="#">Research Papers</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rizwan Khan. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://x.com/RizwanA96852028" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://github.com/KhanRiyazi" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@ThisOne-007" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="mailto:rizwanrka826@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Ready
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize the page
+            initPage();
+        });
+
+        // Page Initialization
+        function initPage() {
+            // Hide loading screen after page loads
+            setTimeout(function () {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 2000);
+
+            // Initialize counters
+            initCounters();
+
+            // Initialize theme
+            initTheme();
+
+            // Initialize navigation
+            initNavigation();
+
+            // Initialize scroll events
+            initScrollEvents();
+
+            // Initialize code tabs
+            initCodeTabs();
+        }
+
+        // Counter Animation
+        function initCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const increment = target / 100;
+                let current = 0;
+
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.textContent = target + '+';
+                    }
+                };
+
+                // Start counter when element is in viewport
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+
+                observer.observe(counter);
+            });
+        }
+
+        // Theme Toggle Functionality
+        function initTheme() {
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+
+            // Check for saved theme preference or default to light
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            updateThemeIcon(currentTheme);
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    themeIcon.className = 'fas fa-sun';
+                } else {
+                    themeIcon.className = 'fas fa-moon';
+                }
+            }
+        }
+
+        // Navigation Functionality
+        function initNavigation() {
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            navToggle.addEventListener('click', function () {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
+        }
+
+        // Scroll Events
+        function initScrollEvents() {
+            // Scroll progress bar
+            window.addEventListener('scroll', function () {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('scrollProgress').style.width = scrolled + '%';
+
+                // Show/hide scroll to top button
+                const scrollTopBtn = document.getElementById('scrollTop');
+                if (winScroll > 300) {
+                    scrollTopBtn.style.display = 'flex';
+                } else {
+                    scrollTopBtn.style.display = 'none';
+                }
+            });
+
+            // Scroll to top functionality
+            document.getElementById('scrollTop').addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Code Tabs Functionality
+        function initCodeTabs() {
+            const tabs = document.querySelectorAll('.code-tab');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+
+                    // Update code content based on tab
+                    const tabName = this.getAttribute('data-tab');
+                    updateCodeContent(tabName);
+                });
+            });
+        }
+
+        // Update Code Content Based on Tab
+        function updateCodeContent(tab) {
+            const codeTitle = document.getElementById('codeTitle');
+            const codeContent = document.getElementById('codeContent');
+
+            let title = '';
+            let code = '';
+
+            switch (tab) {
+                case 'python':
+                    title = 'FastAPI Example';
+                    code = `from fastapi import FastAPI
+from pydantic import BaseModel
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+import joblib
+
+app = FastAPI(title="AI Prediction API")
+
+# Sample ML model (in practice, you would load a trained model)
+model = RandomForestClassifier()
+
+class PredictionRequest(BaseModel):
+    features: list
+
+class PredictionResponse(BaseModel):
+    prediction: int
+    confidence: float
+
+@app.post("/predict", response_model=PredictionResponse)
+async def predict(request: PredictionRequest):
+    features = np.array(request.features).reshape(1, -1)
+    
+    # This is a simplified example - in practice, use a trained model
+    prediction = model.predict(features)[0]
+    probabilities = model.predict_proba(features)[0]
+    confidence = float(np.max(probabilities))
+    
+    return PredictionResponse(
+        prediction=int(prediction),
+        confidence=confidence
+    )
+
+@app.get("/")
+async def root():
+    return {"message": "AI Prediction API is running!"}`;
+                    break;
+
+                case 'ml':
+                    title = 'Machine Learning Example';
+                    code = `import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+import matplotlib.pyplot as plt
+
+# Load dataset
+data = pd.read_csv('dataset.csv')
+X = data.drop('target', axis=1)
+y = data['target']
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Initialize and train the model
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Model Accuracy: {accuracy:.2f}")
+print("\\nClassification Report:")
+print(classification_report(y_test, y_pred))
+
+# Feature importance
+feature_importances = pd.DataFrame({
+    'feature': X.columns,
+    'importance': model.feature_importances_
+}).sort_values('importance', ascending=False)
+
+print("\\nFeature Importances:")
+print(feature_importances.head(10))`;
+                    break;
+
+                case 'dl':
+                    title = 'Deep Learning Example';
+                    code = `import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load and preprocess data
+(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+
+# Normalize pixel values
+x_train = x_train.astype('float32') / 255.0
+x_test = x_test.astype('float32') / 255.0
+
+# Reshape data for CNN
+x_train = x_train.reshape(-1, 28, 28, 1)
+x_test = x_test.reshape(-1, 28, 28, 1)
+
+# Build CNN model
+model = keras.Sequential([
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
+    layers.MaxPooling2D((2, 2)),
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Flatten(),
+    layers.Dense(128, activation='relu'),
+    layers.Dropout(0.5),
+    layers.Dense(10, activation='softmax')
+])
+
+# Compile the model
+model.compile(
+    optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
+)
+
+# Train the model
+history = model.fit(
+    x_train, y_train,
+    epochs=10,
+    batch_size=128,
+    validation_split=0.1,
+    verbose=1
+)
+
+# Evaluate the model
+test_loss, test_acc = model.evaluate(x_test, y_test, verbose=0)
+print(f'Test accuracy: {test_acc:.4f}')`;
+                    break;
+
+                case 'advanced':
+                    title = 'Advanced AI Example';
+                    code = `import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader
+import torchvision.transforms as transforms
+import torchvision.datasets as datasets
+
+# Define a simple GAN generator
+class Generator(nn.Module):
+    def __init__(self, latent_dim, img_shape):
+        super(Generator, self).__init__()
+        self.img_shape = img_shape
+        
+        def block(in_feat, out_feat, normalize=True):
+            layers = [nn.Linear(in_feat, out_feat)]
+            if normalize:
+                layers.append(nn.BatchNorm1d(out_feat, 0.8))
+            layers.append(nn.LeakyReLU(0.2, inplace=True))
+            return layers
+        
+        self.model = nn.Sequential(
+            *block(latent_dim, 128, normalize=False),
+            *block(128, 256),
+            *block(256, 512),
+            *block(512, 1024),
+            nn.Linear(1024, int(torch.prod(torch.tensor(img_shape)))),
+            nn.Tanh()
+        )
+    
+    def forward(self, z):
+        img = self.model(z)
+        img = img.view(img.size(0), *self.img_shape)
+        return img
+
+# Training loop for GAN
+def train_gan(generator, discriminator, dataloader, epochs, latent_dim):
+    adversarial_loss = nn.BCELoss()
+    optimizer_G = optim.Adam(generator.parameters(), lr=0.0002, betas=(0.5, 0.999))
+    optimizer_D = optim.Adam(discriminator.parameters(), lr=0.0002, betas=(0.5, 0.999))
+    
+    for epoch in range(epochs):
+        for i, (imgs, _) in enumerate(dataloader):
+            # Train Discriminator
+            optimizer_D.zero_grad()
+            
+            # Real images
+            real_imgs = imgs
+            valid = torch.ones(imgs.size(0), 1)
+            real_loss = adversarial_loss(discriminator(real_imgs), valid)
+            
+            # Fake images
+            z = torch.randn(imgs.size(0), latent_dim)
+            fake_imgs = generator(z)
+            fake = torch.zeros(imgs.size(0), 1)
+            fake_loss = adversarial_loss(discriminator(fake_imgs.detach()), fake)
+            
+            d_loss = (real_loss + fake_loss) / 2
+            d_loss.backward()
+            optimizer_D.step()
+            
+            # Train Generator
+            optimizer_G.zero_grad()
+            gen_imgs = generator(z)
+            g_loss = adversarial_loss(discriminator(gen_imgs), valid)
+            g_loss.backward()
+            optimizer_G.step()
+            
+        print(f"[Epoch {epoch}/{epochs}] [D loss: {d_loss.item():.4f}] [G loss: {g_loss.item():.4f}]")`;
+                    break;
+            }
+
+            codeTitle.textContent = title;
+            codeContent.querySelector('code').textContent = code;
+        }
+
+        // Copy Code Functionality
+        function copyCode() {
+            const codeElement = document.querySelector('#codeContent code');
+            const textArea = document.createElement('textarea');
+            textArea.value = codeElement.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+
+            // Show feedback
+            const copyButton = document.querySelector('.code-action');
+            const originalText = copyButton.innerHTML;
+            copyButton.innerHTML = '<i class="fas fa-check"></i> Copied!';
+
+            setTimeout(() => {
+                copyButton.innerHTML = originalText;
+            }, 2000);
+        }
+
+        // Show Code Example from Learning Path
+        function showCodeExample(type) {
+            const tabs = document.querySelectorAll('.code-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            const targetTab = document.querySelector(`.code-tab[data-tab="${type}"]`);
+            if (targetTab) {
+                targetTab.classList.add('active');
+                updateCodeContent(type);
+
+                // Scroll to code section
+                document.getElementById('code').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Scroll to Section
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>
