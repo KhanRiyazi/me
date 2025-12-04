@@ -4,237 +4,1307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Mentor Dashboard</title>
+    <title>Rizwan Khan | AI & STEM Trainer</title>
+    <meta name="description"
+        content="STEM to AI Trainer | Mathematics Educator | Bridging numbers, knowledge, and human understanding through AI technology">
+    <meta name="keywords"
+        content="Rizwan Khan, STEM Trainer, AI Trainer, Mathematics, Education, Peace Studies, EdTech, Machine Learning, Coding, Web Development, Python, JavaScript">
+    <meta name="author" content="Rizwan Khan">
+    <meta name="theme-color" content="#1a56db">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Rizwan Khan | STEM & AI Trainer">
+    <meta property="og:description" content="STEM to AI Trainer specializing in Mathematics, Coding, and AI Education">
+    <meta property="og:image"
+        content="https://avatars.githubusercontent.com/u/155373555?s=400&u=a156b68eb8f983d5611f80bfc1f75dbe1deb73a6&v=4">
+    <meta property="og:url" content="https://affiliatemath.xyz">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rizwan Khan | STEM & AI Trainer">
+    <meta name="twitter:description" content="Bridging mathematics, peace studies, and AI through education">
+    <meta name="twitter:image"
+        content="https://avatars.githubusercontent.com/u/155373555?s=400&u=a156b68eb8f983d5611f80bfc1f75dbe1deb73a6&v=4">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+
     <style>
         :root {
-            --primary: #2563eb;
-            --secondary: #f3f4f6;
-            --text-dark: #111827;
-            --text-light: #6b7280;
-            --success: #16a34a;
+            /* STEM & AI Trainer Theme */
+            --primary-color: #1a56db;
+            --secondary-color: #7e3af2;
+            --accent-color: #0ea5e9;
+            --stem-color: #10b981;
+            --ai-color: #00d4ff;
+            --math-color: #f59e0b;
+            --coding-color: #ef4444;
+            --dark-color: #0f0f23;
+            --light-color: #f8fafc;
+            --gray-color: #64748b;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --stem-gradient: linear-gradient(135deg, var(--stem-color), var(--ai-color));
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 10px 25px rgba(30, 41, 59, 0.1);
+            --ai-glow: 0 0 20px rgba(14, 165, 233, 0.3);
+
+            /* Background and Text */
+            --bg-primary: #0a0a1a;
+            --bg-secondary: #0f0f23;
+            --bg-card: #1a1a2e;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #2d3748;
+        }
+
+        /* Light Theme Variables */
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 10px 25px rgba(30, 41, 59, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f9fafb;
-            margin: 0;
-            padding: 0;
-            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        header {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: var(--primary);
-            color: white;
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
+        [data-theme="light"] .main-nav {
+            background: rgba(255, 255, 255, 0.95);
         }
 
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-        }
-
-        .card h2 {
-            margin: 0;
-            font-size: 1.2rem;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 70px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .brand-icon {
+            font-size: 1.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link:hover {
+            color: var(--ai-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--ai-color);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
             cursor: pointer;
+            gap: 4px;
+            background: none;
+            border: none;
+            padding: 5px;
         }
 
-        .accordion {
-            max-height: 0;
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        /* STEM Trainer Hero Section */
+        .hero-section {
+            padding: 150px 20px 100px;
+            background: linear-gradient(135deg, #0a0a1a, #1a1a2e, #16213e);
+            color: white;
+            text-align: center;
+            position: relative;
             overflow: hidden;
-            transition: max-height 0.4s ease;
-            color: var(--text-light);
-            margin-top: 0.5rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .accordion p {
-            margin: 0.5rem 0;
-            line-height: 1.5;
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        .btn {
-            display: inline-block;
-            background: var(--primary);
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .profile-image-container {
+            position: relative;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background: var(--ai-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-text {
+            text-align: left;
+            max-width: 500px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--ai-color), var(--stem-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .tagline {
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ai-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .cta-section {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .cta-button.primary {
+            background: var(--stem-gradient);
+            color: white;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* STEM Services Section */
+        .stem-services {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--stem-gradient);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--ai-color);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .service-features li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--stem-color);
+            font-weight: bold;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ai-color);
+            margin-bottom: 15px;
+        }
+
+        .service-btn {
+            background: var(--stem-gradient);
             color: white;
             border: none;
-            border-radius: 6px;
-            padding: 0.5rem 1rem;
-            margin: 0.25rem;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
             cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.2s;
-        }
-
-        .btn:hover {
-            background: #1d4ed8;
-        }
-
-        .done-btn {
-            background: var(--success);
-        }
-
-        .progress-container {
-            background: var(--secondary);
-            border-radius: 20px;
-            margin: 2rem 0;
-            height: 20px;
+            transition: all 0.3s;
             width: 100%;
-            overflow: hidden;
         }
 
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: var(--primary);
-            transition: width 0.4s ease;
+        .service-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .notification {
+        /* STEM Programs Section */
+        .stem-programs {
+            padding: 80px 0;
+        }
+
+        .programs-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .tab-btn.active {
+            background: var(--stem-gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: var(--bg-secondary);
+        }
+
+        .program-content {
             display: none;
-            margin-top: 1rem;
-            padding: 0.75rem;
-            border-radius: 6px;
-            background: var(--secondary);
-            color: var(--text-dark);
-            font-size: 0.9rem;
         }
 
-        .arrow {
-            font-size: 1rem;
+        .program-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .program-level {
+            margin-bottom: 40px;
+        }
+
+        .program-level h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--ai-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
             transition: transform 0.3s;
         }
 
-        .arrow.rotate {
-            transform: rotate(90deg);
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-item h4 {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--ai-color);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--stem-gradient);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .main-footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-brand .brand-icon {
+            font-size: 2rem;
+        }
+
+        .footer-brand .brand-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .link-group h4 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .link-group a {
+            display: block;
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .link-group a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--ai-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid var(--border-color);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-text {
+                text-align: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .cta-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero-section {
+                padding: 120px 20px 80px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="#home" class="nav-brand">
+                <span class="brand-icon">🧠</span>
+                <span class="brand-text">Rizwan Khan | STEM Trainer</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#programs" class="nav-link">Programs</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
-    <header>
-        <h1>AI Mentor Dashboard</h1>
-        <p>Learn FastAPI → Machine Learning → Deep Learning → NLP</p>
+    <!-- Header Section -->
+    <header class="hero-section" id="home">
+        <div class="header-content">
+            <div class="profile-section">
+                <div class="profile-image-container">
+                    <img src="https://avatars.githubusercontent.com/u/155373555?s=400&u=a156b68eb8f983d5611f80bfc1f75dbe1deb73a6&v=4"
+                        alt="Rizwan Khan - STEM & AI Trainer" class="profile-image">
+                    <div class="profile-badge">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                </div>
+                <div class="profile-text">
+                    <h1 class="hero-title">Rizwan Khan</h1>
+                    <p class="hero-subtitle">STEM Trainer & Digital Skills Educator</p>
+                    <p class="tagline">Bridging mathematics, technology, and human understanding through hands-on STEM
+                        education</p>
+
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Students Trained</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">200+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Workshops Conducted</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <button class="cta-button primary" onclick="window.location.href='#contact'">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Book a Workshop</span>
+                </button>
+                <button class="cta-button secondary" onclick="window.location.href='#programs'">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>View Programs</span>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <div class="container">
+    <!-- STEM Services Section -->
+    <section class="stem-services" id="services">
+        <div class="container">
+            <h2 class="section-title">STEM Training Services</h2>
+            <p class="section-subtitle">Hands-on learning experiences that build future-ready skills</p>
 
-        <!-- Progress Tracker -->
-        <h2>Progress</h2>
-        <div class="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
-        </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Coding Workshops</h3>
+                    <p>Interactive coding sessions for students, youth, and communities</p>
+                    <ul class="service-features">
+                        <li>Scratch for beginners</li>
+                        <li>Python programming</li>
+                        <li>Web development (HTML/CSS/JS)</li>
+                        <li>Real-world projects</li>
+                    </ul>
+                    <div class="service-price">₹1,500 - ₹10,000</div>
+                    <button class="service-btn" onclick="window.location.href='#contact'">Book Now</button>
+                </div>
 
-        <!-- Stage Template -->
-        <div class="card">
-            <h2 onclick="toggleAccordion(this)">
-                Stage 1: FastAPI <span class="arrow">▶</span>
-            </h2>
-            <div class="accordion">
-                <p><b>Concept:</b> FastAPI is a modern Python framework for building fast web APIs.</p>
-                <button class="btn" onclick="showNote('Learn routes, requests, responses')">Exercises</button>
-                <button class="btn" onclick="showNote('Project: Build a To-Do API with FastAPI')">Project</button>
-                <button class="btn" onclick="showNote('Docs: https://fastapi.tiangolo.com/')">Resources</button>
-                <button class="btn done-btn" onclick="markDone(1)">Mark as Done</button>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI & Robotics</h3>
+                    <p>Introduction to artificial intelligence and robotics fundamentals</p>
+                    <ul class="service-features">
+                        <li>AI basics for beginners</li>
+                        <li>Robotics simulation</li>
+                        <li>Machine learning concepts</li>
+                        <li>Project-based learning</li>
+                    </ul>
+                    <div class="service-price">₹2,000 - ₹15,000</div>
+                    <button class="service-btn" onclick="window.location.href='#contact'">Book Now</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>School Programs</h3>
+                    <p>Comprehensive STEM curriculum for schools and institutions</p>
+                    <ul class="service-features">
+                        <li>Monthly STEM classes</li>
+                        <li>Teacher training</li>
+                        <li>Curriculum development</li>
+                        <li>Assessment and certification</li>
+                    </ul>
+                    <div class="service-price">Custom Pricing</div>
+                    <button class="service-btn" onclick="window.location.href='#contact'">Get Quote</button>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h2 onclick="toggleAccordion(this)">
-                Stage 2: Machine Learning <span class="arrow">▶</span>
-            </h2>
-            <div class="accordion">
-                <p><b>Concept:</b> ML lets computers learn from data and make predictions.</p>
-                <button class="btn" onclick="showNote('Try training a simple linear regression')">Exercises</button>
-                <button class="btn" onclick="showNote('Project: Predict house prices')">Project</button>
-                <button class="btn" onclick="showNote('Book: Hands-On ML with Scikit-Learn')">Resources</button>
-                <button class="btn done-btn" onclick="markDone(2)">Mark as Done</button>
+    <!-- STEM Programs Section -->
+    <section class="stem-programs" id="programs">
+        <div class="container">
+            <h2 class="section-title">Structured STEM Programs</h2>
+            <p class="section-subtitle">From beginner to advanced levels - Learn, Build, Innovate</p>
+
+            <div class="programs-tabs">
+                <button class="tab-btn active" data-tab="beginner">Beginner Level</button>
+                <button class="tab-btn" data-tab="intermediate">Intermediate Level</button>
+                <button class="tab-btn" data-tab="advanced">Advanced Level</button>
+            </div>
+
+            <div class="program-content active" id="beginner">
+                <div class="program-level">
+                    <h3><i class="fas fa-seedling"></i> Beginner Level - Foundation Building</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <h4><i class="fas fa-gamepad"></i> Scratch Coding</h4>
+                            <p>Visual programming to build logical thinking and creativity</p>
+                        </div>
+                        <div class="skill-item">
+                            <h4><i class="fas fa-brain"></i> Logic Building</h4>
+                            <p>Develop problem-solving skills through puzzles and games</p>
+                        </div>
+                        <div class="skill-item">
+                            <h4><i class="fas fa-laptop"></i> Digital Literacy</h4>
+                            <p>Essential computer skills for the digital age</p>
+                        </div>
+                        <div class="skill-item">
+                            <h4><i class="fas fa-robot"></i> Basic Robotics</h4>
+                            <p>Introduction to robotics through simulation tools</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-content" id="intermediate">
+                <div class="program-level">
+                    <h3><i class="fas fa-code"></i> Intermediate Level - Skill Development</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <h4><i class="fab fa-html5"></i> Web Development</h4>
+                            <p>HTML, CSS, JavaScript for building websites</p>
+                        </div>
+                        <div class="skill-item">
+                            <h4><i class="fab fa-python"></i> Python Basics</h4>
+                            <p>Programming fundamentals with Python</p>
+                        </div>
+                        <div class="skill-item">
+                            <h4><i class="fas fa-project-diagram"></i> STEM Projects</h4>
+                            <p>Hands-on projects integrating multiple technologies</p>
+                        </div>
+                        <div class="skill-item">
+                            <h4><i class="fas fa-mobile-alt"></i> App Development</h4>
+                            <p>Building mobile app prototypes and simulations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-content" id="advanced">
+                <div class="program-level">
+                    <h3><i class="fas fa-rocket"></i> Advanced Level - Specialization</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <h4><i class="fas fa-brain"></i> AI Fundamentals</h4>
+                            <p>Introduction to machine learning and neural networks</p>
+                        </div>
+                        <div class="skill-item">
+                            <h4><i class="fas fa-cogs"></i> Automation</h4>
+                            <p>Python automation scripts for real-world tasks</p>
+                        </div>
+                        <div class="skill-item">
+                            <h4><i class="fas fa-code-branch"></i> Advanced Projects</h4>
+                            <p>Complex coding projects with real applications</p>
+                        </div>
+                        <div class="skill-item">
+                            <h4><i class="fas fa-database"></i> Data Science Basics</h4>
+                            <p>Introduction to data analysis and visualization</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h2 onclick="toggleAccordion(this)">
-                Stage 3: Deep Learning <span class="arrow">▶</span>
-            </h2>
-            <div class="accordion">
-                <p><b>Concept:</b> Deep Learning uses neural networks to find patterns in big data.</p>
-                <button class="btn" onclick="showNote('Build a small neural net with Keras')">Exercises</button>
-                <button class="btn" onclick="showNote('Project: Digit recognizer with MNIST')">Project</button>
-                <button class="btn" onclick="showNote('Course: DeepLearning.ai by Andrew Ng')">Resources</button>
-                <button class="btn done-btn" onclick="markDone(3)">Mark as Done</button>
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Book a Workshop</h2>
+            <p class="section-subtitle">Let's discuss how I can bring STEM education to your community</p>
+
+            <div class="contact-container">
+                <form class="contact-form" id="workshopForm">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="organization">Organization / School</label>
+                        <input type="text" id="organization" name="organization">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="workshopType">Workshop Type</label>
+                        <select id="workshopType" name="workshopType">
+                            <option value="coding">Coding Workshop</option>
+                            <option value="ai">AI & Robotics</option>
+                            <option value="school">School Program</option>
+                            <option value="custom">Custom Workshop</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="participants">Number of Participants</label>
+                        <select id="participants" name="participants">
+                            <option value="10-20">10-20 students</option>
+                            <option value="21-50">21-50 students</option>
+                            <option value="51-100">51-100 students</option>
+                            <option value="100+">100+ students</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Requirements *</label>
+                        <textarea id="message" name="message" required
+                            placeholder="Tell us about your requirements, preferred dates, and any specific topics you'd like to cover..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Workshop Request
+                    </button>
+                </form>
             </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h2 onclick="toggleAccordion(this)">
-                Stage 4: NLP <span class="arrow">▶</span>
-            </h2>
-            <div class="accordion">
-                <p><b>Concept:</b> NLP teaches computers to understand and use human language.</p>
-                <button class="btn" onclick="showNote('Tokenize sentences and count words')">Exercises</button>
-                <button class="btn" onclick="showNote('Project: Build a chatbot')">Project</button>
-                <button class="btn" onclick="showNote('Library: Hugging Face Transformers')">Resources</button>
-                <button class="btn done-btn" onclick="markDone(4)">Mark as Done</button>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="brand-icon">🧠</span>
+                    <span class="brand-text">Rizwan Khan</span>
+                    <p>STEM Trainer & Digital Skills Educator</p>
+                    <p>Bridging technology, education, and community development</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Quick Links</h4>
+                        <a href="#home">Home</a>
+                        <a href="#services">Services</a>
+                        <a href="#programs">Programs</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Services</h4>
+                        <a href="#services">Coding Workshops</a>
+                        <a href="#services">AI & Robotics</a>
+                        <a href="#services">School Programs</a>
+                        <a href="#services">Custom Training</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Connect</h4>
+                        <a href="https://www.linkedin.com/in/rizwan-ali-389660156/">LinkedIn</a>
+                        <a href="https://github.com/KhanRiyazi">GitHub</a>
+                        <a href="https://www.youtube.com/@ThisOne-007">YouTube</a>
+                        <a href="mailto:rizwanrka826@gmail.com">Email</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rizwan Khan - STEM Trainer. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/KhanRiyazi" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@ThisOne-007" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="mailto:rizwanrka826@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
             </div>
         </div>
-
-        <!-- Inline Notification -->
-        <div id="notification" class="notification"></div>
-
-    </div>
+    </footer>
 
     <script>
-        let doneStages = [];
+        // Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
 
-        function toggleAccordion(el) {
-            const acc = el.nextElementSibling;
-            const arrow = el.querySelector('.arrow');
-            if (acc.style.maxHeight) {
-                acc.style.maxHeight = null;
-                arrow.classList.remove('rotate');
-            } else {
-                acc.style.maxHeight = acc.scrollHeight + "px";
-                arrow.classList.add('rotate');
-            }
-        }
+            navToggle.addEventListener('click', function () {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
 
-        function showNote(msg) {
-            const note = document.getElementById("notification");
-            note.textContent = msg;
-            note.style.display = "block";
-            setTimeout(() => note.style.display = "none", 2500);
-        }
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
 
-        function markDone(stage) {
-            if (!doneStages.includes(stage)) {
-                doneStages.push(stage);
-            }
-            updateProgress();
-            showNote("Stage " + stage + " marked as done!");
-        }
+            // Tab Switching
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.program-content');
 
-        function updateProgress() {
-            const percent = (doneStages.length / 4) * 100;
-            document.getElementById("progress-bar").style.width = percent + "%";
-        }
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // Form Submission
+            const workshopForm = document.getElementById('workshopForm');
+            workshopForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+
+                // Here you would typically send this to a server
+                // For now, show a success message
+                alert('Thank you for your workshop request! I will contact you within 24 hours to discuss the details.');
+
+                // Reset form
+                this.reset();
+
+                // Scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Theme Toggle (Optional - can be added later)
+            const themeToggle = document.createElement('button');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            themeToggle.className = 'theme-toggle';
+            themeToggle.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: var(--ai-color);
+                color: white;
+                border: none;
+                cursor: pointer;
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2rem;
+            `;
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                this.innerHTML = newTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', newTheme);
+            });
+
+            // Check for saved theme
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+
+            // Add theme toggle to page
+            document.body.appendChild(themeToggle);
+        });
     </script>
 </body>
 
