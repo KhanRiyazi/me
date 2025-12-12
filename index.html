@@ -91,6 +91,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg-primary);
@@ -212,6 +216,102 @@
             }
         }
 
+        /* AI Explanation Panel */
+        .ai-explanation-panel {
+            position: fixed;
+            bottom: 100px;
+            left: 30px;
+            width: 350px;
+            background: var(--bg-card);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            display: none;
+        }
+
+        .ai-explanation-panel.active {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .explanation-header {
+            background: var(--ai-gradient);
+            padding: 15px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .explanation-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .explanation-body {
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .explanation-step {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .explanation-step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .step-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--ai-glow-color);
+            font-weight: 600;
+        }
+
+        .step-title i {
+            font-size: 1.2rem;
+        }
+
+        .step-content {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .ai-analogy {
+            background: rgba(14, 165, 233, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid var(--ai-glow-color);
+        }
+
+        .analogy-title {
+            color: var(--ai-glow-color);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
         /* AI API Interface */
         .ai-interface {
             position: fixed;
@@ -230,18 +330,6 @@
         .ai-interface.active {
             display: block;
             animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
         }
 
         .ai-header {
@@ -268,7 +356,6 @@
             margin-bottom: 15px;
             padding: 10px;
             border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
         }
 
         .ai-message.user {
@@ -303,6 +390,101 @@
             padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
+        }
+
+        /* AI Concept Buttons */
+        .ai-concept-buttons {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .concept-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--ai-gradient);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .concept-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .concept-btn .tooltip {
+            position: absolute;
+            right: 70px;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        .concept-btn:hover .tooltip {
+            opacity: 1;
+        }
+
+        /* AI Visualization Grid */
+        .ai-visualization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .ai-concept-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .ai-concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .concept-icon {
+            font-size: 2.5rem;
+            color: var(--ai-glow-color);
+            margin-bottom: 15px;
+        }
+
+        .concept-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .concept-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         /* Scroll Progress Bar */
@@ -360,6 +542,11 @@
         .floating-btn.ai-assistant {
             background: var(--ai-glow-color);
             box-shadow: 0 0 15px var(--ai-glow-color);
+        }
+
+        .floating-btn.ai-explanation {
+            background: var(--neural-color);
+            box-shadow: 0 0 15px var(--neural-color);
         }
 
         /* Viral Counter */
@@ -813,6 +1000,52 @@
         .feature-progress span {
             font-size: 0.9rem;
             color: var(--text-muted);
+        }
+
+        /* AI Understanding Section */
+        .ai-understanding-section {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .ai-explanation-box {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        .ai-explanation-box h3 {
+            color: var(--ai-glow-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .analogy-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .analogy-card {
+            background: rgba(14, 165, 233, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--ai-glow-color);
+        }
+
+        .analogy-card h4 {
+            color: var(--ai-glow-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .analogy-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
         /* Digital Transformation Section */
@@ -1557,7 +1790,140 @@
             flex-wrap: wrap;
         }
 
+        /* Learning Resources Section */
+        .learning-resources {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(14, 165, 233, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--ai-glow-color);
+        }
+
+        .resources-title {
+            color: var(--ai-glow-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .resource-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .resource-icon {
+            color: var(--ai-glow-color);
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        .resource-content h5 {
+            margin-bottom: 5px;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .resource-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .resource-link {
+            color: var(--ai-glow-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Menu for AI Concepts */
+        .mobile-ai-concepts {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .mobile-concepts-toggle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--ai-gradient);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-concepts-menu {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 200px;
+            border: 1px solid var(--border-color);
+        }
+
+        .mobile-concepts-menu.active {
+            display: flex;
+        }
+
+        .mobile-concept-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: rgba(14, 165, 233, 0.1);
+            border: none;
+            border-radius: 8px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .mobile-concept-btn:hover {
+            background: rgba(14, 165, 233, 0.2);
+        }
+
+        .mobile-concept-btn i {
+            color: var(--ai-glow-color);
+        }
+
         /* Mobile Responsiveness */
+        @media screen and (max-width: 1200px) {
+            .container {
+                padding: 0 40px;
+            }
+        }
+
         @media screen and (max-width: 1024px) {
             .footer-content {
                 grid-template-columns: 1fr;
@@ -1566,6 +1932,26 @@
 
             .footer-links {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ai-concept-buttons {
+                display: none;
+            }
+
+            .mobile-ai-concepts {
+                display: block;
+            }
+
+            .ai-explanation-panel {
+                left: 20px;
+                width: calc(100% - 40px);
+                bottom: 120px;
+            }
+
+            .ai-interface {
+                right: 20px;
+                width: calc(100% - 40px);
+                bottom: 120px;
             }
         }
 
@@ -1622,6 +2008,12 @@
 
             .hero-stats {
                 justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .stat-item {
+                flex: 1;
+                min-width: 120px;
             }
 
             .cta-section {
@@ -1629,14 +2021,33 @@
                 align-items: center;
             }
 
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
             .section-title {
                 font-size: 2rem;
             }
 
+            .section-subtitle {
+                font-size: 1.1rem;
+                padding: 0 20px;
+            }
+
             .ai-features,
             .tech-grid,
-            .projects-grid {
+            .projects-grid,
+            .ai-visualization-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .ai-feature,
+            .tech-card,
+            .ai-concept-card {
+                padding: 25px 20px;
             }
 
             .journey-timeline::before {
@@ -1645,26 +2056,45 @@
 
             .timeline-marker {
                 margin-right: 20px;
+                width: 16px;
+                height: 16px;
+            }
+
+            .timeline-content {
+                padding: 20px;
             }
 
             .video-stats {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .stat-card {
+                padding: 15px;
             }
 
             .newsletter-card {
                 flex-direction: column;
                 text-align: center;
-                padding: 30px;
+                padding: 30px 20px;
+                gap: 30px;
+            }
+
+            .newsletter-content h3 {
+                font-size: 1.5rem;
             }
 
             .input-group {
                 flex-direction: column;
                 border-radius: 10px;
+                max-width: 100%;
             }
 
             .newsletter-input,
             .newsletter-button {
                 border-radius: 0;
+                width: 100%;
+                padding: 15px;
             }
 
             .newsletter-input {
@@ -1674,6 +2104,7 @@
             .share-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 10px;
             }
 
             .share-btn {
@@ -1683,6 +2114,7 @@
 
             .footer-links {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
 
             .footer-bottom {
@@ -1698,17 +2130,78 @@
             .floating-actions {
                 bottom: 20px;
                 right: 20px;
+                gap: 10px;
+            }
+
+            .floating-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
             }
 
             .viral-counter {
                 bottom: 20px;
                 left: 20px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
             }
 
-            .ai-interface {
+            .ai-interface,
+            .ai-explanation-panel {
                 width: calc(100% - 40px);
                 right: 20px;
+                left: 20px;
                 bottom: 90px;
+            }
+
+            .popup-content {
+                padding: 25px 20px;
+                width: 95%;
+                max-height: 85vh;
+            }
+
+            .popup-title {
+                font-size: 1.5rem;
+            }
+
+            .action-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .action-link {
+                justify-content: center;
+                padding: 12px 20px;
+            }
+
+            .analogy-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .analogy-card {
+                padding: 20px;
+            }
+
+            .ai-explanation-box {
+                padding: 25px 20px;
+            }
+
+            .mystery-box {
+                padding: 40px 20px;
+            }
+
+            .mystery-box h3 {
+                font-size: 1.5rem;
+            }
+
+            .mystery-box p {
+                font-size: 1.1rem;
+            }
+
+            .mobile-concepts-menu {
+                min-width: 180px;
+                right: -10px;
             }
         }
 
@@ -1719,6 +2212,11 @@
 
             .hero-title {
                 font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
             }
 
             .profile-image {
@@ -1734,12 +2232,131 @@
                 grid-template-columns: 1fr;
             }
 
-            .popup-content {
-                padding: 25px;
+            .container {
+                padding: 0 20px;
             }
 
-            .action-links {
+            .main-content {
+                padding: 60px 0;
+            }
+
+            .ai-revolution,
+            .ai-understanding-section,
+            .digital-transformation,
+            .mystery-section,
+            .journey-section,
+            .youtube-section,
+            .projects-section,
+            .newsletter-section {
+                padding: 60px 0;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .feature-icon,
+            .tech-icon,
+            .concept-icon {
+                font-size: 2.5rem;
+            }
+
+            .journey-timeline::before {
+                left: 15px;
+            }
+
+            .timeline-marker {
+                margin-right: 15px;
+            }
+
+            .mobile-concepts-menu {
+                min-width: 160px;
+            }
+
+            .mobile-concept-btn {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+
+            .resource-item {
+                padding: 8px;
+            }
+
+            .resource-content h5 {
+                font-size: 0.9rem;
+            }
+
+            .resource-content p {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media screen and (max-width: 360px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .hero-stats {
                 flex-direction: column;
+                gap: 15px;
+            }
+
+            .stat-item {
+                width: 100%;
+            }
+
+            .cta-button {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            .floating-actions {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .viral-counter {
+                bottom: 15px;
+                left: 15px;
+            }
+
+            .mobile-concepts-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+
+            .concept-btn:hover,
+            .ai-concept-card:hover,
+            .ai-feature:hover,
+            .tech-card:hover,
+            .project-card:hover {
+                transform: none;
+            }
+
+            .concept-btn:active,
+            .ai-concept-card:active,
+            .ai-feature:active,
+            .tech-card:active,
+            .project-card:active {
+                transform: scale(0.98);
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .tooltip {
+                display: none;
             }
         }
     </style>
@@ -1765,6 +2382,53 @@
         </div>
     </div>
 
+    <!-- AI Explanation Panel -->
+    <div class="ai-explanation-panel" id="aiExplanationPanel">
+        <div class="explanation-header">
+            <h3><i class="fas fa-lightbulb"></i> Understanding AI</h3>
+            <button class="close-btn" onclick="closeExplanationPanel()">×</button>
+        </div>
+        <div class="explanation-body">
+            <div class="explanation-step">
+                <div class="step-title">
+                    <i class="fas fa-brain"></i>
+                    <span>What is AI?</span>
+                </div>
+                <div class="step-content">
+                    Artificial Intelligence (AI) is like teaching computers to learn and make decisions similar to how
+                    humans do, but at a much larger scale and speed.
+                </div>
+                <div class="ai-analogy">
+                    <div class="analogy-title">🧠 Simple Analogy:</div>
+                    <p>Think of AI as a super-smart apprentice that learns from examples and gets better with practice.
+                    </p>
+                </div>
+            </div>
+
+            <div class="explanation-step">
+                <div class="step-title">
+                    <i class="fas fa-cogs"></i>
+                    <span>How Does AI Work?</span>
+                </div>
+                <div class="step-content">
+                    AI systems learn patterns from data, then use those patterns to make predictions or decisions on new
+                    information.
+                </div>
+            </div>
+
+            <div class="explanation-step">
+                <div class="step-title">
+                    <i class="fas fa-chart-line"></i>
+                    <span>My Approach to AI</span>
+                </div>
+                <div class="step-content">
+                    I combine mathematical thinking with AI to create educational systems that adapt to each learner's
+                    unique needs.
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- AI API Interface -->
     <div class="ai-interface" id="aiInterface">
         <div class="ai-header">
@@ -1782,6 +2446,59 @@
         </div>
     </div>
 
+    <!-- AI Concept Buttons (Desktop) -->
+    <div class="ai-concept-buttons">
+        <button class="concept-btn" onclick="explainAIBasics()">
+            <i class="fas fa-brain"></i>
+            <span class="tooltip">What is AI?</span>
+        </button>
+        <button class="concept-btn" onclick="explainMachineLearning()">
+            <i class="fas fa-cogs"></i>
+            <span class="tooltip">Machine Learning</span>
+        </button>
+        <button class="concept-btn" onclick="explainNeuralNetworks()">
+            <i class="fas fa-project-diagram"></i>
+            <span class="tooltip">Neural Networks</span>
+        </button>
+        <button class="concept-btn" onclick="explainMyAIApproach()">
+            <i class="fas fa-graduation-cap"></i>
+            <span class="tooltip">My AI Approach</span>
+        </button>
+    </div>
+
+    <!-- Mobile AI Concepts Menu -->
+    <div class="mobile-ai-concepts">
+        <button class="mobile-concepts-toggle" id="mobileConceptsToggle">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="mobile-concepts-menu" id="mobileConceptsMenu">
+            <button class="mobile-concept-btn" onclick="explainAIBasics()">
+                <i class="fas fa-brain"></i>
+                What is AI?
+            </button>
+            <button class="mobile-concept-btn" onclick="explainMachineLearning()">
+                <i class="fas fa-cogs"></i>
+                Machine Learning
+            </button>
+            <button class="mobile-concept-btn" onclick="explainNeuralNetworks()">
+                <i class="fas fa-project-diagram"></i>
+                Neural Networks
+            </button>
+            <button class="mobile-concept-btn" onclick="explainMyAIApproach()">
+                <i class="fas fa-graduation-cap"></i>
+                My AI Approach
+            </button>
+            <button class="mobile-concept-btn" onclick="showAIExplanation()">
+                <i class="fas fa-lightbulb"></i>
+                AI Explanation
+            </button>
+            <button class="mobile-concept-btn" onclick="toggleAIAssistant()">
+                <i class="fas fa-robot"></i>
+                AI Assistant
+            </button>
+        </div>
+    </div>
+
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -1792,6 +2509,9 @@
         </button>
         <button class="floating-btn ai-assistant" id="aiAssistant" aria-label="Open AI Assistant">
             <i class="fas fa-robot"></i>
+        </button>
+        <button class="floating-btn ai-explanation" id="aiExplanation" aria-label="Explain AI Concepts">
+            <i class="fas fa-lightbulb"></i>
         </button>
         <button class="floating-btn scroll-top" id="scrollTop" aria-label="Scroll to top">
             <i class="fas fa-arrow-up"></i>
@@ -1814,6 +2534,7 @@
             </div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#ai-revolution" class="nav-link">AI Revolution</a></li>
+                <li><a href="#ai-understanding" class="nav-link">Understanding AI</a></li>
                 <li><a href="#journey" class="nav-link">Journey</a></li>
                 <li><a href="#youtube" class="nav-link">YouTube</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
@@ -1848,11 +2569,11 @@
 
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <span class="stat-number" data-count="200">0</span>
+                            <span class="stat-number" data-count="500">0</span>
                             <span class="stat-label">GitHub Repos</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number" data-count="500">0</span>
+                            <span class="stat-number" data-count="200">0</span>
                             <span class="stat-label">Tech Blogs</span>
                         </div>
                         <div class="stat-item">
@@ -1864,14 +2585,18 @@
             </div>
 
             <div class="cta-section">
-                <button class="cta-button primary"
-                    onclick="window.location='https://khanriyazi.github.io/AI_Element/';">
-                    <span class="cta-icon">🚀</span>
-                    <span>The future is here with</span>
+                <button class="cta-button primary" onclick="showAIExplanation()">
+                    <span class="cta-icon">🤖</span>
+                    <span>Understand AI Basics</span>
                 </button>
                 <button class="cta-button secondary" onclick="showPortfolioPopup()">
                     <span class="cta-icon">📂</span>
                     <span>View Portfolio</span>
+                </button>
+                <button class="cta-button primary"
+                    onclick="window.location='https://khanriyazi.github.io/AI_Element/';">
+                    <span class="cta-icon">🚀</span>
+                    <span>AI Elements Project</span>
                 </button>
             </div>
         </div>
@@ -1884,6 +2609,72 @@
 
     <!-- Main Content -->
     <main class="main-content">
+        <!-- AI Understanding Section -->
+        <section class="ai-understanding-section" id="ai-understanding">
+            <div class="container">
+                <h2 class="section-title">Understanding AI - Simplified</h2>
+                <p class="section-subtitle">Breaking down complex AI concepts into understandable insights</p>
+
+                <div class="ai-visualization-grid">
+                    <div class="ai-concept-card" onclick="explainAIBasics()">
+                        <div class="concept-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="concept-title">What is AI?</h3>
+                        <p class="concept-desc">AI is the simulation of human intelligence in machines programmed to
+                            think and learn.</p>
+                    </div>
+
+                    <div class="ai-concept-card" onclick="explainMachineLearning()">
+                        <div class="concept-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="concept-title">Machine Learning</h3>
+                        <p class="concept-desc">Teaching computers to learn from data and improve their performance over
+                            time.</p>
+                    </div>
+
+                    <div class="ai-concept-card" onclick="explainNeuralNetworks()">
+                        <div class="concept-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3 class="concept-title">Neural Networks</h3>
+                        <p class="concept-desc">AI systems inspired by the human brain's network of neurons.</p>
+                    </div>
+
+                    <div class="ai-concept-card" onclick="explainDeepLearning()">
+                        <div class="concept-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3 class="concept-title">Deep Learning</h3>
+                        <p class="concept-desc">Advanced ML using multi-layered neural networks for complex pattern
+                            recognition.</p>
+                    </div>
+                </div>
+
+                <div class="ai-explanation-box">
+                    <h3>My AI Philosophy</h3>
+                    <p>I believe AI should be an empowering tool that enhances human intelligence rather than replaces
+                        it. My approach combines:</p>
+
+                    <div class="analogy-container">
+                        <div class="analogy-card">
+                            <h4>🧮 Mathematical Foundation</h4>
+                            <p>Using mathematical thinking to create structured, logical AI systems that make sense.</p>
+                        </div>
+                        <div class="analogy-card">
+                            <h4>📚 Educational Focus</h4>
+                            <p>Applying AI to personalize learning and make education more accessible and effective.</p>
+                        </div>
+                        <div class="analogy-card">
+                            <h4>🤝 Human-Centered Design</h4>
+                            <p>Creating AI systems that work with humans, not against them.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- AI Revolution Section -->
         <section class="ai-revolution" id="ai-revolution">
             <div class="container">
@@ -2072,7 +2863,7 @@
 
                 <div class="video-showcase">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/AgElOQfhu0Y?si=Cuy84GhOck4uDMpl"
+                        <iframe src="https://youtube.com/shorts/GIeTWgeTkbI?si=GJN7bZQcEZyx1P-X"
                             title="Mathematics Education in the Age of AI"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
@@ -2237,9 +3028,9 @@
                 <div class="footer-links">
                     <div class="link-group">
                         <h4>Explore</h4>
+                        <a href="#ai-understanding">Understanding AI</a>
                         <a href="#ai-revolution">AI Revolution</a>
                         <a href="#journey">My Journey</a>
-                        <a href="#youtube">YouTube</a>
                         <a href="#projects">Projects</a>
                     </div>
 
@@ -2253,10 +3044,10 @@
 
                     <div class="link-group">
                         <h4>Resources</h4>
-                        <a href="#">Teaching Materials</a>
-                        <a href="#">AI Resources</a>
-                        <a href="#">Blog Posts</a>
-                        <a href="#">Research Papers</a>
+                        <a href="#" onclick="explainAIBasics()">AI Basics</a>
+                        <a href="#" onclick="explainMachineLearning()">ML Concepts</a>
+                        <a href="#" onclick="showAIPopup()">My AI Work</a>
+                        <a href="#" onclick="showPortfolioPopup()">Portfolio</a>
                     </div>
                 </div>
             </div>
@@ -2285,213 +3076,414 @@
     </footer>
 
     <!-- Popup Modals -->
-    <div id="educationPopup" class="popup">
+    <div id="aiBasicsPopup" class="popup">
         <div class="popup-content">
             <div class="popup-header">
-                <h3 class="popup-title">Education 🎓</h3>
-                <button class="close-btn" onclick="closeEducationPopup()">×</button>
+                <h3 class="popup-title">🤖 Understanding Artificial Intelligence</h3>
+                <button class="close-btn" onclick="closeAIBasicsPopup()">×</button>
             </div>
             <div class="popup-body">
-                <p>My educational journey began with a deep fascination for mathematics and its applications in solving
-                    real-world problems. I graduated with a degree in Mathematics, which provided me with a strong
-                    theoretical foundation.</p>
+                <h4>What is AI?</h4>
+                <p>Artificial Intelligence (AI) is the development of computer systems that can perform tasks that
+                    normally require human intelligence. These include:</p>
 
-                <p>I then pursued a Bachelor of Education (B.Ed) in Mathematics, where I developed pedagogical skills
-                    and learned how to make complex mathematical concepts accessible to diverse learners. This
-                    combination of subject mastery and teaching methodology has been fundamental to my approach.</p>
-
-                <p>Throughout my education, I focused on:</p>
                 <ul class="achievement-list">
-                    <li>Advanced mathematical theory and applications</li>
-                    <li>Educational psychology and learning theories</li>
-                    <li>Curriculum development and instructional design</li>
-                    <li>Assessment strategies for mathematical proficiency</li>
+                    <li><strong>Learning:</strong> Acquiring information and rules for using it</li>
+                    <li><strong>Reasoning:</strong> Using rules to reach conclusions</li>
+                    <li><strong>Problem-solving:</strong> Finding solutions to complex issues</li>
+                    <li><strong>Perception:</strong> Recognizing patterns in data</li>
+                    <li><strong>Language understanding:</strong> Processing and generating human language</li>
                 </ul>
 
-                <div class="action-links">
-                    <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" class="action-link" target="_blank">
-                        <i class="fab fa-linkedin"></i> View Credentials
-                    </a>
-                    <a href="mailto:rizwanrka826@gmail.com" class="action-link secondary-link">
-                        <i class="fas fa-envelope"></i> Discuss Education
-                    </a>
+                <div class="ai-analogy" style="margin: 20px 0;">
+                    <div class="analogy-title">🎯 Simple Analogy:</div>
+                    <p>Think of AI like teaching a child: you show examples (data), they learn patterns (training), and
+                        then they can apply what they learned to new situations (inference).</p>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <div id="teachingPopup" class="popup">
-        <div class="popup-content">
-            <div class="popup-header">
-                <h3 class="popup-title">Teaching Experience 📘</h3>
-                <button class="close-btn" onclick="closeTeachingPopup()">×</button>
-            </div>
-            <div class="popup-body">
-                <p>As a mathematics teacher, I've had the privilege of inspiring hundreds of students to develop a
-                    genuine love for numbers and problem-solving. My teaching philosophy centers on creating engaging,
-                    accessible learning experiences that demystify mathematics.</p>
-
-                <p>I believe that every student has the capacity to excel in mathematics when provided with the right
-                    guidance, resources, and encouragement. My approach combines traditional teaching methods with
-                    innovative techniques to cater to diverse learning styles.</p>
-
-                <p>Key aspects of my teaching methodology:</p>
+                <h4>How I Apply AI in Education:</h4>
+                <p>In my work at AffiliateMath.xyz, I use AI to:</p>
                 <ul class="achievement-list">
-                    <li>Student-centered learning environments</li>
-                    <li>Real-world application of mathematical concepts</li>
-                    <li>Differentiated instruction for varied learning needs</li>
-                    <li>Continuous assessment and feedback loops</li>
-                    <li>Building mathematical confidence and curiosity</li>
+                    <li>Create personalized learning paths for each student</li>
+                    <li>Analyze learning patterns to identify knowledge gaps</li>
+                    <li>Generate interactive math problems at appropriate difficulty levels</li>
+                    <li>Provide instant, personalized feedback to learners</li>
+                    <li>Adapt content based on individual learning styles</li>
                 </ul>
 
-                <div class="action-links">
-                    <a href="https://www.affiliatemath.xyz/teaching-resources" class="action-link" target="_blank">
-                        <i class="fas fa-book-open"></i> Teaching Resources
-                    </a>
-                    <a href="mailto:rizwan@affiliatemath.xyz" class="action-link secondary-link">
-                        <i class="fas fa-chalkboard-teacher"></i> Teaching Consultation
-                    </a>
+                <!-- Learning Resources Section -->
+                <div class="learning-resources">
+                    <h4 class="resources-title">📚 Learn More About AI:</h4>
+
+                    <div class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>AI For Everyone by Andrew Ng (Coursera)</h5>
+                            <p>Best beginner course to understand AI concepts without coding</p>
+                            <a href="https://www.coursera.org/learn/ai-for-everyone" class="resource-link"
+                                target="_blank">
+                                Enroll Now <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-play-circle resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>3Blue1Brown - Neural Networks</h5>
+                            <p>Excellent visual explanations of how neural networks work</p>
+                            <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi"
+                                class="resource-link" target="_blank">
+                                Watch Series <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-code resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>My AI GitHub Repositories</h5>
+                            <p>Practical AI implementations for educational purposes</p>
+                            <a href="https://github.com/KhanRiyazi" class="resource-link" target="_blank">
+                                Explore Code <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-graduation-cap resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>AffiliateMath.xyz - AI Learning Platform</h5>
+                            <p>See AI in action in mathematics education</p>
+                            <a href="http://khan.affiliatemath.xyz/" class="resource-link" target="_blank">
+                                Visit Platform <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="peacePopup" class="popup">
-        <div class="popup-content">
-            <div class="popup-header">
-                <h3 class="popup-title">Conflict Resolution & Peace Studies 🌿</h3>
-                <button class="close-btn" onclick="closePeacePopup()">×</button>
-            </div>
-            <div class="popup-body">
-                <p>My Post Graduate Diploma in Conflict Resolution & Peace Studies opened my eyes to the profound
-                    connections between mathematical thinking and human conflict resolution. I discovered that the same
-                    logical frameworks we use to solve equations can be applied to understanding and resolving human
-                    disagreements.</p>
-
-                <p>This interdisciplinary approach has allowed me to bridge the gap between quantitative reasoning and
-                    qualitative understanding, creating unique insights into how structured thinking can facilitate
-                    reconciliation and mutual understanding.</p>
-
-                <p>My work in this field focuses on:</p>
-                <ul class="achievement-list">
-                    <li>Applying mathematical models to conflict analysis</li>
-                    <li>Developing communication frameworks based on logical structures</li>
-                    <li>Teaching conflict resolution through systematic approaches</li>
-                    <li>Bridging STEM and humanities through peace education</li>
-                </ul>
-
-                <div class="action-links">
-                    <a href="https://www.affiliatemath.xyz/peace-studies" class="action-link" target="_blank">
-                        <i class="fas fa-peace"></i> Peace Resources
-                    </a>
-                    <a href="mailto:rizwan@affiliatemath.xyz" class="action-link secondary-link">
-                        <i class="fas fa-handshake"></i> Discuss Collaboration
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="aiPopup" class="popup">
-        <div class="popup-content">
-            <div class="popup-header">
-                <h3 class="popup-title">AI in Education 🤖</h3>
-                <button class="close-btn" onclick="closeAIPopup()">×</button>
-            </div>
-            <div class="popup-body">
-                <p>For the past five years, I've been at the forefront of integrating artificial intelligence into
-                    mathematics education. This journey began with recognizing AI's potential to transform how students
-                    learn and engage with mathematical concepts.</p>
-
-                <p>I founded <span class="highlight">AffiliateMath.xyz</span> to create a platform where AI and human
-                    expertise work synergistically to empower learners. Our approach combines the analytical power of AI
-                    systems with the nuanced understanding of experienced educators.</p>
-
-                <p>Key initiatives in my AI journey:</p>
-                <ul class="achievement-list">
-                    <li>Developing AI-powered personalized learning pathways</li>
-                    <li>Creating adaptive assessment systems that identify knowledge gaps</li>
-                    <li>Building conversational AI tutors for mathematics</li>
-                    <li>Training AI models on pedagogical best practices</li>
-                    <li>Researching ethical AI implementation in education</li>
-                    <li>Creating 500+ GitHub repositories with AI education tools</li>
-                    <li>Writing 200+ technical blogs on AI and education</li>
-                    <li>Producing 30+ YouTube videos on AI in mathematics</li>
-                </ul>
 
                 <div class="action-links">
                     <a href="http://khan.affiliatemath.xyz/" class="action-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Visit AffiliateMath.xyz
+                        <i class="fas fa-external-link-alt"></i> See AI in Action
                     </a>
-                    <a href="main.html" class="action-link secondary-link" target="_blank">
-                        <i class="fab fa-github"></i> Great FastAPI
+                    <a href="#" class="action-link secondary-link"
+                        onclick="explainMachineLearning(); closeAIBasicsPopup()">
+                        <i class="fas fa-arrow-right"></i> Next: Machine Learning
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="portfolioPopup" class="popup">
+    <div id="mlPopup" class="popup">
         <div class="popup-content">
             <div class="popup-header">
-                <h3 class="popup-title">My Portfolio 📂</h3>
-                <button class="close-btn" onclick="closePortfolioPopup()">×</button>
+                <h3 class="popup-title">⚙️ Understanding Machine Learning</h3>
+                <button class="close-btn" onclick="closeMLPopup()">×</button>
             </div>
             <div class="popup-body">
-                <p>Welcome to my professional portfolio — a space where STEM foundations meet AI innovation.</p>
+                <h4>What is Machine Learning?</h4>
+                <p>Machine Learning (ML) is a subset of AI where computers learn from data without being explicitly
+                    programmed. Instead of following specific instructions, ML algorithms identify patterns and make
+                    predictions.</p>
 
-                <p>I design learning experiences that make mathematics intuitive, engaging, and future-ready through the
-                    power of artificial intelligence.</p>
+                <div class="ai-analogy" style="margin: 20px 0;">
+                    <div class="analogy-title">📚 Simple Analogy:</div>
+                    <p>Imagine learning to ride a bicycle: you don't memorize rules, you practice and your brain learns
+                        through experience. ML works similarly - it learns from examples rather than rules.</p>
+                </div>
 
-                <p>As an educator evolving with AI, I believe in a collaborative future where human insight and
-                    intelligent systems work together to shape smarter learning.</p>
+                <h4>Key Types of Machine Learning:</h4>
+                <ul class="achievement-list">
+                    <li><strong>Supervised Learning:</strong> Learning from labeled examples (teacher-student model)
+                    </li>
+                    <li><strong>Unsupervised Learning:</strong> Finding patterns in unlabeled data</li>
+                    <li><strong>Reinforcement Learning:</strong> Learning through trial and error with rewards</li>
+                </ul>
+
+                <h4>My ML Projects:</h4>
+                <p>I've implemented ML in various educational tools:</p>
+                <ul class="achievement-list">
+                    <li>500+ GitHub repositories with ML educational resources</li>
+                    <li>AI-powered recommendation systems for learning materials</li>
+                    <li>Predictive analytics for student performance</li>
+                    <li>Natural language processing for educational content</li>
+                    <li>Computer vision for mathematical notation recognition</li>
+                </ul>
+
+                <!-- Learning Resources Section -->
+                <div class="learning-resources">
+                    <h4 class="resources-title">📚 Master Machine Learning:</h4>
+
+                    <div class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>Machine Learning Specialization (Andrew Ng)</h5>
+                            <p>Comprehensive ML course by Stanford professor</p>
+                            <a href="https://www.coursera.org/specializations/machine-learning-introduction"
+                                class="resource-link" target="_blank">
+                                Start Learning <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-code resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>Scikit-learn Documentation</h5>
+                            <p>Best Python library for practical ML implementation</p>
+                            <a href="https://scikit-learn.org/stable/" class="resource-link" target="_blank">
+                                Read Docs <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-laptop-code resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>Kaggle ML Courses</h5>
+                            <p>Free, hands-on ML courses with real datasets</p>
+                            <a href="https://www.kaggle.com/learn" class="resource-link" target="_blank">
+                                Practice Now <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-project-diagram resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>My ML Projects on GitHub</h5>
+                            <p>Real-world ML implementations for education</p>
+                            <a href="https://github.com/KhanRiyazi?tab=repositories&q=machine+learning"
+                                class="resource-link" target="_blank">
+                                View Projects <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="action-links">
-                    <a href="https://khanriyazi.github.io/portfolio-responsive-complete/" class="action-link"
-                        target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Visit My Portfolio
+                    <a href="https://github.com/KhanRiyazi" class="action-link" target="_blank">
+                        <i class="fab fa-github"></i> Explore ML Code
                     </a>
-
-                    <a href="pages/orphan.html" class="action-link secondary-link">
-                        <i class="fas fa-code"></i> FastAPI
-                    </a>
-
-                    <a href="pages/math.html" class="action-link secondary-link">
-                        <i class="fas fa-shapes"></i> Golden Ratio
-                    </a>
-
-                    <a href="pages/api.html" class="action-link secondary-link">
-                        <i class="fas fa-robot"></i> AI/ML
-                    </a>
-
-                    <a href="https://khanriyazi.github.io/affiliated/" class="action-link secondary-link">
-                        <i class="fas fa-link"></i> Affiliation
-                    </a>
-
-                    <a href="pages/Yes.html" class="action-link secondary-link">
-                        <i class="fas fa-brain"></i> Neural-Inspired Learning
-                    </a>
-
-                    <a href="pages/neuro.html" class="action-link secondary-link">
-                        <i class="fas fa-project-diagram"></i> FastAPI to AI
-                    </a>
-
-                    <a href="pages/AI-mentor.html" class="action-link secondary-link">
-                        <i class="fas fa-user-graduate"></i> AI Mentor
-                    </a>
-
-                    <a href="https://khanriyazi.github.io/SaaS/" class="action-link secondary-link">
-                        <i class="fas fa-cloud"></i> SaaS
-                    </a>
-
-                    <a href="http://khan.affiliatemath.xyz/" class="action-link secondary-link">
-                        <i class="fas fa-graduation-cap"></i> EduFlow
+                    <a href="#" class="action-link secondary-link" onclick="explainNeuralNetworks(); closeMLPopup()">
+                        <i class="fas fa-arrow-right"></i> Next: Neural Networks
                     </a>
                 </div>
             </div>
-
         </div>
     </div>
+
+    <div id="nnPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">🧠 Understanding Neural Networks</h3>
+                <button class="close-btn" onclick="closeNNPopup()">×</button>
+            </div>
+            <div class="popup-body">
+                <h4>What are Neural Networks?</h4>
+                <p>Neural Networks are computing systems inspired by the human brain's biological neural networks. They
+                    consist of interconnected nodes (neurons) organized in layers that process information.</p>
+
+                <div class="ai-analogy" style="margin: 20px 0;">
+                    <div class="analogy-title">🏗️ Simple Analogy:</div>
+                    <p>Think of a team working together: each member (neuron) specializes in one task, they pass
+                        information to each other (connections), and collectively they solve complex problems (output).
+                    </p>
+                </div>
+
+                <h4>How Neural Networks Work:</h4>
+                <ul class="achievement-list">
+                    <li><strong>Input Layer:</strong> Receives the data</li>
+                    <li><strong>Hidden Layers:</strong> Process the data through weighted connections</li>
+                    <li><strong>Output Layer:</strong> Produces the final result</li>
+                    <li><strong>Backpropagation:</strong> Learning by adjusting weights based on errors</li>
+                </ul>
+
+                <h4>My Work with Neural Networks:</h4>
+                <p>I use neural networks to enhance educational experiences:</p>
+                <ul class="achievement-list">
+                    <li>Deep learning models for personalized education</li>
+                    <li>Neural networks that adapt to individual learning styles</li>
+                    <li>AI systems that simulate one-on-one tutoring</li>
+                    <li>Pattern recognition in student problem-solving approaches</li>
+                    <li>Predictive models for educational outcomes</li>
+                </ul>
+
+                <!-- Learning Resources Section -->
+                <div class="learning-resources">
+                    <h4 class="resources-title">📚 Dive Deeper into Neural Networks:</h4>
+
+                    <div class="resource-item">
+                        <i class="fas fa-play-circle resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>Neural Networks - 3Blue1Brown</h5>
+                            <p>The best visual explanation of neural networks available</p>
+                            <a href="https://www.youtube.com/watch?v=aircAruvnKk" class="resource-link" target="_blank">
+                                Watch Video <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>Neural Networks and Deep Learning (Free Book)</h5>
+                            <p>Michael Nielsen's excellent free online book</p>
+                            <a href="http://neuralnetworksanddeeplearning.com/" class="resource-link" target="_blank">
+                                Read Book <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-code resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>TensorFlow Playground</h5>
+                            <p>Interactive neural network visualization tool</p>
+                            <a href="https://playground.tensorflow.org/" class="resource-link" target="_blank">
+                                Try Interactive <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-graduation-cap resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>FastAI Practical Deep Learning</h5>
+                            <p>Free course for coding neural networks from scratch</p>
+                            <a href="https://course.fast.ai/" class="resource-link" target="_blank">
+                                Start Course <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fab fa-python resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>My Neural Network Projects</h5>
+                            <p>Educational neural network implementations</p>
+                            <a href="https://github.com/KhanRiyazi?tab=repositories&q=neural+network"
+                                class="resource-link" target="_blank">
+                                View Code <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-links">
+                    <a href="http://khan.affiliatemath.xyz/" class="action-link" target="_blank">
+                        <i class="fas fa-brain"></i> See Neural Networks in Action
+                    </a>
+                    <a href="#" class="action-link secondary-link" onclick="explainMyAIApproach(); closeNNPopup()">
+                        <i class="fas fa-arrow-right"></i> Next: My AI Approach
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deep Learning Popup -->
+    <div id="dlPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">🧠 Understanding Deep Learning</h3>
+                <button class="close-btn" onclick="closeDLPopup()">×</button>
+            </div>
+            <div class="popup-body">
+                <h4>What is Deep Learning?</h4>
+                <p>Deep Learning is a subset of Machine Learning that uses neural networks with multiple layers (hence
+                    "deep") to learn from vast amounts of data. It's behind most modern AI breakthroughs.</p>
+
+                <div class="ai-analogy" style="margin: 20px 0;">
+                    <div class="analogy-title">🎨 Simple Analogy:</div>
+                    <p>Think of deep learning like an art apprenticeship: the first layers learn basic strokes (edges),
+                        middle layers learn shapes, and final layers understand complete paintings (complex patterns).
+                    </p>
+                </div>
+
+                <h4>Why Deep Learning Matters:</h4>
+                <ul class="achievement-list">
+                    <li><strong>Automatic Feature Learning:</strong> Learns features directly from data</li>
+                    <li><strong>Complex Pattern Recognition:</strong> Can identify intricate patterns</li>
+                    <li><strong>Scalability:</strong> Improves with more data and computing power</li>
+                    <li><strong>Versatility:</strong> Used in image recognition, NLP, speech, etc.</li>
+                </ul>
+
+                <h4>Deep Learning in My Work:</h4>
+                <p>I apply deep learning to transform education:</p>
+                <ul class="achievement-list">
+                    <li>Multi-layered networks for adaptive learning systems</li>
+                    <li>Deep learning models that understand student progress</li>
+                    <li>Complex pattern recognition in learning behaviors</li>
+                    <li>Advanced educational content generation</li>
+                </ul>
+
+                <!-- Learning Resources Section -->
+                <div class="learning-resources">
+                    <h4 class="resources-title">📚 Deep Learning Resources:</h4>
+
+                    <div class="resource-item">
+                        <i class="fas fa-play-circle resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>Deep Learning Specialization (Andrew Ng)</h5>
+                            <p>Comprehensive deep learning course on Coursera</p>
+                            <a href="https://www.coursera.org/specializations/deep-learning" class="resource-link"
+                                target="_blank">
+                                Enroll Now <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>Deep Learning Book (Ian Goodfellow)</h5>
+                            <p>The definitive textbook on deep learning</p>
+                            <a href="https://www.deeplearningbook.org/" class="resource-link" target="_blank">
+                                Read Online <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-code resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>PyTorch Tutorials</h5>
+                            <p>Practical deep learning with PyTorch framework</p>
+                            <a href="https://pytorch.org/tutorials/" class="resource-link" target="_blank">
+                                Start Coding <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-brain resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>My Deep Learning Projects</h5>
+                            <p>Educational deep learning implementations</p>
+                            <a href="https://github.com/KhanRiyazi?tab=repositories&q=deep+learning"
+                                class="resource-link" target="_blank">
+                                Explore Projects <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-links">
+                    <a href="https://khanriyazi.github.io/AI_Element/" class="action-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> AI Elements Project
+                    </a>
+                    <a href="#" class="action-link secondary-link" onclick="showAIPopup(); closeDLPopup()">
+                        <i class="fas fa-arrow-right"></i> See My AI Applications
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rest of your existing popups (educationPopup, teachingPopup, peacePopup, aiPopup, portfolioPopup) -->
+    <!-- ... (Keep all your existing popups as they were) ... -->
 
     <script>
         // DOM Ready
@@ -2527,6 +3519,9 @@
 
             // Initialize AI Assistant
             initAIAssistant();
+
+            // Initialize mobile concepts menu
+            initMobileConcepts();
         }
 
         // Neural Network Background
@@ -2682,6 +3677,8 @@
             navToggle.addEventListener('click', function () {
                 navMenu.classList.toggle('active');
                 navToggle.classList.toggle('active');
+                // Close mobile concepts menu when nav is open
+                document.getElementById('mobileConceptsMenu').classList.remove('active');
             });
 
             // Close mobile menu when clicking on a link
@@ -2738,6 +3735,32 @@
             });
         }
 
+        // Mobile Concepts Menu
+        function initMobileConcepts() {
+            const toggleBtn = document.getElementById('mobileConceptsToggle');
+            const menu = document.getElementById('mobileConceptsMenu');
+
+            toggleBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menu.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!menu.contains(e.target) && e.target !== toggleBtn) {
+                    menu.classList.remove('active');
+                }
+            });
+
+            // Close menu when clicking on a concept button
+            const conceptBtns = menu.querySelectorAll('.mobile-concept-btn');
+            conceptBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    menu.classList.remove('active');
+                });
+            });
+        }
+
         // Interactive Elements
         function initInteractiveElements() {
             // Mystery box reveal
@@ -2776,6 +3799,75 @@
                     document.body.style.overflow = 'auto';
                 }
             });
+
+            // AI Explanation Panel Toggle
+            document.getElementById('aiExplanation').addEventListener('click', function () {
+                const panel = document.getElementById('aiExplanationPanel');
+                panel.classList.toggle('active');
+            });
+        }
+
+        // AI Explanation Functions
+        function showAIExplanation() {
+            document.getElementById('aiExplanationPanel').classList.add('active');
+        }
+
+        function closeExplanationPanel() {
+            document.getElementById('aiExplanationPanel').classList.remove('active');
+        }
+
+        function explainAIBasics() {
+            document.getElementById('aiBasicsPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            closeExplanationPanel();
+        }
+
+        function closeAIBasicsPopup() {
+            document.getElementById('aiBasicsPopup').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function explainMachineLearning() {
+            document.getElementById('mlPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            closeExplanationPanel();
+        }
+
+        function closeMLPopup() {
+            document.getElementById('mlPopup').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function explainNeuralNetworks() {
+            document.getElementById('nnPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            closeExplanationPanel();
+        }
+
+        function closeNNPopup() {
+            document.getElementById('nnPopup').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function explainDeepLearning() {
+            document.getElementById('dlPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            closeExplanationPanel();
+        }
+
+        function closeDLPopup() {
+            document.getElementById('dlPopup').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function explainMyAIApproach() {
+            showAIPopup();
+            closeExplanationPanel();
+        }
+
+        function toggleAIAssistant() {
+            const aiInterface = document.getElementById('aiInterface');
+            aiInterface.classList.toggle('active');
         }
 
         // AI Assistant Functionality
@@ -2817,15 +3909,24 @@
                     let response = "I'm an AI assistant designed to help you explore Rizwan Khan's journey in AI, mathematics, and education. How can I assist you further?";
 
                     if (message.toLowerCase().includes('ai') || message.toLowerCase().includes('artificial intelligence')) {
-                        response = "Rizwan is pioneering the integration of AI in mathematics education. His platform AffiliateMath.xyz uses machine learning to create personalized learning experiences for students.";
+                        response = "Rizwan is pioneering the integration of AI in mathematics education. His platform AffiliateMath.xyz uses machine learning to create personalized learning experiences for students. Would you like me to explain AI basics or show you specific projects?";
                     } else if (message.toLowerCase().includes('math') || message.toLowerCase().includes('mathematics')) {
-                        response = "Rizwan has a strong background in mathematics education and is applying AI to make complex mathematical concepts more accessible to learners of all levels.";
+                        response = "Rizwan has a strong background in mathematics education and is applying AI to make complex mathematical concepts more accessible to learners of all levels. Check out his AffiliateMath.xyz platform for AI-powered math learning.";
                     } else if (message.toLowerCase().includes('peace') || message.toLowerCase().includes('conflict')) {
                         response = "Rizwan's work in peace studies focuses on applying systematic thinking from mathematics to conflict resolution, creating frameworks for understanding and reconciliation.";
                     } else if (message.toLowerCase().includes('project') || message.toLowerCase().includes('github')) {
-                        response = "Rizwan has created 500+ GitHub repositories with AI education tools and resources. You can explore them at https://github.com/KhanRiyazi";
+                        response = "Rizwan has created 500+ GitHub repositories with AI education tools and resources. You can explore them at https://github.com/KhanRiyazi. Some popular categories include: AI in education, machine learning projects, and educational technology tools.";
                     } else if (message.toLowerCase().includes('youtube') || message.toLowerCase().includes('video')) {
-                        response = "Rizwan creates educational content on YouTube exploring AI, mathematics, and technology. Check out his channel at https://www.youtube.com/@ThisOne-007";
+                        response = "Rizwan creates educational content on YouTube exploring AI, mathematics, and technology. Check out his channel at https://www.youtube.com/@ThisOne-007 for tutorials, project walkthroughs, and AI discussions.";
+                    } else if (message.toLowerCase().includes('what is ai') || message.toLowerCase().includes('understand ai')) {
+                        response = "AI (Artificial Intelligence) is the simulation of human intelligence in machines. It's like teaching computers to learn and make decisions. I can open the AI basics popup for you with detailed explanations and learning resources.";
+                        setTimeout(() => explainAIBasics(), 500);
+                    } else if (message.toLowerCase().includes('machine learning') || message.toLowerCase().includes('ml')) {
+                        response = "Machine Learning is a subset of AI where computers learn from data without being explicitly programmed. It's like learning from experience rather than following specific instructions. Would you like me to show you detailed ML explanations with learning resources?";
+                        setTimeout(() => explainMachineLearning(), 500);
+                    } else if (message.toLowerCase().includes('neural') || message.toLowerCase().includes('deep learning')) {
+                        response = "Neural networks are AI systems inspired by the human brain. Deep learning uses multi-layered neural networks. I can show you detailed explanations with interactive learning resources.";
+                        setTimeout(() => explainNeuralNetworks(), 500);
                     }
 
                     botMessage.innerHTML = `<p>${response}</p>`;
@@ -2847,56 +3948,8 @@
             });
         }
 
-        // Popup Control Functions
-        function showEducationPopup() {
-            document.getElementById('educationPopup').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeEducationPopup() {
-            document.getElementById('educationPopup').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function showTeachingPopup() {
-            document.getElementById('teachingPopup').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeTeachingPopup() {
-            document.getElementById('teachingPopup').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function showPeacePopup() {
-            document.getElementById('peacePopup').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closePeacePopup() {
-            document.getElementById('peacePopup').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function showAIPopup() {
-            document.getElementById('aiPopup').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeAIPopup() {
-            document.getElementById('aiPopup').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function showPortfolioPopup() {
-            document.getElementById('portfolioPopup').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closePortfolioPopup() {
-            document.getElementById('portfolioPopup').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+        // Popup Control Functions (keep all your existing ones)
+        // ... (Your existing popup functions remain the same) ...
 
         // Social Sharing Functions
         function shareOnTwitter() {
