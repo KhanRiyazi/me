@@ -219,7 +219,7 @@
         /* AI Explanation Panel */
         .ai-explanation-panel {
             position: fixed;
-            bottom: 100px;
+            bottom: 150px;
             left: 30px;
             width: 350px;
             background: var(--bg-card);
@@ -315,7 +315,7 @@
         /* AI API Interface */
         .ai-interface {
             position: fixed;
-            bottom: 100px;
+            bottom: 150px;
             right: 30px;
             width: 300px;
             background: var(--bg-card);
@@ -392,15 +392,15 @@
             cursor: pointer;
         }
 
-        /* AI Concept Buttons */
+        /* AI Concept Buttons - Fixed positioning */
         .ai-concept-buttons {
             position: fixed;
-            top: 50%;
+            top: 35%;
             right: 30px;
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
             z-index: 1000;
         }
 
@@ -499,7 +499,7 @@
             transition: width 0.3s ease;
         }
 
-        /* Floating Action Buttons */
+        /* Floating Action Buttons - Fixed positioning */
         .floating-actions {
             position: fixed;
             bottom: 30px;
@@ -1917,7 +1917,7 @@
             color: var(--ai-glow-color);
         }
 
-        /* Mobile Responsiveness */
+        /* Mobile Responsiveness - IMPROVED */
         @media screen and (max-width: 1200px) {
             .container {
                 padding: 0 40px;
@@ -1940,18 +1940,25 @@
 
             .mobile-ai-concepts {
                 display: block;
+                bottom: 120px;
+                right: 20px;
             }
 
             .ai-explanation-panel {
                 left: 20px;
                 width: calc(100% - 40px);
-                bottom: 120px;
+                bottom: 180px;
             }
 
             .ai-interface {
                 right: 20px;
                 width: calc(100% - 40px);
-                bottom: 120px;
+                bottom: 180px;
+            }
+
+            .floating-actions {
+                bottom: 30px;
+                right: 20px;
             }
         }
 
@@ -2151,7 +2158,7 @@
                 width: calc(100% - 40px);
                 right: 20px;
                 left: 20px;
-                bottom: 90px;
+                bottom: 140px;
             }
 
             .popup-content {
@@ -2289,6 +2296,29 @@
             .resource-content p {
                 font-size: 0.8rem;
             }
+
+            /* Mobile button positioning fixes */
+            .mobile-ai-concepts {
+                bottom: 110px;
+                right: 15px;
+            }
+
+            .floating-actions {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .ai-interface,
+            .ai-explanation-panel {
+                bottom: 130px;
+            }
+
+            .viral-counter {
+                bottom: 15px;
+                left: 15px;
+                font-size: 0.75rem;
+                padding: 6px 10px;
+            }
         }
 
         @media screen and (max-width: 360px) {
@@ -2316,19 +2346,37 @@
             }
 
             .floating-actions {
-                bottom: 15px;
-                right: 15px;
+                bottom: 12px;
+                right: 12px;
+                gap: 8px;
+            }
+
+            .floating-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
 
             .viral-counter {
-                bottom: 15px;
-                left: 15px;
+                bottom: 12px;
+                left: 12px;
+                padding: 5px 8px;
             }
 
             .mobile-concepts-toggle {
                 width: 45px;
                 height: 45px;
                 font-size: 1.3rem;
+            }
+
+            .mobile-ai-concepts {
+                bottom: 100px;
+                right: 12px;
+            }
+
+            .ai-interface,
+            .ai-explanation-panel {
+                bottom: 120px;
             }
         }
 
@@ -2358,6 +2406,41 @@
             .tooltip {
                 display: none;
             }
+        }
+
+        /* Additional mobile improvements */
+        @media screen and (max-height: 600px) {
+            .hero-section {
+                min-height: auto;
+                padding: 120px 20px 60px;
+            }
+
+            .profile-section {
+                gap: 20px;
+                margin-bottom: 20px;
+            }
+
+            .hero-stats {
+                margin-top: 10px;
+            }
+
+            .cta-section {
+                margin-top: 20px;
+                gap: 10px;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        /* Prevent horizontal scrolling */
+        .container,
+        .header-content,
+        .video-showcase,
+        .journey-timeline {
+            max-width: 100%;
+            overflow-x: hidden;
         }
     </style>
 </head>
@@ -2863,7 +2946,7 @@
 
                 <div class="video-showcase">
                     <div class="video-container">
-                        <iframe src="https://youtube.com/shorts/GIeTWgeTkbI?si=GJN7bZQcEZyx1P-X"
+                        <iframe src="https://www.youtube.com/embed/AgElOQfhu0Y?si=LM2x7kkBBlw0JPh6"
                             title="Mathematics Education in the Age of AI"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
@@ -3522,6 +3605,9 @@
 
             // Initialize mobile concepts menu
             initMobileConcepts();
+
+            // Close mobile concepts when clicking outside
+            initCloseOnClickOutside();
         }
 
         // Neural Network Background
@@ -3593,6 +3679,12 @@
             window.addEventListener('resize', function () {
                 width = canvas.width = window.innerWidth;
                 height = canvas.height = window.innerHeight;
+
+                // Close mobile menu on resize
+                if (window.innerWidth > 768) {
+                    document.getElementById('navMenu').classList.remove('active');
+                    document.getElementById('navToggle').classList.remove('active');
+                }
             });
 
             // Start animation
@@ -3745,19 +3837,33 @@
                 menu.classList.toggle('active');
             });
 
-            // Close menu when clicking outside
-            document.addEventListener('click', function (e) {
-                if (!menu.contains(e.target) && e.target !== toggleBtn) {
-                    menu.classList.remove('active');
-                }
-            });
-
             // Close menu when clicking on a concept button
             const conceptBtns = menu.querySelectorAll('.mobile-concept-btn');
             conceptBtns.forEach(btn => {
                 btn.addEventListener('click', function () {
                     menu.classList.remove('active');
                 });
+            });
+        }
+
+        // Close mobile concepts when clicking outside
+        function initCloseOnClickOutside() {
+            document.addEventListener('click', function (e) {
+                const menu = document.getElementById('mobileConceptsMenu');
+                const toggleBtn = document.getElementById('mobileConceptsToggle');
+
+                if (!menu.contains(e.target) && e.target !== toggleBtn) {
+                    menu.classList.remove('active');
+                }
+
+                // Also close nav menu when clicking outside
+                const navMenu = document.getElementById('navMenu');
+                const navToggle = document.getElementById('navToggle');
+
+                if (window.innerWidth <= 768 && !navMenu.contains(e.target) && e.target !== navToggle) {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
             });
         }
 
@@ -3787,6 +3893,17 @@
                         document.body.style.overflow = 'auto';
                     }
                 });
+
+                // Close AI panels when clicking outside
+                const aiPanels = document.querySelectorAll('.ai-explanation-panel.active, .ai-interface.active');
+                aiPanels.forEach(panel => {
+                    if (!panel.contains(event.target) &&
+                        !event.target.closest('.ai-explanation') &&
+                        !event.target.closest('.ai-assistant') &&
+                        !event.target.closest('.concept-btn')) {
+                        panel.classList.remove('active');
+                    }
+                });
             });
 
             // Close popups with Escape key
@@ -3797,6 +3914,10 @@
                         popup.style.display = 'none';
                     });
                     document.body.style.overflow = 'auto';
+
+                    // Also close AI panels
+                    document.getElementById('aiExplanationPanel').classList.remove('active');
+                    document.getElementById('aiInterface').classList.remove('active');
                 }
             });
 
@@ -3804,6 +3925,16 @@
             document.getElementById('aiExplanation').addEventListener('click', function () {
                 const panel = document.getElementById('aiExplanationPanel');
                 panel.classList.toggle('active');
+                // Close other panel if open
+                document.getElementById('aiInterface').classList.remove('active');
+            });
+
+            // AI Assistant Toggle
+            document.getElementById('aiAssistant').addEventListener('click', function () {
+                const panel = document.getElementById('aiInterface');
+                panel.classList.toggle('active');
+                // Close other panel if open
+                document.getElementById('aiExplanationPanel').classList.remove('active');
             });
         }
 
@@ -3981,6 +4112,31 @@
                 document.body.removeChild(textArea);
                 alert('Page link copied to clipboard!');
             });
+        }
+
+        // Add function to show portfolio popup (placeholder)
+        function showPortfolioPopup() {
+            alert('Portfolio popup would open here. Implement your portfolio popup function.');
+        }
+
+        // Add function to show AI popup (placeholder)
+        function showAIPopup() {
+            alert('AI popup would open here. Implement your AI popup function.');
+        }
+
+        // Add function to show education popup (placeholder)
+        function showEducationPopup() {
+            alert('Education popup would open here. Implement your education popup function.');
+        }
+
+        // Add function to show teaching popup (placeholder)
+        function showTeachingPopup() {
+            alert('Teaching popup would open here. Implement your teaching popup function.');
+        }
+
+        // Add function to show peace popup (placeholder)
+        function showPeacePopup() {
+            alert('Peace popup would open here. Implement your peace popup function.');
         }
     </script>
 </body>

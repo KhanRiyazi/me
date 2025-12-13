@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Mastery Hub | Official Learning & Earning Resources</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --accent: #8b5cf6;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-success {
+            background-color: var(--secondary);
+        }
+
+        .btn-success:hover {
+            background-color: #0da271;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 5px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin-right: 12px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            margin-bottom: 25px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-shape {
+            width: 450px;
+            height: 450px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            position: relative;
+            animation: morphing 15s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-shape i {
+            font-size: 12rem;
+            color: white;
+            opacity: 0.8;
+        }
+
+        @keyframes morphing {
+            0% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+
+            25% {
+                border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+            }
+
+            50% {
+                border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+            }
+
+            75% {
+                border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+            }
+
+            100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+        }
+
+        /* Resource Categories */
+        .categories {
+            background-color: white;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 50px;
+        }
+
+        .category-tab {
+            padding: 12px 24px;
+            background-color: var(--light);
+            border: 2px solid #e5e7eb;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-tab:hover,
+        .category-tab.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .resource-card {
+            background-color: var(--light);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid #e5e7eb;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .resource-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .resource-icon i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .resource-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .resource-type {
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .resource-description {
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .resource-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background-color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--dark);
+            border: 1px solid #e5e7eb;
+            transition: var(--transition);
+        }
+
+        .resource-link:hover {
+            background-color: rgba(37, 99, 235, 0.05);
+            border-color: var(--primary);
+        }
+
+        .resource-link i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--secondary);
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Roadmap Section */
+        .roadmap {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.95), rgba(31, 41, 55, 0.98));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roadmap h2 {
+            color: white;
+        }
+
+        .roadmap h2:after {
+            background-color: var(--secondary);
+        }
+
+        .roadmap-steps {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .roadmap-step {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-right: 25px;
+            z-index: 2;
+        }
+
+        .step-content {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .step-description {
+            color: #d1d5db;
+        }
+
+        /* Earnings Calculator */
+        .calculator {
+            background-color: white;
+        }
+
+        .calculator-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .calculator-visual {
+            flex: 1;
+        }
+
+        .calculator-box {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+        }
+
+        .calculator-result {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        .calculator-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        select:focus,
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--light);
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .info-icon i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            min-height: 150px;
+            resize: vertical;
+            font-family: 'Inter', sans-serif;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: #d1d5db;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo .logo-text {
+            color: white;
+        }
+
+        .footer-links h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #374151;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            h2 {
+                font-size: 2.3rem;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
+                margin-bottom: 50px;
+            }
+
+            .hero-btns {
+                justify-content: center;
+            }
+
+            .hero-shape {
+                width: 350px;
+                height: 350px;
+            }
+
+            .calculator-container {
+                flex-direction: column;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 10px;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .roadmap-step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .hero {
+                padding-top: 140px;
+            }
+
+            .hero-shape {
+                width: 280px;
+                height: 280px;
+            }
+
+            .hero-shape i {
+                font-size: 8rem;
+            }
+
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .calculator-box {
+                padding: 25px;
+            }
+
+            .calculator-result {
+                font-size: 2.8rem;
+            }
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="logo-text">IT<span>Mastery</span>Hub</div>
+            </a>
+
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#calculator">Earnings</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Master IT Skills & Build Your Career</h1>
+                    <p>Access verified, official resources from top tech companies and platforms. Learn in-demand
+                        skills, earn certifications, and start making money in the IT industry.</p>
+                    <div class="hero-btns">
+                        <a href="#resources" class="btn"><i class="fas fa-graduation-cap"></i> Start Learning</a>
+                        <a href="#calculator" class="btn btn-success"><i class="fas fa-dollar-sign"></i> Calculate
+                            Earnings</a>
+                        <a href="#roadmap" class="btn btn-secondary"><i class="fas fa-map-signs"></i> Career Roadmap</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-shape">
+                        <i class="fas fa-server"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="categories" id="resources">
+        <div class="container">
+            <h2>Official Learning Resources</h2>
+
+            <div class="category-tabs">
+                <div class="category-tab active" data-category="all">All Categories</div>
+                <div class="category-tab" data-category="cloud">Cloud Computing</div>
+                <div class="category-tab" data-category="web">Web Development</div>
+                <div class="category-tab" data-category="cyber">Cybersecurity</div>
+                <div class="category-tab" data-category="data">Data Science</div>
+            </div>
+
+            <div class="resources-grid" id="resourcesGrid">
+                <!-- Cloud Computing Resources -->
+                <div class="resource-card" data-category="cloud">
+                    <div class="verified-badge">
+                        <i class="fas fa-check-circle"></i> Official & Verified
+                    </div>
+                    <div class="resource-header">
+                        <div class="resource-icon">
+                            <i class="fab fa-aws"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">AWS Training</h3>
+                            <div class="resource-type">Cloud Platform</div>
+                        </div>
+                    </div>
+                    <p class="resource-description">Official Amazon Web Services training and certification programs to
+                        build cloud expertise.</p>
+                    <div class="resource-links">
+                        <a href="https://aws.amazon.com/training/" class="resource-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>AWS Training & Certification Portal</span>
+                        </a>
+                        <a href="https://aws.amazon.com/certification/" class="resource-link" target="_blank">
+                            <i class="fas fa-award"></i>
+                            <span>Official AWS Certification Paths</span>
+                        </a>
+                        <a href="https://www.aws.training/LearningLibrary" class="resource-link" target="_blank">
+                            <i class="fas fa-book-open"></i>
+                            <span>Free Digital Training Library</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-category="cloud">
+                    <div class="verified-badge">
+                        <i class="fas fa-check-circle"></i> Official & Verified
+                    </div>
+                    <div class="resource-header">
+                        <div class="resource-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">Microsoft Azure</h3>
+                            <div class="resource-type">Cloud Platform</div>
+                        </div>
+                    </div>
+                    <p class="resource-description">Microsoft's official learning paths for Azure cloud services and
+                        certifications.</p>
+                    <div class="resource-links">
+                        <a href="https://learn.microsoft.com/en-us/training/azure/" class="resource-link"
+                            target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>Microsoft Learn Azure Modules</span>
+                        </a>
+                        <a href="https://docs.microsoft.com/en-us/certifications/azure/" class="resource-link"
+                            target="_blank">
+                            <i class="fas fa-award"></i>
+                            <span>Azure Certification Guide</span>
+                        </a>
+                        <a href="https://azure.microsoft.com/en-us/free/" class="resource-link" target="_blank">
+                            <i class="fas fa-gem"></i>
+                            <span>Free Azure Account & Services</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Web Development Resources -->
+                <div class="resource-card" data-category="web">
+                    <div class="verified-badge">
+                        <i class="fas fa-check-circle"></i> Official & Verified
+                    </div>
+                    <div class="resource-header">
+                        <div class="resource-icon">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">MDN Web Docs</h3>
+                            <div class="resource-type">Web Development</div>
+                        </div>
+                    </div>
+                    <p class="resource-description">Mozilla's definitive resource for web developers, maintained by the
+                        creators of Firefox.</p>
+                    <div class="resource-links">
+                        <a href="https://developer.mozilla.org/en-US/" class="resource-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>MDN Web Docs Main Portal</span>
+                        </a>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" class="resource-link"
+                            target="_blank">
+                            <i class="fas fa-code"></i>
+                            <span>JavaScript Official Documentation</span>
+                        </a>
+                        <a href="https://developer.mozilla.org/en-US/docs/Learn" class="resource-link" target="_blank">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Structured Learning Paths</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-category="web">
+                    <div class="verified-badge">
+                        <i class="fas fa-check-circle"></i> Official & Verified
+                    </div>
+                    <div class="resource-header">
+                        <div class="resource-icon">
+                            <i class="fab fa-react"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">React Official</h3>
+                            <div class="resource-type">Frontend Framework</div>
+                        </div>
+                    </div>
+                    <p class="resource-description">Official React documentation and learning resources maintained by
+                        Facebook's team.</p>
+                    <div class="resource-links">
+                        <a href="https://reactjs.org/docs/getting-started.html" class="resource-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>React Official Documentation</span>
+                        </a>
+                        <a href="https://reactjs.org/tutorial/tutorial.html" class="resource-link" target="_blank">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Interactive Tutorial</span>
+                        </a>
+                        <a href="https://github.com/facebook/react" class="resource-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            <span>Official GitHub Repository</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cybersecurity Resources -->
+                <div class="resource-card" data-category="cyber">
+                    <div class="verified-badge">
+                        <i class="fas fa-check-circle"></i> Official & Verified
+                    </div>
+                    <div class="resource-header">
+                        <div class="resource-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">Cybersecurity & Infrastructure</h3>
+                            <div class="resource-type">Security Agency</div>
+                        </div>
+                    </div>
+                    <p class="resource-description">CISA's cybersecurity resources, tools, and training for
+                        professionals and organizations.</p>
+                    <div class="resource-links">
+                        <a href="https://www.cisa.gov/cybersecurity" class="resource-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>CISA Cybersecurity Portal</span>
+                        </a>
+                        <a href="https://www.cisa.gov/cybersecurity-training-exercises" class="resource-link"
+                            target="_blank">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>Free Training & Exercises</span>
+                        </a>
+                        <a href="https://www.cisa.gov/news-events/cybersecurity-advisories" class="resource-link"
+                            target="_blank">
+                            <i class="fas fa-bell"></i>
+                            <span>Latest Security Advisories</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Data Science Resources -->
+                <div class="resource-card" data-category="data">
+                    <div class="verified-badge">
+                        <i class="fas fa-check-circle"></i> Official & Verified
+                    </div>
+                    <div class="resource-header">
+                        <div class="resource-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">Kaggle Learn</h3>
+                            <div class="resource-type">Data Science Platform</div>
+                        </div>
+                    </div>
+                    <p class="resource-description">Google's hands-on data science and machine learning courses with
+                        practical exercises.</p>
+                    <div class="resource-links">
+                        <a href="https://www.kaggle.com/learn" class="resource-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>Kaggle Learning Paths</span>
+                        </a>
+                        <a href="https://www.kaggle.com/learn/overview" class="resource-link" target="_blank">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Interactive Coding Courses</span>
+                        </a>
+                        <a href="https://www.kaggle.com/datasets" class="resource-link" target="_blank">
+                            <i class="fas fa-database"></i>
+                            <span>Practice Datasets Repository</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <h2>IT Career Roadmap</h2>
+
+            <div class="roadmap-steps">
+                <div class="roadmap-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Foundation & Basics</h3>
+                        <p class="step-description">Start with fundamental IT concepts, basic programming (Python
+                            recommended), and computer networking principles. Complete free introductory courses from
+                            official platforms.</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Specialization Choice</h3>
+                        <p class="step-description">Choose your path: Cloud Computing, Web Development, Cybersecurity,
+                            Data Science, or DevOps. Focus on official certifications from recognized industry leaders.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="roadmap-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Hands-on Practice</h3>
+                        <p class="step-description">Build projects, use free tiers of cloud services, contribute to open
+                            source, and create a portfolio. Practical experience is crucial for landing your first role.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="roadmap-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Certification & Job Search</h3>
+                        <p class="step-description">Earn industry-recognized certifications, optimize your
+                            resume/LinkedIn, network with professionals, and apply for entry-level positions or
+                            internships.</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Career Advancement</h3>
+                        <p class="step-description">Continue learning advanced topics, earn senior-level certifications,
+                            specialize further, and consider freelance/consulting opportunities for increased earnings.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Earnings Calculator -->
+    <section class="calculator" id="calculator">
+        <div class="container">
+            <h2>IT Earnings Calculator</h2>
+
+            <div class="calculator-container">
+                <div class="calculator-visual">
+                    <div class="calculator-box">
+                        <h3>Estimated Monthly Earnings</h3>
+                        <div class="calculator-result" id="earningsResult">$4,500</div>
+                        <p>Based on your skills, experience, and location</p>
+                    </div>
+                </div>
+
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label for="skillLevel">Skill Level</label>
+                        <select id="skillLevel">
+                            <option value="3000">Beginner (0-2 years)</option>
+                            <option value="4500" selected>Intermediate (2-5 years)</option>
+                            <option value="6500">Advanced (5-8 years)</option>
+                            <option value="9000">Expert (8+ years)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="specialization">Specialization</label>
+                        <select id="specialization">
+                            <option value="1.0">Web Development</option>
+                            <option value="1.2" selected>Cloud Computing</option>
+                            <option value="1.3">Cybersecurity</option>
+                            <option value="1.25">Data Science</option>
+                            <option value="1.15">DevOps</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="certifications">Certifications</label>
+                        <select id="certifications">
+                            <option value="1.0">None</option>
+                            <option value="1.1" selected>1-2 Certifications</option>
+                            <option value="1.25">3-4 Certifications</option>
+                            <option value="1.4">5+ Certifications</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Region</label>
+                        <select id="location">
+                            <option value="0.8">Asia (excluding Japan/Singapore)</option>
+                            <option value="0.9">South America / Eastern Europe</option>
+                            <option value="1.0" selected>Western Europe / Canada</option>
+                            <option value="1.2">United States</option>
+                            <option value="1.3">Switzerland / Norway / US Tech Hubs</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-success" id="calculateBtn">
+                        <i class="fas fa-calculator"></i> Calculate Earnings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Have questions about learning paths or resources? Reach out to us for guidance.</p>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>support@itmasteryhub.com</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <h4>Resource Suggestions</h4>
+                            <p>Found a great official learning resource? Let us know!</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div>
+                            <h4>Mission</h4>
+                            <p>We only list verified, official resources from recognized institutions and companies.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Your Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="you@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message"
+                            placeholder="Tell us about your learning goals or suggest a resource..."></textarea>
+                    </div>
+
+                    <button class="btn" id="submitMessage">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#" class="logo">
+                        <div class="logo-icon"><i class="fas fa-laptop-code"></i></div>
+                        <div class="logo-text">IT<span>Mastery</span>Hub</div>
+                    </a>
+                    <p>Your trusted guide to official IT learning resources and career advancement.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#resources">Learning Resources</a></li>
+                        <li><a href="#roadmap">Career Roadmap</a></li>
+                        <li><a href="#calculator">Earnings Calculator</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Top Resources</h3>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/training/" target="_blank">AWS Training</a></li>
+                        <li><a href="https://learn.microsoft.com/" target="_blank">Microsoft Learn</a></li>
+                        <li><a href="https://developer.mozilla.org/" target="_blank">MDN Web Docs</a></li>
+                        <li><a href="https://www.cisa.gov/cybersecurity" target="_blank">CISA Cybersecurity</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Resource Guidelines</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 IT Mastery Hub. All rights reserved. | All resources linked are property of their
+                    respective owners.</p>
+                <p>We are not affiliated with any companies mentioned. This site only aggregates official learning
+                    resources.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.innerHTML = navLinks.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Resource Category Filtering
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const resourceCards = document.querySelectorAll('.resource-card');
+
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                const category = tab.getAttribute('data-category');
+
+                // Show/hide resources based on category
+                resourceCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Earnings Calculator
+        const calculateBtn = document.getElementById('calculateBtn');
+        const earningsResult = document.getElementById('earningsResult');
+
+        calculateBtn.addEventListener('click', () => {
+            const base = parseInt(document.getElementById('skillLevel').value);
+            const specialization = parseFloat(document.getElementById('specialization').value);
+            const certifications = parseFloat(document.getElementById('certifications').value);
+            const location = parseFloat(document.getElementById('location').value);
+
+            // Calculate earnings
+            let earnings = base * specialization * certifications * location;
+
+            // Format as currency
+            earningsResult.textContent = '$' + earnings.toLocaleString('en-US', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+
+            // Add animation effect
+            earningsResult.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                earningsResult.style.transform = 'scale(1)';
+            }, 300);
+        });
+
+        // Contact Form Submission
+        const submitMessage = document.getElementById('submitMessage');
+
+        submitMessage.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !email || !message) {
+                alert('Please fill in all fields before sending.');
+                return;
+            }
+
+            // In a real application, this would send data to a server
+            alert('Thank you for your message! We\'ll get back to you soon.');
+
+            // Clear form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+
+            // Show success feedback
+            submitMessage.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            submitMessage.style.backgroundColor = '#10b981';
+
+            setTimeout(() => {
+                submitMessage.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                submitMessage.style.backgroundColor = '';
+            }, 3000);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
