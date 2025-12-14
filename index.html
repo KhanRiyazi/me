@@ -1875,6 +1875,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: fixed;
+            top: 315px;
+            right: 15px;
+
         }
 
         .mobile-concepts-menu {
@@ -1917,7 +1921,9 @@
             color: var(--ai-glow-color);
         }
 
-        /* Mobile Responsiveness - IMPROVED */
+        /* ============ MOBILE RESPONSIVE FIXES ============ */
+        /* Button positioning fixes for all mobile sizes */
+
         @media screen and (max-width: 1200px) {
             .container {
                 padding: 0 40px;
@@ -1940,25 +1946,31 @@
 
             .mobile-ai-concepts {
                 display: block;
-                bottom: 300px;
+                bottom: 180px;
                 right: 20px;
             }
 
             .ai-explanation-panel {
                 left: 20px;
                 width: calc(100% - 40px);
-                bottom: 180px;
+                bottom: 230px;
             }
 
             .ai-interface {
                 right: 20px;
                 width: calc(100% - 40px);
-                bottom: 180px;
+                bottom: 230px;
             }
 
             .floating-actions {
                 bottom: 30px;
                 right: 20px;
+                gap: 10px;
+            }
+
+            .viral-counter {
+                bottom: 30px;
+                left: 20px;
             }
         }
 
@@ -2134,8 +2146,9 @@
                 display: none;
             }
 
+            /* Mobile button positioning fixes */
             .floating-actions {
-                bottom: 20px;
+                bottom: 100px;
                 right: 20px;
                 gap: 10px;
             }
@@ -2147,7 +2160,7 @@
             }
 
             .viral-counter {
-                bottom: 20px;
+                bottom: 30px;
                 left: 20px;
                 font-size: 0.8rem;
                 padding: 8px 12px;
@@ -2158,7 +2171,12 @@
                 width: calc(100% - 40px);
                 right: 20px;
                 left: 20px;
-                bottom: 140px;
+                bottom: 190px;
+            }
+
+            .mobile-ai-concepts {
+                bottom: 160px;
+                right: 20px;
             }
 
             .popup-content {
@@ -2297,24 +2315,25 @@
                 font-size: 0.8rem;
             }
 
-            /* Mobile button positioning fixes */
+            /* Mobile button positioning fixes - NO OVERLAP */
             .mobile-ai-concepts {
-                bottom: 110px;
+                bottom: 150px;
                 right: 15px;
             }
 
             .floating-actions {
-                bottom: 55px;
-                right: 407px;
+                bottom: 85px;
+                right: 15px;
+                gap: 8px;
             }
 
             .ai-interface,
             .ai-explanation-panel {
-                bottom: 130px;
+                bottom: 200px;
             }
 
             .viral-counter {
-                bottom: 15px;
+                bottom: 25px;
                 left: 15px;
                 font-size: 0.75rem;
                 padding: 6px 10px;
@@ -2345,8 +2364,9 @@
                 font-size: 0.9rem;
             }
 
+            /* Ensure no button overlap on very small screens */
             .floating-actions {
-                bottom: 12px;
+                bottom: 80px;
                 right: 12px;
                 gap: 8px;
             }
@@ -2358,9 +2378,10 @@
             }
 
             .viral-counter {
-                bottom: 12px;
+                bottom: 20px;
                 left: 12px;
                 padding: 5px 8px;
+                font-size: 0.7rem;
             }
 
             .mobile-concepts-toggle {
@@ -2370,13 +2391,43 @@
             }
 
             .mobile-ai-concepts {
-                bottom: 100px;
+                bottom: 140px;
                 right: 12px;
             }
 
             .ai-interface,
             .ai-explanation-panel {
-                bottom: 120px;
+                bottom: 210px;
+            }
+
+            /* Ensure counter doesn't overlap with text */
+            .viral-counter span:not(.counter-label) {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Fix for iPhone SE and small screens */
+        @media screen and (max-width: 320px) {
+            .floating-actions {
+                bottom: 75px;
+                right: 10px;
+            }
+
+            .mobile-ai-concepts {
+                bottom: 135px;
+                right: 10px;
+            }
+
+            .ai-interface,
+            .ai-explanation-panel {
+                bottom: 220px;
+            }
+
+            .viral-counter {
+                max-width: 120px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
             }
         }
 
@@ -2432,6 +2483,20 @@
             .scroll-indicator {
                 display: none;
             }
+
+            /* Adjust button positions for shorter screens */
+            .floating-actions {
+                bottom: 70px;
+            }
+
+            .mobile-ai-concepts {
+                bottom: 130px;
+            }
+
+            .ai-interface,
+            .ai-explanation-panel {
+                bottom: 180px;
+            }
         }
 
         /* Prevent horizontal scrolling */
@@ -2441,6 +2506,18 @@
         .journey-timeline {
             max-width: 100%;
             overflow-x: hidden;
+        }
+
+        /* Button z-index adjustments to prevent overlap */
+        .floating-actions,
+        .mobile-ai-concepts,
+        .viral-counter {
+            z-index: 1000;
+        }
+
+        .ai-interface,
+        .ai-explanation-panel {
+            z-index: 999;
         }
     </style>
 </head>
@@ -3565,8 +3642,131 @@
         </div>
     </div>
 
-    <!-- Rest of your existing popups (educationPopup, teachingPopup, peacePopup, aiPopup, portfolioPopup) -->
-    <!-- ... (Keep all your existing popups as they were) ... -->
+    <!-- Portfolio Popup -->
+    <div id="portfolioPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">📁 My Portfolio</h3>
+                <button class="close-btn" onclick="closePortfolioPopup()">×</button>
+            </div>
+            <div class="popup-body">
+                <h4>🚀 Featured Projects & Achievements</h4>
+                <p>Here's a comprehensive overview of my work in AI, education, and technology:</p>
+
+                <div class="ai-analogy" style="margin: 20px 0;">
+                    <div class="analogy-title">🎯 Core Focus Areas:</div>
+                    <p>AI-Powered Education, Mathematics Teaching Innovation, and Digital Transformation</p>
+                </div>
+
+                <h4>🌟 Key Projects:</h4>
+                <ul class="achievement-list">
+                    <li><strong>AffiliateMath.xyz:</strong> AI-powered mathematics learning platform with personalized
+                        pathways</li>
+                    <li><strong>500+ GitHub Repositories:</strong> Open-source AI education tools and resources</li>
+                    <li><strong>200+ Tech Blogs:</strong> Articles on AI, mathematics, and educational technology</li>
+                    <li><strong>AI Elements Project:</strong> Interactive AI learning platform</li>
+                    <li><strong>YouTube Channel:</strong> Educational content on AI and mathematics</li>
+                </ul>
+
+                <h4>🎓 Educational Impact:</h4>
+                <ul class="achievement-list">
+                    <li>Transformed traditional mathematics teaching with AI integration</li>
+                    <li>Created adaptive learning systems for diverse student needs</li>
+                    <li>Developed AI tools for personalized feedback and assessment</li>
+                    <li>Pioneered the integration of peace studies with mathematical thinking</li>
+                </ul>
+
+                <!-- Portfolio Resources Section -->
+                <div class="learning-resources">
+                    <h4 class="resources-title">🔗 Explore My Work:</h4>
+
+                    <div class="resource-item">
+                        <i class="fas fa-globe resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>Live Projects</h5>
+                            <p>Interactive platforms and tools I've developed</p>
+                            <a href="http://khan.affiliatemath.xyz/" class="resource-link" target="_blank">
+                                AffiliateMath.xyz <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <br>
+                            <a href="https://khanriyazi.github.io/AI_Element/" class="resource-link" target="_blank">
+                                AI Elements Project <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fab fa-github resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>Code Repository</h5>
+                            <p>500+ open-source projects on GitHub</p>
+                            <a href="https://github.com/KhanRiyazi" class="resource-link" target="_blank">
+                                View All Repositories <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-blog resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>Technical Writing</h5>
+                            <p>Blogs, tutorials, and educational content</p>
+                            <a href="https://learning123hub.blogspot.com/" class="resource-link" target="_blank">
+                                Read My Blogs <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fab fa-youtube resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>Video Content</h5>
+                            <p>Educational videos on AI and mathematics</p>
+                            <a href="https://www.youtube.com/@ThisOne-007" class="resource-link" target="_blank">
+                                Watch Videos <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-file-pdf resource-icon"></i>
+                        <div class="resource-content">
+                            <h5>Project Documentation</h5>
+                            <p>Detailed documentation and case studies</p>
+                            <a href="https://github.com/KhanRiyazi?tab=repositories" class="resource-link"
+                                target="_blank">
+                                View Documentation <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>💼 Professional Services:</h4>
+                <ul class="achievement-list">
+                    <li>AI Integration for Educational Institutions</li>
+                    <li>Mathematics Curriculum Development with AI</li>
+                    <li>EdTech Consulting and Strategy</li>
+                    <li>Custom AI Solution Development</li>
+                    <li>Workshops and Training on AI in Education</li>
+                </ul>
+
+                <div class="action-links">
+                    <a href="mailto:rizwanrka826@gmail.com" class="action-link">
+                        <i class="fas fa-envelope"></i> Contact for Collaboration
+                    </a>
+                    <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" class="action-link" target="_blank">
+                        <i class="fab fa-linkedin"></i> Connect on LinkedIn
+                    </a>
+                    <a href="https://github.com/KhanRiyazi" class="action-link" target="_blank">
+                        <i class="fab fa-github"></i> Explore Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rest of your existing popups (educationPopup, teachingPopup, peacePopup, aiPopup) -->
+    <!-- ... (Keep all your existing popups except portfolioPopup which I updated above) ... -->
 
     <script>
         // DOM Ready
@@ -3684,6 +3884,7 @@
                 if (window.innerWidth > 768) {
                     document.getElementById('navMenu').classList.remove('active');
                     document.getElementById('navToggle').classList.remove('active');
+                    document.getElementById('mobileConceptsMenu').classList.remove('active');
                 }
             });
 
@@ -4001,6 +4202,17 @@
             aiInterface.classList.toggle('active');
         }
 
+        // Portfolio Popup Functions
+        function showPortfolioPopup() {
+            document.getElementById('portfolioPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePortfolioPopup() {
+            document.getElementById('portfolioPopup').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
         // AI Assistant Functionality
         function initAIAssistant() {
             const aiAssistantBtn = document.getElementById('aiAssistant');
@@ -4058,6 +4270,9 @@
                     } else if (message.toLowerCase().includes('neural') || message.toLowerCase().includes('deep learning')) {
                         response = "Neural networks are AI systems inspired by the human brain. Deep learning uses multi-layered neural networks. I can show you detailed explanations with interactive learning resources.";
                         setTimeout(() => explainNeuralNetworks(), 500);
+                    } else if (message.toLowerCase().includes('portfolio')) {
+                        response = "Rizwan has an extensive portfolio including 500+ GitHub repositories, the AffiliateMath.xyz platform, AI Elements Project, and educational content. Would you like me to show you his portfolio?";
+                        setTimeout(() => showPortfolioPopup(), 500);
                     }
 
                     botMessage.innerHTML = `<p>${response}</p>`;
@@ -4078,9 +4293,6 @@
                 }
             });
         }
-
-        // Popup Control Functions (keep all your existing ones)
-        // ... (Your existing popup functions remain the same) ...
 
         // Social Sharing Functions
         function shareOnTwitter() {
@@ -4114,27 +4326,19 @@
             });
         }
 
-        // Add function to show portfolio popup (placeholder)
-        function showPortfolioPopup() {
-            alert('Portfolio popup would open here. Implement your portfolio popup function.');
-        }
-
-        // Add function to show AI popup (placeholder)
+        // Placeholder functions for other popups
         function showAIPopup() {
             alert('AI popup would open here. Implement your AI popup function.');
         }
 
-        // Add function to show education popup (placeholder)
         function showEducationPopup() {
             alert('Education popup would open here. Implement your education popup function.');
         }
 
-        // Add function to show teaching popup (placeholder)
         function showTeachingPopup() {
             alert('Teaching popup would open here. Implement your teaching popup function.');
         }
 
-        // Add function to show peace popup (placeholder)
         function showPeacePopup() {
             alert('Peace popup would open here. Implement your peace popup function.');
         }
