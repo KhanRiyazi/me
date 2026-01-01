@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Master | Python to AI Learning Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== CSS Reset & Base Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Primary Colors */
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+
+            /* Secondary Colors */
+            --secondary: #10b981;
+            --secondary-dark: #059669;
+
+            /* Background & Surface */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-surface: #334155;
+
+            /* Text Colors */
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
+
+            /* Status Colors */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --info: #3b82f6;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+
+            /* Border Radius */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+            /* Z-index layers */
+            --z-dropdown: 1000;
+            --z-sticky: 1020;
+            --z-fixed: 1030;
+            --z-modal: 1040;
+            --z-popover: 1050;
+            --z-tooltip: 1060;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ===== Typography Scale ===== */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        h5 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        h6 {
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        p {
+            margin-bottom: var(--space-md);
+        }
+
+        small {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        /* ===== Responsive Container ===== */
+        .container {
+            width: 100%;
+            padding-right: var(--space-md);
+            padding-left: var(--space-md);
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        /* Mobile First - Default */
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+
+            html {
+                font-size: 17px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+
+            html {
+                font-size: 18px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+
+            html {
+                font-size: 19px;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1320px;
+            }
+
+            html {
+                font-size: 20px;
+            }
+        }
+
+        /* ===== Utility Classes ===== */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .d-none {
+            display: none !important;
+        }
+
+        .d-block {
+            display: block !important;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .flex-row {
+            flex-direction: row;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .gap-sm {
+            gap: var(--space-sm);
+        }
+
+        .gap-md {
+            gap: var(--space-md);
+        }
+
+        .gap-lg {
+            gap: var(--space-lg);
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .h-100 {
+            height: 100%;
+        }
+
+        .mt-1 {
+            margin-top: var(--space-sm);
+        }
+
+        .mt-2 {
+            margin-top: var(--space-md);
+        }
+
+        .mt-3 {
+            margin-top: var(--space-lg);
+        }
+
+        .mb-1 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .mb-2 {
+            margin-bottom: var(--space-md);
+        }
+
+        .mb-3 {
+            margin-bottom: var(--space-lg);
+        }
+
+        .p-2 {
+            padding: var(--space-md);
+        }
+
+        .p-3 {
+            padding: var(--space-lg);
+        }
+
+        .rounded {
+            border-radius: var(--radius-md);
+        }
+
+        .rounded-lg {
+            border-radius: var(--radius-lg);
+        }
+
+        .shadow {
+            box-shadow: var(--shadow-md);
+        }
+
+        .shadow-lg {
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.5;
+            text-align: center;
+            text-decoration: none;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid transparent;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+            gap: var(--space-sm);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border-color: var(--bg-surface);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-surface);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-success {
+            background-color: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        .btn-block {
+            width: 100%;
+            display: flex;
+        }
+
+        /* ===== Header ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: var(--z-fixed);
+            transition: all var(--transition-normal);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .logo-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            transition: background-color var(--transition-fast);
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+            font-weight: 500;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text-primary);
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+
+        /* Progress Indicator */
+        .progress-indicator {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .progress-step {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--bg-surface);
+            transition: all var(--transition-fast);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .progress-step.completed {
+            background-color: var(--success);
+        }
+
+        .progress-step.active {
+            background-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+            transform: scale(1.2);
+        }
+
+        .progress-step:hover::after {
+            content: attr(data-title);
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            white-space: nowrap;
+            z-index: var(--z-tooltip);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            padding-top: 100px;
+            padding-bottom: var(--space-2xl);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(16, 185, 129, 0.1));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: var(--space-md);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            justify-content: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        /* Interactive Code Preview */
+        .code-preview {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-top: var(--space-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-content {
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.8;
+            overflow-x: auto;
+            white-space: pre;
+            color: var(--text-secondary);
+        }
+
+        .code-keyword {
+            color: #ff6b6b;
+        }
+
+        .code-function {
+            color: #4ecdc4;
+        }
+
+        .code-string {
+            color: #96ceb4;
+        }
+
+        .code-comment {
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        .code-number {
+            color: #feca57;
+        }
+
+        /* ===== Main Content Grid ===== */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-xl);
+            padding: var(--space-xl) 0;
+        }
+
+        @media (min-width: 992px) {
+            .main-grid {
+                grid-template-columns: 250px 1fr 300px;
+            }
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+        }
+
+        .sidebar-nav {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: var(--space-sm);
+        }
+
+        .nav-item-link {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-md);
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-item-link:hover,
+        .nav-item-link.active {
+            background-color: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+        }
+
+        .nav-item-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-sm);
+        }
+
+        /* Learning Progress */
+        .progress-card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-top: var(--space-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin: var(--space-md) 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+            width: 65%;
+            transition: width var(--transition-slow);
+        }
+
+        /* Main Content */
+        .content-area {
+            min-height: 100vh;
+        }
+
+        .lesson-card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform var(--transition-fast);
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .lesson-header {
+            margin-bottom: var(--space-lg);
+        }
+
+        .lesson-title {
+            font-size: 1.75rem;
+            margin-bottom: var(--space-sm);
+            color: var(--text-primary);
+        }
+
+        .lesson-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+        }
+
+        .lesson-difficulty {
+            padding: var(--space-xs) var(--space-sm);
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+
+        /* Interactive Components */
+        .interactive-box {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin: var(--space-lg) 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .exercise-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .exercise-title {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .code-editor {
+            background-color: #1a1b26;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin: var(--space-lg) 0;
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md);
+            background-color: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .editor-content {
+            min-height: 200px;
+            padding: var(--space-lg);
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+            white-space: pre-wrap;
+            word-break: break-all;
+            outline: none;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+
+        .editor-content[contenteditable="true"] {
+            caret-color: var(--primary);
+        }
+
+        /* Quiz Component */
+        .quiz-container {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin: var(--space-lg) 0;
+            border: 2px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .quiz-question {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            color: var(--text-primary);
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        .quiz-option {
+            padding: var(--space-md);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .quiz-option:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(4px);
+        }
+
+        .quiz-option.selected {
+            background-color: rgba(99, 102, 241, 0.2);
+            border-color: var(--primary);
+        }
+
+        .quiz-feedback {
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+            display: none;
+        }
+
+        .quiz-feedback.correct {
+            background-color: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--success);
+            color: var(--success);
+        }
+
+        .quiz-feedback.incorrect {
+            background-color: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--error);
+            color: var(--error);
+        }
+
+        /* Right Sidebar - Tools */
+        .tools-sidebar {
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+        }
+
+        .tool-card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tool-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .tool-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-sm);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .tool-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: translateX(4px);
+        }
+
+        .tool-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(99, 102, 241, 0.1);
+            border-radius: var(--radius-md);
+            color: var(--primary);
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background-color: var(--bg-secondary);
+            padding: var(--space-xl) 0;
+            margin-top: var(--space-2xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        .footer-section-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            display: block;
+            padding: var(--space-xs) 0;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+        }
+
+        /* ===== Mobile Specific Styles ===== */
+        @media (max-width: 991px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav {
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background-color: var(--bg-secondary);
+                flex-direction: column;
+                padding: var(--space-lg);
+                gap: var(--space-sm);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all var(--transition-normal);
+                box-shadow: var(--shadow-lg);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: var(--space-md);
+            }
+
+            .progress-indicator {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .sidebar {
+                position: static;
+                margin-bottom: var(--space-lg);
+            }
+
+            .tools-sidebar {
+                position: static;
+                margin-top: var(--space-lg);
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .lesson-card {
+                padding: var(--space-lg);
+            }
+
+            .code-preview {
+                padding: var(--space-md);
+            }
+
+            .editor-content {
+                font-size: 0.75rem;
+                padding: var(--space-md);
+            }
+
+            .quiz-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding-right: var(--space-sm);
+                padding-left: var(--space-sm);
+            }
+
+            .hero {
+                padding-top: 80px;
+                padding-bottom: var(--space-xl);
+            }
+
+            .lesson-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-sm);
+            }
+
+            .code-preview .code-header {
+                flex-direction: column;
+                gap: var(--space-sm);
+                align-items: flex-start;
+            }
+        }
+
+        /* ===== Animation Classes ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .animate-slide-in {
+            animation: slideInRight 0.4s ease forwards;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* ===== Loading States ===== */
+        .skeleton {
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0.06) 25%,
+                    rgba(255, 255, 255, 0.12) 50%,
+                    rgba(255, 255, 255, 0.06) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* ===== Dark Mode Overrides ===== */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-primary: #ffffff;
+                --bg-secondary: #f8fafc;
+                --bg-surface: #e2e8f0;
+                --text-primary: #0f172a;
+                --text-secondary: #475569;
+                --text-tertiary: #94a3b8;
+            }
+
+            body {
+                color: var(--text-primary);
+            }
+
+            .header {
+                background-color: rgba(255, 255, 255, 0.95);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            .lesson-card,
+            .sidebar-nav,
+            .progress-card,
+            .tool-card {
+                background-color: var(--bg-secondary);
+                border-color: rgba(0, 0, 0, 0.1);
+            }
+
+            .interactive-box,
+            .quiz-container {
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+
+            .code-editor {
+                background-color: #f1f5f9;
+            }
+
+            .editor-content {
+                color: var(--text-primary);
+            }
+
+            .skeleton {
+                background: linear-gradient(90deg,
+                        rgba(0, 0, 0, 0.06) 25%,
+                        rgba(0, 0, 0, 0.12) 50%,
+                        rgba(0, 0, 0, 0.06) 75%);
+            }
+        }
+
+        /* ===== Print Styles ===== */
+        @media print {
+
+            .header,
+            .sidebar,
+            .tools-sidebar,
+            .footer,
+            .mobile-menu-btn,
+            .btn {
+                display: none !important;
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            .lesson-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-brain logo-icon"></i>
+                <span>AI Master</span>
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="nav" id="mainNav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#learn" class="nav-link">Learn</a>
+                <a href="#practice" class="nav-link">Practice</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#community" class="nav-link">Community</a>
+            </nav>
+
+            <div class="progress-indicator">
+                <div class="progress-step completed" data-title="Python Basics"></div>
+                <div class="progress-step completed" data-title="Data Types"></div>
+                <div class="progress-step active" data-title="Functions"></div>
+                <div class="progress-step" data-title="OOP"></div>
+                <div class="progress-step" data-title="AI Intro"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">From Python Basics to AI Mastery</h1>
+                <p class="hero-subtitle">
+                    Learn AI programming through interactive lessons, hands-on exercises, and real-world projects.
+                    Start your journey today with our structured learning path.
+                </p>
+
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-lg" id="startLearningBtn">
+                        <i class="fas fa-play"></i>
+                        Start Learning Free
+                    </button>
+                    <button class="btn btn-secondary btn-lg" id="viewCurriculumBtn">
+                        <i class="fas fa-road"></i>
+                        View Curriculum
+                    </button>
+                </div>
+
+                <div class="code-preview">
+                    <div class="code-header">
+                        <span>AI Learning Example</span>
+                        <button class="btn btn-sm btn-secondary" id="runCodeBtn">
+                            <i class="fas fa-play"></i> Run Code
+                        </button>
+                    </div>
+                    <pre class="code-content" id="codeExample">
+<span class="code-keyword">import</span> tensorflow <span class="code-keyword">as</span> tf
+<span class="code-keyword">import</span> numpy <span class="code-keyword">as</span> np
+
+<span class="code-comment"># Neural Network for Image Classification</span>
+<span class="code-keyword">def</span> <span class="code-function">create_model</span>():
+    model = tf.keras.Sequential([
+        tf.keras.layers.Conv2D(32, (3, 3), activation=<span class="code-string">'relu'</span>, input_shape=(28, 28, 1)),
+        tf.keras.layers.MaxPooling2D((2, 2)),
+        tf.keras.layers.Flatten(),
+        tf.keras.layers.Dense(128, activation=<span class="code-string">'relu'</span>),
+        tf.keras.layers.Dense(10, activation=<span class="code-string">'softmax'</span>)
+    ])
+    <span class="code-keyword">return</span> model
+
+<span class="code-comment"># Train and evaluate</span>
+model = create_model()
+model.compile(optimizer=<span class="code-string">'adam'</span>,
+              loss=<span class="code-string">'sparse_categorical_crossentropy'</span>,
+              metrics=[<span class="code-string">'accuracy'</span>])</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="main-grid">
+            <!-- Left Sidebar - Navigation -->
+            <aside class="sidebar">
+                <div class="sidebar-nav">
+                    <h3 class="sidebar-title">
+                        <i class="fas fa-book-open"></i>
+                        Learning Path
+                    </h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-item-link active">
+                                <span class="nav-item-icon">
+                                    <i class="fas fa-play-circle"></i>
+                                </span>
+                                <span>Getting Started</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-item-link">
+                                <span class="nav-item-icon">
+                                    <i class="fas fa-code"></i>
+                                </span>
+                                <span>Python Fundamentals</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-item-link">
+                                <span class="nav-item-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </span>
+                                <span>Data Science</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-item-link">
+                                <span class="nav-item-icon">
+                                    <i class="fas fa-brain"></i>
+                                </span>
+                                <span>Machine Learning</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-item-link">
+                                <span class="nav-item-icon">
+                                    <i class="fas fa-network-wired"></i>
+                                </span>
+                                <span>Deep Learning</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-item-link">
+                                <span class="nav-item-icon">
+                                    <i class="fas fa-project-diagram"></i>
+                                </span>
+                                <span>AI Projects</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="progress-card">
+                    <h3 class="sidebar-title">
+                        <i class="fas fa-trophy"></i>
+                        Your Progress
+                    </h3>
+                    <div class="d-flex justify-between align-center mb-2">
+                        <span>65% Complete</span>
+                        <span>13/20 Lessons</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="d-flex justify-between align-center mt-2">
+                        <small>Current: Functions</small>
+                        <small>Next: OOP</small>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="content-area">
+                <div class="lesson-card animate-fade-in">
+                    <div class="lesson-header">
+                        <h2 class="lesson-title">Mastering Python Functions for AI</h2>
+                        <div class="lesson-meta">
+                            <span><i class="far fa-clock"></i> 45 min</span>
+                            <span class="lesson-difficulty">Intermediate</span>
+                            <span><i class="fas fa-star"></i> 4.8 (124 reviews)</span>
+                        </div>
+                    </div>
+
+                    <p>Functions are the building blocks of AI programming. They allow you to create reusable pieces of
+                        code that can process data, train models, and make predictions.</p>
+
+                    <div class="interactive-box">
+                        <div class="exercise-header">
+                            <i class="fas fa-code text-primary"></i>
+                            <h3 class="exercise-title">Interactive Exercise: Create Your First AI Function</h3>
+                        </div>
+
+                        <p>Complete the function below to calculate accuracy for a classification model:</p>
+
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>accuracy_calculator.py</span>
+                                <div class="d-flex gap-sm">
+                                    <button class="btn btn-sm btn-secondary" id="hintBtn">
+                                        <i class="fas fa-lightbulb"></i> Hint
+                                    </button>
+                                    <button class="btn btn-sm btn-primary" id="runExerciseBtn">
+                                        <i class="fas fa-play"></i> Run
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="editor-content" contenteditable="true" id="exerciseEditor">
+                                def calculate_accuracy(predictions, actual):
+                                """
+                                Calculate accuracy percentage for classification results.
+
+                                Args:
+                                predictions: List of predicted labels
+                                actual: List of actual labels
+
+                                Returns:
+                                Accuracy percentage as float
+                                """
+                                correct = 0
+                                total = len(predictions)
+
+                                # Your code here
+                                # Compare each prediction with actual value
+                                for i in range(total):
+                                if predictions[i] == actual[i]:
+                                correct += 1
+
+                                # Calculate accuracy percentage
+                                accuracy = (correct / total) * 100
+
+                                return accuracy
+
+                                # Test the function
+                                preds = [1, 0, 1, 1, 0]
+                                actuals = [1, 1, 1, 0, 0]
+                                result = calculate_accuracy(preds, actuals)
+                                print(f"Accuracy: {result}%")</div>
+                        </div>
+
+                        <div class="d-flex gap-md mt-3">
+                            <button class="btn btn-success" id="checkAnswerBtn">
+                                <i class="fas fa-check"></i> Check Answer
+                            </button>
+                            <button class="btn btn-secondary" id="showSolutionBtn">
+                                <i class="fas fa-eye"></i> Show Solution
+                            </button>
+                            <button class="btn btn-secondary" id="resetExerciseBtn">
+                                <i class="fas fa-redo"></i> Reset
+                            </button>
+                        </div>
+
+                        <div class="quiz-feedback" id="exerciseFeedback">
+                            <!-- Feedback will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Quiz Component -->
+                    <div class="quiz-container mt-3">
+                        <h3 class="sidebar-title mb-2">
+                            <i class="fas fa-question-circle"></i>
+                            Quick Knowledge Check
+                        </h3>
+                        <div class="quiz-question">
+                            What is the purpose of the return statement in a function?
+                        </div>
+                        <div class="quiz-options" id="quizOptions">
+                            <div class="quiz-option" data-correct="false">
+                                To print output to the console
+                            </div>
+                            <div class="quiz-option" data-correct="true">
+                                To send a value back to the caller
+                            </div>
+                            <div class="quiz-option" data-correct="false">
+                                To stop the function execution
+                            </div>
+                            <div class="quiz-option" data-correct="false">
+                                To define function parameters
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="submitQuizBtn">
+                            <i class="fas fa-paper-plane"></i> Submit Answer
+                        </button>
+                        <div class="quiz-feedback" id="quizFeedback">
+                            <!-- Quiz feedback will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Next/Previous Navigation -->
+                    <div class="d-flex justify-between mt-3">
+                        <button class="btn btn-secondary" id="prevLessonBtn">
+                            <i class="fas fa-arrow-left"></i> Previous Lesson
+                        </button>
+                        <button class="btn btn-primary" id="nextLessonBtn">
+                            Next Lesson <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar - Tools -->
+            <aside class="tools-sidebar">
+                <div class="tool-card">
+                    <h3 class="sidebar-title">
+                        <i class="fas fa-tools"></i>
+                        Learning Tools
+                    </h3>
+                    <div class="tool-list">
+                        <div class="tool-item" id="conceptMapTool">
+                            <div class="tool-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Concept Map</div>
+                                <small class="text-tertiary">Visualize connections</small>
+                            </div>
+                        </div>
+                        <div class="tool-item" id="flashcardTool">
+                            <div class="tool-icon">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Flashcards</div>
+                                <small class="text-tertiary">Spaced repetition</small>
+                            </div>
+                        </div>
+                        <div class="tool-item" id="practiceTool">
+                            <div class="tool-icon">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Practice Problems</div>
+                                <small class="text-tertiary">Additional exercises</small>
+                            </div>
+                        </div>
+                        <div class="tool-item" id="aiAssistantTool">
+                            <div class="tool-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">AI Assistant</div>
+                                <small class="text-tertiary">Get help anytime</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <h3 class="sidebar-title">
+                        <i class="fas fa-chart-line"></i>
+                        Performance Stats
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="d-flex justify-between mb-1">
+                                <span>Completion Rate</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-between mb-1">
+                                <span>Avg. Score</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-between mb-1">
+                                <span>Time Spent</span>
+                                <span>8h 30m</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Only: Quick Access Menu -->
+                <div class="tool-card d-none" id="mobileQuickMenu">
+                    <h3 class="sidebar-title">
+                        <i class="fas fa-bolt"></i>
+                        Quick Access
+                    </h3>
+                    <div class="d-flex gap-sm">
+                        <button class="btn btn-secondary btn-sm flex-1">
+                            <i class="fas fa-home"></i> Home
+                        </button>
+                        <button class="btn btn-secondary btn-sm flex-1">
+                            <i class="fas fa-book"></i> Lessons
+                        </button>
+                        <button class="btn btn-secondary btn-sm flex-1">
+                            <i class="fas fa-chart-bar"></i> Progress
+                        </button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4 class="footer-section-title">AI Master</h4>
+                    <p class="text-secondary">Learn AI programming from scratch. Build real-world projects with Python
+                        and machine learning.</p>
+                    <div class="d-flex gap-md mt-2">
+                        <a href="#" class="text-secondary"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-secondary"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-secondary"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-secondary"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-section-title">Learning Paths</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Python for Beginners</a></li>
+                        <li><a href="#" class="footer-link">Data Science</a></li>
+                        <li><a href="#" class="footer-link">Machine Learning</a></li>
+                        <li><a href="#" class="footer-link">Deep Learning</a></li>
+                        <li><a href="#" class="footer-link">AI Projects</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-section-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">Code Examples</a></li>
+                        <li><a href="#" class="footer-link">Practice Problems</a></li>
+                        <li><a href="#" class="footer-link">AI Cheat Sheets</a></li>
+                        <li><a href="#" class="footer-link">Community Forum</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 AI Master. All rights reserved. | Learn AI with Python from Scratch</p>
+                <p class="mt-1 text-tertiary">Made with <i class="fas fa-heart text-error"></i> for AI learners
+                    worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== GLOBAL STATE =====
+        const state = {
+            currentLesson: 3,
+            totalLessons: 20,
+            userProgress: 65,
+            isMobile: window.innerWidth < 992,
+            darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches
+        };
+
+        // ===== DOM ELEMENTS =====
+        const elements = {
+            mobileMenuBtn: document.getElementById('mobileMenuBtn'),
+            mainNav: document.getElementById('mainNav'),
+            startLearningBtn: document.getElementById('startLearningBtn'),
+            viewCurriculumBtn: document.getElementById('viewCurriculumBtn'),
+            runCodeBtn: document.getElementById('runCodeBtn'),
+            codeExample: document.getElementById('codeExample'),
+            progressFill: document.getElementById('progressFill'),
+            exerciseEditor: document.getElementById('exerciseEditor'),
+            hintBtn: document.getElementById('hintBtn'),
+            runExerciseBtn: document.getElementById('runExerciseBtn'),
+            checkAnswerBtn: document.getElementById('checkAnswerBtn'),
+            showSolutionBtn: document.getElementById('showSolutionBtn'),
+            resetExerciseBtn: document.getElementById('resetExerciseBtn'),
+            exerciseFeedback: document.getElementById('exerciseFeedback'),
+            quizOptions: document.getElementById('quizOptions'),
+            submitQuizBtn: document.getElementById('submitQuizBtn'),
+            quizFeedback: document.getElementById('quizFeedback'),
+            prevLessonBtn: document.getElementById('prevLessonBtn'),
+            nextLessonBtn: document.getElementById('nextLessonBtn'),
+            conceptMapTool: document.getElementById('conceptMapTool'),
+            flashcardTool: document.getElementById('flashcardTool'),
+            practiceTool: document.getElementById('practiceTool'),
+            aiAssistantTool: document.getElementById('aiAssistantTool'),
+            mobileQuickMenu: document.getElementById('mobileQuickMenu')
+        };
+
+        // ===== MOBILE MENU =====
+        function toggleMobileMenu() {
+            elements.mainNav.classList.toggle('active');
+            const icon = elements.mobileMenuBtn.querySelector('i');
+            if (elements.mainNav.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.className = 'fas fa-bars';
+                document.body.style.overflow = '';
+            }
+        }
+
+        // ===== RESPONSIVE BEHAVIORS =====
+        function handleResize() {
+            const isMobile = window.innerWidth < 992;
+
+            if (isMobile !== state.isMobile) {
+                state.isMobile = isMobile;
+
+                // Close mobile menu if switching to desktop
+                if (!isMobile && elements.mainNav.classList.contains('active')) {
+                    elements.mainNav.classList.remove('active');
+                    elements.mobileMenuBtn.querySelector('i').className = 'fas fa-bars';
+                    document.body.style.overflow = '';
+                }
+
+                // Show/hide mobile quick menu
+                if (elements.mobileQuickMenu) {
+                    elements.mobileQuickMenu.classList.toggle('d-none', !isMobile);
+                }
+            }
+        }
+
+        // ===== PROGRESS INDICATOR =====
+        function updateProgressIndicator() {
+            if (elements.progressFill) {
+                elements.progressFill.style.width = `${state.userProgress}%`;
+            }
+
+            // Update progress steps
+            const steps = document.querySelectorAll('.progress-step');
+            steps.forEach((step, index) => {
+                step.classList.remove('completed', 'active');
+                if (index < Math.floor(state.currentLesson / 4)) {
+                    step.classList.add('completed');
+                } else if (index === Math.floor(state.currentLesson / 4)) {
+                    step.classList.add('active');
+                }
+            });
+        }
+
+        // ===== CODE RUNNER =====
+        function runExampleCode() {
+            const code = `import tensorflow as tf
+import numpy as np
+
+# Neural Network for Image Classification
+def create_model():
+    model = tf.keras.Sequential([
+        tf.keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
+        tf.keras.layers.MaxPooling2D((2, 2)),
+        tf.keras.layers.Flatten(),
+        tf.keras.layers.Dense(128, activation='relu'),
+        tf.keras.layers.Dense(10, activation='softmax')
+    ])
+    return model
+
+# Create and compile model
+model = create_model()
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+print("✅ Neural Network Model Created Successfully!")
+print(f"Model Summary:")
+print("Input: 28x28 grayscale images")
+print("Layers: Conv2D → MaxPool → Flatten → Dense(128) → Dense(10)")
+print("Output: 10 classes (e.g., digits 0-9)")`;
+
+            showNotification('Code Execution Started', 'Running AI model setup...', 'info');
+
+            setTimeout(() => {
+                showNotification('Code Execution Complete', 'Neural network model created successfully!', 'success');
+
+                // Simulate output in code preview
+                const outputDiv = document.createElement('div');
+                outputDiv.className = 'code-output';
+                outputDiv.style.marginTop = '10px';
+                outputDiv.style.padding = '10px';
+                outputDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+                outputDiv.style.borderRadius = '4px';
+                outputDiv.style.fontFamily = 'monospace';
+                outputDiv.style.fontSize = '12px';
+                outputDiv.innerHTML = `<span style="color: #10b981">✅ Neural Network Model Created Successfully!</span><br>
+<span style="color: #cbd5e1">Model Summary:</span><br>
+<span style="color: #cbd5e1">Input: 28x28 grayscale images</span><br>
+<span style="color: #cbd5e1">Layers: Conv2D → MaxPool → Flatten → Dense(128) → Dense(10)</span><br>
+<span style="color: #cbd5e1">Output: 10 classes (e.g., digits 0-9)</span>`;
+
+                elements.codeExample.parentNode.insertBefore(outputDiv, elements.codeExample.nextSibling);
+
+                // Remove output after 5 seconds
+                setTimeout(() => {
+                    if (outputDiv.parentNode) {
+                        outputDiv.parentNode.removeChild(outputDiv);
+                    }
+                }, 5000);
+            }, 1500);
+        }
+
+        // ===== INTERACTIVE EXERCISE =====
+        function showHint() {
+            const hint = `💡 Hint: The accuracy formula is:
+    accuracy = (number of correct predictions / total predictions) × 100
+    
+In the function:
+1. Initialize 'correct' counter at 0
+2. Loop through all predictions
+3. Compare each prediction with actual value
+4. Count how many are correct
+5. Calculate percentage`;
+
+            showNotification('Exercise Hint', hint, 'info');
+        }
+
+        function runExercise() {
+            const code = elements.exerciseEditor.textContent;
+
+            try {
+                // Extract function and test it
+                const functionMatch = code.match(/def\s+calculate_accuracy\([^)]*\)[\s\S]*?return\s+\w+/);
+
+                if (!functionMatch) {
+                    throw new Error('Function not found or incomplete');
+                }
+
+                // Simulate execution
+                const preds = [1, 0, 1, 1, 0];
+                const actuals = [1, 1, 1, 0, 0];
+
+                // Simple accuracy calculation (this would be more robust in real implementation)
+                let correct = 0;
+                for (let i = 0; i < preds.length; i++) {
+                    if (preds[i] === actuals[i]) correct++;
+                }
+                const accuracy = (correct / preds.length) * 100;
+
+                showNotification('Exercise Output',
+                    `Running function with test data...\n\nPredictions: [${preds.join(', ')}]\nActual: [${actuals.join(', ')}]\n\n✅ Accuracy: ${accuracy.toFixed(1)}%`,
+                    'success');
+
+            } catch (error) {
+                showNotification('Execution Error', 'There seems to be an error in your code. Check your syntax.', 'error');
+            }
+        }
+
+        function checkAnswer() {
+            const code = elements.exerciseEditor.textContent.toLowerCase();
+            const hasLoop = code.includes('for') || code.includes('while');
+            const hasComparison = code.includes('==') || code.includes('if');
+            const hasCalculation = code.includes('/') && code.includes('*');
+
+            if (hasLoop && hasComparison && hasCalculation) {
+                elements.exerciseFeedback.innerHTML = `
+                    <div class="quiz-feedback correct">
+                        <i class="fas fa-check-circle"></i> <strong>Correct!</strong>
+                        <p class="mt-1">Great job! Your function correctly calculates accuracy by comparing predictions with actual values.</p>
+                    </div>
+                `;
+                elements.exerciseFeedback.style.display = 'block';
+
+                // Update progress
+                state.userProgress = Math.min(100, state.userProgress + 5);
+                updateProgressIndicator();
+
+                showNotification('Success', 'Your answer is correct! Progress updated.', 'success');
+            } else {
+                elements.exerciseFeedback.innerHTML = `
+                    <div class="quiz-feedback incorrect">
+                        <i class="fas fa-exclamation-circle"></i> <strong>Needs Improvement</strong>
+                        <p class="mt-1">Make sure your function:<br>
+                        1. Loops through all predictions<br>
+                        2. Compares each prediction with actual value<br>
+                        3. Calculates accuracy as (correct/total) × 100</p>
+                    </div>
+                `;
+                elements.exerciseFeedback.style.display = 'block';
+            }
+        }
+
+        function showSolution() {
+            const solution = `def calculate_accuracy(predictions, actual):
+    """
+    Calculate accuracy percentage for classification results.
+    
+    Args:
+        predictions: List of predicted labels
+        actual: List of actual labels
+    
+    Returns:
+        Accuracy percentage as float
+    """
+    correct = 0
+    total = len(predictions)
+    
+    # Compare each prediction with actual value
+    for i in range(total):
+        if predictions[i] == actual[i]:
+            correct += 1
+    
+    # Calculate accuracy percentage
+    accuracy = (correct / total) * 100
+    
+    return accuracy
+
+# Test the function
+preds = [1, 0, 1, 1, 0]
+actuals = [1, 1, 1, 0, 0]
+result = calculate_accuracy(preds, actuals)
+print(f"Accuracy: {result}%")`;
+
+            elements.exerciseEditor.textContent = solution;
+            showNotification('Solution Provided', 'Study the solution carefully. Try to understand each step.', 'info');
+        }
+
+        function resetExercise() {
+            const originalCode = `def calculate_accuracy(predictions, actual):
+    """
+    Calculate accuracy percentage for classification results.
+    
+    Args:
+        predictions: List of predicted labels
+        actual: List of actual labels
+    
+    Returns:
+        Accuracy percentage as float
+    """
+    correct = 0
+    total = len(predictions)
+    
+    # Your code here
+    # Compare each prediction with actual value
+    for i in range(total):
+        if predictions[i] == actual[i]:
+            correct += 1
+    
+    # Calculate accuracy percentage
+    accuracy = (correct / total) * 100
+    
+    return accuracy
+
+# Test the function
+preds = [1, 0, 1, 1, 0]
+actuals = [1, 1, 1, 0, 0]
+result = calculate_accuracy(preds, actuals)
+print(f"Accuracy: {result}%")`;
+
+            elements.exerciseEditor.textContent = originalCode;
+            elements.exerciseFeedback.style.display = 'none';
+            showNotification('Exercise Reset', 'Ready to try again!', 'info');
+        }
+
+        // ===== QUIZ SYSTEM =====
+        function setupQuiz() {
+            let selectedOption = null;
+
+            elements.quizOptions.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function () {
+                    // Remove previous selection
+                    elements.quizOptions.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+
+                    // Select current option
+                    this.classList.add('selected');
+                    selectedOption = this;
+                });
+            });
+
+            elements.submitQuizBtn.addEventListener('click', function () {
+                if (!selectedOption) {
+                    showNotification('No Answer Selected', 'Please select an answer first.', 'warning');
+                    return;
+                }
+
+                const isCorrect = selectedOption.dataset.correct === 'true';
+
+                if (isCorrect) {
+                    elements.quizFeedback.innerHTML = `
+                        <div class="quiz-feedback correct">
+                            <i class="fas fa-check-circle"></i> <strong>Correct!</strong>
+                            <p class="mt-1">The return statement sends a value back to where the function was called.</p>
+                        </div>
+                    `;
+
+                    // Update progress
+                    state.userProgress = Math.min(100, state.userProgress + 2);
+                    updateProgressIndicator();
+                } else {
+                    elements.quizFeedback.innerHTML = `
+                        <div class="quiz-feedback incorrect">
+                            <i class="fas fa-exclamation-circle"></i> <strong>Incorrect</strong>
+                            <p class="mt-1">The return statement is used to send a value back to the function caller.</p>
+                        </div>
+                    `;
+                }
+
+                elements.quizFeedback.style.display = 'block';
+
+                // Disable further selections
+                elements.quizOptions.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.style.pointerEvents = 'none';
+                });
+            });
+        }
+
+        // ===== LEARNING TOOLS =====
+        function setupLearningTools() {
+            elements.conceptMapTool.addEventListener('click', function () {
+                showNotification('Concept Map', 'Opening visual concept map for Python functions...', 'info');
+            });
+
+            elements.flashcardTool.addEventListener('click', function () {
+                showNotification('Flashcards', 'Loading spaced repetition flashcards...', 'info');
+            });
+
+            elements.practiceTool.addEventListener('click', function () {
+                showNotification('Practice Problems', 'Loading additional practice exercises...', 'info');
+            });
+
+            elements.aiAssistantTool.addEventListener('click', function () {
+                showNotification('AI Assistant', 'Hello! I\'m here to help you with Python and AI concepts. What would you like to know?', 'info');
+            });
+        }
+
+        // ===== LESSON NAVIGATION =====
+        function navigateLessons(direction) {
+            if (direction === 'next' && state.currentLesson < state.totalLessons) {
+                state.currentLesson++;
+                showNotification('Next Lesson', 'Loading: Object-Oriented Programming Basics...', 'info');
+
+                // Simulate loading
+                setTimeout(() => {
+                    showNotification('Lesson Loaded', 'Ready to learn OOP concepts!', 'success');
+                }, 1000);
+            } else if (direction === 'prev' && state.currentLesson > 1) {
+                state.currentLesson--;
+                showNotification('Previous Lesson', 'Loading: Data Types and Variables...', 'info');
+            }
+
+            updateProgressIndicator();
+        }
+
+        // ===== NOTIFICATION SYSTEM =====
+        function showNotification(title, message, type = 'info') {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification animate-slide-in`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : type === 'warning' ? '#f59e0b' : '#3b82f6'};
+                color: white;
+                padding: 16px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 9999;
+                max-width: 350px;
+                animation: slideInRight 0.3s ease;
+            `;
+
+            notification.innerHTML = `
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'}" 
+                       style="font-size: 1.25rem; flex-shrink: 0;"></i>
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 4px;">${title}</div>
+                        <div style="font-size: 0.875rem; opacity: 0.9;">${message}</div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(notification);
+
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.animation = 'slideInRight 0.3s ease reverse';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 5000);
+
+            // Allow manual dismissal
+            notification.addEventListener('click', () => {
+                notification.style.animation = 'slideInRight 0.3s ease reverse';
+                setTimeout(() => notification.remove(), 300);
+            });
+        }
+
+        // ===== EVENT LISTENERS =====
+        function setupEventListeners() {
+            // Mobile menu
+            elements.mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function (event) {
+                if (state.isMobile &&
+                    !elements.mainNav.contains(event.target) &&
+                    !elements.mobileMenuBtn.contains(event.target) &&
+                    elements.mainNav.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            });
+
+            // Hero buttons
+            elements.startLearningBtn.addEventListener('click', function () {
+                showNotification('Learning Started', 'Welcome to AI Master! Starting with Python basics...', 'success');
+                // Scroll to first lesson
+                document.querySelector('.lesson-card').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            elements.viewCurriculumBtn.addEventListener('click', function () {
+                showNotification('Curriculum', 'Opening complete learning path...', 'info');
+            });
+
+            // Code execution
+            elements.runCodeBtn.addEventListener('click', runExampleCode);
+
+            // Exercise buttons
+            elements.hintBtn.addEventListener('click', showHint);
+            elements.runExerciseBtn.addEventListener('click', runExercise);
+            elements.checkAnswerBtn.addEventListener('click', checkAnswer);
+            elements.showSolutionBtn.addEventListener('click', showSolution);
+            elements.resetExerciseBtn.addEventListener('click', resetExercise);
+
+            // Lesson navigation
+            elements.prevLessonBtn.addEventListener('click', () => navigateLessons('prev'));
+            elements.nextLessonBtn.addEventListener('click', () => navigateLessons('next'));
+
+            // Navigation links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Update active state
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Close mobile menu if open
+                    if (state.isMobile && elements.mainNav.classList.contains('active')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            // Sidebar navigation
+            document.querySelectorAll('.nav-item-link').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Update active state
+                    document.querySelectorAll('.nav-item-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const lessonName = this.querySelector('span:last-child').textContent;
+                    showNotification('Loading', `Opening: ${lessonName}`, 'info');
+                });
+            });
+
+            // Window resize
+            window.addEventListener('resize', handleResize);
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function (e) {
+                // Ctrl/Cmd + Enter to run code
+                if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                    if (document.activeElement === elements.exerciseEditor) {
+                        runExercise();
+                    } else {
+                        runExampleCode();
+                    }
+                    e.preventDefault();
+                }
+
+                // Escape to close notifications/menus
+                if (e.key === 'Escape') {
+                    const notification = document.querySelector('.notification');
+                    if (notification) notification.remove();
+
+                    if (state.isMobile && elements.mainNav.classList.contains('active')) {
+                        toggleMobileMenu();
+                    }
+                }
+            });
+        }
+
+        // ===== INITIALIZATION =====
+        function init() {
+            // Detect initial state
+            handleResize();
+
+            // Update progress indicator
+            updateProgressIndicator();
+
+            // Setup interactive components
+            setupQuiz();
+            setupLearningTools();
+            setupEventListeners();
+
+            // Initialize exercise editor
+            elements.exerciseEditor.addEventListener('input', function () {
+                // Auto-save functionality could be added here
+            });
+
+            // Show welcome message
+            setTimeout(() => {
+                showNotification('Welcome to AI Master!',
+                    'Start your AI learning journey with interactive lessons and exercises.',
+                    'info');
+            }, 1000);
+
+            // Check for PWA capabilities
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js').catch(error => {
+                    console.log('ServiceWorker registration failed:', error);
+                });
+            }
+
+            // Add install prompt for PWA
+            let deferredPrompt;
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+
+                setTimeout(() => {
+                    if (deferredPrompt) {
+                        showNotification('Install AI Master',
+                            'Install this app on your device for offline learning.',
+                            'info');
+                    }
+                }, 5000);
+            });
+        }
+
+        // Start everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+
+        // ===== UTILITY FUNCTIONS =====
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Make debounced resize handler
+        const debouncedResize = debounce(handleResize, 250);
+        window.addEventListener('resize', debouncedResize);
+    </script>
+</body>
+
+</html>
