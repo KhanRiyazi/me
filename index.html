@@ -2911,6 +2911,7 @@
     <header class="header" id="header">
         <div class="container">
             <div class="header-container">
+                <!-- FIXED: Corrected logo link -->
                 <a href="./pages/ai_index.html" class="logo" aria-label="AffiliateMath.xyz Home">
                     <div class="logo-icon">
                         <i class="fas fa-calculator"></i>
@@ -3294,74 +3295,105 @@
         </section>
 
         <!-- Features Section -->
-        <section class="section" id="features">
-            <div class="container">
-                <div class="features-section">
-                    <div class="features-header">
-                        <h2 class="features-title">Powerful Features for Affiliate Marketers</h2>
-                        <p class="features-subtitle">Everything you need to analyze, optimize, and scale your affiliate
-                            marketing campaigns.</p>
+        <section class="section" id="features" style="padding:60px 0;background:#0f172a;color:#fff;">
+            <div class="container" style="max-width:1200px;margin:auto;padding:0 16px;">
+
+                <div class="features-header" style="text-align:center;margin-bottom:40px;">
+                    <h2 style="font-size:32px;margin-bottom:10px;">
+                        Official Affiliate Marketing Platforms
+                    </h2>
+                    <p style="color:#cbd5e1;font-size:16px;">
+                        Start with trusted platforms used by top affiliates worldwide
+                    </p>
+                </div>
+
+                <div class="features-grid" style="
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+            gap:24px;
+        ">
+
+                    <!-- Amazon Associates -->
+                    <div class="feature-card affiliate-card" data-link="https://affiliate-program.amazon.in">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+                            alt="Amazon Associates" style="height:40px;margin-bottom:16px;">
+                        <h3>Amazon Associates</h3>
+                        <p>Best for beginners. Promote millions of trusted products with high conversion rates.</p>
+                        <button class="cta-btn">Join Official Program</button>
                     </div>
 
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <h3 class="feature-title">Real-time Analytics</h3>
-                            <p class="feature-description">Track performance metrics in real-time with beautiful
-                                visualizations and actionable insights.</p>
-                            <ul class="feature-list">
-                                <li><i class="fas fa-check"></i> Live ROI calculation</li>
-                                <li><i class="fas fa-check"></i> Conversion tracking</li>
-                                <li><i class="fas fa-check"></i> Traffic analytics</li>
-                            </ul>
-                        </div>
-
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-funnel-dollar"></i>
-                            </div>
-                            <h3 class="feature-title">Funnel Optimization</h3>
-                            <p class="feature-description">Identify bottlenecks and optimize each stage of your
-                                marketing funnel for maximum conversions.</p>
-                            <ul class="feature-list">
-                                <li><i class="fas fa-check"></i> Visual funnel builder</li>
-                                <li><i class="fas fa-check"></i> Drop-off analysis</li>
-                                <li><i class="fas fa-check"></i> A/B testing tools</li>
-                            </ul>
-                        </div>
-
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-calculator"></i>
-                            </div>
-                            <h3 class="feature-title">Advanced Calculators</h3>
-                            <p class="feature-description">Comprehensive ROI, CPA, CTR, and other essential calculators
-                                for data-driven decisions.</p>
-                            <ul class="feature-list">
-                                <li><i class="fas fa-check"></i> ROI calculator</li>
-                                <li><i class="fas fa-check"></i> Break-even analysis</li>
-                                <li><i class="fas fa-check"></i> Profit margin tools</li>
-                            </ul>
-                        </div>
-
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-chart-pie"></i>
-                            </div>
-                            <h3 class="feature-title">Performance Dashboard</h3>
-                            <p class="feature-description">Centralized dashboard with all your key metrics, trends, and
-                                performance indicators.</p>
-                            <ul class="feature-list">
-                                <li><i class="fas fa-check"></i> Customizable widgets</li>
-                                <li><i class="fas fa-check"></i> Historical data</li>
-                                <li><i class="fas fa-check"></i> Export capabilities</li>
-                            </ul>
-                        </div>
+                    <!-- ClickBank -->
+                    <div class="feature-card affiliate-card" data-link="https://www.clickbank.com">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/ClickBank_logo.svg"
+                            alt="ClickBank" style="height:40px;margin-bottom:16px;">
+                        <h3>ClickBank</h3>
+                        <p>High-commission digital products (up to 75%) in finance, health & education.</p>
+                        <button class="cta-btn">Explore Marketplace</button>
                     </div>
+
+                    <!-- CJ Affiliate -->
+                    <div class="feature-card affiliate-card" data-link="https://www.cj.com">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/CJ_Affiliate_logo.svg"
+                            alt="CJ Affiliate" style="height:40px;margin-bottom:16px;">
+                        <h3>CJ Affiliate</h3>
+                        <p>Enterprise brands, reliable tracking, and long-term recurring commissions.</p>
+                        <button class="cta-btn">Apply Now</button>
+                    </div>
+
+                    <!-- ShareASale -->
+                    <div class="feature-card affiliate-card" data-link="https://www.shareasale.com">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/ShareASale_Logo.svg"
+                            alt="ShareASale" style="height:40px;margin-bottom:16px;">
+                        <h3>ShareASale</h3>
+                        <p>Ideal for SaaS, tools, and niche websites with strong affiliate support.</p>
+                        <button class="cta-btn">Join Network</button>
+                    </div>
+
                 </div>
             </div>
+
+            <!-- Inline CSS -->
+            <style>
+                .feature-card {
+                    background: #020617;
+                    padding: 24px;
+                    border-radius: 14px;
+                    text-align: center;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+                    transition: transform .3s, box-shadow .3s;
+                    cursor: pointer;
+                }
+
+                .feature-card:hover {
+                    transform: translateY(-6px);
+                    box-shadow: 0 20px 45px rgba(0, 0, 0, .5);
+                }
+
+                .feature-card h3 {
+                    margin: 12px 0 8px;
+                    font-size: 20px;
+                }
+
+                .feature-card p {
+                    font-size: 14px;
+                    color: #94a3b8;
+                    margin-bottom: 16px;
+                }
+
+                .cta-btn {
+                    background: linear-gradient(135deg, #38bdf8, #6366f1);
+                    border: none;
+                    padding: 12px 18px;
+                    color: #fff;
+                    border-radius: 999px;
+                    font-size: 14px;
+                    cursor: pointer;
+                }
+
+                .cta-btn:hover {
+                    opacity: .9;
+                }
+            </style>
         </section>
 
         <!-- Testimonials -->
@@ -3370,43 +3402,44 @@
                 <div class="testimonials-section">
                     <div class="testimonials-header">
                         <h2 class="testimonials-title">Trusted by Affiliate Marketers</h2>
-                        <p class="testimonials-subtitle">See how professionals are using AffiliateMath to optimize their
-                            campaigns and maximize profits.</p>
+                        <p class="testimonials-subtitle">See how professionals are using AffiliateMath to optimize
+                            their campaigns and maximize profits.</p>
                     </div>
 
                     <div class="testimonials-grid">
                         <div class="testimonial-card">
-                            <p class="testimonial-content">"AffiliateMath transformed how we analyze our campaigns. The
-                                ROI calculator alone helped us increase profits by 40% in the first month."</p>
+                            <p class="testimonial-content">"AffiliateMath transformed how we analyze our campaigns.
+                                The ROI calculator alone helped us increase profits by 40% in the first month."</p>
                             <div class="testimonial-author">
-                                <div class="author-avatar">JS</div>
+                                <div class="author-avatar">AI</div>
                                 <div class="author-info">
-                                    <h4>John Smith</h4>
-                                    <p>Senior Affiliate Manager</p>
+                                    <h4>Imran Ali</h4>
+                                    <p>Consultant, KPMG Delhi.</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="testimonial-card">
                             <p class="testimonial-content">"The funnel visualization tool is a game-changer. We
-                                identified a 30% drop-off point and fixed it, resulting in 25% more conversions."</p>
+                                identified a 30% drop-off point and fixed it, resulting in 25% more conversions."
+                            </p>
                             <div class="testimonial-author">
-                                <div class="author-avatar">MJ</div>
+                                <div class="author-avatar">RA</div>
                                 <div class="author-info">
-                                    <h4>Maria Johnson</h4>
-                                    <p>Digital Marketing Director</p>
+                                    <h4>Rizwan Ali</h4>
+                                    <p>AI Trainer</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="testimonial-card">
-                            <p class="testimonial-content">"As a data-driven marketer, I appreciate the precision of the
-                                calculators. The real-time updates help us make quick optimization decisions."</p>
+                            <p class="testimonial-content">"As a data-driven marketer, I appreciate the precision of
+                                the calculators. The real-time updates help us make quick optimization decisions."</p>
                             <div class="testimonial-author">
-                                <div class="author-avatar">RW</div>
+                                <div class="author-avatar">ZA</div>
                                 <div class="author-info">
-                                    <h4>Robert Williams</h4>
-                                    <p>Affiliate Marketing Consultant</p>
+                                    <h4>Zishan Ali</h4>
+                                    <p>Manager, Magic Bus Foundation</p>
                                 </div>
                             </div>
                         </div>
@@ -3457,7 +3490,7 @@
                             </div>
                             <div class="contact-text">
                                 <h4>Email</h4>
-                                <p>hello@affiliatemath.xyz</p>
+                                <p>rizwanrka826@gmail.com</p>
                             </div>
                         </li>
                         <li>
@@ -3466,7 +3499,7 @@
                             </div>
                             <div class="contact-text">
                                 <h4>Website</h4>
-                                <p>www.affiliatemath.xyz</p>
+                                <p>https://affiliatemath.xyz/</p>
                             </div>
                         </li>
                         <li>
@@ -3500,8 +3533,8 @@
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
-                <p class="copyright">© 2023 AffiliateMath.xyz. All rights reserved. | Designed for affiliate marketing
-                    professionals</p>
+                <p class="copyright">© <span id="currentYear">2023</span> AffiliateMath.xyz. All rights reserved. |
+                    Designed for affiliate marketing professionals</p>
                 <p class="copyright">All calculations are for illustrative purposes. Actual results may vary based on
                     market conditions and implementation.</p>
             </div>
@@ -3547,7 +3580,9 @@
             </div>
             <div class="modal-body">
                 <p>Adjust the values to match your actual campaign performance.</p>
-                <!-- Customization controls will be added by JavaScript -->
+                <div id="customizeControls">
+                    <!-- Customization controls will be added by JavaScript -->
+                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" id="cancelCustomize">Cancel</button>
@@ -3638,6 +3673,7 @@
         const aboutModal = document.getElementById('aboutModal');
         const closeAboutModal = document.getElementById('closeAboutModal');
         const closeAboutModalBtn = document.getElementById('closeAboutModalBtn');
+        const customizeControls = document.getElementById('customizeControls');
 
         // ===========================================
         // GLOBAL VARIABLES
@@ -4001,6 +4037,54 @@
         }
 
         // ===========================================
+        // CUSTOMIZE FUNNEL FUNCTIONS
+        // ===========================================
+        function setupCustomizeModal() {
+            const funnelLabels = ['Impressions', 'Clicks', 'Landing Page Visitors', 'Conversions', 'Revenue'];
+            const defaultValues = [10000, 500, 350, 10.5, 525];
+
+            customizeControls.innerHTML = '';
+
+            funnelLabels.forEach((label, index) => {
+                const inputGroup = document.createElement('div');
+                inputGroup.className = 'input-group mb-4';
+
+                inputGroup.innerHTML = `
+                    <label class="input-label" for="custom${index}">
+                        <div class="input-label-icon">
+                            <i class="fas fa-${index === 0 ? 'eye' : index === 1 ? 'mouse-pointer' : index === 2 ? 'landmark' : index === 3 ? 'shopping-cart' : 'money-bill-wave'}"></i>
+                        </div>
+                        <span>${label}</span>
+                    </label>
+                    <input type="number" id="custom${index}" class="input-field" value="${defaultValues[index]}" min="0" step="${index === 4 ? 10 : 1}">
+                `;
+
+                customizeControls.appendChild(inputGroup);
+            });
+        }
+
+        function applyCustomizeValues() {
+            const newValues = [];
+            for (let i = 0; i < 5; i++) {
+                const value = parseFloat(document.getElementById(`custom${i}`).value) || 0;
+                newValues.push(value);
+            }
+
+            // Update funnel display
+            document.getElementById('level1').textContent = newValues[0].toLocaleString();
+            document.getElementById('level2').textContent = newValues[1].toLocaleString();
+            document.getElementById('level3').textContent = newValues[2].toLocaleString();
+            document.getElementById('level4').textContent = newValues[3].toLocaleString();
+            document.getElementById('level5').textContent = formatCurrency(newValues[4]);
+
+            // Close modal
+            customizeModal.classList.remove('show');
+            customizeModal.setAttribute('aria-hidden', 'true');
+
+            showToast('Funnel values updated successfully', 'success');
+        }
+
+        // ===========================================
         // INTERACTIVE DEMO FUNCTION
         // ===========================================
         function startInteractiveDemo() {
@@ -4099,6 +4183,7 @@
         animateFunnelBtn.addEventListener('click', animateFunnel);
 
         customizeFunnelBtn.addEventListener('click', () => {
+            setupCustomizeModal();
             customizeModal.classList.add('show');
             customizeModal.setAttribute('aria-hidden', 'false');
         });
@@ -4225,12 +4310,7 @@
             customizeModal.setAttribute('aria-hidden', 'true');
         });
 
-        applyCustomize.addEventListener('click', () => {
-            // Apply customization logic here
-            customizeModal.classList.remove('show');
-            customizeModal.setAttribute('aria-hidden', 'true');
-            showToast('Funnel values customized', 'success');
-        });
+        applyCustomize.addEventListener('click', applyCustomizeValues);
 
         // Close modals when clicking outside
         window.addEventListener('click', (e) => {
@@ -4286,6 +4366,16 @@
             });
         });
 
+        // Affiliate platform cards
+        document.querySelectorAll('.affiliate-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const link = card.getAttribute('data-link');
+                if (link) {
+                    window.open(link, '_blank');
+                }
+            });
+        });
+
         // ===========================================
         // INITIALIZATION
         // ===========================================
@@ -4299,23 +4389,13 @@
             // Calculate initial ROI
             calculateROI();
 
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
             // Show welcome message
             setTimeout(() => {
                 showToast('Welcome to AffiliateMath.xyz! Start exploring the tools.', 'success');
             }, 1000);
-
-            // Initialize tooltips
-            document.querySelectorAll('[data-tooltip]').forEach(element => {
-                element.addEventListener('mouseenter', () => {
-                    const tooltip = element.getAttribute('data-tooltip');
-                    if (tooltip) {
-                        // Tooltip logic here
-                    }
-                });
-            });
-
-            // Set current year in footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
 
             // Initialize keyboard shortcuts
             document.addEventListener('keydown', (e) => {
