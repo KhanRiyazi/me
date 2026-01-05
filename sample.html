@@ -1,0 +1,3960 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AffiliateMath.xyz - Monetize 200+ GitHub repos, 300+ Canva templates & 500+ blogs. Advanced ROI tools for affiliate marketers.">
+    <meta name="keywords"
+        content="affiliate marketing, monetization, GitHub repos, Canva templates, blog monetization, digital assets, passive income">
+    <meta name="author" content="AffiliateMath.xyz">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="AffiliateMath.xyz | Monetize Your Digital Assets Portfolio">
+    <meta property="og:description"
+        content="Monetize 200+ GitHub repos, 300+ Canva templates & 500+ blogs with our advanced tools">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://affiliatemath.xyz">
+    <meta property="og:image" content="https://affiliatemath.xyz/preview-image.png">
+    <link rel="canonical" href="https://affiliatemath.xyz">
+    <title>AffiliateMath.xyz | Monetize Your Digital Assets - 200+ Repos, 300+ Templates, 500+ Blogs</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <!-- Style Section -->
+    <style>
+        /* ===========================================
+           CSS RESET & BASE
+        =========================================== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #1e293b;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===========================================
+           VARIABLES
+        =========================================== */
+        :root {
+            /* Color Palette */
+            --primary-50: #eef2ff;
+            --primary-100: #e0e7ff;
+            --primary-200: #c7d2fe;
+            --primary-300: #a5b4fc;
+            --primary-400: #818cf8;
+            --primary-500: #6366f1;
+            --primary-600: #4f46e5;
+            --primary-700: #4338ca;
+            --primary-800: #3730a3;
+            --primary-900: #312e81;
+
+            --gold-50: #fffbeb;
+            --gold-100: #fef3c7;
+            --gold-200: #fde68a;
+            --gold-300: #fcd34d;
+            --gold-400: #fbbf24;
+            --gold-500: #f59e0b;
+            --gold-600: #d97706;
+            --gold-700: #b45309;
+            --gold-800: #92400e;
+            --gold-900: #78350f;
+
+            --premium-50: #f0f9ff;
+            --premium-100: #e0f2fe;
+            --premium-200: #bae6fd;
+            --premium-300: #7dd3fc;
+            --premium-400: #38bdf8;
+            --premium-500: #0ea5e9;
+            --premium-600: #0284c7;
+            --premium-700: #0369a1;
+            --premium-800: #075985;
+            --premium-900: #0c4a6e;
+
+            --accent-50: #f0fdf4;
+            --accent-100: #dcfce7;
+            --accent-200: #bbf7d0;
+            --accent-300: #86efac;
+            --accent-400: #4ade80;
+            --accent-500: #22c55e;
+            --accent-600: #16a34a;
+            --accent-700: #15803d;
+            --accent-800: #166534;
+            --accent-900: #14532d;
+
+            --danger-50: #fef2f2;
+            --danger-100: #fee2e2;
+            --danger-200: #fecaca;
+            --danger-300: #fca5a5;
+            --danger-400: #f87171;
+            --danger-500: #ef4444;
+            --danger-600: #dc2626;
+            --danger-700: #b91c1c;
+            --danger-800: #991b1b;
+            --danger-900: #7f1d1d;
+
+            --dark-50: #f8fafc;
+            --dark-100: #f1f5f9;
+            --dark-200: #e2e8f0;
+            --dark-300: #cbd5e1;
+            --dark-400: #94a3b8;
+            --dark-500: #64748b;
+            --dark-600: #475569;
+            --dark-700: #334155;
+            --dark-800: #1e293b;
+            --dark-900: #0f172a;
+
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
+            --gradient-gold: linear-gradient(135deg, var(--gold-500) 0%, var(--gold-700) 100%);
+            --gradient-premium: linear-gradient(135deg, var(--premium-500) 0%, var(--premium-700) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--accent-500) 0%, var(--accent-700) 100%);
+            --gradient-danger: linear-gradient(135deg, var(--danger-500) 0%, var(--danger-700) 100%);
+            --gradient-dark: linear-gradient(135deg, var(--dark-800) 0%, var(--dark-900) 100%);
+            --gradient-rainbow: linear-gradient(135deg,
+                    #6366f1 0%,
+                    #8b5cf6 25%,
+                    #ec4899 50%,
+                    #f59e0b 75%,
+                    #22c55e 100%);
+
+            /* Shadows */
+            --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 15px 40px rgba(0, 0, 0, 0.10);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.15);
+            --shadow-2xl: 0 40px 80px rgba(0, 0, 0, 0.20);
+            --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.3);
+            --shadow-gold: 0 0 30px rgba(245, 158, 11, 0.3);
+            --shadow-premium: 0 0 30px rgba(14, 165, 233, 0.3);
+            --shadow-accent: 0 0 30px rgba(34, 197, 94, 0.3);
+
+            /* Animations */
+            --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        /* ===========================================
+           LAYOUT & CONTAINER
+        =========================================== */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-lg {
+            padding: 6rem 0;
+        }
+
+        /* ===========================================
+           HEADER
+        =========================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow-sm);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .logo-brand {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--dark-900);
+        }
+
+        .logo-brand .domain {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ===========================================
+           HERO SECTION
+        =========================================== */
+        .hero-section {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, var(--primary-50) 0%, var(--gold-50) 50%, var(--accent-50) 100%);
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" opacity="0.05"><path fill="%236366f1" d="M0,100 C150,200 350,0 500,100 C650,200 850,0 1000,100 L1000,200 L0,200 Z"/></svg>') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--gradient-gold);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-gold);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-rainbow);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--dark-600);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 4rem;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 1rem;
+            color: var(--dark-600);
+            margin-top: 0.5rem;
+        }
+
+        /* ===========================================
+           MAIN CONTENT SECTION
+        =========================================== */
+        .main-content {
+            flex: 1;
+        }
+
+        /* ===========================================
+           FOOTER
+        =========================================== */
+        .footer {
+            background: var(--gradient-dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            position: relative;
+            margin-top: auto;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-rainbow);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .footer-logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .footer-logo-text .domain {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-description {
+            color: var(--dark-300);
+            line-height: 1.7;
+        }
+
+        .footer-heading {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-link a {
+            color: var(--dark-300);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-link a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .social-section {
+            margin-top: 2rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .social-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .social-button:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .social-button.toggle {
+            background: var(--gradient-gold);
+            z-index: 2;
+        }
+
+        .social-button.toggle:hover {
+            background: var(--gradient-gold);
+            transform: rotate(90deg);
+        }
+
+        .social-button.hidden {
+            position: absolute;
+            opacity: 0;
+            transform: scale(0.5);
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .social-button.hidden.visible {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
+            position: relative;
+        }
+
+        .social-button.hidden:nth-child(2) {
+            left: 60px;
+            transition-delay: 0.05s;
+        }
+
+        .social-button.hidden:nth-child(3) {
+            left: 120px;
+            transition-delay: 0.1s;
+        }
+
+        .social-button.hidden:nth-child(4) {
+            left: 180px;
+            transition-delay: 0.15s;
+        }
+
+        .social-button.hidden:nth-child(5) {
+            left: 240px;
+            transition-delay: 0.2s;
+        }
+
+        .social-button.hidden:nth-child(6) {
+            left: 300px;
+            transition-delay: 0.25s;
+        }
+
+        .social-button.hidden:nth-child(7) {
+            left: 360px;
+            transition-delay: 0.3s;
+        }
+
+        .social-tooltip {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .social-button:hover .social-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .newsletter-button {
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--dark-300);
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-legal a {
+            color: var(--dark-300);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-legal a:hover {
+            color: white;
+        }
+
+        /* ===========================================
+           MOBILE RESPONSIVE FOOTER
+        =========================================== */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 6rem 0 3rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .hero-stat-number {
+                font-size: 2.5rem;
+            }
+
+            .footer {
+                padding: 3rem 0 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .social-buttons {
+                justify-content: center;
+            }
+
+            .social-button.hidden {
+                position: relative;
+                left: 0 !important;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-legal {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 5rem 0 2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .hero-stat-number {
+                font-size: 2rem;
+            }
+
+            .footer {
+                padding: 2rem 0 1rem;
+            }
+
+            .social-button {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ===========================================
+           THE REST OF YOUR EXISTING STYLES
+           (I'm keeping your existing styles below exactly as they were)
+        =========================================== */
+        /* ===========================================
+           WAITER-STYLE INTERFACE SYSTEM
+        =========================================== */
+        /* Floating Waiter Assistant */
+        .waiter-assistant {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            z-index: 9998;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-2xl);
+            transition: var(--transition-bounce);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .waiter-assistant:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        .waiter-assistant.active {
+            transform: rotate(45deg);
+        }
+
+        .waiter-menu {
+            position: fixed;
+            bottom: 170px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-2xl);
+            z-index: 9997;
+            width: 300px;
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            pointer-events: none;
+            transition: var(--transition-bounce);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .waiter-menu.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+        }
+
+        .waiter-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 0.5rem;
+        }
+
+        .waiter-item:hover {
+            background: var(--primary-50);
+            transform: translateX(5px);
+        }
+
+        .waiter-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .waiter-content h4 {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--dark-900);
+        }
+
+        .waiter-content p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--dark-600);
+        }
+
+        /* Smart Recommendations Tray */
+        .recommendation-tray {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            box-shadow: var(--shadow-2xl);
+            z-index: 9996;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .recommendation-tray.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .recommendation-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+
+        .recommendation-item:hover {
+            background: var(--primary-50);
+        }
+
+        .recommendation-badge {
+            background: var(--gradient-gold);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Asset Concierge */
+        .asset-concierge {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            z-index: 9995;
+            width: 50px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-xl);
+            transition: var(--transition);
+        }
+
+        .concierge-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            border: none;
+            background: var(--primary-50);
+            color: var(--primary-600);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .concierge-btn:hover {
+            background: var(--gradient-primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Earnings Butler */
+        .earnings-butler {
+            position: fixed;
+            top: 150px;
+            left: 30px;
+            z-index: 9995;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            width: 350px;
+            box-shadow: var(--shadow-2xl);
+            transform: translateX(-400px);
+            transition: var(--transition-bounce);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .earnings-butler.active {
+            transform: translateX(0);
+        }
+
+        .butler-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .butler-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .butler-stat {
+            background: var(--primary-50);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .butler-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-600);
+            margin-bottom: 0.25rem;
+        }
+
+        .butler-label {
+            font-size: 0.85rem;
+            color: var(--dark-600);
+        }
+
+        /* Interactive Tour Guide */
+        .tour-guide {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--shadow-2xl);
+            z-index: 10000;
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tour-guide.active {
+            display: block;
+            animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .tour-content {
+            text-align: center;
+        }
+
+        .tour-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+        }
+
+        .tour-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* ===========================================
+           ASSET MANAGEMENT SYSTEM
+        =========================================== */
+        .asset-dashboard {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-rainbow);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .asset-card {
+            background: var(--dark-50);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: var(--transition-bounce);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .asset-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-300);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .asset-card.premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-gold);
+        }
+
+        .asset-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .asset-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .asset-icon.github {
+            background: var(--gradient-primary);
+        }
+
+        .asset-icon.canva {
+            background: var(--gradient-accent);
+        }
+
+        .asset-icon.blog {
+            background: var(--gradient-gold);
+        }
+
+        .asset-info h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .asset-count {
+            font-size: 0.9rem;
+            color: var(--dark-600);
+        }
+
+        .asset-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-600);
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--dark-600);
+        }
+
+        .asset-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn.primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .action-btn.secondary {
+            background: var(--dark-100);
+            color: var(--dark-700);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Asset Quick View */
+        .quick-view {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-2xl);
+            z-index: 10001;
+            display: none;
+        }
+
+        .quick-view.active {
+            display: block;
+            animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .quick-view-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            border-bottom: 1px solid var(--dark-200);
+        }
+
+        .quick-view-content {
+            padding: 2rem;
+        }
+
+        /* Asset Performance Chart */
+        .performance-chart {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .chart-container {
+            height: 300px;
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 40px;
+            background: var(--gradient-primary);
+            border-radius: 8px 8px 0 0;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .chart-bar:hover {
+            filter: brightness(1.1);
+            transform: translateY(-5px);
+        }
+
+        /* ===========================================
+           MONETIZATION WIZARD
+        =========================================== */
+        .monetization-wizard {
+            background: linear-gradient(135deg, var(--dark-50) 0%, var(--primary-50) 100%);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wizard-progress {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .wizard-step {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--dark-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--dark-600);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .wizard-step.active {
+            background: var(--gradient-primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .wizard-step.completed {
+            background: var(--gradient-accent);
+            color: white;
+        }
+
+        .wizard-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .strategy-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .strategy-card {
+            background: var(--dark-50);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .strategy-card:hover {
+            border-color: var(--primary-300);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .strategy-card.selected {
+            border-color: var(--primary-500);
+            background: var(--primary-50);
+        }
+
+        .strategy-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .strategy-earnings {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-600);
+            margin: 0.5rem 0;
+        }
+
+        /* ===========================================
+           EARNINGS SIMULATOR
+        =========================================== */
+        .earnings-simulator {
+            background: var(--gradient-dark);
+            color: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .simulator-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .control-group {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .slider-container {
+            margin-top: 1rem;
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .simulator-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .result-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ===========================================
+           AI RECOMMENDATION ENGINE
+        =========================================== */
+        .ai-recommender {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .ai-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-premium);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .recommendation-card {
+            background: var(--dark-50);
+            border-radius: 15px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .recommendation-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient-gold);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .recommendation-score {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-600);
+            margin: 1rem 0;
+        }
+
+        .recommendation-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        /* ===========================================
+           ACHIEVEMENT SYSTEM
+        =========================================== */
+        .achievement-system {
+            background: linear-gradient(135deg, var(--gold-50) 0%, var(--accent-50) 100%);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 2rem 0;
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .achievement-card.unlocked {
+            border: 2px solid var(--gold-300);
+        }
+
+        .achievement-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .achievement-progress {
+            height: 4px;
+            background: var(--dark-200);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .achievement-progress-fill {
+            height: 100%;
+            background: var(--gradient-accent);
+            transition: width 1s ease;
+        }
+
+        /* ===========================================
+           NOTIFICATION SYSTEM
+        =========================================== */
+        .notification-center {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            z-index: 9996;
+            width: 350px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .notification {
+            background: white;
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            animation: slideInRight 0.3s ease;
+            border-left: 4px solid var(--primary-500);
+        }
+
+        .notification.earning {
+            border-left-color: var(--accent-500);
+        }
+
+        .notification.achievement {
+            border-left-color: var(--gold-500);
+        }
+
+        .notification.recommendation {
+            border-left-color: var(--premium-500);
+        }
+
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .notification-earning .notification-icon {
+            background: var(--gradient-accent);
+        }
+
+        .notification-achievement .notification-icon {
+            background: var(--gradient-gold);
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-content h4 {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .notification-content p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--dark-600);
+        }
+
+        /* ===========================================
+           MOBILE OPTIMIZATIONS
+        =========================================== */
+        @media (max-width: 768px) {
+            .section {
+                padding: 2rem 0;
+            }
+
+            .section-lg {
+                padding: 3rem 0;
+            }
+
+            .asset-dashboard,
+            .monetization-wizard,
+            .earnings-simulator,
+            .ai-recommender,
+            .achievement-system {
+                padding: 1.5rem;
+                margin: 1rem 0;
+                border-radius: 20px;
+            }
+
+            .dashboard-title {
+                font-size: 1.75rem;
+            }
+
+            .asset-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .asset-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .asset-actions {
+                flex-direction: column;
+            }
+
+            /* Waiter System Mobile */
+            .waiter-assistant {
+                bottom: 80px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .waiter-menu {
+                bottom: 140px;
+                right: 20px;
+                width: calc(100vw - 40px);
+                max-width: 300px;
+            }
+
+            .recommendation-tray {
+                bottom: 10px;
+                left: 20px;
+                right: 20px;
+                transform: none;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 0.75rem;
+            }
+
+            .earnings-butler {
+                top: 100px;
+                left: 20px;
+                width: calc(100vw - 40px);
+            }
+
+            .asset-concierge {
+                display: none;
+            }
+
+            .notification-center {
+                top: 90px;
+                right: 20px;
+                width: calc(100vw - 40px);
+            }
+
+            .tour-guide {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            /* Controls Mobile */
+            .simulator-controls,
+            .strategy-options,
+            .recommendations-grid,
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wizard-progress {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .wizard-step {
+                width: 50px;
+                height: 50px;
+            }
+
+            .quick-view {
+                width: 95%;
+                padding: 1rem;
+            }
+
+            .quick-view-header,
+            .quick-view-content {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                height: 60px;
+                padding: 0 0.75rem;
+            }
+
+            .logo-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+            }
+
+            .logo-brand {
+                font-size: 1.25rem;
+            }
+
+            .section {
+                padding: 1.5rem 0;
+            }
+
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            .asset-card {
+                padding: 1.25rem;
+            }
+
+            .asset-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .asset-info h3 {
+                font-size: 1.25rem;
+            }
+
+            .metric-value {
+                font-size: 1.25rem;
+            }
+
+            .butler-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===========================================
+           ANIMATIONS
+        =========================================== */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translate(-50%, 100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+
+        .animate-shimmer {
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.3) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        /* ===========================================
+           UTILITY CLASSES
+        =========================================== */
+        .d-none {
+            display: none !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .d-grid {
+            display: grid !important;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 {
+            margin-top: 0.5rem;
+        }
+
+        .mt-2 {
+            margin-top: 1rem;
+        }
+
+        .mt-3 {
+            margin-top: 1.5rem;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+
+        .mb-1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+
+        .p-1 {
+            padding: 0.5rem;
+        }
+
+        .p-2 {
+            padding: 1rem;
+        }
+
+        .p-3 {
+            padding: 1.5rem;
+        }
+
+        .p-4 {
+            padding: 2rem;
+        }
+
+        .gap-1 {
+            gap: 0.5rem;
+        }
+
+        .gap-2 {
+            gap: 1rem;
+        }
+
+        .gap-3 {
+            gap: 1.5rem;
+        }
+
+        .gap-4 {
+            gap: 2rem;
+        }
+
+        .rounded-sm {
+            border-radius: 8px;
+        }
+
+        .rounded {
+            border-radius: 12px;
+        }
+
+        .rounded-lg {
+            border-radius: 20px;
+        }
+
+        .rounded-xl {
+            border-radius: 25px;
+        }
+
+        .shadow-sm {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .shadow {
+            box-shadow: var(--shadow);
+        }
+
+        .shadow-lg {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .shadow-xl {
+            box-shadow: var(--shadow-xl);
+        }
+
+        .text-primary {
+            color: var(--primary-600);
+        }
+
+        .text-accent {
+            color: var(--accent-600);
+        }
+
+        .text-gold {
+            color: var(--gold-600);
+        }
+
+        .text-danger {
+            color: var(--danger-600);
+        }
+
+        .text-muted {
+            color: var(--dark-600);
+        }
+
+        .bg-primary {
+            background: var(--primary-50);
+        }
+
+        .bg-accent {
+            background: var(--accent-50);
+        }
+
+        .bg-gold {
+            background: var(--gold-50);
+        }
+
+        .bg-dark {
+            background: var(--dark-50);
+        }
+
+        .transition {
+            transition: var(--transition);
+        }
+
+        .transition-fast {
+            transition: var(--transition-fast);
+        }
+
+        .transition-bounce {
+            transition: var(--transition-bounce);
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
+        .opacity-0 {
+            opacity: 0;
+        }
+
+        .opacity-25 {
+            opacity: 0.25;
+        }
+
+        .opacity-50 {
+            opacity: 0.5;
+        }
+
+        .opacity-75 {
+            opacity: 0.75;
+        }
+
+        .opacity-100 {
+            opacity: 1;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .position-absolute {
+            position: absolute;
+        }
+
+        .position-fixed {
+            position: fixed;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        /* ===========================================
+           SCROLLBAR
+        =========================================== */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-100);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-300);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-500);
+        }
+
+        /* ===========================================
+           PRINT STYLES
+        =========================================== */
+        @media print {
+
+            .header,
+            .waiter-assistant,
+            .waiter-menu,
+            .recommendation-tray,
+            .asset-concierge,
+            .earnings-butler,
+            .notification-center,
+            .tour-guide {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-container">
+                <a href="./pages/ai_index.html" class="logo" aria-label="AffiliateMath.xyz Home">
+                    <div class="logo-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="logo-brand">Affiliate<span class="domain">Math</span></div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge animate-float">
+                    <i class="fas fa-bolt"></i> PREMIUM MONETIZATION PLATFORM
+                </div>
+                <h1 class="hero-title">
+                    Transform Your Digital Assets Into<br>
+                    <span
+                        style="background: var(--gradient-gold); -webkit-background-clip: text; background-clip: text; color: transparent;">Passive
+                        Income Machines</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Monetize 200+ GitHub repositories, 300+ Canva templates, and 500+ blog articles with our
+                    AI-powered platform. Turn your digital portfolio into a 24/7 revenue stream.
+                </p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">1,000+</div>
+                        <div class="hero-stat-label">Digital Assets</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">$7,500+</div>
+                        <div class="hero-stat-label">Monthly Revenue</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">85%</div>
+                        <div class="hero-stat-label">Automation Rate</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">24/7</div>
+                        <div class="hero-stat-label">Passive Income</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <!-- Your existing sections remain exactly the same -->
+        <section class="section-lg" id="dashboard">
+            <div class="container">
+                <div class="asset-dashboard">
+                    <div class="dashboard-header">
+                        <h1 class="dashboard-title">My Digital Asset Empire</h1>
+                        <button class="action-btn primary" id="quickMonetize">
+                            <i class="fas fa-bolt"></i> Quick Monetize All
+                        </button>
+                    </div>
+
+                    <div class="asset-grid" id="assetGrid">
+                        <!-- GitHub Repositories Card -->
+                        <div class="asset-card premium" data-type="github">
+                            <div class="asset-header">
+                                <div class="asset-icon github">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div class="asset-info">
+                                    <h3>GitHub Repositories</h3>
+                                    <div class="asset-count">200+ Professional Projects</div>
+                                </div>
+                            </div>
+                            <div class="asset-metrics">
+                                <div class="metric">
+                                    <div class="metric-value" id="githubEarnings">$2,500</div>
+                                    <div class="metric-label">Monthly</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value" id="githubMonetized">35%</div>
+                                    <div class="metric-label">Monetized</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value" id="githubGrowth">+15%</div>
+                                    <div class="metric-label">Growth</div>
+                                </div>
+                            </div>
+                            <div class="asset-actions">
+                                <button class="action-btn primary" data-action="monetize-github">
+                                    <i class="fas fa-rocket"></i> Monetize
+                                </button>
+                                <button class="action-btn secondary" data-action="analyze-github">
+                                    <i class="fas fa-chart-line"></i> Analyze
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Canva Templates Card -->
+                        <div class="asset-card premium" data-type="canva">
+                            <div class="asset-header">
+                                <div class="asset-icon canva">
+                                    <i class="fab fa-canva"></i>
+                                </div>
+                                <div class="asset-info">
+                                    <h3>Canva Templates</h3>
+                                    <div class="asset-count">300+ Professional Designs</div>
+                                </div>
+                            </div>
+                            <div class="asset-metrics">
+                                <div class="metric">
+                                    <div class="metric-value" id="canvaEarnings">$1,800</div>
+                                    <div class="metric-label">Monthly</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value" id="canvaMonetized">25%</div>
+                                    <div class="metric-label">Monetized</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value" id="canvaGrowth">+12%</div>
+                                    <div class="metric-label">Growth</div>
+                                </div>
+                            </div>
+                            <div class="asset-actions">
+                                <button class="action-btn primary" data-action="monetize-canva">
+                                    <i class="fas fa-store"></i> Sell
+                                </button>
+                                <button class="action-btn secondary" data-action="analyze-canva">
+                                    <i class="fas fa-chart-line"></i> Analyze
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Blog Articles Card -->
+                        <div class="asset-card premium" data-type="blog">
+                            <div class="asset-header">
+                                <div class="asset-icon blog">
+                                    <i class="fas fa-blog"></i>
+                                </div>
+                                <div class="asset-info">
+                                    <h3>Blog Articles</h3>
+                                    <div class="asset-count">500+ SEO-Optimized Posts</div>
+                                </div>
+                            </div>
+                            <div class="asset-metrics">
+                                <div class="metric">
+                                    <div class="metric-value" id="blogEarnings">$3,200</div>
+                                    <div class="metric-label">Monthly</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value" id="blogMonetized">15%</div>
+                                    <div class="metric-label">Monetized</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value" id="blogGrowth">+18%</div>
+                                    <div class="metric-label">Growth</div>
+                                </div>
+                            </div>
+                            <div class="asset-actions">
+                                <button class="action-btn primary" data-action="monetize-blog">
+                                    <i class="fas fa-ad"></i> Monetize
+                                </button>
+                                <button class="action-btn secondary" data-action="analyze-blog">
+                                    <i class="fas fa-chart-line"></i> Analyze
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Chart -->
+                    <div class="performance-chart">
+                        <h3 class="text-center mb-3">Asset Performance Trend</h3>
+                        <div class="chart-container" id="performanceChart">
+                            <!-- Chart will be generated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monetization Wizard -->
+        <section class="section" id="monetization">
+            <div class="container">
+                <div class="monetization-wizard">
+                    <h2 class="text-center mb-4">Monetization Strategy Wizard</h2>
+                    <div class="wizard-progress" id="wizardProgress">
+                        <div class="wizard-step active" data-step="1">1</div>
+                        <div class="wizard-step" data-step="2">2</div>
+                        <div class="wizard-step" data-step="3">3</div>
+                        <div class="wizard-step" data-step="4">4</div>
+                        <div class="wizard-step" data-step="5">5</div>
+                    </div>
+                    <div class="wizard-content" id="wizardContent">
+                        <!-- Wizard content will be updated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Earnings Simulator -->
+        <section class="section" id="earnings">
+            <div class="container">
+                <div class="earnings-simulator">
+                    <h2 class="text-center mb-4">Earnings Simulator</h2>
+                    <div class="simulator-controls" id="simulatorControls">
+                        <!-- Controls will be generated by JavaScript -->
+                    </div>
+                    <div class="simulator-results" id="simulatorResults">
+                        <!-- Results will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Recommendation Engine -->
+        <section class="section" id="recommendations">
+            <div class="container">
+                <div class="ai-recommender">
+                    <div class="ai-header">
+                        <div class="ai-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <h2>AI Recommendation Engine</h2>
+                            <p class="text-muted">Personalized suggestions to maximize your earnings</p>
+                        </div>
+                    </div>
+                    <div class="recommendations-grid" id="aiRecommendations">
+                        <!-- Recommendations will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievement System -->
+        <section class="section" id="achievements">
+            <div class="container">
+                <div class="achievement-system">
+                    <h2 class="text-center mb-4">Your Achievements</h2>
+                    <div class="achievement-grid" id="achievementGrid">
+                        <!-- Achievements will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="footer-logo-text">Affiliate<span class="domain">Math</span></div>
+                    </div>
+                    <p class="footer-description">
+                        The ultimate platform for monetizing digital assets. Turn your GitHub repos,
+                        Canva templates, and blog articles into passive income streams with AI-powered
+                        optimization tools.
+                    </p>
+
+                    <div class="social-section">
+                        <h3 class="footer-heading">Connect With Us</h3>
+                        <div class="social-buttons" id="socialButtons">
+                            <!-- Social buttons will be populated by JavaScript -->
+                        </div>
+
+                        <div class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="Enter your email for updates">
+                            <button class="newsletter-button">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3 class="footer-heading">Platform</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link">
+                            <a href="#dashboard">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="#monetization">
+                                <i class="fas fa-wizard"></i> Monetization Wizard
+                            </a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="#earnings">
+                                <i class="fas fa-chart-line"></i> Earnings Simulator
+                            </a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="#recommendations">
+                                <i class="fas fa-robot"></i> AI Recommendations
+                            </a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="#achievements">
+                                <i class="fas fa-trophy"></i> Achievements
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link">
+                            <a href="#">
+                                <i class="fas fa-book"></i> Documentation
+                            </a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="#">
+                                <i class="fas fa-video"></i> Tutorials
+                            </a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="#">
+                                <i class="fas fa-blog"></i> Blog
+                            </a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="#">
+                                <i class="fas fa-question-circle"></i> FAQ
+                            </a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="#">
+                                <i class="fas fa-headset"></i> Support
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2024 AffiliateMath.xyz. All rights reserved.
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Data Processing</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===========================================
+         WAITER-STYLE INTERFACE COMPONENTS
+         (Your existing components remain exactly the same)
+    =========================================== -->
+
+    <!-- Waiter Assistant -->
+    <div class="waiter-assistant animate-float" id="waiterAssistant">
+        <i class="fas fa-concierge-bell"></i>
+    </div>
+
+    <!-- Waiter Menu -->
+    <div class="waiter-menu" id="waiterMenu">
+        <div class="waiter-item" data-action="quick-earnings">
+            <div class="waiter-icon">
+                <i class="fas fa-coins"></i>
+            </div>
+            <div class="waiter-content">
+                <h4>Quick Earnings Check</h4>
+                <p>See your current earnings</p>
+            </div>
+        </div>
+        <div class="waiter-item" data-action="asset-recommendation">
+            <div class="waiter-icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="waiter-content">
+                <h4>Asset Recommendation</h4>
+                <p>Get AI suggestions</p>
+            </div>
+        </div>
+        <div class="waiter-item" data-action="monetization-strategy">
+            <div class="waiter-icon">
+                <i class="fas fa-chess-queen"></i>
+            </div>
+            <div class="waiter-content">
+                <h4>Strategy Update</h4>
+                <p>Optimize monetization</p>
+            </div>
+        </div>
+        <div class="waiter-item" data-action="achievement-unlocked">
+            <div class="waiter-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="waiter-content">
+                <h4>New Achievement</h4>
+                <p>You've unlocked a badge!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation Tray -->
+    <div class="recommendation-tray" id="recommendationTray">
+        <div class="recommendation-item" data-action="monetize-now">
+            <i class="fas fa-bolt text-gold"></i>
+            <span>Quick Monetize</span>
+            <span class="recommendation-badge">New</span>
+        </div>
+        <div class="recommendation-item" data-action="optimize-portfolio">
+            <i class="fas fa-chart-line text-accent"></i>
+            <span>Optimize Portfolio</span>
+        </div>
+        <div class="recommendation-item" data-action="check-earnings">
+            <i class="fas fa-dollar-sign text-primary"></i>
+            <span>Check Earnings</span>
+        </div>
+    </div>
+
+    <!-- Asset Concierge -->
+    <div class="asset-concierge" id="assetConcierge">
+        <button class="concierge-btn" data-action="github" title="GitHub Assets">
+            <i class="fab fa-github"></i>
+        </button>
+        <button class="concierge-btn" data-action="canva" title="Canva Templates">
+            <i class="fab fa-canva"></i>
+        </button>
+        <button class="concierge-btn" data-action="blog" title="Blog Articles">
+            <i class="fas fa-blog"></i>
+        </button>
+        <button class="concierge-btn" data-action="analytics" title="Analytics">
+            <i class="fas fa-chart-bar"></i>
+        </button>
+    </div>
+
+    <!-- Earnings Butler -->
+    <div class="earnings-butler" id="earningsButler">
+        <div class="butler-header">
+            <h3><i class="fas fa-coins"></i> Earnings Butler</h3>
+            <button class="concierge-btn" id="closeButler">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="butler-stats">
+            <div class="butler-stat">
+                <div class="butler-value" id="todayEarnings">$2,847</div>
+                <div class="butler-label">Today</div>
+            </div>
+            <div class="butler-stat">
+                <div class="butler-value" id="weeklyEarnings">$19,532</div>
+                <div class="butler-label">This Week</div>
+            </div>
+            <div class="butler-stat">
+                <div class="butler-value" id="monthlyEarnings">$78,129</div>
+                <div class="butler-label">This Month</div>
+            </div>
+            <div class="butler-stat">
+                <div class="butler-value" id="totalEarnings">$312,516</div>
+                <div class="butler-label">Total</div>
+            </div>
+        </div>
+        <button class="action-btn primary w-100" id="withdrawEarnings">
+            <i class="fas fa-money-bill-wave"></i> Withdraw Earnings
+        </button>
+    </div>
+
+    <!-- Interactive Tour Guide -->
+    <div class="tour-guide" id="tourGuide">
+        <div class="tour-content">
+            <div class="tour-avatar">
+                <i class="fas fa-concierge-bell"></i>
+            </div>
+            <h2>Welcome to Your Monetization Platform!</h2>
+            <p class="text-muted mt-2">I'm your personal assistant. Let me show you how to maximize your earnings from
+                1000+ digital assets.</p>
+            <div class="tour-actions">
+                <button class="action-btn secondary" id="skipTour">
+                    Skip Tour
+                </button>
+                <button class="action-btn primary" id="startTour">
+                    Start Guided Tour
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="quick-view" id="quickView">
+        <div class="quick-view-header">
+            <h3 id="quickViewTitle">Asset Details</h3>
+            <button class="concierge-btn" id="closeQuickView">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="quick-view-content" id="quickViewContent">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </div>
+
+    <!-- Notification Center -->
+    <div class="notification-center" id="notificationCenter">
+        <!-- Notifications will be added dynamically -->
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // ===========================================
+        // MONETIZATION PLATFORM - MAIN APPLICATION
+        // ===========================================
+        class MonetizationPlatform {
+            constructor() {
+                this.initialize();
+            }
+
+            initialize() {
+                this.setupEventListeners();
+                this.loadUserData();
+                this.initWaiterSystem();
+                this.initSocialButtons();
+                this.showWelcomeTour();
+                this.startBackgroundProcesses();
+                this.generateAIRecommendations();
+                this.updateRealTimeStats();
+            }
+
+            // ===========================================
+            // SOCIAL MEDIA BUTTONS SYSTEM
+            // ===========================================
+            initSocialButtons() {
+                const socialButtons = [
+                    { icon: 'twitter', url: 'https://twitter.com/affiliatemath', label: 'Twitter' },
+                    { icon: 'github', url: 'https://github.com/affiliatemath', label: 'GitHub' },
+                    { icon: 'linkedin', url: 'https://linkedin.com/company/affiliatemath', label: 'LinkedIn' },
+                    { icon: 'discord', url: 'https://discord.gg/affiliatemath', label: 'Discord' },
+                    { icon: 'youtube', url: 'https://youtube.com/c/affiliatemath', label: 'YouTube' },
+                    { icon: 'instagram', url: 'https://instagram.com/affiliatemath', label: 'Instagram' },
+                    { icon: 'facebook', url: 'https://facebook.com/affiliatemath', label: 'Facebook' }
+                ];
+
+                const container = document.getElementById('socialButtons');
+
+                // Create toggle button
+                const toggleButton = document.createElement('button');
+                toggleButton.className = 'social-button toggle';
+                toggleButton.innerHTML = '<i class="fas fa-plus"></i>';
+                toggleButton.setAttribute('aria-label', 'Show social media buttons');
+
+                const toggleTooltip = document.createElement('div');
+                toggleTooltip.className = 'social-tooltip';
+                toggleTooltip.textContent = 'Show more social links';
+                toggleButton.appendChild(toggleTooltip);
+
+                container.appendChild(toggleButton);
+
+                // Create social buttons
+                socialButtons.forEach((social, index) => {
+                    const button = document.createElement('a');
+                    button.href = social.url;
+                    button.target = '_blank';
+                    button.rel = 'noopener noreferrer';
+                    button.className = 'social-button hidden';
+                    button.innerHTML = `<i class="fab fa-${social.icon}"></i>`;
+                    button.setAttribute('aria-label', social.label);
+
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'social-tooltip';
+                    tooltip.textContent = social.label;
+                    button.appendChild(tooltip);
+
+                    container.appendChild(button);
+                });
+
+                // Toggle functionality
+                toggleButton.addEventListener('click', () => {
+                    const isExpanded = toggleButton.classList.contains('expanded');
+
+                    if (isExpanded) {
+                        // Collapse
+                        toggleButton.classList.remove('expanded');
+                        toggleButton.innerHTML = '<i class="fas fa-plus"></i>';
+                        toggleTooltip.textContent = 'Show more social links';
+
+                        // Hide all social buttons
+                        container.querySelectorAll('.social-button.hidden').forEach(btn => {
+                            btn.classList.remove('visible');
+                        });
+                    } else {
+                        // Expand
+                        toggleButton.classList.add('expanded');
+                        toggleButton.innerHTML = '<i class="fas fa-minus"></i>';
+                        toggleTooltip.textContent = 'Hide social links';
+
+                        // Show all social buttons
+                        container.querySelectorAll('.social-button.hidden').forEach(btn => {
+                            btn.classList.add('visible');
+                        });
+                    }
+                });
+
+                // Newsletter form
+                const newsletterForm = document.querySelector('.newsletter-form');
+                const newsletterInput = newsletterForm.querySelector('.newsletter-input');
+                const newsletterButton = newsletterForm.querySelector('.newsletter-button');
+
+                newsletterButton.addEventListener('click', () => {
+                    if (newsletterInput.value) {
+                        this.showNotification('Subscribed!', 'You will receive updates from AffiliateMath.xyz', 'success');
+                        newsletterInput.value = '';
+                    } else {
+                        this.showNotification('Please enter email', 'Enter your email address to subscribe', 'warning');
+                    }
+                });
+
+                newsletterInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        newsletterButton.click();
+                    }
+                });
+            }
+
+            // ===========================================
+            // USER DATA & STATE MANAGEMENT
+            // ===========================================
+            userData = {
+                assets: {
+                    github: {
+                        count: 200,
+                        monetized: 35,
+                        earnings: 2500,
+                        growth: 15,
+                        premium: true
+                    },
+                    canva: {
+                        count: 300,
+                        monetized: 25,
+                        earnings: 1800,
+                        growth: 12,
+                        premium: true
+                    },
+                    blog: {
+                        count: 500,
+                        monetized: 15,
+                        earnings: 3200,
+                        growth: 18,
+                        premium: true
+                    }
+                },
+                earnings: {
+                    today: 2847,
+                    weekly: 19532,
+                    monthly: 78129,
+                    total: 312516
+                },
+                achievements: [],
+                recommendations: [],
+                wizardStep: 1
+            }
+
+            loadUserData() {
+                // Load from localStorage if available
+                const savedData = localStorage.getItem('affiliateMathData');
+                if (savedData) {
+                    this.userData = JSON.parse(savedData);
+                }
+                this.updateUI();
+            }
+
+            saveUserData() {
+                localStorage.setItem('affiliateMathData', JSON.stringify(this.userData));
+            }
+
+            // ===========================================
+            // UI UPDATES
+            // ===========================================
+            updateUI() {
+                // Update asset cards
+                this.updateAssetCard('github');
+                this.updateAssetCard('canva');
+                this.updateAssetCard('blog');
+
+                // Update earnings butler
+                this.updateEarningsButler();
+
+                // Update wizard
+                this.updateWizard();
+
+                // Update recommendations
+                this.updateRecommendations();
+
+                // Update achievements
+                this.updateAchievements();
+
+                // Update performance chart
+                this.updatePerformanceChart();
+            }
+
+            updateAssetCard(type) {
+                const asset = this.userData.assets[type];
+                if (!asset) return;
+
+                // Update metrics
+                document.getElementById(`${type}Earnings`).textContent = `$${asset.earnings.toLocaleString()}`;
+                document.getElementById(`${type}Monetized`).textContent = `${asset.monetized}%`;
+                document.getElementById(`${type}Growth`).textContent = `+${asset.growth}%`;
+
+                // Update progress bars if they exist
+                const progressBar = document.querySelector(`[data-type="${type}"] .progress-fill`);
+                if (progressBar) {
+                    progressBar.style.width = `${asset.monetized}%`;
+                }
+            }
+
+            updateEarningsButler() {
+                const earnings = this.userData.earnings;
+                document.getElementById('todayEarnings').textContent = `$${earnings.today.toLocaleString()}`;
+                document.getElementById('weeklyEarnings').textContent = `$${earnings.weekly.toLocaleString()}`;
+                document.getElementById('monthlyEarnings').textContent = `$${earnings.monthly.toLocaleString()}`;
+                document.getElementById('totalEarnings').textContent = `$${earnings.total.toLocaleString()}`;
+            }
+
+            // ===========================================
+            // WAITER SYSTEM
+            // ===========================================
+            initWaiterSystem() {
+                const waiter = document.getElementById('waiterAssistant');
+                const menu = document.getElementById('waiterMenu');
+                const tray = document.getElementById('recommendationTray');
+
+                // Toggle waiter menu
+                waiter.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                    waiter.classList.toggle('active');
+                    waiter.querySelector('i').classList.toggle('fa-concierge-bell');
+                    waiter.querySelector('i').classList.toggle('fa-times');
+                });
+
+                // Waiter menu items
+                document.querySelectorAll('.waiter-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const action = item.dataset.action;
+                        this.handleWaiterAction(action);
+                        menu.classList.remove('active');
+                        waiter.classList.remove('active');
+                    });
+                });
+
+                // Recommendation tray items
+                document.querySelectorAll('.recommendation-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const action = item.dataset.action;
+                        this.handleTrayAction(action);
+                    });
+                });
+
+                // Show recommendation tray periodically
+                setInterval(() => {
+                    this.showRecommendationTray();
+                }, 30000); // Every 30 seconds
+            }
+
+            handleWaiterAction(action) {
+                switch (action) {
+                    case 'quick-earnings':
+                        this.showEarningsButler();
+                        break;
+                    case 'asset-recommendation':
+                        this.showAIRecommendation();
+                        break;
+                    case 'monetization-strategy':
+                        this.showMonetizationWizard();
+                        break;
+                    case 'achievement-unlocked':
+                        this.unlockRandomAchievement();
+                        break;
+                }
+                this.showNotification('Waiter Action', `Processing: ${action.replace('-', ' ')}`, 'info');
+            }
+
+            handleTrayAction(action) {
+                switch (action) {
+                    case 'monetize-now':
+                        this.quickMonetize();
+                        break;
+                    case 'optimize-portfolio':
+                        this.optimizePortfolio();
+                        break;
+                    case 'check-earnings':
+                        this.showEarningsButler();
+                        break;
+                }
+                this.hideRecommendationTray();
+            }
+
+            showRecommendationTray() {
+                const tray = document.getElementById('recommendationTray');
+                if (!tray.classList.contains('active')) {
+                    tray.classList.add('active');
+                    setTimeout(() => {
+                        tray.classList.remove('active');
+                    }, 10000);
+                }
+            }
+
+            hideRecommendationTray() {
+                document.getElementById('recommendationTray').classList.remove('active');
+            }
+
+            // ===========================================
+            // EARNINGS BUTLER
+            // ===========================================
+            showEarningsButler() {
+                const butler = document.getElementById('earningsButler');
+                butler.classList.add('active');
+            }
+
+            hideEarningsButler() {
+                document.getElementById('earningsButler').classList.remove('active');
+            }
+
+            // ===========================================
+            // MONETIZATION WIZARD
+            // ===========================================
+            updateWizard() {
+                const step = this.userData.wizardStep;
+                const content = document.getElementById('wizardContent');
+
+                // Update progress steps
+                document.querySelectorAll('.wizard-step').forEach((stepEl, index) => {
+                    stepEl.classList.remove('active', 'completed');
+                    if (index + 1 === step) {
+                        stepEl.classList.add('active');
+                    } else if (index + 1 < step) {
+                        stepEl.classList.add('completed');
+                    }
+                });
+
+                // Update content based on step
+                const steps = [
+                    {
+                        title: "Asset Analysis",
+                        content: "Let's analyze your 1000+ digital assets to identify monetization opportunities.",
+                        actions: ["Analyze GitHub Repos", "Scan Canva Templates", "Review Blog Articles"]
+                    },
+                    {
+                        title: "Strategy Selection",
+                        content: "Choose the best monetization strategies for each asset type.",
+                        actions: ["Premium Access", "Affiliate Marketing", "Advertising", "Sponsorships"]
+                    },
+                    {
+                        title: "Pricing Strategy",
+                        content: "Set optimal pricing for your premium assets and services.",
+                        actions: ["Dynamic Pricing", "Bundle Deals", "Subscription Models", "One-time Sales"]
+                    },
+                    {
+                        title: "Deployment Plan",
+                        content: "Deploy your monetized assets across multiple platforms.",
+                        actions: ["Deploy to GitHub", "Upload to Marketplaces", "Setup Blog Monetization"]
+                    },
+                    {
+                        title: "Optimization & Scaling",
+                        content: "Optimize performance and scale your earnings.",
+                        actions: ["Performance Analysis", "A/B Testing", "Scale Operations", "Add New Assets"]
+                    }
+                ];
+
+                const currentStep = steps[step - 1];
+                content.innerHTML = `
+                    <h3 class="text-center mb-3">Step ${step}: ${currentStep.title}</h3>
+                    <p class="text-center text-muted mb-4">${currentStep.content}</p>
+                    <div class="strategy-options">
+                        ${currentStep.actions.map((action, index) => `
+                            <div class="strategy-card" data-action="${action.toLowerCase().replace(/\s+/g, '-')}">
+                                <div class="strategy-icon">
+                                    <i class="fas fa-${['chart-line', 'chess-queen', 'tags', 'rocket', 'magic'][index]}"></i>
+                                </div>
+                                <h4>${action}</h4>
+                                <div class="strategy-earnings">+${(step * 500).toLocaleString()}/mo</div>
+                                <p class="text-muted">Increase your earnings with this strategy</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="d-flex justify-between mt-4">
+                        <button class="action-btn secondary" id="prevStep" ${step === 1 ? 'disabled' : ''}>
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button class="action-btn primary" id="nextStep">
+                            ${step === 5 ? 'Complete' : 'Next'} <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                `;
+
+                // Add event listeners to strategy cards
+                content.querySelectorAll('.strategy-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        document.querySelectorAll('.strategy-card').forEach(c => c.classList.remove('selected'));
+                        card.classList.add('selected');
+                        this.showNotification('Strategy Selected', `Selected: ${card.dataset.action}`, 'info');
+                    });
+                });
+
+                // Add event listeners to navigation buttons
+                document.getElementById('prevStep')?.addEventListener('click', () => this.navigateWizard(-1));
+                document.getElementById('nextStep')?.addEventListener('click', () => this.navigateWizard(1));
+            }
+
+            navigateWizard(direction) {
+                let newStep = this.userData.wizardStep + direction;
+                if (newStep < 1) newStep = 1;
+                if (newStep > 5) {
+                    // Complete wizard
+                    this.completeWizard();
+                    return;
+                }
+
+                this.userData.wizardStep = newStep;
+                this.saveUserData();
+                this.updateWizard();
+                this.showNotification('Wizard Progress', `Moved to step ${newStep}`, 'info');
+            }
+
+            completeWizard() {
+                this.userData.wizardStep = 1; // Reset
+                this.showNotification('Congratulations!', 'You completed the monetization wizard!', 'success');
+                this.unlockAchievement('wizard-master');
+                this.updateEarnings(500); // Bonus for completing
+            }
+
+            showMonetizationWizard() {
+                document.getElementById('monetization').scrollIntoView({ behavior: 'smooth' });
+                this.showNotification('Monetization Wizard', 'Navigated to wizard section', 'info');
+            }
+
+            // ===========================================
+            // EARNINGS SIMULATOR
+            // ===========================================
+            initEarningsSimulator() {
+                const controls = document.getElementById('simulatorControls');
+                const results = document.getElementById('simulatorResults');
+
+                // Generate controls
+                const assetTypes = ['GitHub Repos', 'Canva Templates', 'Blog Articles'];
+                const strategies = ['Premium Access', 'Affiliate Marketing', 'Advertising', 'Sponsorships'];
+
+                controls.innerHTML = `
+                    <div class="control-group">
+                        <label>Asset Type</label>
+                        <select class="slider mt-2" id="assetTypeSelect">
+                            ${assetTypes.map(type => `<option value="${type.toLowerCase()}">${type}</option>`).join('')}
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>Number of Assets</label>
+                        <input type="range" class="slider mt-2" id="assetCountSlider" min="10" max="1000" value="100">
+                    </div>
+                    <div class="control-group">
+                        <label>Monetization Strategy</label>
+                        <select class="slider mt-2" id="strategySelect">
+                            ${strategies.map(strategy => `<option value="${strategy.toLowerCase()}">${strategy}</option>`).join('')}
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>Commission Rate</label>
+                        <input type="range" class="slider mt-2" id="commissionSlider" min="5" max="50" value="20">
+                    </div>
+                `;
+
+                // Add event listeners
+                const updateResults = () => {
+                    const assetType = document.getElementById('assetTypeSelect').value;
+                    const assetCount = parseInt(document.getElementById('assetCountSlider').value);
+                    const strategy = document.getElementById('strategySelect').value;
+                    const commission = parseInt(document.getElementById('commissionSlider').value);
+
+                    // Calculate earnings
+                    const baseRates = {
+                        'github repos': 5,
+                        'canva templates': 3,
+                        'blog articles': 2
+                    };
+
+                    const strategyMultipliers = {
+                        'premium access': 1.5,
+                        'affiliate marketing': 1.2,
+                        'advertising': 1.0,
+                        'sponsorships': 2.0
+                    };
+
+                    const baseRate = baseRates[assetType] || 3;
+                    const multiplier = strategyMultipliers[strategy] || 1.2;
+                    const commissionMultiplier = commission / 20; // Normalize to 20%
+
+                    const monthlyEarnings = Math.round(assetCount * baseRate * multiplier * commissionMultiplier);
+                    const yearlyEarnings = monthlyEarnings * 12;
+                    const potentialGrowth = Math.round(monthlyEarnings * 1.3); // 30% growth potential
+                    const roi = Math.round((monthlyEarnings / (assetCount * 10)) * 100); // ROI calculation
+
+                    results.innerHTML = `
+                        <div class="result-card">
+                            <div class="result-value">$${monthlyEarnings.toLocaleString()}</div>
+                            <div class="butler-label">Monthly Earnings</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-value">$${yearlyEarnings.toLocaleString()}</div>
+                            <div class="butler-label">Yearly Potential</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-value">$${potentialGrowth.toLocaleString()}</div>
+                            <div class="butler-label">Growth Potential</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-value">${roi}%</div>
+                            <div class="butler-label">ROI</div>
+                        </div>
+                    `;
+                };
+
+                // Update on any change
+                controls.querySelectorAll('select, input').forEach(element => {
+                    element.addEventListener('input', updateResults);
+                });
+
+                // Initial calculation
+                updateResults();
+            }
+
+            // ===========================================
+            // AI RECOMMENDATION ENGINE
+            // ===========================================
+            generateAIRecommendations() {
+                const recommendations = [
+                    {
+                        title: "Convert 50 GitHub repos to premium",
+                        description: "Package as premium templates with commercial licenses",
+                        earnings: "+$2,400/mo",
+                        score: 95,
+                        type: "github"
+                    },
+                    {
+                        title: "Create Canva template bundles",
+                        description: "Bundle 100 templates as 'Business Pro Pack'",
+                        earnings: "+$1,500/mo",
+                        score: 88,
+                        type: "canva"
+                    },
+                    {
+                        title: "Add affiliate links to blogs",
+                        description: "Insert relevant affiliate links in 200 articles",
+                        earnings: "+$3,000/mo",
+                        score: 92,
+                        type: "blog"
+                    },
+                    {
+                        title: "Video tutorials for top repos",
+                        description: "Create video tutorials for 10 most popular repositories",
+                        earnings: "+$1,200/mo",
+                        score: 85,
+                        type: "github"
+                    },
+                    {
+                        title: "Social media promotion",
+                        description: "Promote Canva templates on Pinterest and Instagram",
+                        earnings: "+$800/mo",
+                        score: 78,
+                        type: "canva"
+                    },
+                    {
+                        title: "SEO optimization",
+                        description: "Optimize 300 blog articles for better rankings",
+                        earnings: "+$2,100/mo",
+                        score: 90,
+                        type: "blog"
+                    }
+                ];
+
+                this.userData.recommendations = recommendations;
+                this.updateRecommendations();
+            }
+
+            updateRecommendations() {
+                const container = document.getElementById('aiRecommendations');
+                if (!container) return;
+
+                container.innerHTML = this.userData.recommendations.map((rec, index) => `
+                    <div class="recommendation-card" data-index="${index}">
+                        <div class="recommendation-badge">Score: ${rec.score}</div>
+                        <h4>${rec.title}</h4>
+                        <p class="text-muted">${rec.description}</p>
+                        <div class="recommendation-score">${rec.earnings}</div>
+                        <div class="recommendation-actions">
+                            <button class="action-btn primary btn-sm" data-action="implement">
+                                <i class="fas fa-play"></i> Implement
+                            </button>
+                            <button class="action-btn secondary btn-sm" data-action="schedule">
+                                <i class="fas fa-calendar"></i> Schedule
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Add event listeners
+                container.querySelectorAll('.recommendation-card').forEach(card => {
+                    const index = parseInt(card.dataset.index);
+                    const rec = this.userData.recommendations[index];
+
+                    card.querySelector('[data-action="implement"]').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.implementRecommendation(index);
+                    });
+
+                    card.querySelector('[data-action="schedule"]').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.scheduleRecommendation(index);
+                    });
+                });
+            }
+
+            implementRecommendation(index) {
+                const rec = this.userData.recommendations[index];
+                this.showNotification('Implementing', `Starting: ${rec.title}`, 'info');
+
+                // Simulate implementation
+                setTimeout(() => {
+                    this.updateEarnings(parseInt(rec.earnings.replace(/[^0-9]/g, '')) / 10);
+                    this.showNotification('Success!', `Implemented: ${rec.title}`, 'success');
+                    this.unlockAchievement('recommendation-implemented');
+                }, 2000);
+            }
+
+            scheduleRecommendation(index) {
+                const rec = this.userData.recommendations[index];
+                this.showNotification('Scheduled', `${rec.title} scheduled for tomorrow`, 'info');
+            }
+
+            showAIRecommendation() {
+                document.getElementById('recommendations').scrollIntoView({ behavior: 'smooth' });
+                this.showNotification('AI Recommendations', 'Navigated to recommendations', 'info');
+            }
+
+            // ===========================================
+            // ACHIEVEMENT SYSTEM
+            // ===========================================
+            achievementsList = [
+                { id: 'first-earning', name: 'First Dollar', description: 'Earned your first dollar', icon: 'dollar-sign', unlocked: false },
+                { id: 'github-master', name: 'GitHub Master', description: 'Monetized 50+ GitHub repos', icon: 'github', unlocked: false },
+                { id: 'canva-pro', name: 'Canva Pro', description: 'Sold 100+ Canva templates', icon: 'canva', unlocked: false },
+                { id: 'blog-king', name: 'Blog King', description: 'Monetized 200+ blog articles', icon: 'blog', unlocked: false },
+                { id: 'wizard-master', name: 'Wizard Master', description: 'Completed monetization wizard', icon: 'hat-wizard', unlocked: false },
+                { id: 'quick-monetizer', name: 'Quick Monetizer', description: 'Monetized 10+ assets in one go', icon: 'bolt', unlocked: false },
+                { id: 'recommendation-implemented', name: 'Smart Investor', description: 'Implemented AI recommendation', icon: 'brain', unlocked: false },
+                { id: 'earning-milestone', name: '$10K Club', description: 'Reached $10,000 in earnings', icon: 'trophy', unlocked: false }
+            ]
+
+            updateAchievements() {
+                const container = document.getElementById('achievementGrid');
+                if (!container) return;
+
+                container.innerHTML = this.achievementsList.map(achievement => `
+                    <div class="achievement-card ${achievement.unlocked ? 'unlocked' : 'locked'}" data-id="${achievement.id}">
+                        <div class="achievement-icon">
+                            <i class="fas fa-${achievement.icon}"></i>
+                        </div>
+                        <h4>${achievement.name}</h4>
+                        <p class="text-muted">${achievement.description}</p>
+                        ${!achievement.unlocked ? `
+                            <div class="achievement-progress">
+                                <div class="achievement-progress-fill" style="width: 0%"></div>
+                            </div>
+                        ` : ''}
+                    </div>
+                `).join('');
+
+                // Add click events for locked achievements
+                container.querySelectorAll('.achievement-card.locked').forEach(card => {
+                    card.addEventListener('click', () => {
+                        this.showNotification('Locked', 'Complete requirements to unlock', 'info');
+                    });
+                });
+            }
+
+            unlockAchievement(achievementId) {
+                const achievement = this.achievementsList.find(a => a.id === achievementId);
+                if (achievement && !achievement.unlocked) {
+                    achievement.unlocked = true;
+                    this.userData.achievements.push(achievementId);
+                    this.saveUserData();
+                    this.showAchievementNotification(achievement);
+                    this.updateAchievements();
+                }
+            }
+
+            unlockRandomAchievement() {
+                const locked = this.achievementsList.filter(a => !a.unlocked);
+                if (locked.length > 0) {
+                    const random = locked[Math.floor(Math.random() * locked.length)];
+                    this.unlockAchievement(random.id);
+                }
+            }
+
+            showAchievementNotification(achievement) {
+                this.showNotification('Achievement Unlocked!', `${achievement.name}: ${achievement.description}`, 'achievement');
+            }
+
+            // ===========================================
+            // QUICK ACTIONS
+            // ===========================================
+            quickMonetize() {
+                this.showNotification('Quick Monetize', 'Starting bulk monetization...', 'info');
+
+                // Simulate monetization process
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += 5;
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        this.updateEarnings(1500); // Bonus earnings
+                        this.showNotification('Success!', 'Monetized 50+ assets successfully!', 'success');
+                        this.unlockAchievement('quick-monetizer');
+
+                        // Update asset stats
+                        Object.keys(this.userData.assets).forEach(type => {
+                            this.userData.assets[type].monetized = Math.min(100, this.userData.assets[type].monetized + 15);
+                            this.userData.assets[type].earnings = Math.round(this.userData.assets[type].earnings * 1.2);
+                        });
+                        this.saveUserData();
+                        this.updateUI();
+                    }
+                }, 100);
+            }
+
+            optimizePortfolio() {
+                this.showNotification('Portfolio Optimization', 'Analyzing and optimizing your portfolio...', 'info');
+
+                setTimeout(() => {
+                    // Apply optimizations
+                    Object.keys(this.userData.assets).forEach(type => {
+                        this.userData.assets[type].growth += 5;
+                        this.userData.assets[type].earnings = Math.round(this.userData.assets[type].earnings * 1.1);
+                    });
+                    this.saveUserData();
+                    this.updateUI();
+                    this.showNotification('Optimized!', 'Portfolio optimized for 10% better performance', 'success');
+                }, 2000);
+            }
+
+            // ===========================================
+            // PERFORMANCE CHART
+            // ===========================================
+            updatePerformanceChart() {
+                const container = document.getElementById('performanceChart');
+                if (!container) return;
+
+                // Clear container
+                container.innerHTML = '';
+
+                // Create chart data
+                const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const githubData = [1500, 1800, 2100, 2300, 2500, 2700, 2900, 3100, 3300, 3500, 3700, 4000];
+                const canvaData = [800, 950, 1100, 1250, 1400, 1550, 1700, 1850, 2000, 2150, 2300, 2450];
+                const blogData = [1200, 1400, 1600, 1850, 2100, 2350, 2600, 2850, 3100, 3350, 3600, 3850];
+
+                const maxValue = Math.max(...githubData, ...canvaData, ...blogData);
+                const barWidth = 20;
+                const spacing = 10;
+
+                months.forEach((month, index) => {
+                    const githubHeight = (githubData[index] / maxValue) * 200;
+                    const canvaHeight = (canvaData[index] / maxValue) * 200;
+                    const blogHeight = (blogData[index] / maxValue) * 200;
+
+                    const x = index * (barWidth * 3 + spacing * 2) + 20;
+
+                    // GitHub bar
+                    const githubBar = document.createElement('div');
+                    githubBar.className = 'chart-bar';
+                    githubBar.style.left = `${x}px`;
+                    githubBar.style.height = `${githubHeight}px`;
+                    githubBar.style.background = 'var(--gradient-primary)';
+                    githubBar.title = `GitHub: $${githubData[index]}`;
+                    container.appendChild(githubBar);
+
+                    // Canva bar
+                    const canvaBar = document.createElement('div');
+                    canvaBar.className = 'chart-bar';
+                    canvaBar.style.left = `${x + barWidth + spacing}px`;
+                    canvaBar.style.height = `${canvaHeight}px`;
+                    canvaBar.style.background = 'var(--gradient-accent)';
+                    canvaBar.title = `Canva: $${canvaData[index]}`;
+                    container.appendChild(canvaBar);
+
+                    // Blog bar
+                    const blogBar = document.createElement('div');
+                    blogBar.className = 'chart-bar';
+                    blogBar.style.left = `${x + (barWidth + spacing) * 2}px`;
+                    blogBar.style.height = `${blogHeight}px`;
+                    blogBar.style.background = 'var(--gradient-gold)';
+                    blogBar.title = `Blog: $${blogData[index]}`;
+                    container.appendChild(blogBar);
+
+                    // Month label
+                    const label = document.createElement('div');
+                    label.style.position = 'absolute';
+                    label.style.bottom = '-25px';
+                    label.style.left = `${x + barWidth * 1.5}px`;
+                    label.style.textAlign = 'center';
+                    label.style.fontSize = '0.85rem';
+                    label.style.color = 'var(--dark-600)';
+                    label.textContent = month;
+                    container.appendChild(label);
+                });
+            }
+
+            // ===========================================
+            // NOTIFICATION SYSTEM
+            // ===========================================
+            showNotification(title, message, type = 'info') {
+                const center = document.getElementById('notificationCenter');
+                const notification = document.createElement('div');
+                notification.className = `notification notification-${type}`;
+
+                const icons = {
+                    info: 'info-circle',
+                    success: 'check-circle',
+                    warning: 'exclamation-triangle',
+                    error: 'exclamation-circle',
+                    achievement: 'trophy',
+                    earning: 'coins'
+                };
+
+                notification.innerHTML = `
+                    <div class="notification-icon">
+                        <i class="fas fa-${icons[type] || 'info-circle'}"></i>
+                    </div>
+                    <div class="notification-content">
+                        <h4>${title}</h4>
+                        <p>${message}</p>
+                    </div>
+                    <button class="concierge-btn btn-sm" data-action="close-notification">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+
+                center.appendChild(notification);
+
+                // Auto-remove after 5 seconds
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.style.opacity = '0';
+                        notification.style.transform = 'translateX(100%)';
+                        setTimeout(() => notification.remove(), 300);
+                    }
+                }, 5000);
+
+                // Close button
+                notification.querySelector('[data-action="close-notification"]').addEventListener('click', () => {
+                    notification.style.opacity = '0';
+                    notification.style.transform = 'translateX(100%)';
+                    setTimeout(() => notification.remove(), 300);
+                });
+
+                // Limit to 5 notifications
+                if (center.children.length > 5) {
+                    center.removeChild(center.firstChild);
+                }
+            }
+
+            // ===========================================
+            // TOUR SYSTEM
+            // ===========================================
+            showWelcomeTour() {
+                const tourShown = localStorage.getItem('tourShown');
+                if (!tourShown) {
+                    setTimeout(() => {
+                        document.getElementById('tourGuide').classList.add('active');
+                    }, 1000);
+                }
+            }
+
+            startTour() {
+                document.getElementById('tourGuide').classList.remove('active');
+                localStorage.setItem('tourShown', 'true');
+
+                // Show step-by-step tour
+                const steps = [
+                    { element: '#assetGrid', message: 'This is your asset dashboard. Here you can see all your digital assets.' },
+                    { element: '#waiterAssistant', message: 'This is your personal assistant. Click for quick actions.' },
+                    { element: '#monetization', message: 'Use the monetization wizard to optimize your earnings.' },
+                    { element: '#earnings', message: 'Simulate different earnings scenarios here.' },
+                    { element: '#recommendations', message: 'Get AI-powered recommendations to maximize profits.' }
+                ];
+
+                let currentStep = 0;
+
+                const showStep = () => {
+                    if (currentStep >= steps.length) return;
+
+                    const step = steps[currentStep];
+                    const element = document.querySelector(step.element);
+
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                        // Highlight element
+                        const originalBorder = element.style.border;
+                        element.style.border = '2px solid var(--gold-500)';
+                        element.style.boxShadow = 'var(--shadow-gold)';
+
+                        this.showNotification('Tour', step.message, 'info');
+
+                        setTimeout(() => {
+                            element.style.border = originalBorder;
+                            element.style.boxShadow = '';
+                            currentStep++;
+                            setTimeout(showStep, 2000);
+                        }, 3000);
+                    } else {
+                        currentStep++;
+                        showStep();
+                    }
+                };
+
+                showStep();
+            }
+
+            // ===========================================
+            // BACKGROUND PROCESSES
+            // ===========================================
+            startBackgroundProcesses() {
+                // Update earnings periodically
+                setInterval(() => {
+                    this.updateEarnings(Math.floor(Math.random() * 100) + 50);
+                }, 30000); // Every 30 seconds
+
+                // Generate random notifications
+                setInterval(() => {
+                    const notifications = [
+                        { title: 'New Sale!', message: 'A customer purchased your Canva template pack', type: 'earning' },
+                        { title: 'GitHub Star', message: 'Your repository got 25 new stars', type: 'info' },
+                        { title: 'Blog Traffic', message: 'Your blog got 500+ new visitors today', type: 'info' },
+                        { title: 'AI Suggestion', message: 'New recommendation available for optimization', type: 'info' }
+                    ];
+
+                    const randomNotif = notifications[Math.floor(Math.random() * notifications.length)];
+                    this.showNotification(randomNotif.title, randomNotif.message, randomNotif.type);
+                }, 45000); // Every 45 seconds
+
+                // Update growth rates
+                setInterval(() => {
+                    Object.keys(this.userData.assets).forEach(type => {
+                        this.userData.assets[type].growth += Math.floor(Math.random() * 3) - 1; // -1 to +1
+                        if (this.userData.assets[type].growth < 5) this.userData.assets[type].growth = 5;
+                        if (this.userData.assets[type].growth > 25) this.userData.assets[type].growth = 25;
+                    });
+                    this.saveUserData();
+                    this.updateUI();
+                }, 60000); // Every minute
+            }
+
+            updateEarnings(amount) {
+                this.userData.earnings.today += amount;
+                this.userData.earnings.weekly += amount;
+                this.userData.earnings.monthly += amount;
+                this.userData.earnings.total += amount;
+
+                // Check for milestone
+                if (this.userData.earnings.total >= 10000 && !this.achievementsList.find(a => a.id === 'earning-milestone').unlocked) {
+                    this.unlockAchievement('earning-milestone');
+                }
+
+                this.saveUserData();
+                this.updateEarningsButler();
+
+                // Show earning notification occasionally
+                if (Math.random() > 0.7) {
+                    this.showNotification('New Earnings', `+$${amount} added to your balance`, 'earning');
+                }
+            }
+
+            // ===========================================
+            // EVENT LISTENERS SETUP
+            // ===========================================
+            setupEventListeners() {
+                // Header scroll effect
+                window.addEventListener('scroll', () => {
+                    const header = document.getElementById('header');
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+
+                // Asset card actions
+                document.addEventListener('click', (e) => {
+                    const actionBtn = e.target.closest('[data-action]');
+                    if (actionBtn) {
+                        const action = actionBtn.dataset.action;
+                        this.handleAssetAction(action);
+                    }
+                });
+
+                // Quick monetize button
+                document.getElementById('quickMonetize')?.addEventListener('click', () => {
+                    this.quickMonetize();
+                });
+
+                // Asset concierge buttons
+                document.querySelectorAll('.concierge-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const action = e.currentTarget.dataset.action;
+                        if (action === 'github' || action === 'canva' || action === 'blog') {
+                            this.showAssetDetails(action);
+                        } else if (action === 'analytics') {
+                            this.showAnalytics();
+                        } else if (action === 'close') {
+                            this.hideEarningsButler();
+                        }
+                    });
+                });
+
+                // Close butler
+                document.getElementById('closeButler')?.addEventListener('click', () => {
+                    this.hideEarningsButler();
+                });
+
+                // Close quick view
+                document.getElementById('closeQuickView')?.addEventListener('click', () => {
+                    document.getElementById('quickView').classList.remove('active');
+                });
+
+                // Tour buttons
+                document.getElementById('skipTour')?.addEventListener('click', () => {
+                    document.getElementById('tourGuide').classList.remove('active');
+                    localStorage.setItem('tourShown', 'true');
+                });
+
+                document.getElementById('startTour')?.addEventListener('click', () => {
+                    this.startTour();
+                });
+
+                // Withdraw earnings
+                document.getElementById('withdrawEarnings')?.addEventListener('click', () => {
+                    this.withdrawEarnings();
+                });
+
+                // Initialize earnings simulator
+                this.initEarningsSimulator();
+            }
+
+            handleAssetAction(action) {
+                switch (action) {
+                    case 'monetize-github':
+                    case 'monetize-canva':
+                    case 'monetize-blog':
+                        const type = action.split('-')[1];
+                        this.monetizeAsset(type);
+                        break;
+                    case 'analyze-github':
+                    case 'analyze-canva':
+                    case 'analyze-blog':
+                        const assetType = action.split('-')[1];
+                        this.analyzeAsset(assetType);
+                        break;
+                }
+            }
+
+            monetizeAsset(type) {
+                this.showNotification('Monetizing', `Starting monetization for ${type} assets...`, 'info');
+
+                setTimeout(() => {
+                    const asset = this.userData.assets[type];
+                    asset.monetized = Math.min(100, asset.monetized + 10);
+                    asset.earnings = Math.round(asset.earnings * 1.15);
+                    this.saveUserData();
+                    this.updateUI();
+                    this.showNotification('Success!', `Monetized ${type} assets. Earnings increased by 15%`, 'success');
+                }, 1500);
+            }
+
+            analyzeAsset(type) {
+                this.showAssetDetails(type);
+            }
+
+            showAssetDetails(type) {
+                const asset = this.userData.assets[type];
+                const view = document.getElementById('quickView');
+                const title = document.getElementById('quickViewTitle');
+                const content = document.getElementById('quickViewContent');
+
+                const typeNames = {
+                    github: 'GitHub Repositories',
+                    canva: 'Canva Templates',
+                    blog: 'Blog Articles'
+                };
+
+                title.textContent = typeNames[type] || type;
+
+                content.innerHTML = `
+                    <div class="d-flex align-center gap-3 mb-4">
+                        <div class="asset-icon ${type}" style="width: 80px; height: 80px; font-size: 2rem;">
+                            <i class="fab fa-${type === 'canva' ? 'canva' : type}"></i>
+                        </div>
+                        <div>
+                            <h2>${asset.count}+ ${typeNames[type] || type}</h2>
+                            <p class="text-muted">Professional quality assets ready for monetization</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                        <div class="butler-stat">
+                            <div class="butler-value">${asset.monetized}%</div>
+                            <div class="butler-label">Monetized</div>
+                        </div>
+                        <div class="butler-stat">
+                            <div class="butler-value">$${asset.earnings}/mo</div>
+                            <div class="butler-label">Earnings</div>
+                        </div>
+                        <div class="butler-stat">
+                            <div class="butler-value">+${asset.growth}%</div>
+                            <div class="butler-label">Growth</div>
+                        </div>
+                        <div class="butler-stat">
+                            <div class="butler-value">${asset.premium ? 'Premium' : 'Standard'}</div>
+                            <div class="butler-label">Tier</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mb-3">Quick Actions</h3>
+                    <div class="asset-actions">
+                        <button class="action-btn primary" data-action="monetize-${type}">
+                            <i class="fas fa-rocket"></i> Monetize Now
+                        </button>
+                        <button class="action-btn secondary" data-action="analyze-${type}">
+                            <i class="fas fa-chart-line"></i> Detailed Analysis
+                        </button>
+                        <button class="action-btn secondary" data-action="optimize-${type}">
+                            <i class="fas fa-magic"></i> Optimize
+                        </button>
+                    </div>
+                    
+                    <h3 class="mt-4 mb-3">Top Performing Assets</h3>
+                    <div class="recommendations-grid">
+                        ${this.getTopAssets(type).map(asset => `
+                            <div class="recommendation-card">
+                                <h4>${asset.name}</h4>
+                                <p class="text-muted">${asset.description}</p>
+                                <div class="strategy-earnings">$${asset.earnings}/mo</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                view.classList.add('active');
+            }
+
+            getTopAssets(type) {
+                const assets = {
+                    github: [
+                        { name: 'AI Script Collection', description: '20+ AI automation scripts', earnings: 450 },
+                        { name: 'Web Development Kit', description: 'Full-stack development tools', earnings: 380 },
+                        { name: 'Data Analysis Suite', description: 'Python data analysis tools', earnings: 320 }
+                    ],
+                    canva: [
+                        { name: 'Business Presentation', description: 'Professional slide templates', earnings: 280 },
+                        { name: 'Social Media Kit', description: '100+ social media templates', earnings: 220 },
+                        { name: 'Brand Identity Pack', description: 'Complete branding package', earnings: 190 }
+                    ],
+                    blog: [
+                        { name: 'SEO Mastery Guide', description: 'Comprehensive SEO strategies', earnings: 520 },
+                        { name: 'Affiliate Marketing', description: 'Step-by-step guide', earnings: 480 },
+                        { name: 'Passive Income', description: 'Building passive income streams', earnings: 420 }
+                    ]
+                };
+                return assets[type] || [];
+            }
+
+            showAnalytics() {
+                this.showNotification('Analytics', 'Opening detailed analytics dashboard...', 'info');
+                // In a real app, this would open analytics dashboard
+                setTimeout(() => {
+                    this.showNotification('Analytics Ready', 'Dashboard loaded successfully', 'success');
+                }, 1000);
+            }
+
+            withdrawEarnings() {
+                this.showNotification('Withdrawal', 'Processing withdrawal request...', 'info');
+                setTimeout(() => {
+                    this.showNotification('Success!', 'Withdrawal processed. Funds will arrive in 2-3 business days.', 'success');
+                    // Reset today's earnings
+                    this.userData.earnings.today = 0;
+                    this.saveUserData();
+                    this.updateEarningsButler();
+                }, 2000);
+            }
+
+            updateRealTimeStats() {
+                // Update stats every 10 seconds
+                setInterval(() => {
+                    Object.keys(this.userData.assets).forEach(type => {
+                        const asset = this.userData.assets[type];
+                        // Small random fluctuations
+                        asset.earnings += Math.floor(Math.random() * 20) - 10;
+                        if (asset.earnings < 1000) asset.earnings = 1000;
+
+                        asset.growth += Math.floor(Math.random() * 2) - 1;
+                        if (asset.growth < 5) asset.growth = 5;
+                        if (asset.growth > 25) asset.growth = 25;
+                    });
+                    this.saveUserData();
+                    this.updateUI();
+                }, 10000);
+            }
+        }
+
+        // ===========================================
+        // INITIALIZE APPLICATION
+        // ===========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Create platform instance
+            const platform = new MonetizationPlatform();
+
+            // Make platform globally available for debugging
+            window.MonetizationPlatform = platform;
+
+            // Add loading animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+
+            // Add keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                // Ctrl/Cmd + M for monetize
+                if ((e.ctrlKey || e.metaKey) && e.key === 'm') {
+                    e.preventDefault();
+                    platform.quickMonetize();
+                }
+
+                // Ctrl/Cmd + E for earnings
+                if ((e.ctrlKey || e.metaKey) && e.key === 'e') {
+                    e.preventDefault();
+                    platform.showEarningsButler();
+                }
+
+                // Ctrl/Cmd + R for recommendations
+                if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
+                    e.preventDefault();
+                    platform.showAIRecommendation();
+                }
+
+                // Escape to close modals
+                if (e.key === 'Escape') {
+                    document.getElementById('quickView').classList.remove('active');
+                    platform.hideEarningsButler();
+                    document.getElementById('tourGuide').classList.remove('active');
+                }
+            });
+
+            // Add service worker for offline capability
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js').catch(console.error);
+            }
+
+            // Add beforeunload to save data
+            window.addEventListener('beforeunload', () => {
+                platform.saveUserData();
+            });
+
+            // Show initial notification
+            setTimeout(() => {
+                platform.showNotification('Welcome!', 'Your monetization platform is ready. Start earning!', 'success');
+            }, 1500);
+        });
+
+        // ===========================================
+        // SERVICE WORKER FOR OFFLINE SUPPORT
+        // ===========================================
+        const serviceWorkerCode = `
+            self.addEventListener('install', (event) => {
+                event.waitUntil(
+                    caches.open('affiliatemath-v1').then((cache) => {
+                        return cache.addAll([
+                            '/',
+                            '/index.html',
+                            '/styles.css',
+                            '/app.js'
+                        ]);
+                    })
+                );
+            });
+
+            self.addEventListener('fetch', (event) => {
+                event.respondWith(
+                    caches.match(event.request).then((response) => {
+                        return response || fetch(event.request);
+                    })
+                );
+            });
+        `;
+
+        // Create blob URL for service worker
+        const blob = new Blob([serviceWorkerCode], { type: 'application/javascript' });
+        const swUrl = URL.createObjectURL(blob);
+
+        // Register service worker if in production
+        if (window.location.hostname !== 'localhost' && 'serviceWorker' in navigator) {
+            navigator.serviceWorker.register(swUrl);
+        }
+    </script>
+</body>
+
+</html>
