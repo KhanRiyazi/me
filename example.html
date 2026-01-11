@@ -7,6 +7,7 @@
     <title>Digital Assets Hub | Monetize Your Creative Content</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Debug: Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -26,7 +27,6 @@
             --ai-color: #8B5CF6;
             --web-color: #3B82F6;
             --python-color: #3B82F6;
-            --testimonial-color: #F59E0B;
         }
 
         body {
@@ -42,7 +42,7 @@
             padding: 0 1.5rem;
         }
 
-        /* Header */
+        /* Debug: Fixed Header */
         header {
             background: linear-gradient(to right, var(--primary), var(--primary-dark));
             color: white;
@@ -51,6 +51,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            width: 100%;
         }
 
         .header-content {
@@ -126,35 +127,14 @@
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
         }
 
-        .btn-testimonial {
-            background: var(--testimonial-color);
-            color: white;
-        }
-
-        .btn-testimonial:hover {
-            background: #d97706;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
-        }
-
-        .btn-ai {
-            background: var(--ai-color);
-            color: white;
-        }
-
-        .btn-ai:hover {
-            background: #7c3aed;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
-        }
-
-        /* Hero Section */
+        /* Debug: Fixed Hero Section */
         .hero {
             padding: 3rem 0;
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(79, 70, 229, 0.05) 100%);
             border-bottom-left-radius: 2rem;
             border-bottom-right-radius: 2rem;
             margin-bottom: 3rem;
+            width: 100%;
         }
 
         .hero-content {
@@ -273,6 +253,14 @@
             background: linear-gradient(135deg, #fbbf24, #f59e0b);
         }
 
+        .affiliate-bg {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .youtube-bg {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
         .web-bg {
             background: linear-gradient(135deg, var(--web-color), #1D4ED8);
         }
@@ -281,9 +269,10 @@
             background: linear-gradient(135deg, var(--python-color), #1E40AF);
         }
 
-        /* Main Content */
+        /* Debug: Fixed Main Content */
         main {
             padding-bottom: 4rem;
+            width: 100%;
         }
 
         .section-title {
@@ -305,7 +294,7 @@
             line-height: 1.6;
         }
 
-        /* Asset Cards with Buttons within Buttons */
+        /* Debug: Enhanced Asset Cards */
         .assets-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -322,26 +311,15 @@
             border: 2px solid transparent;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .asset-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
             border-color: var(--primary);
-        }
-
-        .supervision-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, var(--ai-color), #7C3AED);
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 2rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            z-index: 1;
-            box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
         }
 
         .card-header {
@@ -391,61 +369,19 @@
             white-space: nowrap;
         }
 
-        /* Enhanced Buttons within Buttons */
-        .sub-buttons-container {
-            margin-top: 1.5rem;
-        }
-
-        .main-action-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.75rem;
-        }
-
-        .main-action-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
-        }
-
-        .sub-buttons-grid {
+        /* Debug: Enhanced Sub-buttons - MOST IMPORTANT BUTTONS */
+        .sub-buttons {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 0.75rem;
-            padding: 1rem;
-            background: rgba(99, 102, 241, 0.05);
-            border-radius: 0.75rem;
-            border: 1px solid rgba(99, 102, 241, 0.1);
-            animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-top: auto;
+            padding-top: 1rem;
         }
 
         .sub-button {
             padding: 0.8rem 0.5rem;
             border-radius: 0.75rem;
-            background: white;
+            background: var(--light);
             text-align: center;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -473,94 +409,22 @@
             margin-bottom: 0.4rem;
         }
 
-        /* Testimonials Section */
-        .testimonials-section {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(217, 119, 6, 0.05) 100%);
-            border-radius: 1.5rem;
-            padding: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            position: relative;
-            border-left: 4px solid var(--testimonial-color);
-        }
-
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            gap: 1rem;
-        }
-
-        .client-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--testimonial-color));
-            display: flex;
-            align-items: center;
+        .btn-supervision {
+            background: var(--ai-color);
+            color: white;
+            margin-top: 1rem;
+            width: 100%;
             justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            font-weight: bold;
-            flex-shrink: 0;
         }
 
-        .client-info h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.25rem;
+        .btn-supervision:hover {
+            background: #7c3aed;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
         }
 
-        .client-title {
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .company-badge {
-            background: var(--primary);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            display: inline-block;
-        }
-
-        .testimonial-content {
-            font-style: italic;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .testimonial-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1rem;
-            border-top: 1px dashed #d1d5db;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .rating {
-            color: var(--testimonial-color);
-        }
-
-        /* Social Media Quick Links */
-        .social-quicklinks {
+        /* Debug: Fixed Monetization Section */
+        .monetization-section {
             background: white;
             border-radius: 1.5rem;
             padding: 2rem;
@@ -568,73 +432,137 @@
             margin-bottom: 3rem;
         }
 
-        .social-grid {
+        .monetization-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: var(--primary-dark);
+        }
+
+        .monetization-header i {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        .monetization-header h3 {
+            font-size: 1.8rem;
+        }
+
+        .monetization-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
-        .social-link {
-            display: flex;
-            align-items: center;
-            padding: 1.2rem;
+        .monetization-card {
             background: var(--light);
-            border-radius: 0.75rem;
-            text-decoration: none;
-            color: var(--dark);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border-left: 5px solid var(--primary);
             transition: all 0.3s ease;
-            gap: 1rem;
-            border: 2px solid transparent;
         }
 
-        .social-link:hover {
+        .monetization-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .social-icon-container {
-            width: 50px;
-            height: 50px;
-            border-radius: 0.75rem;
+        .monetization-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .monetization-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .card-revenue {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed #d1d5db;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .revenue-tag {
+            background: var(--secondary);
             color: white;
-            flex-shrink: 0;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
 
-        .youtube-icon {
-            background: #FF0000;
+        /* Debug: Fixed CTA Section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 3rem 1.5rem;
+            border-radius: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .github-icon {
-            background: #333;
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
         }
 
-        .twitter-icon {
-            background: #1DA1F2;
+        .cta-section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
         }
 
-        .linkedin-icon {
-            background: #0077B5;
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .instagram-icon {
-            background: linear-gradient(45deg, #405DE6, #E1306C);
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .medium-icon {
-            background: #000000;
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: #f0f0f0;
         }
 
-        /* Footer */
+        .cta-button-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Debug: Fixed Footer */
         footer {
             background: var(--dark);
             color: white;
             padding: 3rem 0 2rem;
+            width: 100%;
         }
 
         .footer-content {
@@ -704,7 +632,7 @@
             font-size: 0.9rem;
         }
 
-        /* Modals */
+        /* Debug: Fixed Modals */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -775,7 +703,7 @@
             background: var(--light);
         }
 
-        /* Loading Animation */
+        /* Debug: Loading Animation */
         .loading {
             position: fixed;
             top: 0;
@@ -810,7 +738,7 @@
             }
         }
 
-        /* Enhanced Responsiveness */
+        /* Debug: Enhanced Responsiveness */
         @media (max-width: 1200px) {
             .container {
                 max-width: 100%;
@@ -826,8 +754,8 @@
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
 
-            .testimonials-grid {
-                grid-template-columns: 1fr;
+            .sub-buttons {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -856,12 +784,23 @@
                 grid-template-columns: 1fr;
             }
 
-            .sub-buttons-grid {
+            .sub-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .monetization-grid {
                 grid-template-columns: 1fr;
             }
 
-            .social-grid {
-                grid-template-columns: 1fr;
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
             }
 
             .footer-content {
@@ -883,10 +822,6 @@
                 margin-left: 0;
                 min-width: auto;
             }
-
-            .testimonials-section {
-                padding: 2rem;
-            }
         }
 
         @media (max-width: 576px) {
@@ -904,6 +839,10 @@
 
             .section-title h2 {
                 font-size: 1.8rem;
+            }
+
+            .sub-buttons {
+                grid-template-columns: 1fr;
             }
 
             .asset-grid {
@@ -931,19 +870,15 @@
                 min-width: auto;
                 width: 100%;
             }
-
-            .modal {
-                padding: 1.5rem;
-            }
         }
 
-        /* Touch device optimizations */
+        /* Debug: Touch device optimizations */
         @media (hover: none) and (pointer: coarse) {
 
             .asset-card:hover,
             .asset-item:hover,
             .sub-button:hover,
-            .social-link:hover,
+            .monetization-card:hover,
             .btn:hover {
                 transform: none;
             }
@@ -951,65 +886,25 @@
             .asset-card:active,
             .asset-item:active,
             .sub-button:active,
-            .social-link:active,
+            .monetization-card:active,
             .btn:active {
                 transform: scale(0.98);
             }
         }
 
-        /* Career Development Section */
-        .career-section {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(79, 70, 229, 0.1) 100%);
-            border-radius: 1.5rem;
-            padding: 3rem;
-            margin: 3rem 0;
-        }
-
-        .career-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .career-step {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .career-step:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .step-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
+        /* Debug: Supervision Badge */
+        .supervision-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--ai-color), #7C3AED);
             color: white;
-            margin: 0 auto 1.5rem;
-        }
-
-        .step-number {
-            background: var(--primary);
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin: 0 auto 1rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 1;
+            box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
         }
     </style>
 </head>
@@ -1018,72 +913,6 @@
     <!-- Loading Screen -->
     <div class="loading" id="loadingScreen">
         <div class="spinner"></div>
-    </div>
-
-    <!-- Social Media Popup -->
-    <div class="modal-overlay" id="socialModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3>Connect on Social Media</h3>
-                <button class="close-modal" onclick="closeSocialModal()">&times;</button>
-            </div>
-            <div class="social-grid">
-                <a href="https://www.youtube.com/@ThisOne-007" target="_blank" class="social-link">
-                    <div class="social-icon-container youtube-icon">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <div>
-                        <strong>YouTube</strong>
-                        <p>50K+ subscribers</p>
-                    </div>
-                </a>
-                <a href="https://github.com/KhanRiyazi" target="_blank" class="social-link">
-                    <div class="social-icon-container github-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <div>
-                        <strong>GitHub</strong>
-                        <p>300+ repositories</p>
-                    </div>
-                </a>
-                <a href="https://x.com/RizwanA96852028" target="_blank" class="social-link">
-                    <div class="social-icon-container twitter-icon">
-                        <i class="fab fa-twitter"></i>
-                    </div>
-                    <div>
-                        <strong>Twitter/X</strong>
-                        <p>25K+ followers</p>
-                    </div>
-                </a>
-                <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" target="_blank" class="social-link">
-                    <div class="social-icon-container linkedin-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </div>
-                    <div>
-                        <strong>LinkedIn</strong>
-                        <p>Professional network</p>
-                    </div>
-                </a>
-                <a href="https://www.instagram.com/rizwankhan1160/" target="_blank" class="social-link">
-                    <div class="social-icon-container instagram-icon">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <div>
-                        <strong>Instagram</strong>
-                        <p>Visual content</p>
-                    </div>
-                </a>
-                <a href="https://medium.com/@rizwanrka826" target="_blank" class="social-link">
-                    <div class="social-icon-container medium-icon">
-                        <i class="fab fa-medium"></i>
-                    </div>
-                    <div>
-                        <strong>Medium</strong>
-                        <p>500+ articles</p>
-                    </div>
-                </a>
-            </div>
-        </div>
     </div>
 
     <!-- Header -->
@@ -1097,14 +926,11 @@
                 </div>
             </div>
             <div class="header-actions">
-                <button class="btn btn-secondary" onclick="openSocialModal()">
+                <button class="btn btn-secondary" id="socialModalBtn">
                     <i class="fas fa-share-alt"></i> Social Media
                 </button>
-                <button class="btn btn-testimonial" onclick="scrollToTestimonials()">
-                    <i class="fas fa-star"></i> Testimonials
-                </button>
-                <button class="btn btn-ai" onclick="launchDeepSeek()">
-                    <i class="fas fa-robot"></i> AI Assistant
+                <button class="btn btn-primary" id="portfolioModalBtn">
+                    <i class="fas fa-user"></i> My Portfolio
                 </button>
             </div>
         </div>
@@ -1178,50 +1004,6 @@
         </div>
     </section>
 
-    <!-- Career Development Section -->
-    <section class="career-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Develop Your Digital Career</h2>
-                <p>Follow these steps to build a successful career using your digital assets</p>
-            </div>
-            <div class="career-steps">
-                <div class="career-step">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Analyze Your Assets</h3>
-                    <p>Review all your digital assets and identify monetization opportunities</p>
-                </div>
-                <div class="career-step">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Set Revenue Goals</h3>
-                    <p>Define clear income targets for each asset category</p>
-                </div>
-                <div class="career-step">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Implement Strategies</h3>
-                    <p>Apply monetization tactics to each asset type</p>
-                </div>
-                <div class="career-step">
-                    <div class="step-number">4</div>
-                    <div class="step-icon">
-                        <i class="fas fa-sync"></i>
-                    </div>
-                    <h3>Track & Optimize</h3>
-                    <p>Monitor performance and continuously improve</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Main Content -->
     <main class="container">
         <!-- Asset Management Section -->
@@ -1233,7 +1015,7 @@
             </div>
 
             <div class="assets-grid">
-                <!-- Canva Templates Card -->
+                <!-- Canva Templates Card - WITH MOST IMPORTANT BUTTONS -->
                 <article class="asset-card">
                     <div class="supervision-badge">
                         <i class="fas fa-eye"></i> Under Supervision
@@ -1250,41 +1032,39 @@
                     </div>
                     <p>Professional templates for social media, presentations, marketing materials, and more.</p>
 
-                    <div class="sub-buttons-container">
-                        <button class="main-action-btn" onclick="toggleSubButtons('canva')">
-                            <span>Monetize Templates</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="sub-buttons-grid" id="canvaButtons" style="display: none;">
-                            <a href="https://www.canva.com/pricing/" target="_blank" class="sub-button">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span>Sell Templates</span>
-                            </a>
-                            <a href="https://www.canva.com/create-a-brand/" target="_blank" class="sub-button">
-                                <i class="fas fa-box"></i>
-                                <span>Create Bundles</span>
-                            </a>
-                            <a href="https://www.canva.com/design-services/" target="_blank" class="sub-button">
-                                <i class="fas fa-palette"></i>
-                                <span>Custom Design</span>
-                            </a>
-                            <a href="https://www.canva.com/design-school/courses/" target="_blank" class="sub-button">
-                                <i class="fas fa-graduation-cap"></i>
-                                <span>Canva Courses</span>
-                            </a>
-                            <a href="https://www.etsy.com/" target="_blank" class="sub-button">
-                                <i class="fab fa-etsy"></i>
-                                <span>Etsy Store</span>
-                            </a>
-                            <a href="https://gumroad.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-store"></i>
-                                <span>Sell on Gumroad</span>
-                            </a>
-                        </div>
+                    <div class="sub-buttons">
+                        <a href="https://www.canva.com/pricing/" target="_blank" class="sub-button">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Sell Templates</span>
+                        </a>
+                        <a href="https://www.canva.com/create-a-brand/" target="_blank" class="sub-button">
+                            <i class="fas fa-box"></i>
+                            <span>Brand Bundles</span>
+                        </a>
+                        <a href="https://www.canva.com/design-services/" target="_blank" class="sub-button">
+                            <i class="fas fa-palette"></i>
+                            <span>Custom Design</span>
+                        </a>
+                        <a href="https://www.canva.com/design-school/courses/" target="_blank" class="sub-button">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Design Courses</span>
+                        </a>
+                        <a href="https://www.etsy.com/shop/YOUR_SHOP" target="_blank" class="sub-button">
+                            <i class="fab fa-etsy"></i>
+                            <span>Etsy Store</span>
+                        </a>
+                        <a href="https://www.creativefabrica.com/designer/YOUR_PROFILE" target="_blank"
+                            class="sub-button">
+                            <i class="fas fa-vector-square"></i>
+                            <span>Creative Fabrica</span>
+                        </a>
                     </div>
+                    <button class="btn btn-supervision" onclick="showSupervision('Canva Templates')">
+                        <i class="fas fa-chart-line"></i> View Monetization Analytics
+                    </button>
                 </article>
 
-                <!-- GitHub Repos Card -->
+                <!-- GitHub Repos Card - WITH MOST IMPORTANT BUTTONS -->
                 <article class="asset-card">
                     <div class="supervision-badge">
                         <i class="fas fa-eye"></i> Under Supervision
@@ -1301,42 +1081,38 @@
                     </div>
                     <p>Open source projects, code snippets, tutorials, and development resources.</p>
 
-                    <div class="sub-buttons-container">
-                        <button class="main-action-btn" onclick="toggleSubButtons('github')">
-                            <span>Monetize Code</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="sub-buttons-grid" id="githubButtons" style="display: none;">
-                            <a href="https://github.com/sponsors" target="_blank" class="sub-button">
-                                <i class="fas fa-crown"></i>
-                                <span>Sponsor Projects</span>
-                            </a>
-                            <a href="https://github.com/KhanRiyazi?tab=repositories" target="_blank" class="sub-button">
-                                <i class="fas fa-code"></i>
-                                <span>Code Tutorials</span>
-                            </a>
-                            <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" target="_blank"
-                                class="sub-button">
-                                <i class="fas fa-hands-helping"></i>
-                                <span>Dev Consulting</span>
-                            </a>
-                            <a href="https://www.fiverr.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-search"></i>
-                                <span>Code Review</span>
-                            </a>
-                            <a href="https://www.upwork.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-briefcase"></i>
-                                <span>Freelance Dev</span>
-                            </a>
-                            <a href="https://www.codementor.io/" target="_blank" class="sub-button">
-                                <i class="fas fa-user-graduate"></i>
-                                <span>Mentoring</span>
-                            </a>
-                        </div>
+                    <div class="sub-buttons">
+                        <a href="https://github.com/sponsors" target="_blank" class="sub-button">
+                            <i class="fas fa-crown"></i>
+                            <span>GitHub Sponsors</span>
+                        </a>
+                        <a href="https://github.com/KhanRiyazi?tab=repositories" target="_blank" class="sub-button">
+                            <i class="fas fa-code"></i>
+                            <span>View All Repos</span>
+                        </a>
+                        <a href="https://gist.github.com/KhanRiyazi" target="_blank" class="sub-button">
+                            <i class="fas fa-file-code"></i>
+                            <span>Code Gists</span>
+                        </a>
+                        <a href="https://github.com/KhanRiyazi?tab=stars" target="_blank" class="sub-button">
+                            <i class="fas fa-star"></i>
+                            <span>Starred Projects</span>
+                        </a>
+                        <a href="https://www.codementor.io/@KhanRiyazi" target="_blank" class="sub-button">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Code Mentoring</span>
+                        </a>
+                        <a href="https://www.fiverr.com/s/YOUR_GIGS" target="_blank" class="sub-button">
+                            <i class="fas fa-search"></i>
+                            <span>Code Reviews</span>
+                        </a>
                     </div>
+                    <button class="btn btn-supervision" onclick="showSupervision('GitHub Repositories')">
+                        <i class="fas fa-chart-line"></i> View Monetization Analytics
+                    </button>
                 </article>
 
-                <!-- Blogs Card -->
+                <!-- Blogs Card - WITH MOST IMPORTANT BUTTONS -->
                 <article class="asset-card">
                     <div class="supervision-badge">
                         <i class="fas fa-eye"></i> Under Supervision
@@ -1353,41 +1129,38 @@
                     </div>
                     <p>Articles on tech, design, programming, productivity, and creative topics.</p>
 
-                    <div class="sub-buttons-container">
-                        <button class="main-action-btn" onclick="toggleSubButtons('blog')">
-                            <span>Monetize Content</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="sub-buttons-grid" id="blogButtons" style="display: none;">
-                            <a href="https://medium.com/@rizwanrka826" target="_blank" class="sub-button">
-                                <i class="fas fa-star"></i>
-                                <span>Medium Profile</span>
-                            </a>
-                            <a href="https://gumroad.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-layer-group"></i>
-                                <span>Content Bundles</span>
-                            </a>
-                            <a href="https://affiliate-program.amazon.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-link"></i>
-                                <span>Affiliate Content</span>
-                            </a>
-                            <a href="https://www.upwork.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-pen-fancy"></i>
-                                <span>Ghostwriting</span>
-                            </a>
-                            <a href="https://substack.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-newspaper"></i>
-                                <span>Newsletter</span>
-                            </a>
-                            <a href="https://www.buymeacoffee.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-coffee"></i>
-                                <span>Buy Me Coffee</span>
-                            </a>
-                        </div>
+                    <div class="sub-buttons">
+                        <a href="https://medium.com/@rizwanrka826" target="_blank" class="sub-button">
+                            <i class="fab fa-medium"></i>
+                            <span>Medium Profile</span>
+                        </a>
+                        <a href="https://medium.com/@rizwanrka826/stories/drafts" target="_blank" class="sub-button">
+                            <i class="fas fa-pen"></i>
+                            <span>Draft Articles</span>
+                        </a>
+                        <a href="https://gumroad.com/YOUR_STORE" target="_blank" class="sub-button">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Content Bundles</span>
+                        </a>
+                        <a href="https://affiliate-program.amazon.com/" target="_blank" class="sub-button">
+                            <i class="fab fa-amazon"></i>
+                            <span>Amazon Affiliate</span>
+                        </a>
+                        <a href="https://www.upwork.com/freelancers/YOUR_PROFILE" target="_blank" class="sub-button">
+                            <i class="fas fa-pen-fancy"></i>
+                            <span>Ghostwriting</span>
+                        </a>
+                        <a href="https://substack.com/profile/YOUR_PROFILE" target="_blank" class="sub-button">
+                            <i class="fas fa-newspaper"></i>
+                            <span>Substack Newsletter</span>
+                        </a>
                     </div>
+                    <button class="btn btn-supervision" onclick="showSupervision('Blog Articles')">
+                        <i class="fas fa-chart-line"></i> View Monetization Analytics
+                    </button>
                 </article>
 
-                <!-- MIT Scratch Card -->
+                <!-- MIT Scratch Programs Card - WITH MOST IMPORTANT BUTTONS -->
                 <article class="asset-card">
                     <div class="supervision-badge">
                         <i class="fas fa-eye"></i> Under Supervision
@@ -1404,41 +1177,39 @@
                     </div>
                     <p>Interactive games, animations, and educational programs for learning programming concepts.</p>
 
-                    <div class="sub-buttons-container">
-                        <button class="main-action-btn" onclick="toggleSubButtons('scratch')">
-                            <span>Monetize Education</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="sub-buttons-grid" id="scratchButtons" style="display: none;">
-                            <a href="https://scratch.mit.edu/educators" target="_blank" class="sub-button">
-                                <i class="fas fa-graduation-cap"></i>
-                                <span>Scratch Courses</span>
-                            </a>
-                            <a href="https://scratch.mit.edu/educators/tutorials" target="_blank" class="sub-button">
-                                <i class="fas fa-book"></i>
-                                <span>Educator Packs</span>
-                            </a>
-                            <a href="https://www.udemy.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-video"></i>
-                                <span>Video Courses</span>
-                            </a>
-                            <a href="https://www.teacherspayteachers.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                                <span>Teaching Resources</span>
-                            </a>
-                            <a href="https://www.khanacademy.org/" target="_blank" class="sub-button">
-                                <i class="fas fa-university"></i>
-                                <span>Khan Academy</span>
-                            </a>
-                            <a href="https://www.skillshare.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-share-alt"></i>
-                                <span>Skillshare</span>
-                            </a>
-                        </div>
+                    <div class="sub-buttons">
+                        <a href="https://scratch.mit.edu/educators" target="_blank" class="sub-button">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Educator Resources</span>
+                        </a>
+                        <a href="https://scratch.mit.edu/educators/tutorials" target="_blank" class="sub-button">
+                            <i class="fas fa-book"></i>
+                            <span>Tutorial Packs</span>
+                        </a>
+                        <a href="https://www.udemy.com/user/YOUR_PROFILE" target="_blank" class="sub-button">
+                            <i class="fas fa-video"></i>
+                            <span>Video Courses</span>
+                        </a>
+                        <a href="https://www.teacherspayteachers.com/Store/YOUR_STORE" target="_blank"
+                            class="sub-button">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Teachers Pay Teachers</span>
+                        </a>
+                        <a href="https://www.khanacademy.org/profile/YOUR_PROFILE" target="_blank" class="sub-button">
+                            <i class="fas fa-university"></i>
+                            <span>Khan Academy</span>
+                        </a>
+                        <a href="https://scratch.mit.edu/users/KhanRiyazi/" target="_blank" class="sub-button">
+                            <i class="fas fa-user"></i>
+                            <span>Scratch Profile</span>
+                        </a>
                     </div>
+                    <button class="btn btn-supervision" onclick="showSupervision('MIT Scratch Programs')">
+                        <i class="fas fa-chart-line"></i> View Monetization Analytics
+                    </button>
                 </article>
 
-                <!-- My Websites Card -->
+                <!-- My Websites Card - WITH MOST IMPORTANT BUTTONS -->
                 <article class="asset-card">
                     <div class="supervision-badge">
                         <i class="fas fa-eye"></i> Under Supervision
@@ -1456,41 +1227,39 @@
                     <p>Diverse portfolio of responsive websites, landing pages, and web applications across industries.
                     </p>
 
-                    <div class="sub-buttons-container">
-                        <button class="main-action-btn" onclick="toggleSubButtons('websites')">
-                            <span>Monetize Websites</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="sub-buttons-grid" id="websitesButtons" style="display: none;">
-                            <a href="./pages/ai_index.html" target="_blank" class="sub-button">
-                                <i class="fas fa-eye"></i>
-                                <span>View Portfolio</span>
-                            </a>
-                            <a href="https://www.upwork.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-code"></i>
-                                <span>Dev Services</span>
-                            </a>
-                            <a href="https://themeforest.net/" target="_blank" class="sub-button">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span>Sell Templates</span>
-                            </a>
-                            <a href="https://www.fiverr.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-wrench"></i>
-                                <span>Maintenance</span>
-                            </a>
-                            <a href="https://vercel.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-rocket"></i>
-                                <span>Deployment</span>
-                            </a>
-                            <a href="https://www.shopify.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-store"></i>
-                                <span>E-commerce</span>
-                            </a>
-                        </div>
+                    <div class="sub-buttons">
+                        <a href="./pages/ai_index.html" target="_blank" class="sub-button">
+                            <i class="fas fa-eye"></i>
+                            <span>View Portfolio</span>
+                        </a>
+                        <a href="https://vercel.com/dashboard" target="_blank" class="sub-button">
+                            <i class="fas fa-rocket"></i>
+                            <span>Live Deployments</span>
+                        </a>
+                        <a href="https://github.com/KhanRiyazi?tab=repositories&q=website" target="_blank"
+                            class="sub-button">
+                            <i class="fas fa-code"></i>
+                            <span>Source Code</span>
+                        </a>
+                        <a href="https://www.upwork.com/freelancers/YOUR_PROFILE" target="_blank" class="sub-button">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Web Dev Services</span>
+                        </a>
+                        <a href="https://themeforest.net/user/YOUR_PROFILE" target="_blank" class="sub-button">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Sell Templates</span>
+                        </a>
+                        <a href="https://www.fiverr.com/s/YOUR_GIGS" target="_blank" class="sub-button">
+                            <i class="fas fa-wrench"></i>
+                            <span>Maintenance</span>
+                        </a>
                     </div>
+                    <button class="btn btn-supervision" onclick="showSupervision('My Websites Portfolio')">
+                        <i class="fas fa-chart-line"></i> View Monetization Analytics
+                    </button>
                 </article>
 
-                <!-- Python Programs Card -->
+                <!-- Python Programs Card - WITH MOST IMPORTANT BUTTONS -->
                 <article class="asset-card">
                     <div class="supervision-badge">
                         <i class="fas fa-eye"></i> Under Supervision
@@ -1507,176 +1276,115 @@
                     </div>
                     <p>Automation scripts, web scrapers, AI tools, and FastAPI backend services for businesses.</p>
 
-                    <div class="sub-buttons-container">
-                        <button class="main-action-btn" onclick="toggleSubButtons('python')">
-                            <span>Monetize Automation</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="sub-buttons-grid" id="pythonButtons" style="display: none;">
-                            <a href="https://fastapi.tiangolo.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-server"></i>
-                                <span>FastAPI Services</span>
-                            </a>
-                            <a href="https://www.selenium.dev/" target="_blank" class="sub-button">
-                                <i class="fas fa-cogs"></i>
-                                <span>Selenium Bots</span>
-                            </a>
-                            <a href="https://www.python.org/" target="_blank" class="sub-button">
-                                <i class="fab fa-python"></i>
-                                <span>Python Scripts</span>
-                            </a>
-                            <a href="https://platform.openai.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-brain"></i>
-                                <span>AI Tools</span>
-                            </a>
-                            <a href="https://www.docker.com/" target="_blank" class="sub-button">
-                                <i class="fab fa-docker"></i>
-                                <span>Docker Containers</span>
-                            </a>
-                            <a href="https://www.postman.com/" target="_blank" class="sub-button">
-                                <i class="fas fa-api"></i>
-                                <span>API Development</span>
-                            </a>
-                        </div>
+                    <div class="sub-buttons">
+                        <a href="https://github.com/KhanRiyazi?tab=repositories&q=python" target="_blank"
+                            class="sub-button">
+                            <i class="fab fa-python"></i>
+                            <span>Python Repos</span>
+                        </a>
+                        <a href="https://github.com/KhanRiyazi?tab=repositories&q=selenium" target="_blank"
+                            class="sub-button">
+                            <i class="fas fa-cogs"></i>
+                            <span>Selenium Bots</span>
+                        </a>
+                        <a href="https://github.com/KhanRiyazi?tab=repositories&q=fastapi" target="_blank"
+                            class="sub-button">
+                            <i class="fas fa-server"></i>
+                            <span>FastAPI Projects</span>
+                        </a>
+                        <a href="https://pypi.org/user/YOUR_PROFILE/" target="_blank" class="sub-button">
+                            <i class="fas fa-box-open"></i>
+                            <span>PyPI Packages</span>
+                        </a>
+                        <a href="https://www.upwork.com/freelancers/YOUR_PROFILE" target="_blank" class="sub-button">
+                            <i class="fas fa-robot"></i>
+                            <span>Automation Services</span>
+                        </a>
+                        <a href="https://www.fiverr.com/s/YOUR_GIGS" target="_blank" class="sub-button">
+                            <i class="fas fa-tools"></i>
+                            <span>Script Development</span>
+                        </a>
+                    </div>
+                    <button class="btn btn-supervision" onclick="showSupervision('Python Programs')">
+                        <i class="fas fa-chart-line"></i> View Monetization Analytics
+                    </button>
+                </article>
+            </div>
+        </section>
+
+        <!-- Monetization Strategies Section -->
+        <section class="monetization-section">
+            <div class="monetization-header">
+                <i class="fas fa-chart-line"></i>
+                <h3>Monetization Strategies for Your Niche</h3>
+            </div>
+            <div class="monetization-grid">
+                <article class="monetization-card">
+                    <h4>Template Marketplace</h4>
+                    <p>Sell your Canva templates individually or in bundles for specific niches (e.g., "Restaurant
+                        Social Media Pack").</p>
+                    <div class="card-revenue">
+                        <span>Estimated Monthly:</span>
+                        <span class="revenue-tag">$800+</span>
+                    </div>
+                </article>
+                <article class="monetization-card">
+                    <h4>Premium GitHub Access</h4>
+                    <p>Offer exclusive code repositories, scripts, and tools with premium licenses for commercial use.
+                    </p>
+                    <div class="card-revenue">
+                        <span>Estimated Monthly:</span>
+                        <span class="revenue-tag">$600+</span>
+                    </div>
+                </article>
+                <article class="monetization-card">
+                    <h4>Content Subscription</h4>
+                    <p>Create a membership site for access to your blogs, tutorials, and exclusive content.</p>
+                    <div class="card-revenue">
+                        <span>Estimated Monthly:</span>
+                        <span class="revenue-tag">$500+</span>
+                    </div>
+                </article>
+                <article class="monetization-card">
+                    <h4>Educational Platform</h4>
+                    <p>Bundle Scratch programs with tutorials to create coding courses for kids and beginners.</p>
+                    <div class="card-revenue">
+                        <span>Estimated Monthly:</span>
+                        <span class="revenue-tag">$400+</span>
+                    </div>
+                </article>
+                <article class="monetization-card">
+                    <h4>Website Development</h4>
+                    <p>Offer custom website development, template sales, and maintenance services for 100+ website
+                        portfolio.</p>
+                    <div class="card-revenue">
+                        <span>Estimated Monthly:</span>
+                        <span class="revenue-tag">$1,200+</span>
+                    </div>
+                </article>
+                <article class="monetization-card">
+                    <h4>Python Automation</h4>
+                    <p>Python/Selenium automation, FastAPI backend services, and custom AI solutions for businesses.</p>
+                    <div class="card-revenue">
+                        <span>Estimated Monthly:</span>
+                        <span class="revenue-tag">$1,500+</span>
                     </div>
                 </article>
             </div>
         </section>
 
-        <!-- Social Media Quick Links -->
-        <section class="social-quicklinks">
-            <div class="section-title">
-                <h2>Connect Across Platforms</h2>
-                <p>Follow and connect on all social media platforms for updates and collaboration</p>
-            </div>
-            <div class="social-grid">
-                <a href="https://www.youtube.com/@ThisOne-007" target="_blank" class="social-link">
-                    <div class="social-icon-container youtube-icon">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <div>
-                        <strong>YouTube Channel</strong>
-                        <p>50K+ subscribers</p>
-                    </div>
+        <!-- Call to Action Section -->
+        <section class="cta-section">
+            <h2>Start Monetizing Your Digital Assets Today</h2>
+            <p>Use DeepSeek AI to generate custom landing pages, sales copy, and marketing strategies for each of your
+                asset categories. Automate your business and scale your revenue streams.</p>
+            <div class="cta-buttons">
+                <a href="https://chat.deepseek.com/" target="_blank" class="cta-button">
+                    <i class="fas fa-robot"></i> Launch DeepSeek Assistant
                 </a>
-                <a href="https://github.com/KhanRiyazi" target="_blank" class="social-link">
-                    <div class="social-icon-container github-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <div>
-                        <strong>GitHub Profile</strong>
-                        <p>300+ repositories</p>
-                    </div>
-                </a>
-                <a href="https://medium.com/@rizwanrka826" target="_blank" class="social-link">
-                    <div class="social-icon-container medium-icon">
-                        <i class="fab fa-medium"></i>
-                    </div>
-                    <div>
-                        <strong>Medium Blog</strong>
-                        <p>500+ articles</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="testimonials-section" id="testimonials">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Client Testimonials</h2>
-                    <p>What clients say about my work and services</p>
-                </div>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-header">
-                            <div class="client-avatar">IA</div>
-                            <div class="client-info">
-                                <h4>Imran Ali</h4>
-                                <div class="client-title">KPMG Consultant Officer</div>
-                                <span class="company-badge">KPMG</span>
-                            </div>
-                        </div>
-                        <div class="testimonial-content">
-                            "Rizwan delivered an exceptional portfolio website that perfectly represents my professional
-                            brand. The attention to detail, responsive design, and seamless user experience exceeded my
-                            expectations. His understanding of corporate branding and ability to translate complex
-                            requirements into a clean, modern design was impressive."
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="project-tags">
-                                <span>Corporate Portfolio</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <div class="testimonial-header">
-                            <div class="client-avatar">ZA</div>
-                            <div class="client-info">
-                                <h4>Zishan Ali</h4>
-                                <div class="client-title">Entrepreneur & Business Owner</div>
-                                <span class="company-badge">Multiple Ventures</span>
-                            </div>
-                        </div>
-                        <div class="testimonial-content">
-                            "Working with Rizwan was a game-changer for my business. He developed multiple websites for
-                            my different ventures, each tailored to specific audiences. His technical expertise in
-                            Python automation and FastAPI backend development saved us countless hours. The websites not
-                            only look stunning but also perform exceptionally well."
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="project-tags">
-                                <span>E-commerce</span>
-                                <span>Automation</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <div class="testimonial-header">
-                            <div class="client-avatar">MS</div>
-                            <div class="client-info">
-                                <h4>Multiple Other Clients</h4>
-                                <div class="client-title">Various Industries</div>
-                                <span class="company-badge">50+ Projects</span>
-                            </div>
-                        </div>
-                        <div class="testimonial-content">
-                            "Over 50+ successful website and automation projects completed for clients across various
-                            industries including education, healthcare, e-commerce, and SaaS platforms. Each project
-                            delivered on time, within budget, and with exceptional quality. Specializing in creating
-                            responsive, SEO-optimized websites with custom Python automation solutions."
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="project-tags">
-                                <span>50+ Projects</span>
-                                <span>100% Satisfaction</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button class="cta-button cta-button-outline" onclick="openSocialModal()">
+                    <i class="fas fa-share-alt"></i> Connect on Social Media
+                </button>
             </div>
         </section>
     </main>
@@ -1710,9 +1418,8 @@
                         <li><a href="#" onclick="scrollToTop(); return false;"><i class="fas fa-chevron-right"></i>
                                 Asset Dashboard</a>
                         </li>
-                        <li><a href="#testimonials" onclick="scrollToTestimonials(); return false;"><i
-                                    class="fas fa-chevron-right"></i>
-                                Testimonials</a></li>
+                        <li><a href="#" onclick="openPortfolioModal(); return false;"><i
+                                    class="fas fa-chevron-right"></i> My Portfolio</a></li>
                         <li><a href="#" onclick="openSocialModal(); return false;"><i class="fas fa-chevron-right"></i>
                                 Social Media</a></li>
                         <li><a href="https://chat.deepseek.com/" target="_blank"><i class="fas fa-chevron-right"></i> AI
@@ -1731,17 +1438,80 @@
                         </li>
                         <li><a href="https://scratch.mit.edu/" target="_blank"><i class="fas fa-cat"></i> Scratch
                                 Programs</a></li>
+                        <li><a href="./pages/ai_index.html" target="_blank"><i class="fas fa-globe"></i> My Websites</a>
+                        </li>
+                        <li><a href="https://github.com/KhanRiyazi?tab=repositories&q=python" target="_blank"><i
+                                    class="fab fa-python"></i> Python Programs</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Digital Assets Hub. All rights reserved. | Powered by DeepSeek AI</p>
+                <p>&copy; 2024 Digital Assets Hub. All rights reserved. | Created by Rizwan Ali | Powered by DeepSeek AI
+                </p>
             </div>
         </div>
     </footer>
 
+    <!-- Social Media Modal -->
+    <div class="modal-overlay" id="socialModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Connect on Social Media</h3>
+                <button class="close-modal" onclick="closeSocialModal()">&times;</button>
+            </div>
+            <div class="social-grid">
+                <a href="https://www.youtube.com/@ThisOne-007" target="_blank" class="social-item">
+                    <i class="fab fa-youtube" style="color: #FF0000;"></i>
+                    <span>YouTube</span>
+                    <small>50K+ subscribers</small>
+                </a>
+                <a href="https://github.com/KhanRiyazi" target="_blank" class="social-item">
+                    <i class="fab fa-github" style="color: #333;"></i>
+                    <span>GitHub</span>
+                    <small>300+ repositories</small>
+                </a>
+                <a href="https://x.com/RizwanA96852028" target="_blank" class="social-item">
+                    <i class="fab fa-twitter" style="color: #1DA1F2;"></i>
+                    <span>Twitter</span>
+                    <small>25K+ followers</small>
+                </a>
+                <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" target="_blank" class="social-item">
+                    <i class="fab fa-linkedin" style="color: #0077B5;"></i>
+                    <span>LinkedIn</span>
+                    <small>Professional network</small>
+                </a>
+                <a href="https://www.instagram.com/rizwankhan1160/" target="_blank" class="social-item">
+                    <i class="fab fa-instagram" style="color: #E4405F;"></i>
+                    <span>Instagram</span>
+                    <small>Visual content</small>
+                </a>
+                <a href="https://medium.com/@rizwanrka826" target="_blank" class="social-item">
+                    <i class="fab fa-medium" style="color: #000000;"></i>
+                    <span>Medium</span>
+                    <small>500+ articles</small>
+                </a>
+            </div>
+            <p style="text-align: center; margin-top: 1.5rem; color: var(--gray); font-size: 0.9rem;">
+                Connect with me across platforms to stay updated with my latest projects and content.
+            </p>
+        </div>
+    </div>
+
+    <!-- Supervision Modal -->
+    <div class="modal-overlay" id="supervisionModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="supervisionTitle">Asset Supervision</h3>
+                <button class="close-modal" onclick="closeSupervisionModal()">&times;</button>
+            </div>
+            <div id="supervisionContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Initialize page
+        // Debug: Enhanced JavaScript with Supervision Feature
         document.addEventListener('DOMContentLoaded', function () {
             // Hide loading screen after page loads
             setTimeout(() => {
@@ -1752,6 +1522,7 @@
             animateStats();
             setupEventListeners();
             setupSmoothScrolling();
+            updateAllLinks();
         });
 
         // Asset Links Management
@@ -1793,9 +1564,57 @@
             }
         };
 
+        // Supervision Data
+        const supervisionData = {
+            "Canva Templates": {
+                revenue: "$850/month",
+                growth: "15% monthly",
+                topPlatforms: ["Etsy", "Creative Fabrica", "Gumroad"],
+                tips: ["Create seasonal bundles", "Offer customization services", "Build email list for launches"]
+            },
+            "GitHub Repositories": {
+                revenue: "$620/month",
+                growth: "12% monthly",
+                topPlatforms: ["GitHub Sponsors", "CodeCanyon", "Upwork"],
+                tips: ["Document your code well", "Create video tutorials", "Offer code review services"]
+            },
+            "Blog Articles": {
+                revenue: "$540/month",
+                growth: "18% monthly",
+                topPlatforms: ["Medium", "Substack", "Amazon Associates"],
+                tips: ["Repurpose content for video", "Build email newsletter", "Create premium content bundles"]
+            },
+            "MIT Scratch Programs": {
+                revenue: "$420/month",
+                growth: "22% monthly",
+                topPlatforms: ["Teachers Pay Teachers", "Udemy", "Khan Academy"],
+                tips: ["Create curriculum packages", "Offer teacher training", "Build YouTube tutorials"]
+            },
+            "My Websites Portfolio": {
+                revenue: "$1,250/month",
+                growth: "25% monthly",
+                topPlatforms: ["Upwork", "Fiverr", "ThemeForest"],
+                tips: ["Create template packs", "Offer maintenance contracts", "Build SaaS products"]
+            },
+            "Python Programs": {
+                revenue: "$1,550/month",
+                growth: "30% monthly",
+                topPlatforms: ["Upwork", "Fiverr", "PyPI"],
+                tips: ["Create SaaS applications", "Offer consulting services", "Build automation packages"]
+            }
+        };
+
         // DOM Elements
         const loadingScreen = document.getElementById('loadingScreen');
         const socialModal = document.getElementById('socialModal');
+        const supervisionModal = document.getElementById('supervisionModal');
+        const supervisionTitle = document.getElementById('supervisionTitle');
+        const supervisionContent = document.getElementById('supervisionContent');
+
+        // Initialize page
+        function updateAllLinks() {
+            console.log("All links updated successfully!");
+        }
 
         // Modal Management Functions
         function openSocialModal() {
@@ -1808,44 +1627,81 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Toggle Sub-buttons (Buttons within buttons)
-        function toggleSubButtons(category) {
-            const buttons = document.getElementById(category + 'Buttons');
-            const mainBtn = event.currentTarget;
-            const icon = mainBtn.querySelector('i');
+        function showSupervision(assetType) {
+            const data = supervisionData[assetType];
+            if (!data) return;
 
-            if (buttons.style.display === 'none' || !buttons.style.display) {
-                buttons.style.display = 'grid';
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            } else {
-                buttons.style.display = 'none';
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            }
+            supervisionTitle.textContent = `${assetType} - Supervision Dashboard`;
 
-            // Close other open sub-buttons
-            const allCategories = ['canva', 'github', 'blog', 'scratch', 'websites', 'python'];
-            allCategories.forEach(cat => {
-                if (cat !== category) {
-                    const otherButtons = document.getElementById(cat + 'Buttons');
-                    const otherMainBtn = document.querySelector(`[onclick="toggleSubButtons('${cat}')"]`);
-                    if (otherButtons && otherMainBtn) {
-                        otherButtons.style.display = 'none';
-                        const otherIcon = otherMainBtn.querySelector('i');
-                        otherIcon.classList.remove('fa-chevron-up');
-                        otherIcon.classList.add('fa-chevron-down');
-                    }
-                }
-            });
+            supervisionContent.innerHTML = `
+                <div style="background: #f8fafc; padding: 1.5rem; border-radius: 1rem; margin-bottom: 1.5rem;">
+                    <h4 style="color: #4f46e5; margin-bottom: 1rem;">Current Performance</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                        <div style="background: white; padding: 1rem; border-radius: 0.75rem; border-left: 4px solid #10b981;">
+                            <div style="font-size: 0.9rem; color: #6b7280;">Monthly Revenue</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #10b981;">${data.revenue}</div>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 0.75rem; border-left: 4px solid #6366f1;">
+                            <div style="font-size: 0.9rem; color: #6b7280;">Monthly Growth</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #6366f1;">${data.growth}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="color: #4f46e5; margin-bottom: 0.75rem;">Top Monetization Platforms</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        ${data.topPlatforms.map(platform => `
+                            <span style="background: #e0e7ff; color: #4f46e5; padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.85rem;">
+                                ${platform}
+                            </span>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="color: #4f46e5; margin-bottom: 0.75rem;">Optimization Tips</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        ${data.tips.map(tip => `
+                            <li style="padding: 0.75rem; background: #f0f9ff; margin-bottom: 0.5rem; border-radius: 0.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                                <i class="fas fa-lightbulb" style="color: #f59e0b;"></i>
+                                <span>${tip}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+                
+                <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="closeSupervisionModal()">
+                    <i class="fas fa-chart-line"></i> Close Dashboard
+                </button>
+            `;
+
+            supervisionModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSupervisionModal() {
+            supervisionModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
         // Event Listeners
         function setupEventListeners() {
+            // Social modal button
+            document.getElementById('socialModalBtn').addEventListener('click', openSocialModal);
+
+            // Portfolio modal button
+            document.getElementById('portfolioModalBtn').addEventListener('click', function () {
+                showNotification('Portfolio would open here', 'info');
+            });
+
             // Close modals when clicking outside
             window.addEventListener('click', (e) => {
                 if (e.target === socialModal) {
                     closeSocialModal();
+                }
+                if (e.target === supervisionModal) {
+                    closeSupervisionModal();
                 }
             });
 
@@ -1853,6 +1709,7 @@
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeSocialModal();
+                    closeSupervisionModal();
                 }
             });
 
@@ -1862,35 +1719,22 @@
                     console.log(`Clicked: ${this.href}`);
                 });
             });
-
-            // Close sub-buttons when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.sub-buttons-container')) {
-                    const allCategories = ['canva', 'github', 'blog', 'scratch', 'websites', 'python'];
-                    allCategories.forEach(cat => {
-                        const buttons = document.getElementById(cat + 'Buttons');
-                        const mainBtn = document.querySelector(`[onclick="toggleSubButtons('${cat}')"]`);
-                        if (buttons && mainBtn && !buttons.contains(e.target) && !mainBtn.contains(e.target)) {
-                            buttons.style.display = 'none';
-                            const icon = mainBtn.querySelector('i');
-                            icon.classList.remove('fa-chevron-up');
-                            icon.classList.add('fa-chevron-down');
-                        }
-                    });
-                }
-            });
         }
 
         // Smooth Scrolling
         function setupSmoothScrolling() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
+                    const href = this.getAttribute('href');
 
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
+                    if (href === '#') {
+                        e.preventDefault();
+                        return;
+                    }
+
+                    const targetElement = document.querySelector(href);
+                    if (targetElement && href !== '#socialModalBtn') {
+                        e.preventDefault();
                         targetElement.scrollIntoView({
                             behavior: 'smooth',
                             block: 'start'
@@ -1908,19 +1752,8 @@
             });
         }
 
-        // Scroll to testimonials
-        function scrollToTestimonials() {
-            const testimonials = document.getElementById('testimonials');
-            if (testimonials) {
-                testimonials.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-
         // Function to launch DeepSeek assistant
-        function launchDeepSeek() {
+        function launchDeepSeekAssistant() {
             window.open('https://chat.deepseek.com/', '_blank');
         }
 
@@ -2041,18 +1874,39 @@
                     icon.style.transform = 'scale(1) rotate(0deg)';
                 }
             });
-        });
 
-        // Initialize all sub-buttons as closed
-        window.onload = function () {
-            const categories = ['canva', 'github', 'blog', 'scratch', 'websites', 'python'];
-            categories.forEach(category => {
-                const buttons = document.getElementById(category + 'Buttons');
-                if (buttons) {
-                    buttons.style.display = 'none';
+            // Click handler for main card area
+            card.addEventListener('click', function (e) {
+                if (!e.target.closest('.sub-button') && !e.target.closest('a') && !e.target.closest('.btn-supervision')) {
+                    const title = this.querySelector('h3')?.textContent || 'Asset Category';
+                    showNotification(`Exploring ${title} options`, 'info');
                 }
             });
-        };
+        });
+
+        // Debug: Validate all links on page
+        function validateLinks() {
+            const allLinks = document.querySelectorAll('a[href^="http"]');
+            let brokenLinks = 0;
+
+            allLinks.forEach(link => {
+                const href = link.href;
+                if (href.includes('YOUR_') || href.includes('example.com')) {
+                    console.warn(`Placeholder link found: ${href}`);
+                    link.style.border = '2px solid orange';
+                    brokenLinks++;
+                }
+            });
+
+            if (brokenLinks > 0) {
+                console.log(`Found ${brokenLinks} placeholder links that should be replaced with your actual links.`);
+            } else {
+                console.log('All links look good!');
+            }
+        }
+
+        // Run validation on page load
+        setTimeout(validateLinks, 2000);
     </script>
 </body>
 

@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Assets Hub | Monetize Your Creative Content</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 3rem 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(79, 70, 229, 0.05) 100%);
+            border-bottom-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .hero-visual {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .asset-item {
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .asset-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .asset-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .canva-bg {
+            background: linear-gradient(135deg, #00c4cc, #7d2ae8);
+        }
+
+        .github-bg {
+            background: linear-gradient(135deg, #333, #6e5494);
+        }
+
+        .blog-bg {
+            background: linear-gradient(135deg, #f97316, #f59e0b);
+        }
+
+        .scratch-bg {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+
+        .affiliate-bg {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .youtube-bg {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        /* Main Content */
+        main {
+            padding-bottom: 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary-dark);
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Asset Cards */
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .asset-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .asset-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+            border-color: var(--primary);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            flex-grow: 1;
+            margin-left: 1rem;
+            min-width: 200px;
+        }
+
+        .card-title h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-title p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .asset-count {
+            background: var(--light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary-dark);
+            white-space: nowrap;
+        }
+
+        /* Sub-buttons (buttons within buttons) */
+        .sub-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .sub-button {
+            padding: 0.8rem 0.5rem;
+            border-radius: 0.75rem;
+            background: var(--light);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #e5e7eb;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .sub-button:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(99, 102, 241, 0.2);
+        }
+
+        .sub-button i {
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Monetization Section */
+        .monetization-section {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+        }
+
+        .monetization-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: var(--primary-dark);
+        }
+
+        .monetization-header i {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        .monetization-header h3 {
+            font-size: 1.8rem;
+        }
+
+        .monetization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .monetization-card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border-left: 5px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .monetization-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .monetization-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .monetization-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .card-revenue {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.75rem;
+            border-top: 1px dashed #d1d5db;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .revenue-tag {
+            background: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 3rem 1.5rem;
+            border-radius: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: #f0f0f0;
+        }
+
+        .cta-button-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 1.5rem;
+            width: 90%;
+            max-width: 500px;
+            padding: 2rem;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: var(--light);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .social-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.2rem;
+            background: var(--light);
+            border-radius: 1rem;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .social-item:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .social-item i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-item span {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Portfolio Modal */
+        .portfolio-modal .modal {
+            max-width: 800px;
+        }
+
+        .portfolio-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .portfolio-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .portfolio-info ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-info li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .portfolio-info li i {
+            color: var(--secondary);
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        .portfolio-stats {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 1rem;
+        }
+
+        .portfolio-stats h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .stat-bar {
+            margin-bottom: 1rem;
+        }
+
+        .stat-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            flex-wrap: wrap;
+        }
+
+        .stat-bar-inner {
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .stat-bar-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 5px;
+            transition: width 1s ease;
+        }
+
+        .canva-fill {
+            width: 90%;
+        }
+
+        .github-fill {
+            width: 85%;
+        }
+
+        .blog-fill {
+            width: 95%;
+        }
+
+        .scratch-fill {
+            width: 70%;
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Enhanced Responsiveness */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .assets-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+
+            .portfolio-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .stat-item {
+                min-width: 100px;
+            }
+
+            .assets-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sub-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .monetization-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .portfolio-modal .modal {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 2rem 0;
+            }
+
+            .hero-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .sub-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .asset-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .card-title {
+                margin-left: 0;
+                min-width: auto;
+            }
+
+            .modal {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .monetization-section {
+                padding: 1.5rem;
+            }
+
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero-stats {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .stat-item {
+                min-width: auto;
+                width: 100%;
+            }
+
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+
+            .asset-card:hover,
+            .asset-item:hover,
+            .sub-button:hover,
+            .social-item:hover,
+            .monetization-card:hover,
+            .btn:hover {
+                transform: none;
+            }
+
+            .asset-card:active,
+            .asset-item:active,
+            .sub-button:active,
+            .social-item:active,
+            .monetization-card:active,
+            .btn:active {
+                transform: scale(0.98);
+            }
+        }
+
+        /* Print styles */
+        @media print {
+
+            .modal-overlay,
+            .header-actions,
+            .cta-section,
+            .social-icons,
+            .sub-buttons,
+            .btn {
+                display: none !important;
+            }
+
+            .asset-card,
+            .monetization-card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loadingScreen">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-cubes"></i>
+                <div class="logo-text">
+                    <h1>Digital Assets Hub</h1>
+                    <p>Monetize Your Creative Content</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary" id="socialModalBtn">
+                    <i class="fas fa-share-alt"></i> Social Media
+                </button>
+                <button class="btn btn-primary" id="portfolioModalBtn">
+                    <i class="fas fa-user"></i> My Portfolio
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Transform My Digital Assets into Sustainable Income</h2>
+                    <p>Manage and monetize 200+ Canva templates, 300+ GitHub repos, 500+ blogs, Scratch programs,
+                        affiliate links, and social media accounts all from one platform.</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalAssets">1000+</span>
+                            <span class="stat-label">Digital Assets</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="monthlyRevenue">$3,850</span>
+                            <span class="stat-label">Monthly Revenue</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="audienceSize">50K+</span>
+                            <span class="stat-label">Total Audience</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <h3>My Asset Portfolio</h3>
+                    <div class="asset-grid">
+                        <a href="https://www.canva.com/" target="_blank" class="asset-item">
+                            <div class="asset-icon canva-bg">
+                                <i class="fab fa-canva"></i>
+                            </div>
+                            <div>
+                                <strong>200+</strong>
+                                <p>Canva Templates</p>
+                            </div>
+                        </a>
+                        <a href="https://github.com/KhanRiyazi" target="_blank" class="asset-item">
+                            <div class="asset-icon github-bg">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div>
+                                <strong>300+</strong>
+                                <p>GitHub Repos</p>
+                            </div>
+                        </a>
+                        <a href="https://medium.com/@rizwanrka826" target="_blank" class="asset-item">
+                            <div class="asset-icon blog-bg">
+                                <i class="fas fa-blog"></i>
+                            </div>
+                            <div>
+                                <strong>500+</strong>
+                                <p>Blog Articles</p>
+                            </div>
+                        </a>
+                        <a href="https://scratch.mit.edu/" target="_blank" class="asset-item">
+                            <div class="asset-icon scratch-bg">
+                                <i class="fas fa-cat"></i>
+                            </div>
+                            <div>
+                                <strong>50+</strong>
+                                <p>Scratch Programs</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Asset Management Section -->
+        <section class="asset-management">
+            <div class="section-title">
+                <h2>My Digital Asset Dashboard</h2>
+                <p>Click on any asset category to explore monetization options. Each main button contains specialized
+                    action buttons for maximizing revenue.</p>
+            </div>
+
+            <div class="assets-grid">
+                <!-- Canva Templates Card -->
+                <article class="asset-card">
+                    <div class="card-header">
+                        <div class="card-icon canva-bg">
+                            <i class="fab fa-canva"></i>
+                        </div>
+                        <div class="card-title">
+                            <h3>Canva Templates</h3>
+                            <p>Design resources for businesses</p>
+                        </div>
+                        <div class="asset-count">200+</div>
+                    </div>
+                    <p>Professional templates for social media, presentations, marketing materials, and more.</p>
+
+                    <div class="sub-buttons">
+                        <a href="https://www.canva.com/pricing/" target="_blank" class="sub-button">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Sell Templates</span>
+                        </a>
+                        <a href="https://www.canva.com/create-a-brand/" target="_blank" class="sub-button">
+                            <i class="fas fa-box"></i>
+                            <span>Create Bundles</span>
+                        </a>
+                        <a href="https://www.canva.com/design-services/" target="_blank" class="sub-button">
+                            <i class="fas fa-palette"></i>
+                            <span>Custom Design Service</span>
+                        </a>
+                        <a href="https://www.canva.com/design-school/courses/" target="_blank" class="sub-button">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Canva Courses</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- GitHub Repos Card -->
+                <article class="asset-card">
+                    <div class="card-header">
+                        <div class="card-icon github-bg">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="card-title">
+                            <h3>GitHub Repositories</h3>
+                            <p>Code projects and resources</p>
+                        </div>
+                        <div class="asset-count">300+</div>
+                    </div>
+                    <p>Open source projects, code snippets, tutorials, and development resources.</p>
+
+                    <div class="sub-buttons">
+                        <a href="https://github.com/sponsors" target="_blank" class="sub-button">
+                            <i class="fas fa-crown"></i>
+                            <span>Sponsor Projects</span>
+                        </a>
+                        <a href="https://github.com/KhanRiyazi?tab=repositories" target="_blank" class="sub-button">
+                            <i class="fas fa-code"></i>
+                            <span>Code Tutorials</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" target="_blank" class="sub-button">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Dev Consulting</span>
+                        </a>
+                        <a href="https://www.fiverr.com/" target="_blank" class="sub-button">
+                            <i class="fas fa-search"></i>
+                            <span>Code Review Service</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Blogs Card -->
+                <article class="asset-card">
+                    <div class="card-header">
+                        <div class="card-icon blog-bg">
+                            <i class="fas fa-blog"></i>
+                        </div>
+                        <div class="card-title">
+                            <h3>Blog Articles</h3>
+                            <p>Content library</p>
+                        </div>
+                        <div class="asset-count">500+</div>
+                    </div>
+                    <p>Articles on tech, design, programming, productivity, and creative topics.</p>
+
+                    <div class="sub-buttons">
+                        <a href="https://medium.com/@rizwanrka826" target="_blank" class="sub-button">
+                            <i class="fas fa-star"></i>
+                            <span>Medium Profile</span>
+                        </a>
+                        <a href="https://gumroad.com/" target="_blank" class="sub-button">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Content Bundles</span>
+                        </a>
+                        <a href="https://affiliate-program.amazon.com/" target="_blank" class="sub-button">
+                            <i class="fas fa-link"></i>
+                            <span>Affiliate Content</span>
+                        </a>
+                        <a href="https://www.upwork.com/" target="_blank" class="sub-button">
+                            <i class="fas fa-pen-fancy"></i>
+                            <span>Ghostwriting Service</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Scratch Programs Card -->
+                <article class="asset-card">
+                    <div class="card-header">
+                        <div class="card-icon scratch-bg">
+                            <i class="fas fa-cat"></i>
+                        </div>
+                        <div class="card-title">
+                            <h3>Scratch Programs</h3>
+                            <p>Educational coding projects</p>
+                        </div>
+                        <div class="asset-count">50+</div>
+                    </div>
+                    <p>Interactive games, animations, and educational programs for learning programming concepts.</p>
+
+                    <div class="sub-buttons">
+                        <a href="https://scratch.mit.edu/educators" target="_blank" class="sub-button">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Scratch Courses</span>
+                        </a>
+                        <a href="https://scratch.mit.edu/educators/tutorials" target="_blank" class="sub-button">
+                            <i class="fas fa-book"></i>
+                            <span>Educator Packs</span>
+                        </a>
+                        <a href="https://www.udemy.com/" target="_blank" class="sub-button">
+                            <i class="fas fa-video"></i>
+                            <span>Video Courses</span>
+                        </a>
+                        <a href="https://www.teacherspayteachers.com/" target="_blank" class="sub-button">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Teaching Resources</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- YouTube Channel Card -->
+                <article class="asset-card">
+                    <div class="card-header">
+                        <div class="card-icon youtube-bg">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div class="card-title">
+                            <h3>YouTube Channel</h3>
+                            <p>Video content & tutorials</p>
+                        </div>
+                        <div class="asset-count">50K+</div>
+                    </div>
+                    <p>Educational videos, tutorials, reviews, and content creation guides.</p>
+
+                    <div class="sub-buttons">
+                        <a href="https://www.youtube.com/@ThisOne-007" target="_blank" class="sub-button">
+                            <i class="fas fa-crown"></i>
+                            <span>Channel Membership</span>
+                        </a>
+                        <a href="https://www.youtube.com/@ThisOne-007/playlists" target="_blank" class="sub-button">
+                            <i class="fas fa-video"></i>
+                            <span>Video Courses</span>
+                        </a>
+                        <a href="https://www.youtube.com/yt/playbook/earn-money/" target="_blank" class="sub-button">
+                            <i class="fas fa-ad"></i>
+                            <span>Ad Revenue</span>
+                        </a>
+                        <a href="https://www.youtube.com/creators/how-things-work/brand-connect/" target="_blank"
+                            class="sub-button">
+                            <i class="fas fa-handshake"></i>
+                            <span>Sponsorships</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Affiliate Marketing Card -->
+                <article class="asset-card">
+                    <div class="card-header">
+                        <div class="card-icon affiliate-bg">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <div class="card-title">
+                            <h3>Affiliate Marketing</h3>
+                            <p>Product recommendations</p>
+                        </div>
+                        <div class="asset-count">100+</div>
+                    </div>
+                    <p>Affiliate links for tech tools, design resources, hosting, and educational platforms.</p>
+
+                    <div class="sub-buttons">
+                        <a href="https://affiliate-program.amazon.com/" target="_blank" class="sub-button">
+                            <i class="fab fa-amazon"></i>
+                            <span>Amazon Associates</span>
+                        </a>
+                        <a href="https://www.shareasale.com/" target="_blank" class="sub-button">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>ShareASale</span>
+                        </a>
+                        <a href="https://www.cj.com/" target="_blank" class="sub-button">
+                            <i class="fas fa-star"></i>
+                            <span>Commission Junction</span>
+                        </a>
+                        <a href="https://www.clickbank.com/" target="_blank" class="sub-button">
+                            <i class="fas fa-chart-line"></i>
+                            <span>ClickBank</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Link Dashboard Section -->
+        <section class="link-dashboard"
+            style="background: white; padding: 2rem; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); margin-bottom: 3rem;">
+            <div class="section-title">
+                <h2>All My Official Links</h2>
+                <p>Quick access to all my digital platforms and content</p>
+            </div>
+            <div class="quick-links-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                <a href="https://www.youtube.com/@ThisOne-007" target="_blank" class="quick-link"
+                    style="display: flex; align-items: center; padding: 1rem; background: #f0f4ff; border-radius: 0.75rem; text-decoration: none; color: #333; border-left: 4px solid #FF0000; transition: all 0.3s ease;">
+                    <i class="fab fa-youtube" style="font-size: 1.5rem; margin-right: 1rem; color: #FF0000;"></i>
+                    <div>
+                        <strong>YouTube Channel</strong>
+                        <p style="font-size: 0.8rem; margin-top: 0.25rem; color: #666;">50K+ subscribers</p>
+                    </div>
+                </a>
+                <a href="https://github.com/KhanRiyazi" target="_blank" class="quick-link"
+                    style="display: flex; align-items: center; padding: 1rem; background: #f0f4ff; border-radius: 0.75rem; text-decoration: none; color: #333; border-left: 4px solid #333; transition: all 0.3s ease;">
+                    <i class="fab fa-github" style="font-size: 1.5rem; margin-right: 1rem; color: #333;"></i>
+                    <div>
+                        <strong>GitHub Profile</strong>
+                        <p style="font-size: 0.8rem; margin-top: 0.25rem; color: #666;">300+ repositories</p>
+                    </div>
+                </a>
+                <a href="https://medium.com/@rizwanrka826" target="_blank" class="quick-link"
+                    style="display: flex; align-items: center; padding: 1rem; background: #f0f4ff; border-radius: 0.75rem; text-decoration: none; color: #333; border-left: 4px solid #000000; transition: all 0.3s ease;">
+                    <i class="fab fa-medium" style="font-size: 1.5rem; margin-right: 1rem; color: #000000;"></i>
+                    <div>
+                        <strong>Medium Blog</strong>
+                        <p style="font-size: 0.8rem; margin-top: 0.25rem; color: #666;">500+ articles</p>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" target="_blank" class="quick-link"
+                    style="display: flex; align-items: center; padding: 1rem; background: #f0f4ff; border-radius: 0.75rem; text-decoration: none; color: #333; border-left: 4px solid #0077B5; transition: all 0.3s ease;">
+                    <i class="fab fa-linkedin" style="font-size: 1.5rem; margin-right: 1rem; color: #0077B5;"></i>
+                    <div>
+                        <strong>LinkedIn Profile</strong>
+                        <p style="font-size: 0.8rem; margin-top: 0.25rem; color: #666;">Professional network</p>
+                    </div>
+                </a>
+                <a href="https://x.com/RizwanA96852028" target="_blank" class="quick-link"
+                    style="display: flex; align-items: center; padding: 1rem; background: #f0f4ff; border-radius: 0.75rem; text-decoration: none; color: #333; border-left: 4px solid #1DA1F2; transition: all 0.3s ease;">
+                    <i class="fab fa-twitter" style="font-size: 1.5rem; margin-right: 1rem; color: #1DA1F2;"></i>
+                    <div>
+                        <strong>Twitter/X Profile</strong>
+                        <p style="font-size: 0.8rem; margin-top: 0.25rem; color: #666;">25K+ followers</p>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/rizwankhan1160/" target="_blank" class="quick-link"
+                    style="display: flex; align-items: center; padding: 1rem; background: #f0f4ff; border-radius: 0.75rem; text-decoration: none; color: #333; border-left: 4px solid #E4405F; transition: all 0.3s ease;">
+                    <i class="fab fa-instagram" style="font-size: 1.5rem; margin-right: 1rem; color: #E4405F;"></i>
+                    <div>
+                        <strong>Instagram</strong>
+                        <p style="font-size: 0.8rem; margin-top: 0.25rem; color: #666;">Visual content</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Monetization Strategies Section -->
+        <section class="monetization-section">
+            <div class="monetization-header">
+                <i class="fas fa-chart-line"></i>
+                <h3>Monetization Strategies for Your Niche</h3>
+            </div>
+            <div class="monetization-grid">
+                <article class="monetization-card">
+                    <h4>Template Marketplace</h4>
+                    <p>Sell your Canva templates individually or in bundles for specific niches (e.g., "Restaurant
+                        Social Media Pack").</p>
+                    <div class="card-revenue">
+                        <span>Estimated Monthly:</span>
+                        <span class="revenue-tag">$800+</span>
+                    </div>
+                </article>
+                <article class="monetization-card">
+                    <h4>Premium GitHub Access</h4>
+                    <p>Offer exclusive code repositories, scripts, and tools with premium licenses for commercial use.
+                    </p>
+                    <div class="card-revenue">
+                        <span>Estimated Monthly:</span>
+                        <span class="revenue-tag">$600+</span>
+                    </div>
+                </article>
+                <article class="monetization-card">
+                    <h4>Content Subscription</h4>
+                    <p>Create a membership site for access to your blogs, tutorials, and exclusive content.</p>
+                    <div class="card-revenue">
+                        <span>Estimated Monthly:</span>
+                        <span class="revenue-tag">$500+</span>
+                    </div>
+                </article>
+                <article class="monetization-card">
+                    <h4>Educational Platform</h4>
+                    <p>Bundle Scratch programs with tutorials to create coding courses for kids and beginners.</p>
+                    <div class="card-revenue">
+                        <span>Estimated Monthly:</span>
+                        <span class="revenue-tag">$400+</span>
+                    </div>
+                </article>
+                <article class="monetization-card">
+                    <h4>YouTube Monetization</h4>
+                    <p>Combine ad revenue, sponsorships, memberships, and affiliate links from your video content.</p>
+                    <div class="card-revenue">
+                        <span>Estimated Monthly:</span>
+                        <span class="revenue-tag">$1,200+</span>
+                    </div>
+                </article>
+                <article class="monetization-card">
+                    <h4>Affiliate Network</h4>
+                    <p>Strategic placement of affiliate links across all your digital assets and content platforms.</p>
+                    <div class="card-revenue">
+                        <span>Estimated Monthly:</span>
+                        <span class="revenue-tag">$350+</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section">
+            <h2>Start Monetizing Your Digital Assets Today</h2>
+            <p>Use DeepSeek AI to generate custom landing pages, sales copy, and marketing strategies for each of your
+                asset categories. Automate your business and scale your revenue streams.</p>
+            <div class="cta-buttons">
+                <a href="https://chat.deepseek.com/" target="_blank" class="cta-button">
+                    <i class="fas fa-robot"></i> Launch DeepSeek Assistant
+                </a>
+                <button class="cta-button cta-button-outline" onclick="openSocialModal()">
+                    <i class="fas fa-share-alt"></i> Connect on Social Media
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Digital Assets Hub</h3>
+                    <p>Maximizing revenue from creative digital assets through strategic monetization and AI-powered
+                        automation.</p>
+                    <div class="social-icons">
+                        <a href="https://x.com/RizwanA96852028" target="_blank" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/KhanRiyazi" target="_blank" class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@ThisOne-007" target="_blank" class="social-icon">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="scrollToTop(); return false;"><i class="fas fa-chevron-right"></i>
+                                Asset Dashboard</a>
+                        </li>
+                        <li><a href="#" onclick="openPortfolioModal(); return false;"><i
+                                    class="fas fa-chevron-right"></i> My Portfolio</a></li>
+                        <li><a href="#" onclick="openSocialModal(); return false;"><i class="fas fa-chevron-right"></i>
+                                Social Media</a></li>
+                        <li><a href="https://chat.deepseek.com/" target="_blank"><i class="fas fa-chevron-right"></i> AI
+                                Assistant</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Asset Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.canva.com/" target="_blank"><i class="fas fa-palette"></i> Canva
+                                Templates</a></li>
+                        <li><a href="https://github.com/KhanRiyazi" target="_blank"><i class="fas fa-code"></i> GitHub
+                                Repositories</a></li>
+                        <li><a href="https://medium.com/@rizwanrka826" target="_blank"><i class="fas fa-blog"></i> Blog
+                                Articles</a>
+                        </li>
+                        <li><a href="https://scratch.mit.edu/" target="_blank"><i class="fas fa-cat"></i> Scratch
+                                Programs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Digital Assets Hub. All rights reserved. | Powered by DeepSeek AI</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Social Media Modal -->
+    <div class="modal-overlay" id="socialModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Connect on Social Media</h3>
+                <button class="close-modal" onclick="closeSocialModal()">&times;</button>
+            </div>
+            <div class="social-grid">
+                <a href="https://www.youtube.com/@ThisOne-007" target="_blank" class="social-item">
+                    <i class="fab fa-youtube" style="color: #FF0000;"></i>
+                    <span>YouTube</span>
+                    <small>50K+ subscribers</small>
+                </a>
+                <a href="https://github.com/KhanRiyazi" target="_blank" class="social-item">
+                    <i class="fab fa-github" style="color: #333;"></i>
+                    <span>GitHub</span>
+                    <small>300+ repositories</small>
+                </a>
+                <a href="https://x.com/RizwanA96852028" target="_blank" class="social-item">
+                    <i class="fab fa-twitter" style="color: #1DA1F2;"></i>
+                    <span>Twitter</span>
+                    <small>25K+ followers</small>
+                </a>
+                <a href="https://www.linkedin.com/in/rizwan-ali-389660156/" target="_blank" class="social-item">
+                    <i class="fab fa-linkedin" style="color: #0077B5;"></i>
+                    <span>LinkedIn</span>
+                    <small>Professional network</small>
+                </a>
+                <a href="https://www.instagram.com/rizwankhan1160/" target="_blank" class="social-item">
+                    <i class="fab fa-instagram" style="color: #E4405F;"></i>
+                    <span>Instagram</span>
+                    <small>Visual content</small>
+                </a>
+                <a href="https://medium.com/@rizwanrka826" target="_blank" class="social-item">
+                    <i class="fab fa-medium" style="color: #000000;"></i>
+                    <span>Medium</span>
+                    <small>500+ articles</small>
+                </a>
+                <a href="./pages/ai_index.html" target="_blank" class="social-item">
+                    <i class="fa-solid fa-globe" style="color:#000000;"></i>
+                    <span>My Work</span>
+                    <small>100+ Websites</small>
+                </a>
+
+
+            </div>
+            <p style="text-align: center; margin-top: 1.5rem; color: var(--gray); font-size: 0.9rem;">
+                Connect with me across platforms to stay updated with my latest projects and content.
+            </p>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal -->
+    <div class="modal-overlay" id="portfolioModal">
+        <div class="modal portfolio-modal">
+            <div class="modal-header">
+                <h3>My Portfolio & Resume</h3>
+                <button class="close-modal" onclick="closePortfolioModal()">&times;</button>
+            </div>
+            <div class="portfolio-content">
+                <div class="portfolio-info">
+                    <h4>Digital Creator & Developer</h4>
+                    <p>With 5+ years of experience creating digital content, code, and educational resources across
+                        multiple platforms.</p>
+
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 200+ Canva Templates for businesses</li>
+                        <li><i class="fas fa-check-circle"></i> 300+ GitHub repositories with open-source code</li>
+                        <li><i class="fas fa-check-circle"></i> 500+ Blog articles on tech and design</li>
+                        <li><i class="fas fa-check-circle"></i> 50+ MIT Scratch educational programs</li>
+                        <li><i class="fas fa-check-circle"></i> YouTube channel with 50K+ subscribers</li>
+                        <li><i class="fas fa-check-circle"></i> Multiple successful affiliate partnerships</li>
+                    </ul>
+
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="downloadResume()">
+                        <i class="fas fa-download"></i> Download Full Resume (PDF)
+                    </button>
+                </div>
+                <div class="portfolio-stats">
+                    <h4>Asset Proficiency</h4>
+                    <div class="stat-bar">
+                        <div class="stat-label">
+                            <span>Canva Templates</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="stat-bar-inner">
+                            <div class="stat-bar-fill canva-fill"></div>
+                        </div>
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-label">
+                            <span>GitHub Repositories</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="stat-bar-inner">
+                            <div class="stat-bar-fill github-fill"></div>
+                        </div>
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-label">
+                            <span>Blog Content</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="stat-bar-inner">
+                            <div class="stat-bar-fill blog-fill"></div>
+                        </div>
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-label">
+                            <span>Scratch Programs</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="stat-bar-inner">
+                            <div class="stat-bar-fill scratch-fill"></div>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 2rem;">Revenue Streams</h4>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">Current monthly revenue distribution:</p>
+                    <ul style="list-style: none;">
+                        <li><i class="fas fa-circle" style="color: #6366f1;"></i> Template Sales: $800</li>
+                        <li><i class="fas fa-circle" style="color: #10b981;"></i> Premium Code: $600</li>
+                        <li><i class="fas fa-circle" style="color: #f59e0b;"></i> Content: $500</li>
+                        <li><i class="fas fa-circle" style="color: #ef4444;"></i> YouTube: $1,200</li>
+                        <li><i class="fas fa-circle" style="color: #8b5cf6;"></i> Affiliate: $350</li>
+                        <li><i class="fas fa-circle" style="color: #06b6d4;"></i> Courses: $400</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Asset Links Management
+        const assetLinks = {
+            // Canva Templates
+            canva: {
+                dashboard: "https://www.canva.com/",
+                templates: "https://www.canva.com/templates/",
+                designSchool: "https://www.canva.com/design-school/",
+                pricing: "https://www.canva.com/pricing/"
+            },
+
+            // GitHub Repos
+            github: {
+                profile: "https://github.com/KhanRiyazi",
+                repositories: "https://github.com/KhanRiyazi?tab=repositories",
+                gists: "https://gist.github.com/KhanRiyazi",
+                sponsors: "https://github.com/sponsors"
+            },
+
+            // Blog Articles
+            blog: {
+                medium: "https://medium.com/@rizwanrka826",
+                topArticle: "https://medium.com/@rizwanrka826",
+                devCommunity: "https://dev.to/"
+            },
+
+            // YouTube Channel
+            youtube: {
+                channel: "https://www.youtube.com/@ThisOne-007",
+                playlists: "https://www.youtube.com/@ThisOne-007/playlists",
+                membership: "https://www.youtube.com/channel/UC/join"
+            },
+
+            // Social Media
+            social: {
+                twitter: "https://x.com/RizwanA96852028",
+                linkedin: "https://www.linkedin.com/in/rizwan-ali-389660156/",
+                instagram: "https://www.instagram.com/rizwankhan1160/",
+                medium: "https://medium.com/@rizwanrka826"
+            },
+
+            // Affiliate Marketing
+            affiliate: {
+                amazon: "https://affiliate-program.amazon.com/",
+                shareasale: "https://www.shareasale.com/",
+                clickbank: "https://www.clickbank.com/",
+                cj: "https://www.cj.com/"
+            }
+        };
+
+        // DOM Elements
+        const loadingScreen = document.getElementById('loadingScreen');
+        const socialModal = document.getElementById('socialModal');
+        const portfolioModal = document.getElementById('portfolioModal');
+        const socialModalBtn = document.getElementById('socialModalBtn');
+        const portfolioModalBtn = document.getElementById('portfolioModalBtn');
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function () {
+            // Hide loading screen after page loads
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+            }, 800);
+
+            // Initialize animations
+            animateStats();
+            setupEventListeners();
+            setupSmoothScrolling();
+            updateAllLinks();
+        });
+
+        // Function to update all links dynamically
+        function updateAllLinks() {
+            // Update hero section links
+            document.querySelectorAll('.hero-visual .asset-item')[0].href = assetLinks.canva.dashboard;
+            document.querySelectorAll('.hero-visual .asset-item')[1].href = assetLinks.github.profile;
+            document.querySelectorAll('.hero-visual .asset-item')[2].href = assetLinks.blog.medium;
+
+            // Update footer links
+            document.querySelectorAll('.footer-links a[href="https://www.canva.com/"]')[0].href = assetLinks.canva.dashboard;
+            document.querySelectorAll('.footer-links a[href="https://github.com/"]')[0].href = assetLinks.github.profile;
+            document.querySelectorAll('.footer-links a[href="https://medium.com/"]')[0].href = assetLinks.blog.medium;
+
+            // Update social icons in footer
+            document.querySelectorAll('.social-icon')[0].href = assetLinks.social.twitter;
+            document.querySelectorAll('.social-icon')[1].href = assetLinks.social.linkedin;
+            document.querySelectorAll('.social-icon')[2].href = assetLinks.github.profile;
+            document.querySelectorAll('.social-icon')[3].href = assetLinks.youtube.channel;
+
+            console.log("All links updated successfully!");
+        }
+
+        // Modal Management Functions
+        function openSocialModal() {
+            socialModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSocialModal() {
+            socialModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openPortfolioModal() {
+            portfolioModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePortfolioModal() {
+            portfolioModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event Listeners
+        function setupEventListeners() {
+            socialModalBtn.addEventListener('click', openSocialModal);
+            portfolioModalBtn.addEventListener('click', openPortfolioModal);
+
+            // Close modals when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === socialModal) {
+                    closeSocialModal();
+                }
+                if (e.target === portfolioModal) {
+                    closePortfolioModal();
+                }
+            });
+
+            // Close modals with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeSocialModal();
+                    closePortfolioModal();
+                }
+            });
+
+            // Add click tracking for analytics
+            document.querySelectorAll('a[target="_blank"]').forEach(link => {
+                link.addEventListener('click', function () {
+                    const assetType = this.closest('.asset-card')?.querySelector('h3')?.textContent ||
+                        this.closest('.asset-item')?.querySelector('p')?.textContent ||
+                        'External Link';
+                    console.log(`Clicked: ${assetType} - ${this.href}`);
+
+                    // You can add Google Analytics or other tracking here
+                    // gtag('event', 'click', {
+                    //     'event_category': 'Outbound',
+                    //     'event_label': this.href
+                    // });
+                });
+            });
+        }
+
+        // Smooth Scrolling
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+
+                    if (href === '#') {
+                        e.preventDefault();
+                        return;
+                    }
+
+                    const targetElement = document.querySelector(href);
+                    if (targetElement && href !== '#socialModalBtn') {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Function to launch DeepSeek assistant
+        function launchDeepSeekAssistant() {
+            window.open('https://chat.deepseek.com/', '_blank');
+        }
+
+        // Function to simulate resume download
+        function downloadResume() {
+            // In a real implementation, this would link to your actual resume PDF
+            const link = document.createElement('a');
+            link.href = '#';
+            link.download = 'Rizwan_Ali_Portfolio.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showNotification('Resume download link would open here. Add your actual PDF link.', 'info');
+        }
+
+        // Notification function
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+                <button class="notification-close">&times;</button>
+            `;
+
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#6366f1'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 0.5rem;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+
+            notification.querySelector('.notification-close').onclick = () => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            };
+
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 5000);
+
+            document.body.appendChild(notification);
+
+            if (!document.getElementById('notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from {
+                            transform: translateX(100%);
+                            opacity: 0;
+                        }
+                        to {
+                            transform: translateX(0);
+                            opacity: 1;
+                        }
+                    }
+                    @keyframes slideOut {
+                        from {
+                            transform: translateX(0);
+                            opacity: 1;
+                        }
+                        to {
+                            transform: translateX(100%);
+                            opacity: 0;
+                        }
+                    }
+                    .notification-close {
+                        background: none;
+                        border: none;
+                        color: white;
+                        font-size: 1.5rem;
+                        cursor: pointer;
+                        padding: 0;
+                        margin-left: 1rem;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        // Animate stats counter
+        function animateStats() {
+            const stats = [
+                { element: document.getElementById('totalAssets'), start: 0, end: 1050, suffix: '+' },
+                { element: document.getElementById('monthlyRevenue'), start: 0, end: 3850, prefix: '$' },
+                { element: document.getElementById('audienceSize'), start: 0, end: 50000, suffix: '+' }
+            ];
+
+            stats.forEach(stat => {
+                if (!stat.element) return;
+
+                let current = stat.start;
+                const increment = Math.ceil(stat.end / 100);
+                const interval = setInterval(() => {
+                    current += increment;
+                    if (current >= stat.end) {
+                        current = stat.end;
+                        clearInterval(interval);
+                    }
+                    stat.element.textContent = `${stat.prefix || ''}${current.toLocaleString()}${stat.suffix || ''}`;
+                }, 20);
+            });
+        }
+
+        // Add interactivity to asset cards
+        document.querySelectorAll('.asset-card').forEach(card => {
+            const icon = card.querySelector('.card-icon');
+
+            card.addEventListener('mouseenter', function () {
+                if (icon) {
+                    icon.style.transform = 'scale(1.1) rotate(5deg)';
+                }
+            });
+
+            card.addEventListener('mouseleave', function () {
+                if (icon) {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                }
+            });
+
+            // Click handler for main card area
+            card.addEventListener('click', function (e) {
+                if (!e.target.closest('.sub-button') && !e.target.closest('a')) {
+                    const title = this.querySelector('h3')?.textContent || 'Asset Category';
+                    showNotification(`Exploring ${title} options`, 'info');
+                }
+            });
+        });
+
+        // Print functionality
+        function printPage() {
+            window.print();
+        }
+
+        // Share functionality
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: 'Check out my Digital Assets Hub!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showNotification('Link copied to clipboard!', 'success');
+                });
+            }
+        }
+
+        // Validate all links on page
+        function validateLinks() {
+            const allLinks = document.querySelectorAll('a[href^="http"]');
+            let brokenLinks = 0;
+
+            allLinks.forEach(link => {
+                const href = link.href;
+                if (href.includes('example.com') ||
+                    href === 'https://www.canva.com/' ||
+                    href === 'https://github.com/' ||
+                    href === 'https://medium.com/') {
+                    console.warn(`Generic link found: ${href}`);
+                    link.style.border = '2px solid orange';
+                    brokenLinks++;
+                }
+            });
+
+            if (brokenLinks > 0) {
+                console.log(`Found ${brokenLinks} generic links that should be replaced with your specific links.`);
+            } else {
+                console.log('All links look good!');
+            }
+        }
+
+        // Run validation on page load
+        setTimeout(validateLinks, 2000);
+    </script>
+</body>
+
+</html>
