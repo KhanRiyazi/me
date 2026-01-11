@@ -5,6 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Assets Hub | Monetize Your Creative Content</title>
+    <meta name="description"
+        content="Transform 1000+ digital assets into sustainable income. Canva templates, GitHub repos, blogs, websites, and Python programs monetization strategies.">
+    <meta name="keywords"
+        content="digital assets monetization, passive income, Canva templates, GitHub repositories, blog monetization, Python automation">
+    <meta property="og:title" content="Digital Assets Hub - Monetize Your Creative Content">
+    <meta property="og:description"
+        content="Earn money from 1000+ digital assets including Canva templates, GitHub repos, blogs, and Python programs">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -27,6 +35,13 @@
             --web-color: #3B82F6;
             --python-color: #3B82F6;
             --testimonial-color: #F59E0B;
+            --spotify-green: #1DB954;
+            --netflix-red: #E50914;
+            --amazon-orange: #FF9900;
+            --youtube-red: #FF0000;
+            --twitter-blue: #1DA1F2;
+            --instagram-purple: #E1306C;
+            --patreon-orange: #FF424D;
         }
 
         body {
@@ -473,6 +488,270 @@
             margin-bottom: 0.4rem;
         }
 
+        /* Success Pattern Section */
+        .success-patterns {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .patterns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pattern-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .pattern-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .pattern-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .pattern-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .spotify-bg {
+            background: var(--spotify-green);
+        }
+
+        .netflix-bg {
+            background: var(--netflix-red);
+        }
+
+        .amazon-bg {
+            background: var(--amazon-orange);
+        }
+
+        .youtube-bg {
+            background: var(--youtube-red);
+        }
+
+        .patreon-bg {
+            background: var(--patreon-orange);
+        }
+
+        .pattern-revenue {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        /* Monetization Matrix */
+        .monetization-matrix {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(79, 70, 229, 0.05) 100%);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .matrix-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .matrix-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .matrix-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+        }
+
+        .matrix-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--light);
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-box .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-box .label {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Platform Integration */
+        .platform-integration {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .platform-card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .platform-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        /* Revenue Streams */
+        .revenue-streams {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin: 3rem 0;
+            color: white;
+        }
+
+        .streams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stream-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .stream-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .stream-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 0.75rem;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* Smart Automation */
+        .smart-automation {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .automation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .automation-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 1rem;
+            position: relative;
+        }
+
+        .automation-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
         /* Testimonials Section */
         .testimonials-section {
             background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(217, 119, 6, 0.05) 100%);
@@ -731,7 +1010,7 @@
             background: white;
             border-radius: 1.5rem;
             width: 90%;
-            max-width: 500px;
+            max-width: 600px;
             padding: 2rem;
             position: relative;
             transform: translateY(20px);
@@ -887,6 +1166,14 @@
             .testimonials-section {
                 padding: 2rem;
             }
+
+            .success-patterns,
+            .monetization-matrix,
+            .platform-integration,
+            .revenue-streams,
+            .smart-automation {
+                padding: 2rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -944,7 +1231,9 @@
             .asset-item:hover,
             .sub-button:hover,
             .social-link:hover,
-            .btn:hover {
+            .btn:hover,
+            .pattern-card:hover,
+            .platform-card:hover {
                 transform: none;
             }
 
@@ -952,7 +1241,9 @@
             .asset-item:active,
             .sub-button:active,
             .social-link:active,
-            .btn:active {
+            .btn:active,
+            .pattern-card:active,
+            .platform-card:active {
                 transform: scale(0.98);
             }
         }
@@ -1010,6 +1301,143 @@
             justify-content: center;
             font-weight: bold;
             margin: 0 auto 1rem;
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Revenue Analytics */
+        .revenue-analytics {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .analytics-card {
+            padding: 1.5rem;
+            border-radius: 1rem;
+            background: var(--light);
+        }
+
+        .chart-container {
+            height: 200px;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 30px;
+            background: var(--primary);
+            border-radius: 4px 4px 0 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Platform Success Stories */
+        .success-stories {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(79, 70, 229, 0.05) 100%);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .story-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .story-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .story-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 1.5rem;
+            padding: 4rem 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-btn.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid white;
         }
     </style>
 </head>
@@ -1082,6 +1510,44 @@
                         <p>500+ articles</p>
                     </div>
                 </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Patterns Modal -->
+    <div class="modal-overlay" id="patternsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Success Patterns from Top Platforms</h3>
+                <button class="close-modal" onclick="closePatternsModal()">&times;</button>
+            </div>
+            <div class="patterns-grid">
+                <div class="pattern-card">
+                    <div class="pattern-header">
+                        <div class="pattern-icon spotify-bg">
+                            <i class="fab fa-spotify"></i>
+                        </div>
+                        <div>
+                            <h4>Spotify Model</h4>
+                            <p>Subscription & Freemium</p>
+                        </div>
+                    </div>
+                    <p>Offer free access with premium features. Build audience first, monetize later.</p>
+                    <div class="pattern-revenue">Revenue: $10B+ annually</div>
+                </div>
+                <div class="pattern-card">
+                    <div class="pattern-header">
+                        <div class="pattern-icon netflix-bg">
+                            <i class="fab fa-netflix"></i>
+                        </div>
+                        <div>
+                            <h4>Netflix Model</h4>
+                            <p>Content Library Subscription</p>
+                        </div>
+                    </div>
+                    <p>Build exclusive content libraries. Charge monthly for unlimited access.</p>
+                    <div class="pattern-revenue">Revenue: $30B+ annually</div>
+                </div>
             </div>
         </div>
     </div>
@@ -1178,12 +1644,114 @@
         </div>
     </section>
 
+    <!-- Trust Badges -->
+    <div class="container">
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <i class="fas fa-shield-alt" style="color: var(--primary);"></i>
+                <span>Secure Payments</span>
+            </div>
+            <div class="trust-badge">
+                <i class="fas fa-star" style="color: var(--warning);"></i>
+                <span>50+ Satisfied Clients</span>
+            </div>
+            <div class="trust-badge">
+                <i class="fas fa-clock" style="color: var(--secondary);"></i>
+                <span>24/7 Support</span>
+            </div>
+            <div class="trust-badge">
+                <i class="fas fa-award" style="color: var(--primary);"></i>
+                <span>Verified Results</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Patterns Section -->
+    <section class="success-patterns">
+        <div class="container">
+            <div class="section-title">
+                <h2>Proven Monetization Patterns</h2>
+                <p>Learn from the world's most successful platforms and apply their strategies to your digital assets
+                </p>
+            </div>
+            <div class="patterns-grid">
+                <div class="pattern-card">
+                    <div class="pattern-header">
+                        <div class="pattern-icon spotify-bg">
+                            <i class="fab fa-spotify"></i>
+                        </div>
+                        <div>
+                            <h4>Spotify Model</h4>
+                            <p>Freemium to Premium</p>
+                        </div>
+                    </div>
+                    <p>Offer free content with premium upgrades. Build user base, then monetize through subscriptions.
+                    </p>
+                    <div class="pattern-revenue">Apply to: GitHub Repos, Canva Templates</div>
+                </div>
+                <div class="pattern-card">
+                    <div class="pattern-header">
+                        <div class="pattern-icon netflix-bg">
+                            <i class="fab fa-netflix"></i>
+                        </div>
+                        <div>
+                            <h4>Netflix Model</h4>
+                            <p>Content Library Subscription</p>
+                        </div>
+                    </div>
+                    <p>Create exclusive content libraries. Charge monthly for unlimited access to premium resources.</p>
+                    <div class="pattern-revenue">Apply to: Blog Archives, Template Collections</div>
+                </div>
+                <div class="pattern-card">
+                    <div class="pattern-header">
+                        <div class="pattern-icon amazon-bg">
+                            <i class="fab fa-amazon"></i>
+                        </div>
+                        <div>
+                            <h4>Amazon Model</h4>
+                            <p>Marketplace & Affiliate</p>
+                        </div>
+                    </div>
+                    <p>Create a marketplace for digital products. Earn through sales commissions and affiliate links.
+                    </p>
+                    <div class="pattern-revenue">Apply to: All Digital Assets</div>
+                </div>
+                <div class="pattern-card">
+                    <div class="pattern-header">
+                        <div class="pattern-icon youtube-bg">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div>
+                            <h4>YouTube Model</h4>
+                            <p>Ad Revenue & Sponsorships</p>
+                        </div>
+                    </div>
+                    <p>Build audience through free content. Monetize through ads, sponsorships, and memberships.</p>
+                    <div class="pattern-revenue">Apply to: Blog Content, Tutorial Videos</div>
+                </div>
+                <div class="pattern-card">
+                    <div class="pattern-header">
+                        <div class="pattern-icon patreon-bg">
+                            <i class="fab fa-patreon"></i>
+                        </div>
+                        <div>
+                            <h4>Patreon Model</h4>
+                            <p>Creator Membership</p>
+                        </div>
+                    </div>
+                    <p>Offer tiered membership levels. Provide exclusive content to paying supporters.</p>
+                    <div class="pattern-revenue">Apply to: GitHub Sponsors, Blog Memberships</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Career Development Section -->
     <section class="career-section">
         <div class="container">
             <div class="section-title">
-                <h2>Develop Your Digital Career</h2>
-                <p>Follow these steps to build a successful career using your digital assets</p>
+                <h2>Digital Career Monetization Path</h2>
+                <p>Follow this proven framework to build sustainable income from your digital assets</p>
             </div>
             <div class="career-steps">
                 <div class="career-step">
@@ -1191,32 +1759,185 @@
                     <div class="step-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>Analyze Your Assets</h3>
-                    <p>Review all your digital assets and identify monetization opportunities</p>
+                    <h3>Asset Audit & Analysis</h3>
+                    <p>Identify all digital assets and their monetization potential</p>
                 </div>
                 <div class="career-step">
                     <div class="step-number">2</div>
                     <div class="step-icon">
                         <i class="fas fa-bullseye"></i>
                     </div>
-                    <h3>Set Revenue Goals</h3>
-                    <p>Define clear income targets for each asset category</p>
+                    <h3>Strategy Selection</h3>
+                    <p>Choose best monetization models for each asset type</p>
                 </div>
                 <div class="career-step">
                     <div class="step-number">3</div>
                     <div class="step-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
-                    <h3>Implement Strategies</h3>
-                    <p>Apply monetization tactics to each asset type</p>
+                    <h3>Implementation Setup</h3>
+                    <p>Deploy monetization systems and payment integrations</p>
                 </div>
                 <div class="career-step">
                     <div class="step-number">4</div>
                     <div class="step-icon">
                         <i class="fas fa-sync"></i>
                     </div>
-                    <h3>Track & Optimize</h3>
-                    <p>Monitor performance and continuously improve</p>
+                    <h3>Optimization & Scaling</h3>
+                    <p>Analyze performance data and scale successful strategies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monetization Matrix -->
+    <section class="monetization-matrix">
+        <div class="container">
+            <div class="section-title">
+                <h2>Monetization Strategy Matrix</h2>
+                <p>Match your digital assets with the most profitable monetization methods</p>
+            </div>
+            <div class="matrix-grid">
+                <div class="matrix-card">
+                    <div class="matrix-header">
+                        <div class="matrix-icon">
+                            <i class="fab fa-canva"></i>
+                        </div>
+                        <div>
+                            <h4>Canva Templates</h4>
+                            <p>Design Assets</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Template Marketplace Sales</li>
+                        <li>Premium Template Bundles</li>
+                        <li>Custom Design Services</li>
+                        <li>Template Subscription Club</li>
+                    </ul>
+                    <div class="matrix-stats">
+                        <div class="stat-box">
+                            <div class="value">$50-500</div>
+                            <div class="label">Per Template</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="value">70%</div>
+                            <div class="label">Profit Margin</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="matrix-card">
+                    <div class="matrix-header">
+                        <div class="matrix-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div>
+                            <h4>GitHub Repositories</h4>
+                            <p>Code Assets</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>GitHub Sponsors</li>
+                        <li>Premium Code Packages</li>
+                        <li>Consulting Services</li>
+                        <li>Code Review Services</li>
+                    </ul>
+                    <div class="matrix-stats">
+                        <div class="stat-box">
+                            <div class="value">$100-5K</div>
+                            <div class="label">Monthly Potential</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="value">85%</div>
+                            <div class="label">Profit Margin</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="matrix-card">
+                    <div class="matrix-header">
+                        <div class="matrix-icon">
+                            <i class="fas fa-blog"></i>
+                        </div>
+                        <div>
+                            <h4>Blog Articles</h4>
+                            <p>Content Assets</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Medium Partner Program</li>
+                        <li>Affiliate Marketing</li>
+                        <li>Sponsored Content</li>
+                        <li>Newsletter Subscriptions</li>
+                    </ul>
+                    <div class="matrix-stats">
+                        <div class="stat-box">
+                            <div class="value">$1-5K</div>
+                            <div class="label">Monthly Potential</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="value">90%</div>
+                            <div class="label">Profit Margin</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Integration -->
+    <section class="platform-integration">
+        <div class="container">
+            <div class="section-title">
+                <h2>Integrated Monetization Platforms</h2>
+                <p>Connect your assets to the world's most successful monetization platforms</p>
+            </div>
+            <div class="platforms-grid">
+                <div class="platform-card">
+                    <div class="platform-logo" style="background: #FF9900;">
+                        <i class="fab fa-amazon"></i>
+                    </div>
+                    <h4>Amazon Associates</h4>
+                    <p>Affiliate Marketing</p>
+                    <small>Up to 10% commission</small>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-logo" style="background: #7289DA;">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <h4>Discord</h4>
+                    <p>Community Monetization</p>
+                    <small>Membership tiers</small>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-logo" style="background: #FF424D;">
+                        <i class="fab fa-patreon"></i>
+                    </div>
+                    <h4>Patreon</h4>
+                    <p>Creator Memberships</p>
+                    <small>Recurring revenue</small>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-logo" style="background: #000000;">
+                        <i class="fab fa-gumroad"></i>
+                    </div>
+                    <h4>Gumroad</h4>
+                    <p>Digital Product Sales</p>
+                    <small>Instant payments</small>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-logo" style="background: #89CFF0;">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h4>Telegram</h4>
+                    <p>Channel Memberships</p>
+                    <small>Premium content</small>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-logo" style="background: #FF4500;">
+                        <i class="fab fa-reddit"></i>
+                    </div>
+                    <h4>Reddit Premium</h4>
+                    <p>Community Monetization</p>
+                    <small>Exclusive content</small>
                 </div>
             </div>
         </div>
@@ -1543,40 +2264,166 @@
             </div>
         </section>
 
+        <!-- Revenue Streams -->
+        <section class="revenue-streams">
+            <div class="container">
+                <div class="section-title" style="color: white;">
+                    <h2>Multiple Revenue Streams</h2>
+                    <p>Diversify your income across multiple monetization channels</p>
+                </div>
+                <div class="streams-grid">
+                    <div class="stream-card">
+                        <div class="stream-header">
+                            <div class="stream-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div>
+                                <h4>Direct Sales</h4>
+                                <p>Sell products directly</p>
+                            </div>
+                        </div>
+                        <p>Templates, code, content, and services sold directly to customers.</p>
+                        <div style="margin-top: 1rem;">
+                            <strong>Potential: $5,000+ monthly</strong>
+                        </div>
+                    </div>
+                    <div class="stream-card">
+                        <div class="stream-header">
+                            <div class="stream-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <div>
+                                <h4>Affiliate Marketing</h4>
+                                <p>Commission-based earnings</p>
+                            </div>
+                        </div>
+                        <p>Recommend tools and services. Earn commissions on sales.</p>
+                        <div style="margin-top: 1rem;">
+                            <strong>Potential: $2,000+ monthly</strong>
+                        </div>
+                    </div>
+                    <div class="stream-card">
+                        <div class="stream-header">
+                            <div class="stream-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div>
+                                <h4>Subscriptions</h4>
+                                <p>Recurring revenue</p>
+                            </div>
+                        </div>
+                        <p>Premium content, tools, and services on subscription basis.</p>
+                        <div style="margin-top: 1rem;">
+                            <strong>Potential: $3,000+ monthly</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smart Automation -->
+        <section class="smart-automation">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Smart Monetization Automation</h2>
+                    <p>Automate revenue generation from your digital assets</p>
+                </div>
+                <div class="automation-grid">
+                    <div class="automation-card">
+                        <div class="automation-badge">AI-Powered</div>
+                        <h4>Content Repurposing</h4>
+                        <p>Automatically transform one piece of content into multiple formats (blog → video → social
+                            media → podcast)</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>Increase reach 10x</li>
+                            <li>Automate content distribution</li>
+                            <li>Maximize monetization per asset</li>
+                        </ul>
+                    </div>
+                    <div class="automation-card">
+                        <div class="automation-badge">Automated</div>
+                        <h4>Payment Processing</h4>
+                        <p>Automated invoicing, payment collection, and revenue tracking across all platforms</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>Instant payment processing</li>
+                            <li>Multi-currency support</li>
+                            <li>Automated tax calculations</li>
+                        </ul>
+                    </div>
+                    <div class="automation-card">
+                        <div class="automation-badge">Smart</div>
+                        <h4>Pricing Optimization</h4>
+                        <p>Dynamic pricing based on demand, competition, and customer behavior patterns</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>AI-driven price suggestions</li>
+                            <li>Seasonal pricing adjustments</li>
+                            <li>Bundle optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Revenue Analytics -->
+        <section class="revenue-analytics">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Revenue Analytics Dashboard</h2>
+                    <p>Track and optimize your monetization performance</p>
+                </div>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h4>Monthly Revenue Trends</h4>
+                        <div class="chart-container" id="revenueChart">
+                            <!-- Chart bars will be generated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <h4>Asset Performance</h4>
+                        <div class="chart-container" id="assetChart">
+                            <!-- Chart bars will be generated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Social Media Quick Links -->
         <section class="social-quicklinks">
-            <div class="section-title">
-                <h2>Connect Across Platforms</h2>
-                <p>Follow and connect on all social media platforms for updates and collaboration</p>
-            </div>
-            <div class="social-grid">
-                <a href="https://www.youtube.com/@ThisOne-007" target="_blank" class="social-link">
-                    <div class="social-icon-container youtube-icon">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <div>
-                        <strong>YouTube Channel</strong>
-                        <p>50K+ subscribers</p>
-                    </div>
-                </a>
-                <a href="https://github.com/KhanRiyazi" target="_blank" class="social-link">
-                    <div class="social-icon-container github-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <div>
-                        <strong>GitHub Profile</strong>
-                        <p>300+ repositories</p>
-                    </div>
-                </a>
-                <a href="https://medium.com/@rizwanrka826" target="_blank" class="social-link">
-                    <div class="social-icon-container medium-icon">
-                        <i class="fab fa-medium"></i>
-                    </div>
-                    <div>
-                        <strong>Medium Blog</strong>
-                        <p>500+ articles</p>
-                    </div>
-                </a>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Connect Across Platforms</h2>
+                    <p>Follow and connect on all social media platforms for updates and collaboration</p>
+                </div>
+                <div class="social-grid">
+                    <a href="https://www.youtube.com/@ThisOne-007" target="_blank" class="social-link">
+                        <div class="social-icon-container youtube-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div>
+                            <strong>YouTube Channel</strong>
+                            <p>50K+ subscribers</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/KhanRiyazi" target="_blank" class="social-link">
+                        <div class="social-icon-container github-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div>
+                            <strong>GitHub Profile</strong>
+                            <p>300+ repositories</p>
+                        </div>
+                    </a>
+                    <a href="https://medium.com/@rizwanrka826" target="_blank" class="social-link">
+                        <div class="social-icon-container medium-icon">
+                            <i class="fab fa-medium"></i>
+                        </div>
+                        <div>
+                            <strong>Medium Blog</strong>
+                            <p>500+ articles</p>
+                        </div>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -1679,6 +2526,63 @@
                 </div>
             </div>
         </section>
+
+        <!-- Success Stories -->
+        <section class="success-stories">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Success Stories</h2>
+                    <p>Real examples of digital asset monetization success</p>
+                </div>
+                <div class="stories-grid">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Success Story">
+                            </div>
+                            <div>
+                                <h4>Tech Blog Monetization</h4>
+                                <p>From $0 to $5,000/month</p>
+                            </div>
+                        </div>
+                        <p>Started with 50 articles, now generating revenue through Medium Partner Program, affiliate
+                            marketing, and sponsored content.</p>
+                        <div class="pattern-revenue" style="margin-top: 1rem;">+500% Revenue Growth</div>
+                    </div>
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Success Story">
+                            </div>
+                            <div>
+                                <h4>Template Marketplace</h4>
+                                <p>Passive income stream</p>
+                            </div>
+                        </div>
+                        <p>Created 200+ Canva templates, selling on multiple platforms. Generates consistent passive
+                            income with minimal maintenance.</p>
+                        <div class="pattern-revenue" style="margin-top: 1rem;">$2,500/month Passive</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Start Monetizing Today</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">Your digital assets are waiting to
+                    generate income. Let's build your monetization strategy together.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="cta-btn" onclick="showContactForm()">
+                        <i class="fas fa-calendar-check"></i> Book Strategy Call
+                    </a>
+                    <a href="#assets" class="cta-btn secondary" onclick="scrollToAssets()">
+                        <i class="fas fa-chart-line"></i> Start Monetizing Now
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -1752,52 +2656,109 @@
             animateStats();
             setupEventListeners();
             setupSmoothScrolling();
+            generateCharts();
+
+            // Start revenue animations
+            startRevenueAnimations();
+
+            // Show success patterns modal after delay
+            setTimeout(() => {
+                if (!localStorage.getItem('patternsShown')) {
+                    openPatternsModal();
+                    localStorage.setItem('patternsShown', 'true');
+                }
+            }, 3000);
         });
 
-        // Asset Links Management
-        const assetLinks = {
-            canva: {
-                dashboard: "https://www.canva.com/",
-                templates: "https://www.canva.com/templates/",
-                designSchool: "https://www.canva.com/design-school/",
-                pricing: "https://www.canva.com/pricing/"
-            },
+        // Revenue Chart Generation
+        function generateCharts() {
+            // Revenue Trend Chart
+            const revenueChart = document.getElementById('revenueChart');
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+            const revenues = [1500, 2200, 3100, 2850, 3850, 4200];
 
-            github: {
-                profile: "https://github.com/KhanRiyazi",
-                repositories: "https://github.com/KhanRiyazi?tab=repositories",
-                gists: "https://gist.github.com/KhanRiyazi",
-                sponsors: "https://github.com/sponsors"
-            },
+            revenueChart.innerHTML = '';
+            const maxRevenue = Math.max(...revenues);
 
-            blog: {
-                medium: "https://medium.com/@rizwanrka826",
-                topArticle: "https://medium.com/@rizwanrka826",
-                devCommunity: "https://dev.to/"
-            },
+            revenues.forEach((revenue, index) => {
+                const barHeight = (revenue / maxRevenue) * 180;
+                const bar = document.createElement('div');
+                bar.className = 'chart-bar';
+                bar.style.left = `${index * 50 + 10}px`;
+                bar.style.height = `${barHeight}px`;
+                bar.style.backgroundColor = index === revenues.length - 1 ? 'var(--secondary)' : 'var(--primary)';
+                bar.title = `$${revenue} in ${months[index]}`;
 
-            scratch: {
-                profile: "https://scratch.mit.edu/users/KhanRiyazi/",
-                projects: "https://scratch.mit.edu/search/projects?q=KhanRiyazi"
-            },
+                // Add month label
+                const label = document.createElement('div');
+                label.textContent = months[index];
+                label.style.position = 'absolute';
+                label.style.bottom = '-25px';
+                label.style.left = `${index * 50 + 5}px`;
+                label.style.width = '40px';
+                label.style.textAlign = 'center';
+                label.style.fontSize = '0.8rem';
+                label.style.color = 'var(--gray)';
 
-            websites: {
-                portfolio: "./pages/ai_index.html",
-                github: "https://github.com/KhanRiyazi?tab=repositories&q=website"
-            },
+                revenueChart.appendChild(label);
+                revenueChart.appendChild(bar);
+            });
 
-            python: {
-                repos: "https://github.com/KhanRiyazi?tab=repositories&q=python",
-                selenium: "https://github.com/KhanRiyazi?tab=repositories&q=selenium",
-                fastapi: "https://github.com/KhanRiyazi?tab=repositories&q=fastapi"
-            }
-        };
+            // Asset Performance Chart
+            const assetChart = document.getElementById('assetChart');
+            const assets = ['Canva', 'GitHub', 'Blogs', 'Websites'];
+            const performances = [85, 60, 75, 90];
 
-        // DOM Elements
-        const loadingScreen = document.getElementById('loadingScreen');
+            assetChart.innerHTML = '';
+            const maxPerformance = Math.max(...performances);
+
+            performances.forEach((performance, index) => {
+                const barHeight = (performance / maxPerformance) * 180;
+                const bar = document.createElement('div');
+                bar.className = 'chart-bar';
+                bar.style.left = `${index * 50 + 10}px`;
+                bar.style.height = `${barHeight}px`;
+                bar.style.backgroundColor = getAssetColor(assets[index]);
+                bar.title = `${performance}% performance for ${assets[index]}`;
+
+                // Add asset label
+                const label = document.createElement('div');
+                label.textContent = assets[index];
+                label.style.position = 'absolute';
+                label.style.bottom = '-25px';
+                label.style.left = `${index * 50 + 5}px`;
+                label.style.width = '40px';
+                label.style.textAlign = 'center';
+                label.style.fontSize = '0.8rem';
+                label.style.color = 'var(--gray)';
+
+                assetChart.appendChild(label);
+                assetChart.appendChild(bar);
+            });
+        }
+
+        function getAssetColor(asset) {
+            const colors = {
+                'Canva': '#7d2ae8',
+                'GitHub': '#6e5494',
+                'Blogs': '#f59e0b',
+                'Websites': '#3B82F6'
+            };
+            return colors[asset] || 'var(--primary)';
+        }
+
+        // Revenue Animations
+        function startRevenueAnimations() {
+            const revenueCards = document.querySelectorAll('.pattern-revenue, .matrix-stats .value');
+            revenueCards.forEach(card => {
+                card.style.animation = 'pulse 2s infinite';
+            });
+        }
+
+        // Modal Management
         const socialModal = document.getElementById('socialModal');
+        const patternsModal = document.getElementById('patternsModal');
 
-        // Modal Management Functions
         function openSocialModal() {
             socialModal.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1808,7 +2769,17 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Toggle Sub-buttons (Buttons within buttons)
+        function openPatternsModal() {
+            patternsModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePatternsModal() {
+            patternsModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Toggle Sub-buttons
         function toggleSubButtons(category) {
             const buttons = document.getElementById(category + 'Buttons');
             const mainBtn = event.currentTarget;
@@ -1818,6 +2789,9 @@
                 buttons.style.display = 'grid';
                 icon.classList.remove('fa-chevron-down');
                 icon.classList.add('fa-chevron-up');
+
+                // Track analytics
+                trackAssetClick(category);
             } else {
                 buttons.style.display = 'none';
                 icon.classList.remove('fa-chevron-up');
@@ -1840,44 +2814,55 @@
             });
         }
 
+        // Analytics Tracking
+        function trackAssetClick(asset) {
+            console.log(`Asset clicked: ${asset}`);
+            // In production, send to analytics service
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'asset_expanded', {
+                    'event_category': 'engagement',
+                    'event_label': asset
+                });
+            }
+        }
+
         // Event Listeners
         function setupEventListeners() {
             // Close modals when clicking outside
             window.addEventListener('click', (e) => {
-                if (e.target === socialModal) {
-                    closeSocialModal();
-                }
+                if (e.target === socialModal) closeSocialModal();
+                if (e.target === patternsModal) closePatternsModal();
             });
 
             // Close modals with Escape key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeSocialModal();
+                    closePatternsModal();
                 }
             });
 
-            // Add click tracking for analytics
+            // Track all external clicks
             document.querySelectorAll('a[target="_blank"]').forEach(link => {
                 link.addEventListener('click', function () {
-                    console.log(`Clicked: ${this.href}`);
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'outbound_click', {
+                            'event_category': 'outbound',
+                            'event_label': this.href,
+                            'transport_type': 'beacon'
+                        });
+                    }
                 });
             });
 
-            // Close sub-buttons when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.sub-buttons-container')) {
-                    const allCategories = ['canva', 'github', 'blog', 'scratch', 'websites', 'python'];
-                    allCategories.forEach(cat => {
-                        const buttons = document.getElementById(cat + 'Buttons');
-                        const mainBtn = document.querySelector(`[onclick="toggleSubButtons('${cat}')"]`);
-                        if (buttons && mainBtn && !buttons.contains(e.target) && !mainBtn.contains(e.target)) {
-                            buttons.style.display = 'none';
-                            const icon = mainBtn.querySelector('i');
-                            icon.classList.remove('fa-chevron-up');
-                            icon.classList.add('fa-chevron-down');
-                        }
-                    });
-                }
+            // Add hover effects to pattern cards
+            document.querySelectorAll('.pattern-card').forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                card.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(-5px) scale(1)';
+                });
             });
         }
 
@@ -1900,7 +2885,6 @@
             });
         }
 
-        // Scroll to top function
         function scrollToTop() {
             window.scrollTo({
                 top: 0,
@@ -1908,7 +2892,6 @@
             });
         }
 
-        // Scroll to testimonials
         function scrollToTestimonials() {
             const testimonials = document.getElementById('testimonials');
             if (testimonials) {
@@ -1919,87 +2902,23 @@
             }
         }
 
-        // Function to launch DeepSeek assistant
+        function scrollToAssets() {
+            const assets = document.querySelector('.asset-management');
+            if (assets) {
+                assets.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
         function launchDeepSeek() {
             window.open('https://chat.deepseek.com/', '_blank');
         }
 
-        // Notification function
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-                <span>${message}</span>
-                <button class="notification-close">&times;</button>
-            `;
-
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#6366f1'};
-                color: white;
-                padding: 1rem 1.5rem;
-                border-radius: 0.5rem;
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                z-index: 10000;
-                animation: slideIn 0.3s ease;
-            `;
-
-            notification.querySelector('.notification-close').onclick = () => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => notification.remove(), 300);
-            };
-
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.style.animation = 'slideOut 0.3s ease';
-                    setTimeout(() => notification.remove(), 300);
-                }
-            }, 5000);
-
-            document.body.appendChild(notification);
-
-            if (!document.getElementById('notification-styles')) {
-                const style = document.createElement('style');
-                style.id = 'notification-styles';
-                style.textContent = `
-                    @keyframes slideIn {
-                        from {
-                            transform: translateX(100%);
-                            opacity: 0;
-                        }
-                        to {
-                            transform: translateX(0);
-                            opacity: 1;
-                        }
-                    }
-                    @keyframes slideOut {
-                        from {
-                            transform: translateX(0);
-                            opacity: 1;
-                        }
-                        to {
-                            transform: translateX(100%);
-                            opacity: 0;
-                        }
-                    }
-                    .notification-close {
-                        background: none;
-                        border: none;
-                        color: white;
-                        font-size: 1.5rem;
-                        cursor: pointer;
-                        padding: 0;
-                        margin-left: 1rem;
-                    }
-                `;
-                document.head.appendChild(style);
-            }
+        function showContactForm() {
+            alert('Contact form would appear here. In production, this would open a booking modal.');
+            // In production, this would open a Calendly widget or similar
         }
 
         // Animate stats counter
@@ -2026,7 +2945,7 @@
             });
         }
 
-        // Add interactivity to asset cards
+        // Interactive asset cards
         document.querySelectorAll('.asset-card').forEach(card => {
             const icon = card.querySelector('.card-icon');
 
@@ -2053,6 +2972,25 @@
                 }
             });
         };
+
+        // Add CSS for animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+            
+            .chart-bar {
+                transition: height 0.5s ease;
+            }
+            
+            .pattern-card:hover .pattern-revenue {
+                animation: pulse 1s infinite;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 
