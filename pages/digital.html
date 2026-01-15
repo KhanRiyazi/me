@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Assets Monetization Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #0a192f;
+            --primary-blue: #112240;
+            --secondary-blue: #233554;
+            --accent-teal: #64ffda;
+            --accent-light: #ccd6f6;
+            --accent-lighter: #e6f1ff;
+            --accent-purple: #7c4dff;
+            --accent-pink: #ff4081;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--accent-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Mobile-First Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-teal);
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-purple));
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent-teal);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-link {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-teal);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--accent-teal);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        /* Mobile-First Hero Section */
+        .hero {
+            padding: 60px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--accent-teal), var(--accent-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--accent-lighter);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        /* Asset Grid - Mobile First */
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .asset-card {
+            background-color: var(--primary-blue);
+            border-radius: var(--border-radius);
+            padding: 25px 20px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .asset-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100, 255, 218, 0.3);
+            box-shadow: var(--shadow);
+        }
+
+        .asset-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .asset-icon.scratch {
+            background: linear-gradient(135deg, #f89e1b, #ff6b35);
+        }
+
+        .asset-icon.canva {
+            background: linear-gradient(135deg, #00c4cc, #7d3cff);
+        }
+
+        .asset-icon.github {
+            background: linear-gradient(135deg, #333, #6e5494);
+        }
+
+        .asset-icon.blog {
+            background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+        }
+
+        .asset-count {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .asset-label {
+            color: var(--accent-lighter);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-teal), #2ecc71);
+            color: var(--primary-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-teal);
+            border: 1px solid var(--accent-teal);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Action Section - Mobile First */
+        .action-section {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--accent-lighter);
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .action-card {
+            background-color: var(--primary-blue);
+            border-radius: var(--border-radius);
+            padding: 30px 25px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: var(--transition);
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-teal);
+        }
+
+        .action-card-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-teal);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .action-card-description {
+            color: var(--accent-lighter);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .main-action-btn {
+            background-color: var(--secondary-blue);
+            color: var(--accent-light);
+            padding: 16px 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .main-action-btn:hover {
+            background-color: rgba(35, 53, 84, 0.8);
+            padding-right: 18px;
+        }
+
+        .main-action-btn i {
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .main-action-btn.active i {
+            transform: rotate(90deg);
+        }
+
+        .sub-actions {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            padding-left: 15px;
+            margin-top: 10px;
+        }
+
+        .sub-action-btn {
+            background-color: rgba(35, 53, 84, 0.5);
+            color: var(--accent-lighter);
+            padding: 14px 18px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .sub-action-btn:hover {
+            background-color: rgba(35, 53, 84, 0.8);
+            padding-left: 22px;
+        }
+
+        .sub-action-btn i {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Phase Timeline - Mobile First */
+        .phase-container {
+            margin: 60px 0;
+        }
+
+        .phase-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 30px;
+        }
+
+        .phase-timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--accent-teal), var(--accent-purple));
+        }
+
+        .phase-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .phase-marker {
+            position: absolute;
+            left: -26px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary-dark);
+            border: 3px solid var(--accent-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--accent-teal);
+            font-size: 0.7rem;
+        }
+
+        .phase-content {
+            background-color: var(--primary-blue);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .phase-title {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--accent-teal);
+        }
+
+        .phase-earning {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-purple));
+            color: var(--primary-dark);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Metrics Section - Mobile First */
+        .metrics-section {
+            background-color: var(--primary-blue);
+            border-radius: var(--border-radius);
+            padding: 40px 25px;
+            margin: 60px 0;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .metrics-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--accent-lighter);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .metric-card {
+            background-color: var(--secondary-blue);
+            border-radius: var(--border-radius);
+            padding: 25px 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-light);
+        }
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, var(--accent-teal), var(--accent-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .metric-label {
+            color: var(--accent-lighter);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--accent-lighter);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 25, 47, 0.98);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: var(--primary-blue);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            border: 2px solid var(--accent-teal);
+            box-shadow: var(--shadow);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-title {
+            color: var(--accent-teal);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-body {
+            color: var(--accent-lighter);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .modal-close {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 30px;
+            }
+
+            .hero {
+                padding: 80px 0;
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .hero-content {
+                text-align: left;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .btn-group {
+                flex-direction: row;
+                gap: 20px;
+            }
+
+            .btn {
+                width: auto;
+            }
+
+            .asset-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .action-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+            }
+
+            .phase-timeline {
+                padding-left: 50px;
+            }
+
+            .phase-marker {
+                left: -38px;
+                width: 25px;
+                height: 25px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            .header {
+                padding: 25px 0;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .logo-icon {
+                width: 45px;
+                height: 45px;
+            }
+
+            .nav-links {
+                gap: 35px;
+            }
+
+            .nav-link {
+                font-size: 1rem;
+            }
+
+            .hero {
+                padding: 100px 0;
+                gap: 60px;
+            }
+
+            .hero-title {
+                font-size: 3.2rem;
+            }
+
+            .hero-description {
+                font-size: 1.2rem;
+            }
+
+            .asset-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .action-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+
+            .action-card {
+                padding: 35px 30px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .metrics-section {
+                padding: 60px 50px;
+            }
+
+            .metrics-title {
+                font-size: 2.2rem;
+            }
+
+            .metric-value {
+                font-size: 2.8rem;
+            }
+
+            .phase-timeline {
+                padding-left: 0;
+            }
+
+            .phase-timeline:before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .phase-item {
+                width: 50%;
+                padding-left: 0;
+            }
+
+            .phase-item:nth-child(odd) {
+                padding-right: 50px;
+                text-align: right;
+            }
+
+            .phase-item:nth-child(even) {
+                margin-left: 50%;
+                padding-left: 50px;
+            }
+
+            .phase-marker {
+                left: auto;
+            }
+
+            .phase-item:nth-child(odd) .phase-marker {
+                right: -38px;
+            }
+
+            .phase-item:nth-child(even) .phase-marker {
+                left: -38px;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        @media (max-width: 767px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-blue);
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 20px;
+                gap: 0;
+                border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-link {
+                padding: 15px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(100, 255, 218, 0.05);
+            }
+
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+
+            /* Adjust asset grid for very small screens */
+            @media (max-width: 480px) {
+                .asset-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .metrics-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Mobile-Optimized Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <span>AssetMonetize</span>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#dashboard" class="nav-link">Dashboard</a>
+                <a href="#roadmap" class="nav-link">Roadmap</a>
+                <a href="#analytics" class="nav-link">Analytics</a>
+                <a href="#resources" class="nav-link">Resources</a>
+                <a href="#support" class="nav-link">Support</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Monetize Your Digital Assets</h1>
+                <p class="hero-description">Transform your 1100+ digital assets into a sustainable income stream with
+                    our proven roadmap for MIT Scratch programs, Canva templates, GitHub repositories, and HTML/CSS/JS
+                    blogs.</p>
+
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="startJourney">
+                        <i class="fas fa-play-circle"></i> Start Journey
+                    </button>
+                    <button class="btn btn-secondary" id="viewAnalytics">
+                        <i class="fas fa-chart-bar"></i> View Earnings
+                    </button>
+                </div>
+            </div>
+
+            <div class="asset-grid">
+                <div class="asset-card">
+                    <div class="asset-icon scratch">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="asset-count">100+</div>
+                    <div class="asset-label">Scratch Programs</div>
+                    <button class="btn btn-secondary asset-action-btn" data-asset="scratch">
+                        Monetize
+                    </button>
+                </div>
+
+                <div class="asset-card">
+                    <div class="asset-icon canva">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="asset-count">200+</div>
+                    <div class="asset-label">Canva Templates</div>
+                    <button class="btn btn-secondary asset-action-btn" data-asset="canva">
+                        Monetize
+                    </button>
+                </div>
+
+                <div class="asset-card">
+                    <div class="asset-icon github">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="asset-count">300+</div>
+                    <div class="asset-label">GitHub Repos</div>
+                    <button class="btn btn-secondary asset-action-btn" data-asset="github">
+                        Monetize
+                    </button>
+                </div>
+
+                <div class="asset-card">
+                    <div class="asset-icon blog">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <div class="asset-count">500+</div>
+                    <div class="asset-label">HTML/CSS/JS Blogs</div>
+                    <button class="btn btn-secondary asset-action-btn" data-asset="blog">
+                        Monetize
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Section with Nested Buttons -->
+        <section class="action-section" id="dashboard">
+            <h2 class="section-title">Strategic Monetization Actions</h2>
+
+            <div class="action-grid">
+                <!-- Asset Optimization Card -->
+                <div class="action-card">
+                    <h3 class="action-card-title">
+                        <i class="fas fa-cogs"></i> Asset Optimization
+                    </h3>
+                    <p class="action-card-description">Prepare your digital assets for maximum monetization potential
+                        across all platforms.</p>
+
+                    <div class="action-buttons">
+                        <button class="main-action-btn" data-target="optimization-sub">
+                            <span>Optimization Actions</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+
+                        <div class="sub-actions" id="optimization-sub">
+                            <button class="sub-action-btn" data-action="seo">
+                                <span>Add SEO Metadata</span>
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <button class="sub-action-btn" data-action="demo">
+                                <span>Create Demo Videos</span>
+                                <i class="fas fa-video"></i>
+                            </button>
+                            <button class="sub-action-btn" data-action="docs">
+                                <span>Add Documentation</span>
+                                <i class="fas fa-file-alt"></i>
+                            </button>
+                        </div>
+
+                        <button class="main-action-btn" data-target="portfolio-sub">
+                            <span>Portfolio Creation</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+
+                        <div class="sub-actions" id="portfolio-sub">
+                            <button class="sub-action-btn" data-action="website">
+                                <span>Build Showcase Website</span>
+                                <i class="fas fa-globe"></i>
+                            </button>
+                            <button class="sub-action-btn" data-action="github-pages">
+                                <span>GitHub Pages Setup</span>
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Distribution Channels Card -->
+                <div class="action-card">
+                    <h3 class="action-card-title">
+                        <i class="fas fa-network-wired"></i> Distribution
+                    </h3>
+                    <p class="action-card-description">Deploy your assets across multiple revenue-generating platforms
+                        simultaneously.</p>
+
+                    <div class="action-buttons">
+                        <button class="main-action-btn" data-target="marketplaces-sub">
+                            <span>Marketplace Setup</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+
+                        <div class="sub-actions" id="marketplaces-sub">
+                            <button class="sub-action-btn" data-action="etsy">
+                                <span>Etsy for Canva</span>
+                                <i class="fab fa-etsy"></i>
+                            </button>
+                            <button class="sub-action-btn" data-action="tpt">
+                                <span>Teachers Pay Teachers</span>
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </button>
+                            <button class="sub-action-btn" data-action="gumroad">
+                                <span>Gumroad Sales</span>
+                                <i class="fas fa-store"></i>
+                            </button>
+                        </div>
+
+                        <button class="main-action-btn" data-target="platforms-sub">
+                            <span>Platform Integration</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+
+                        <div class="sub-actions" id="platforms-sub">
+                            <button class="sub-action-btn" data-action="github-sponsors">
+                                <span>GitHub Sponsors</span>
+                                <i class="fab fa-github-alt"></i>
+                            </button>
+                            <button class="sub-action-btn" data-action="youtube">
+                                <span>YouTube Channel</span>
+                                <i class="fab fa-youtube"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Revenue Streams Card -->
+                <div class="action-card">
+                    <h3 class="action-card-title">
+                        <i class="fas fa-money-bill-wave"></i> Revenue Streams
+                    </h3>
+                    <p class="action-card-description">Implement diverse monetization strategies tailored to each asset
+                        type.</p>
+
+                    <div class="action-buttons">
+                        <button class="main-action-btn" data-target="streams-sub">
+                            <span>Primary Revenue</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+
+                        <div class="sub-actions" id="streams-sub">
+                            <button class="sub-action-btn" data-action="direct-sales">
+                                <span>Direct Sales</span>
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                            <button class="sub-action-btn" data-action="subscription">
+                                <span>Subscription Model</span>
+                                <i class="fas fa-calendar-alt"></i>
+                            </button>
+                            <button class="sub-action-btn" data-action="affiliate">
+                                <span>Affiliate Marketing</span>
+                                <i class="fas fa-link"></i>
+                            </button>
+                        </div>
+
+                        <button class="main-action-btn" data-target="premium-sub">
+                            <span>Premium Offerings</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+
+                        <div class="sub-actions" id="premium-sub">
+                            <button class="sub-action-btn" data-action="commercial">
+                                <span>Commercial Licenses</span>
+                                <i class="fas fa-copyright"></i>
+                            </button>
+                            <button class="sub-action-btn" data-action="customization">
+                                <span>Customization Services</span>
+                                <i class="fas fa-paint-brush"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase Timeline -->
+        <section class="phase-container" id="roadmap">
+            <h2 class="section-title">12-Month Monetization Roadmap</h2>
+
+            <div class="phase-timeline">
+                <div class="phase-item">
+                    <div class="phase-marker">01</div>
+                    <div class="phase-content">
+                        <h3 class="phase-title">Foundation & Organization</h3>
+                        <p>Categorize all assets, create portfolio websites, optimize with SEO, and prepare
+                            demonstration materials.</p>
+                        <div class="phase-earning">$500 - $1,000/month</div>
+                        <button class="btn btn-secondary phase-detail-btn" data-phase="1">
+                            View Phase Plan
+                        </button>
+                    </div>
+                </div>
+
+                <div class="phase-item">
+                    <div class="phase-marker">02</div>
+                    <div class="phase-content">
+                        <h3 class="phase-title">Multi-Platform Deployment</h3>
+                        <p>Deploy assets across marketplaces, set up GitHub Sponsors, and implement AdSense.</p>
+                        <div class="phase-earning">$1,000 - $2,500/month</div>
+                        <button class="btn btn-secondary phase-detail-btn" data-phase="2">
+                            View Phase Plan
+                        </button>
+                    </div>
+                </div>
+
+                <div class="phase-item">
+                    <div class="phase-marker">03</div>
+                    <div class="phase-content">
+                        <h3 class="phase-title">Advanced Monetization</h3>
+                        <p>Launch YouTube tutorials, create Udemy courses, implement email marketing, and offer premium
+                            licenses.</p>
+                        <div class="phase-earning">$2,500 - $5,000/month</div>
+                        <button class="btn btn-secondary phase-detail-btn" data-phase="3">
+                            View Phase Plan
+                        </button>
+                    </div>
+                </div>
+
+                <div class="phase-item">
+                    <div class="phase-marker">04</div>
+                    <div class="phase-content">
+                        <h3 class="phase-title">Scaling & Community</h3>
+                        <p>Build Patreon community, license assets to institutions, create membership site, and offer
+                            consulting services.</p>
+                        <div class="phase-earning">$5,000 - $10,000+/month</div>
+                        <button class="btn btn-secondary phase-detail-btn" data-phase="4">
+                            View Phase Plan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metrics Section -->
+        <section class="metrics-section" id="analytics">
+            <h2 class="metrics-title">Projected Earnings Metrics</h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">$1.2K</div>
+                    <div class="metric-label">Monthly (Phase 1)</div>
+                    <button class="btn btn-secondary metric-detail-btn" data-metric="phase1">
+                        View Breakdown
+                    </button>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">$3.5K</div>
+                    <div class="metric-label">Monthly (Phase 3)</div>
+                    <button class="btn btn-secondary metric-detail-btn" data-metric="phase3">
+                        View Breakdown
+                    </button>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">$7.5K</div>
+                    <div class="metric-label">Monthly (Phase 4)</div>
+                    <button class="btn btn-secondary metric-detail-btn" data-metric="phase4">
+                        View Breakdown
+                    </button>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">$85K</div>
+                    <div class="metric-label">Annual Potential</div>
+                    <button class="btn btn-secondary metric-detail-btn" data-metric="annual">
+                        View Breakdown
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2023 Digital Assets Monetization Platform</p>
+            <p>Total Asset Value: $150,000+ | Monetization Potential: 85% within 12 months</p>
+            <p style="margin-top: 15px;">
+                <a href="#" style="color: var(--accent-teal); margin: 0 10px;">Privacy Policy</a> |
+                <a href="#" style="color: var(--accent-teal); margin: 0 10px;">Terms of Service</a> |
+                <a href="#" style="color: var(--accent-teal); margin: 0 10px;">Contact</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            const navItems = document.querySelectorAll('.nav-link');
+
+            mobileMenuBtn.addEventListener('click', function () {
+                navLinks.classList.toggle('active');
+                this.innerHTML = navLinks.classList.contains('active') ?
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+
+            // Close mobile menu when clicking a link
+            navItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+
+            // Nested button system
+            const mainActionButtons = document.querySelectorAll('.main-action-btn');
+
+            mainActionButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const targetId = this.getAttribute('data-target');
+                    const subActions = document.getElementById(targetId);
+
+                    // Toggle display of sub-actions
+                    if (subActions.style.display === 'flex') {
+                        subActions.style.display = 'none';
+                        this.classList.remove('active');
+                    } else {
+                        // Close other open sub-menus on mobile
+                        if (window.innerWidth < 768) {
+                            document.querySelectorAll('.sub-actions').forEach(sub => {
+                                sub.style.display = 'none';
+                            });
+                            document.querySelectorAll('.main-action-btn').forEach(btn => {
+                                btn.classList.remove('active');
+                            });
+                        }
+
+                        // Open clicked sub-menu
+                        subActions.style.display = 'flex';
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // Sub-action button functionality
+            const subActionButtons = document.querySelectorAll('.sub-action-btn');
+
+            subActionButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const action = this.getAttribute('data-action');
+                    showActionModal(action);
+                });
+            });
+
+            // Asset buttons
+            document.querySelectorAll('.asset-action-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const assetType = this.getAttribute('data-asset');
+                    showAssetModal(assetType);
+                });
+            });
+
+            // Phase buttons
+            document.querySelectorAll('.phase-detail-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const phase = this.getAttribute('data-phase');
+                    showPhaseModal(phase);
+                });
+            });
+
+            // Metric buttons
+            document.querySelectorAll('.metric-detail-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const metric = this.getAttribute('data-metric');
+                    showMetricModal(metric);
+                });
+            });
+
+            // Hero buttons
+            document.getElementById('startJourney').addEventListener('click', function () {
+                showModal('Start Monetization Journey',
+                    'Beginning your monetization journey involves 4 key steps:<br><br>' +
+                    '1. <strong>Asset Audit</strong> - Categorize and evaluate all 1100+ assets<br>' +
+                    '2. <strong>Platform Selection</strong> - Choose optimal marketplaces for each asset type<br>' +
+                    '3. <strong>Revenue Model Setup</strong> - Implement pricing and payment systems<br>' +
+                    '4. <strong>Launch Strategy</strong> - Deploy assets with marketing plan<br><br>' +
+                    'Estimated setup time: 2-3 weeks<br>' +
+                    'Initial revenue projection: $500-1,000/month');
+            });
+
+            document.getElementById('viewAnalytics').addEventListener('click', function () {
+                showModal('Projected Earnings Analytics',
+                    'Based on similar portfolios, your projected earnings:<br><br>' +
+                    '<strong>Month 1-3:</strong> $500 - $1,500/month<br>' +
+                    '<strong>Month 4-6:</strong> $1,500 - $3,500/month<br>' +
+                    '<strong>Month 7-9:</strong> $3,500 - $6,000/month<br>' +
+                    '<strong>Month 10-12:</strong> $6,000 - $10,000+<br><br>' +
+                    '<strong>Key Factors:</strong><br>' +
+                    '- 100+ Scratch Programs: $200-500/month<br>' +
+                    '- 200+ Canva Templates: $800-2,000/month<br>' +
+                    '- 300+ GitHub Repos: $400-1,200/month<br>' +
+                    '- 500+ HTML/CSS/JS Blogs: $3,000-6,000+<br><br>' +
+                    'Total Annual Potential: $50,000 - $120,000');
+            });
+
+            // Close modal when clicking outside on mobile
+            document.addEventListener('click', function (event) {
+                const modalOverlay = document.querySelector('.modal-overlay');
+                if (modalOverlay && event.target === modalOverlay) {
+                    modalOverlay.remove();
+                }
+            });
+
+            // Close modal with escape key
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') {
+                    const modalOverlay = document.querySelector('.modal-overlay');
+                    if (modalOverlay) {
+                        modalOverlay.remove();
+                    }
+                }
+            });
+
+            // Helper functions for modals
+            function showModal(title, content) {
+                // Remove existing modal if present
+                const existingModal = document.querySelector('.modal-overlay');
+                if (existingModal) existingModal.remove();
+
+                // Create modal
+                const modalOverlay = document.createElement('div');
+                modalOverlay.className = 'modal-overlay';
+
+                const modalContent = document.createElement('div');
+                modalContent.className = 'modal-content';
+
+                const modalTitle = document.createElement('h3');
+                modalTitle.className = 'modal-title';
+                modalTitle.innerHTML = title;
+
+                const modalBody = document.createElement('div');
+                modalBody.className = 'modal-body';
+                modalBody.innerHTML = content;
+
+                const closeButton = document.createElement('button');
+                closeButton.className = 'btn btn-primary modal-close';
+                closeButton.textContent = 'Close';
+                closeButton.addEventListener('click', function () {
+                    modalOverlay.remove();
+                });
+
+                modalContent.appendChild(modalTitle);
+                modalContent.appendChild(modalBody);
+                modalContent.appendChild(closeButton);
+                modalOverlay.appendChild(modalContent);
+
+                document.body.appendChild(modalOverlay);
+            }
+
+            function showActionModal(action) {
+                const actionDetails = {
+                    'seo': 'Optimize all assets with search-friendly titles, descriptions, and keywords to increase visibility.',
+                    'demo': 'Produce short demonstration videos for Scratch programs and templates to increase conversion rates.',
+                    'docs': 'Create comprehensive documentation for GitHub repositories and code-based assets.',
+                    'website': 'Create a professional portfolio website to display your best assets and attract clients.',
+                    'github-pages': 'Deploy demo versions of your projects using GitHub Pages for free hosting.',
+                    'etsy': 'Set up Etsy storefront for selling Canva templates with commercial licenses.',
+                    'tpt': 'Create account on Teachers Pay Teachers to sell educational Scratch programs and resources.',
+                    'gumroad': 'Set up Gumroad account for direct sales with instant delivery.',
+                    'github-sponsors': 'Enable GitHub Sponsors to receive monthly funding for open-source projects.',
+                    'youtube': 'Create YouTube channel with tutorials for your projects to build audience.',
+                    'direct-sales': 'Sell assets directly through your website with secure payment processing.',
+                    'subscription': 'Offer monthly/annual subscription for access to all assets.',
+                    'affiliate': 'Add affiliate links to tools and services you use in your projects.',
+                    'commercial': 'Offer commercial licenses for businesses to use your templates.',
+                    'customization': 'Provide customization services for clients who need tailored solutions.'
+                };
+
+                const actionTitles = {
+                    'seo': 'Add SEO Metadata',
+                    'demo': 'Create Demo Videos',
+                    'docs': 'Add Documentation',
+                    'website': 'Build Showcase Website',
+                    'github-pages': 'GitHub Pages Setup',
+                    'etsy': 'Etsy for Canva Templates',
+                    'tpt': 'Teachers Pay Teachers',
+                    'gumroad': 'Gumroad Direct Sales',
+                    'github-sponsors': 'GitHub Sponsors',
+                    'youtube': 'YouTube Channel',
+                    'direct-sales': 'Direct Sales',
+                    'subscription': 'Subscription Model',
+                    'affiliate': 'Affiliate Marketing',
+                    'commercial': 'Commercial Licenses',
+                    'customization': 'Customization Services'
+                };
+
+                showModal(`Action: ${actionTitles[action]}`,
+                    `<strong>Description:</strong><br>${actionDetails[action] || 'Detailed action plan for implementation.'}<br><br>` +
+                    `<strong>Estimated Time:</strong> 2-8 hours<br>` +
+                    `<strong>Potential ROI:</strong> $50-500/month per asset type<br>` +
+                    `<strong>Priority:</strong> ${['seo', 'website', 'etsy', 'direct-sales'].includes(action) ? 'High' : 'Medium'}<br><br>` +
+                    `<button class="btn btn-primary" style="width: 100%; margin-top: 15px;" onclick="this.closest('.modal-overlay').remove()">Mark as Complete</button>`);
+            }
+
+            function showAssetModal(assetType) {
+                const assetDetails = {
+                    'scratch': {
+                        title: 'Monetize MIT Scratch Programs',
+                        strategies: '- Educational Marketplaces (Teachers Pay Teachers)<br>- YouTube Tutorial Series<br>- Customization Services for Schools<br>- Subscription Access to All Programs',
+                        potential: '$200-800/month',
+                        platforms: 'Teachers Pay Teachers, Gumroad, YouTube, Udemy'
+                    },
+                    'canva': {
+                        title: 'Monetize Canva Templates',
+                        strategies: '- Etsy & Creative Market Listings<br>- Commercial License Upgrades<br>- Template Bundles (10+ templates)<br>- Custom Template Design Services',
+                        potential: '$800-2,500/month',
+                        platforms: 'Etsy, Creative Market, Gumroad, Direct Sales'
+                    },
+                    'github': {
+                        title: 'Monetize GitHub Repositories',
+                        strategies: '- GitHub Sponsors Program<br>- Premium Repository Access<br>- Consultation Services<br>- Udemy Courses Based on Repos',
+                        potential: '$400-1,500/month',
+                        platforms: 'GitHub Sponsors, Gumroad, Udemy, Consulting'
+                    },
+                    'blog': {
+                        title: 'Monetize HTML/CSS/JS Blogs',
+                        strategies: '- Ad Revenue (AdSense, Media.net)<br>- Affiliate Marketing<br>- Sponsored Content<br>- Lead Generation for Services',
+                        potential: '$3,000-6,000+/month',
+                        platforms: 'AdSense, Affiliate Networks, Sponsorships, Lead Gen'
+                    }
+                };
+
+                const asset = assetDetails[assetType];
+                showModal(asset.title,
+                    `<strong>Top Monetization Strategies:</strong><br>${asset.strategies}<br><br>` +
+                    `<strong>Revenue Potential:</strong> ${asset.potential}<br>` +
+                    `<strong>Recommended Platforms:</strong> ${asset.platforms}<br><br>` +
+                    `<strong>Action Plan:</strong><br>1. Optimize 10 best assets this week<br>2. Set up on primary platform<br>3. Create marketing materials<br>4. Launch with promotion`);
+            }
+
+            function showPhaseModal(phase) {
+                const phaseDetails = {
+                    '1': {
+                        title: 'Phase 1: Foundation & Organization',
+                        details: 'Months 1-2: Categorize assets, create portfolio, optimize for SEO, prepare demos, set up basic monetization channels.',
+                        tasks: '• Audit all 1100+ assets<br>• Create portfolio website<br>• Optimize with SEO metadata<br>• Prepare demonstration materials<br>• Set up basic sales channels',
+                        timeline: '6-8 weeks'
+                    },
+                    '2': {
+                        title: 'Phase 2: Multi-Platform Deployment',
+                        details: 'Months 3-4: Deploy to marketplaces, set up GitHub Sponsors, implement AdSense, create YouTube channel.',
+                        tasks: '• List on Etsy/TPT/Creative Market<br>• Set up GitHub Sponsors<br>• Implement AdSense on blogs<br>• Create YouTube tutorials<br>• Launch email newsletter',
+                        timeline: '8-9 weeks'
+                    },
+                    '3': {
+                        title: 'Phase 3: Advanced Monetization',
+                        details: 'Months 5-8: Launch courses, implement email marketing, offer premium services, scale successful channels.',
+                        tasks: '• Create Udemy/Skillshare courses<br>• Implement advanced email marketing<br>• Offer premium licenses<br>• Scale top-performing assets<br>• Add affiliate marketing',
+                        timeline: '12-16 weeks'
+                    },
+                    '4': {
+                        title: 'Phase 4: Scaling & Community',
+                        details: 'Months 9-12: Build community, license assets to institutions, create membership site, offer consulting.',
+                        tasks: '• Launch Patreon community<br>• License assets to institutions<br>• Create membership website<br>• Offer consulting services<br>• Automate processes',
+                        timeline: '16-20 weeks'
+                    }
+                };
+
+                const phaseInfo = phaseDetails[phase];
+                showModal(phaseInfo.title,
+                    `${phaseInfo.details}<br><br>` +
+                    `<strong>Key Tasks:</strong><br>${phaseInfo.tasks}<br><br>` +
+                    `<strong>Timeline:</strong> ${phaseInfo.timeline}<br>` +
+                    `<strong>Success Metrics:</strong><br>• 70% of assets deployed<br>• 3+ revenue streams active<br>• Monthly growth target: 15%<br><br>` +
+                    `<button class="btn btn-primary" style="width: 100%; margin-top: 15px;" onclick="this.closest('.modal-overlay').remove()">Download Phase Checklist</button>`);
+            }
+
+            function showMetricModal(metric) {
+                const metricDetails = {
+                    'phase1': 'Phase 1 Breakdown:<br><br>• Scratch Programs: $100-300/month<br>• Canva Templates: $200-400/month<br>• GitHub Repos: $50-150/month<br>• Blogs: $150-450/month<br><br>Total: $500-1,300/month',
+                    'phase3': 'Phase 3 Breakdown:<br><br>• Scratch Programs: $300-700/month<br>• Canva Templates: $800-1,500/month<br>• GitHub Repos: $200-500/month<br>• Blogs: $1,200-2,300/month<br><br>Total: $2,500-5,000/month',
+                    'phase4': 'Phase 4 Breakdown:<br><br>• Scratch Programs: $500-1,200/month<br>• Canva Templates: $1,500-3,000/month<br>• GitHub Repos: $400-900/month<br>• Blogs: $3,000-5,000/month<br><br>Total: $5,400-10,100+',
+                    'annual': 'Annual Breakdown:<br><br>• Scratch Programs: $4,800-14,400/year<br>• Canva Templates: $18,000-36,000/year<br>• GitHub Repos: $4,800-10,800/year<br>• Blogs: $36,000-60,000/year<br><br>Total: $63,600-121,200/year'
+                };
+
+                showModal('Earnings Breakdown', metricDetails[metric]);
+            }
+
+            // Handle window resize for better mobile experience
+            window.addEventListener('resize', function () {
+                // Close all sub-menus on mobile when switching to desktop
+                if (window.innerWidth >= 768) {
+                    document.querySelectorAll('.sub-actions').forEach(sub => {
+                        sub.style.display = 'none';
+                    });
+                    document.querySelectorAll('.main-action-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+
+                // Close mobile menu on resize to desktop
+                if (window.innerWidth >= 768 && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
