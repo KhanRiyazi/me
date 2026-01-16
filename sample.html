@@ -1,4062 +1,1555 @@
 <!DOCTYPE html>
-<html lang="en" prefix="og: https://ogp.me/ns#">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="LearnMath.xyz - Advanced Learning Management System with 1000+ courses, interactive lessons, and AI-powered recommendations for students and educators.">
-    <meta name="keywords"
-        content="learning management system, online courses, education platform, interactive learning, AI education, student dashboard">
-    <meta name="author" content="LearnMath.xyz">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="LearnMath.xyz | Advanced Learning Management System">
-    <meta property="og:description"
-        content="Access 1000+ courses, interactive lessons, and AI-powered learning recommendations">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://learnmath.xyz">
-    <meta property="og:image" content="https://learnmath.xyz/preview-image.png">
-    <link rel="canonical" href="https://learnmath.xyz">
-    <title>LearnMath.xyz | Advanced LMS - 1000+ Courses, Interactive Learning</title>
-
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <title>Ali Rizwan - AI Engineer & Full Stack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-
-    <!-- Style Section -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
-        /* ===========================================
-           CSS RESET & BASE
-        =========================================== */
-        *,
-        *::before,
-        *::after {
+        /* ===== RESET & BASE STYLES ===== */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #00d4ff;
+            --accent: #ff0055;
+            --ai-purple: #8a2be2;
+            --ai-blue: #1e50ff;
+            --ai-green: #00ff88;
+            --light: #f8f9fa;
+            --dark: #121212;
+            --gray: #2a2a2a;
+            --gradient: linear-gradient(135deg, var(--ai-blue) 0%, var(--ai-purple) 100%);
+            --gradient2: linear-gradient(135deg, var(--ai-green) 0%, var(--secondary) 100%);
+            --gradient3: linear-gradient(135deg, var(--accent) 0%, #ff6b35 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         html {
-            font-size: 16px;
             scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-            -moz-text-size-adjust: 100%;
-            text-size-adjust: 100%;
             scroll-padding-top: 80px;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-weight: 400;
-            line-height: 1.6;
-            color: #1e293b;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            min-height: 100vh;
+            background-color: var(--dark);
+            color: var(--light);
             overflow-x: hidden;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            display: flex;
-            flex-direction: column;
+            line-height: 1.6;
         }
 
-        /* ===========================================
-           VARIABLES
-        =========================================== */
-        :root {
-            /* Color Palette - Education Theme */
-            --primary-50: #eef2ff;
-            --primary-100: #e0e7ff;
-            --primary-200: #c7d2fe;
-            --primary-300: #a5b4fc;
-            --primary-400: #818cf8;
-            --primary-500: #6366f1;
-            --primary-600: #4f46e5;
-            --primary-700: #4338ca;
-            --primary-800: #3730a3;
-            --primary-900: #312e81;
-
-            --accent-50: #f0f9ff;
-            --accent-100: #e0f2fe;
-            --accent-200: #bae6fd;
-            --accent-300: #7dd3fc;
-            --accent-400: #38bdf8;
-            --accent-500: #0ea5e9;
-            --accent-600: #0284c7;
-            --accent-700: #0369a1;
-            --accent-800: #075985;
-            --accent-900: #0c4a6e;
-
-            --success-50: #f0fdf4;
-            --success-100: #dcfce7;
-            --success-200: #bbf7d0;
-            --success-300: #86efac;
-            --success-400: #4ade80;
-            --success-500: #22c55e;
-            --success-600: #16a34a;
-            --success-700: #15803d;
-            --success-800: #166534;
-            --success-900: #14532d;
-
-            --warning-50: #fffbeb;
-            --warning-100: #fef3c7;
-            --warning-200: #fde68a;
-            --warning-300: #fcd34d;
-            --warning-400: #fbbf24;
-            --warning-500: #f59e0b;
-            --warning-600: #d97706;
-            --warning-700: #b45309;
-            --warning-800: #92400e;
-            --warning-900: #78350f;
-
-            --danger-50: #fef2f2;
-            --danger-100: #fee2e2;
-            --danger-200: #fecaca;
-            --danger-300: #fca5a5;
-            --danger-400: #f87171;
-            --danger-500: #ef4444;
-            --danger-600: #dc2626;
-            --danger-700: #b91c1c;
-            --danger-800: #991b1b;
-            --danger-900: #7f1d1d;
-
-            --dark-50: #f8fafc;
-            --dark-100: #f1f5f9;
-            --dark-200: #e2e8f0;
-            --dark-300: #cbd5e1;
-            --dark-400: #94a3b8;
-            --dark-500: #64748b;
-            --dark-600: #475569;
-            --dark-700: #334155;
-            --dark-800: #1e293b;
-            --dark-900: #0f172a;
-
-            /* Gradients */
-            --gradient-primary: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
-            --gradient-accent: linear-gradient(135deg, var(--accent-500) 0%, var(--accent-700) 100%);
-            --gradient-success: linear-gradient(135deg, var(--success-500) 0%, var(--success-700) 100%);
-            --gradient-warning: linear-gradient(135deg, var(--warning-500) 0%, var(--warning-700) 100%);
-            --gradient-danger: linear-gradient(135deg, var(--danger-500) 0%, var(--danger-700) 100%);
-            --gradient-dark: linear-gradient(135deg, var(--dark-800) 0%, var(--dark-900) 100%);
-            --gradient-rainbow: linear-gradient(135deg,
-                    #6366f1 0%,
-                    #8b5cf6 25%,
-                    #ec4899 50%,
-                    #f59e0b 75%,
-                    #22c55e 100%);
-
-            /* Shadows */
-            --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --shadow-md: 0 15px 40px rgba(0, 0, 0, 0.10);
-            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
-            --shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.15);
-            --shadow-2xl: 0 40px 80px rgba(0, 0, 0, 0.20);
-            --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.3);
-            --shadow-accent: 0 0 30px rgba(14, 165, 233, 0.3);
-            --shadow-success: 0 0 30px rgba(34, 197, 94, 0.3);
-
-            /* Animations */
-            --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        /* ===========================================
-           LAYOUT & CONTAINER
-        =========================================== */
         .container {
-            width: 100%;
-            max-width: 1280px;
+            width: 90%;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 20px;
         }
 
-        .section {
-            padding: 4rem 0;
+        section {
+            padding: 100px 0;
         }
 
-        .section-lg {
-            padding: 6rem 0;
+        /* ===== TYPOGRAPHY ===== */
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* ===========================================
-           HEADER
-        =========================================== */
-        .header {
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+            min-width: fit-content;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(30, 80, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--glass-border);
+        }
+
+        .btn-outline:hover {
+            background: var(--glass);
+            transform: translateY(-5px);
+        }
+
+        .btn-small {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        /* Make anchor tags work as buttons */
+        a.btn {
+            text-decoration: none;
+            border: none;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 9999;
-            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .header.scrolled {
-            box-shadow: var(--shadow-sm);
-            background: rgba(255, 255, 255, 0.98);
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: var(--shadow);
         }
 
-        .header-container {
+        nav {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            height: 80px;
-            padding: 0 1rem;
+            align-items: center;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: white;
-            font-size: 1.5rem;
-            box-shadow: var(--shadow-glow);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .logo-brand {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--dark-900);
-        }
-
-        .logo-brand .domain {
-            background: var(--gradient-primary);
+        .logo span {
+            background: var(--gradient);
             -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            list-style: none;
+            gap: 30px;
             align-items: center;
         }
 
-        .nav-link {
+        .nav-links a {
+            color: var(--light);
             text-decoration: none;
-            color: var(--dark-700);
             font-weight: 500;
-            transition: var(--transition);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
+            font-size: 1rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
         }
 
-        .nav-link:hover {
-            color: var(--primary-600);
-            background: var(--primary-50);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
         }
 
-        .user-menu {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .nav-links a:hover {
+            color: var(--secondary);
         }
 
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--gradient-accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
             color: white;
-            font-weight: 600;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
         }
 
-        /* ===========================================
-           HERO SECTION
-        =========================================== */
-        .hero-section {
-            padding: 8rem 0 4rem;
-            background: linear-gradient(135deg, var(--primary-50) 0%, var(--accent-50) 50%, var(--success-50) 100%);
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             position: relative;
             overflow: hidden;
-            margin-top: 80px;
+            padding-top: 100px;
         }
 
-        .hero-section::before {
-            content: '';
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" opacity="0.05"><path fill="%236366f1" d="M0,100 C150,200 350,0 500,100 C650,200 850,0 1000,100 L1000,200 L0,200 Z"/></svg>') no-repeat bottom center;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.95)),
+                url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
+            background-position: center;
+            z-index: -1;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: var(--gradient-success);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-success);
-            animation: float 3s ease-in-out infinite;
+        .hero-text {
+            z-index: 2;
         }
 
         .hero-title {
             font-size: 3.5rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: var(--gradient-rainbow);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--ai-green) 0%, var(--ai-blue) 100%);
             -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--dark-600);
-            max-width: 700px;
-            margin: 0 auto 3rem;
+            font-size: 1.5rem;
+            color: #aaa;
+            margin-bottom: 30px;
         }
 
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin-top: 4rem;
+        .hero-quote {
+            background: rgba(0, 212, 255, 0.1);
+            border-left: 4px solid var(--secondary);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
         }
 
-        .hero-stat {
-            text-align: center;
+        .hero-quote p {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--secondary);
         }
 
-        .hero-stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1;
-        }
-
-        .hero-stat-label {
+        .hero-quote .author {
+            display: block;
+            text-align: right;
+            margin-top: 10px;
+            color: #888;
             font-size: 1rem;
-            color: var(--dark-600);
-            margin-top: 0.5rem;
         }
 
-        /* ===========================================
-           MAIN CONTENT SECTION
-        =========================================== */
-        .main-content {
-            flex: 1;
+        .hero-image {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* ===========================================
-           COURSE DASHBOARD
-        =========================================== */
-        .course-dashboard {
-            background: white;
-            border-radius: 25px;
-            padding: 3rem;
-            margin: 2rem 0;
-            box-shadow: var(--shadow-xl);
+        .profile-img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
+            border: 3px solid transparent;
+            background: linear-gradient(45deg, var(--ai-blue), var(--ai-green), var(--ai-purple)) border-box;
+            -webkit-mask:
+                linear-gradient(#fff 0 0) padding-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
         }
 
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 17px;
         }
 
-        .dashboard-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--gradient-rainbow);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        /* ===== AI SKILLS SECTION ===== */
+        .ai-skills {
+            background: var(--primary);
         }
 
-        .course-grid {
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 30px;
+            margin-top: 50px;
         }
 
-        .course-card {
-            background: var(--dark-50);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: var(--transition-bounce);
-            border: 2px solid transparent;
+        .skill-card {
+            background: var(--glass);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s;
             position: relative;
             overflow: hidden;
         }
 
-        .course-card:hover {
+        .skill-card:hover {
             transform: translateY(-10px);
-            border-color: var(--primary-300);
-            box-shadow: var(--shadow-xl);
+            border-color: var(--ai-green);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .course-card.featured::before {
+        .skill-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-warning);
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
         }
 
-        .course-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .course-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
+        .skill-level {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin: 15px 0;
+            overflow: hidden;
         }
 
-        .course-icon.math {
-            background: var(--gradient-primary);
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient);
+            width: 0;
+            transition: width 1.5s ease-in-out;
         }
 
-        .course-icon.science {
-            background: var(--gradient-accent);
+        /* ===== PORTFOLIO SECTION ===== */
+        .portfolio {
+            background: var(--dark);
         }
 
-        .course-icon.programming {
-            background: var(--gradient-success);
-        }
-
-        .course-info h3 {
-            font-size: 1.5rem;
-            margin: 0;
-        }
-
-        .course-instructor {
-            font-size: 0.9rem;
-            color: var(--dark-600);
-        }
-
-        .course-metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .metric {
-            text-align: center;
-        }
-
-        .metric-value {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-600);
-        }
-
-        .metric-label {
-            font-size: 0.85rem;
-            color: var(--dark-600);
-        }
-
-        .course-actions {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .action-btn {
-            flex: 1;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .action-btn.primary {
-            background: var(--gradient-primary);
-            color: white;
-        }
-
-        .action-btn.secondary {
-            background: var(--dark-100);
-            color: var(--dark-700);
-        }
-
-        .action-btn.success {
-            background: var(--gradient-success);
-            color: white;
-        }
-
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        /* Progress bars */
-        .progress-container {
-            margin: 1rem 0;
-        }
-
-        .progress-label {
+        .portfolio-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            align-items: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .progress-bar {
-            height: 8px;
-            background: var(--dark-200);
-            border-radius: 4px;
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: var(--glass);
+            border-radius: 15px;
             overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
-        .progress-fill {
-            height: 100%;
-            background: var(--gradient-success);
-            border-radius: 4px;
-            transition: width 1s ease;
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--ai-green);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* ===========================================
-           LEARNING PATH WIZARD
-        =========================================== */
-        .learning-wizard {
-            background: linear-gradient(135deg, var(--dark-50) 0%, var(--primary-50) 100%);
-            border-radius: 25px;
-            padding: 3rem;
-            margin: 2rem 0;
-            position: relative;
-            overflow: hidden;
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
         }
 
-        .wizard-progress {
+        .portfolio-info {
+            padding: 25px;
+        }
+
+        .portfolio-tags {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
         }
 
-        .wizard-step {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--dark-200);
+        .tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--ai-green);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .portfolio-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background: var(--primary);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: var(--dark-600);
-            position: relative;
-            transition: var(--transition);
+            gap: 20px;
+            background: var(--glass);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
         }
 
-        .wizard-step.active {
-            background: var(--gradient-primary);
-            color: white;
-            transform: scale(1.1);
-        }
-
-        .wizard-step.completed {
-            background: var(--gradient-success);
-            color: white;
-        }
-
-        .wizard-content {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-        }
-
-        .path-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .path-card {
-            background: var(--dark-50);
-            border-radius: 15px;
-            padding: 1.5rem;
-            transition: var(--transition);
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-
-        .path-card:hover {
-            border-color: var(--primary-300);
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-
-        .path-card.selected {
-            border-color: var(--primary-500);
-            background: var(--primary-50);
-        }
-
-        .path-icon {
+        .contact-icon {
             width: 50px;
             height: 50px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
+            background: var(--gradient);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .path-duration {
             font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--success-600);
-            margin: 0.5rem 0;
         }
 
-        /* ===========================================
-           PERFORMANCE ANALYZER
-        =========================================== */
-        .performance-analyzer {
-            background: var(--gradient-dark);
-            color: white;
-            border-radius: 25px;
-            padding: 3rem;
-            margin: 2rem 0;
-            position: relative;
-            overflow: hidden;
+        .form-group {
+            margin-bottom: 25px;
         }
 
-        .analyzer-controls {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .control-group {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 1.5rem;
-        }
-
-        .slider-container {
-            margin-top: 1rem;
-        }
-
-        .slider {
+        .form-control {
             width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
+            padding: 15px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
             outline: none;
-            -webkit-appearance: none;
+            border-color: var(--ai-green);
         }
 
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 24px;
-            height: 24px;
-            background: var(--gradient-success);
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: var(--shadow);
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
         }
 
-        .analyzer-results {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .result-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .result-card:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
-        }
-
-        .result-value {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            background: var(--gradient-success);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        /* ===========================================
-           AI RECOMMENDATION ENGINE
-        =========================================== */
-        .ai-recommender {
-            background: white;
-            border-radius: 25px;
-            padding: 3rem;
-            margin: 2rem 0;
-            box-shadow: var(--shadow-xl);
-        }
-
-        .ai-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .ai-avatar {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-accent);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .recommendations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .recommendation-card {
-            background: var(--dark-50);
-            border-radius: 15px;
-            padding: 1.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .recommendation-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-
-        .recommendation-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--gradient-success);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .recommendation-score {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary-600);
-            margin: 1rem 0;
-        }
-
-        .recommendation-actions {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: 1rem;
-        }
-
-        /* ===========================================
-           ACHIEVEMENT SYSTEM
-        =========================================== */
-        .achievement-system {
-            background: linear-gradient(135deg, var(--warning-50) 0%, var(--success-50) 100%);
-            border-radius: 25px;
-            padding: 3rem;
-            margin: 2rem 0;
-        }
-
-        .achievement-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .achievement-card {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .achievement-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-
-        .achievement-card.unlocked {
-            border: 2px solid var(--warning-300);
-        }
-
-        .achievement-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-warning);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 auto 1rem;
-        }
-
-        .achievement-progress {
-            height: 4px;
-            background: var(--dark-200);
-            border-radius: 2px;
-            margin-top: 0.5rem;
-            overflow: hidden;
-        }
-
-        .achievement-progress-fill {
-            height: 100%;
-            background: var(--gradient-success);
-            transition: width 1s ease;
-        }
-
-        /* ===========================================
-           FOOTER
-        =========================================== */
-        .footer {
-            background: var(--gradient-dark);
-            color: white;
-            padding: 4rem 0 2rem;
-            position: relative;
-            margin-top: auto;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-rainbow);
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0a0a0a;
+            padding: 80px 0 30px;
+            border-top: 1px solid var(--glass-border);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
         }
 
-        .footer-logo {
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .social-links {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        .footer-logo-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: var(--glass);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
-        }
-
-        .footer-logo-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-        }
-
-        .footer-logo-text .domain {
-            background: var(--gradient-success);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .footer-description {
-            color: var(--dark-300);
-            line-height: 1.7;
-        }
-
-        .footer-heading {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
             color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid var(--glass-border);
+        }
+
+        .social-links a:hover {
+            background: var(--gradient);
+            transform: translateY(-5px);
         }
 
         .footer-links {
             list-style: none;
         }
 
-        .footer-link {
-            margin-bottom: 0.75rem;
+        .footer-links li {
+            margin-bottom: 10px;
         }
 
-        .footer-link a {
-            color: var(--dark-300);
+        .footer-links a {
+            color: #aaa;
             text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            transition: color 0.3s;
         }
 
-        .footer-link a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-
-        .social-section {
-            margin-top: 2rem;
-        }
-
-        .social-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .social-button {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .social-button:hover {
-            background: var(--gradient-primary);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .social-button.toggle {
-            background: var(--gradient-success);
-            z-index: 2;
-        }
-
-        .social-button.toggle:hover {
-            background: var(--gradient-success);
-            transform: rotate(90deg);
-        }
-
-        .social-button.hidden {
-            position: absolute;
-            opacity: 0;
-            transform: scale(0.5);
-            pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .social-button.hidden.visible {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: all;
-            position: relative;
-        }
-
-        .social-button.hidden:nth-child(2) {
-            left: 60px;
-            transition-delay: 0.05s;
-        }
-
-        .social-button.hidden:nth-child(3) {
-            left: 120px;
-            transition-delay: 0.1s;
-        }
-
-        .social-button.hidden:nth-child(4) {
-            left: 180px;
-            transition-delay: 0.15s;
-        }
-
-        .social-button.hidden:nth-child(5) {
-            left: 240px;
-            transition-delay: 0.2s;
-        }
-
-        .social-button.hidden:nth-child(6) {
-            left: 300px;
-            transition-delay: 0.25s;
-        }
-
-        .social-button.hidden:nth-child(7) {
-            left: 360px;
-            transition-delay: 0.3s;
-        }
-
-        .social-tooltip {
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition);
-        }
-
-        .social-button:hover .social-tooltip {
-            opacity: 1;
-            transform: translateX(-50%) translateY(-5px);
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .newsletter-input {
-            flex: 1;
-            padding: 0.75rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: white;
-            font-family: inherit;
-        }
-
-        .newsletter-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .newsletter-button {
-            padding: 0.75rem 1.5rem;
-            background: var(--gradient-primary);
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .newsletter-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: var(--dark-300);
-            font-size: 0.9rem;
+        .footer-links a:hover {
+            color: var(--ai-green);
         }
 
         .copyright {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-legal {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-legal a {
-            color: var(--dark-300);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-legal a:hover {
-            color: white;
-        }
-
-        /* ===========================================
-           TEACHER ASSISTANT COMPONENTS
-        =========================================== */
-        /* Floating Teacher Assistant */
-        .teacher-assistant {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            z-index: 9998;
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-success);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: var(--shadow-2xl);
-            transition: var(--transition-bounce);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .teacher-assistant:hover {
-            transform: scale(1.1) rotate(15deg);
-        }
-
-        .teacher-assistant.active {
-            transform: rotate(45deg);
-        }
-
-        .teacher-menu {
-            position: fixed;
-            bottom: 170px;
-            right: 30px;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow-2xl);
-            z-index: 9997;
-            width: 300px;
-            opacity: 0;
-            transform: translateY(20px) scale(0.95);
-            pointer-events: none;
-            transition: var(--transition-bounce);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .teacher-menu.active {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            pointer-events: all;
-        }
-
-        .teacher-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-bottom: 0.5rem;
-        }
-
-        .teacher-item:hover {
-            background: var(--primary-50);
-            transform: translateX(5px);
-        }
-
-        .teacher-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-primary);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
-        .teacher-content h4 {
-            margin: 0;
-            font-size: 0.95rem;
-            color: var(--dark-900);
-        }
-
-        .teacher-content p {
-            margin: 0;
-            font-size: 0.85rem;
-            color: var(--dark-600);
-        }
-
-        /* Quick Actions Tray */
-        .quick-actions-tray {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 15px;
-            padding: 1rem 1.5rem;
-            box-shadow: var(--shadow-2xl);
-            z-index: 9996;
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .quick-actions-tray.active {
-            opacity: 1;
-            pointer-events: all;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .action-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            cursor: pointer;
-            transition: var(--transition);
-            padding: 0.5rem;
-            border-radius: 8px;
-        }
-
-        .action-item:hover {
-            background: var(--primary-50);
-        }
-
-        .action-badge {
-            background: var(--gradient-success);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        /* Course Navigator */
-        .course-navigator {
-            position: fixed;
-            top: 100px;
-            right: 30px;
-            z-index: 9995;
-            width: 50px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-            padding: 1rem 0;
-            box-shadow: var(--shadow-xl);
-            transition: var(--transition);
-        }
-
-        .nav-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            border: none;
-            background: var(--primary-50);
-            color: var(--primary-600);
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .nav-btn:hover {
-            background: var(--gradient-primary);
-            color: white;
-            transform: scale(1.1);
-        }
-
-        /* Progress Tracker */
-        .progress-tracker {
-            position: fixed;
-            top: 150px;
-            left: 30px;
-            z-index: 9995;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 1.5rem;
-            width: 350px;
-            box-shadow: var(--shadow-2xl);
-            transform: translateX(-400px);
-            transition: var(--transition-bounce);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .progress-tracker.active {
-            transform: translateX(0);
-        }
-
-        .tracker-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-
-        .tracker-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .tracker-stat {
-            background: var(--primary-50);
-            border-radius: 12px;
-            padding: 1rem;
             text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+            color: #777;
+            font-size: 0.9rem;
         }
 
-        .tracker-value {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-600);
-            margin-bottom: 0.25rem;
-        }
-
-        .tracker-label {
-            font-size: 0.85rem;
-            color: var(--dark-600);
-        }
-
-        /* Interactive Tour Guide */
-        .tour-guide {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 2rem;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: var(--shadow-2xl);
-            z-index: 10000;
+        /* ===== MODALS ===== */
+        .modal {
             display: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .tour-guide.active {
-            display: block;
-            animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .tour-content {
-            text-align: center;
-        }
-
-        .tour-avatar {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            margin: 0 auto 1rem;
-        }
-
-        .tour-actions {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        /* ===========================================
-           NOTIFICATION SYSTEM
-        =========================================== */
-        .notification-center {
             position: fixed;
-            top: 100px;
-            right: 30px;
-            z-index: 9996;
-            width: 350px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--dark);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
             max-height: 80vh;
             overflow-y: auto;
+            border: 1px solid var(--glass-border);
+            position: relative;
         }
 
-        .notification {
-            background: white;
-            border-radius: 15px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            animation: slideInRight 0.3s ease;
-            border-left: 4px solid var(--primary-500);
-        }
-
-        .notification.success {
-            border-left-color: var(--success-500);
-        }
-
-        .notification.achievement {
-            border-left-color: var(--warning-500);
-        }
-
-        .notification.recommendation {
-            border-left-color: var(--accent-500);
-        }
-
-        .notification-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
             color: white;
-            flex-shrink: 0;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
-        .notification-success .notification-icon {
-            background: var(--gradient-success);
-        }
-
-        .notification-achievement .notification-icon {
-            background: var(--gradient-warning);
-        }
-
-        .notification-content {
-            flex: 1;
-        }
-
-        .notification-content h4 {
-            margin: 0;
-            font-size: 0.95rem;
-        }
-
-        .notification-content p {
-            margin: 0;
-            font-size: 0.85rem;
-            color: var(--dark-600);
-        }
-
-        /* ===========================================
-           QUICK VIEW MODAL
-        =========================================== */
-        .quick-view {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            border-radius: 25px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: var(--shadow-2xl);
-            z-index: 10001;
-            display: none;
-        }
-
-        .quick-view.active {
-            display: block;
-            animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .quick-view-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem;
-            border-bottom: 1px solid var(--dark-200);
-        }
-
-        .quick-view-content {
-            padding: 2rem;
-        }
-
-        /* ===========================================
-           MOBILE OPTIMIZATIONS
-        =========================================== */
-        @media (max-width: 768px) {
-            .section {
-                padding: 2rem 0;
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
 
-            .section-lg {
-                padding: 3rem 0;
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
             }
 
-            .course-dashboard,
-            .learning-wizard,
-            .performance-analyzer,
-            .ai-recommender,
-            .achievement-system {
-                padding: 1.5rem;
-                margin: 1rem 0;
-                border-radius: 20px;
+            50% {
+                transform: scale(1.05);
             }
 
-            .dashboard-title {
-                font-size: 1.75rem;
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3rem;
             }
 
-            .course-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .course-metrics {
+            .footer-content {
                 grid-template-columns: repeat(2, 1fr);
             }
+        }
 
-            .course-actions {
-                flex-direction: column;
-            }
+        @media (max-width: 992px) {
 
-            /* Teacher System Mobile */
-            .teacher-assistant {
-                bottom: 80px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-
-            .teacher-menu {
-                bottom: 140px;
-                right: 20px;
-                width: calc(100vw - 40px);
-                max-width: 300px;
-            }
-
-            .quick-actions-tray {
-                bottom: 10px;
-                left: 20px;
-                right: 20px;
-                transform: none;
-                flex-wrap: wrap;
-                justify-content: center;
-                padding: 0.75rem;
-            }
-
-            .progress-tracker {
-                top: 100px;
-                left: 20px;
-                width: calc(100vw - 40px);
-            }
-
-            .course-navigator {
-                display: none;
-            }
-
-            .notification-center {
-                top: 90px;
-                right: 20px;
-                width: calc(100vw - 40px);
-            }
-
-            .tour-guide {
-                width: 95%;
-                padding: 1.5rem;
-            }
-
-            /* Controls Mobile */
-            .analyzer-controls,
-            .path-options,
-            .recommendations-grid,
-            .achievement-grid {
+            .hero-content,
+            .contact-content {
                 grid-template-columns: 1fr;
+                text-align: center;
             }
 
-            .wizard-progress {
-                flex-wrap: wrap;
-                gap: 1rem;
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
             }
 
-            .wizard-step {
-                width: 50px;
-                height: 50px;
+            .hero-image {
+                order: -1;
             }
 
-            .quick-view {
-                width: 95%;
-                padding: 1rem;
+            .profile-img {
+                max-width: 350px;
+                margin: 0 auto;
             }
+        }
 
-            .quick-view-header,
-            .quick-view-content {
-                padding: 1rem;
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
             }
 
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s;
+                pointer-events: none;
+                z-index: 999;
             }
 
-            .hero-section {
-                padding: 6rem 0 3rem;
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
             }
 
-            .hero-stats {
-                gap: 2rem;
-            }
-
-            .hero-stat-number {
+            .hero-title {
                 font-size: 2.5rem;
             }
 
-            .footer {
-                padding: 3rem 0 1.5rem;
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .portfolio-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .button-group {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
 
-            .social-buttons {
-                justify-content: center;
-            }
-
-            .social-button.hidden {
-                position: relative;
-                left: 0 !important;
-            }
-
-            .newsletter-form {
+            .portfolio-buttons {
                 flex-direction: column;
             }
 
-            .footer-legal {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-container {
-                height: 60px;
-                padding: 0 0.75rem;
+            section {
+                padding: 80px 0;
             }
 
-            .logo-icon {
-                width: 36px;
-                height: 36px;
-                font-size: 1.2rem;
-            }
-
-            .logo-brand {
-                font-size: 1.25rem;
-            }
-
-            .section {
-                padding: 1.5rem 0;
-            }
-
-            .container {
-                padding: 0 0.75rem;
-            }
-
-            .course-card {
-                padding: 1.25rem;
-            }
-
-            .course-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-
-            .course-info h3 {
-                font-size: 1.25rem;
-            }
-
-            .metric-value {
-                font-size: 1.25rem;
-            }
-
-            .tracker-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-section {
-                padding: 5rem 0 2rem;
+            .section-title {
+                font-size: 2.2rem;
             }
 
             .hero-title {
                 font-size: 2rem;
             }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .hero-stats {
-                gap: 1.5rem;
-            }
-
-            .hero-stat-number {
-                font-size: 2rem;
-            }
-
-            .footer {
-                padding: 2rem 0 1rem;
-            }
-
-            .social-button {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
-            }
         }
 
-        /* ===========================================
-           ANIMATIONS
-        =========================================== */
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translate(-50%, 100px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-
-            100% {
-                background-position: 1000px 0;
-            }
-        }
-
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .animate-pulse {
-            animation: pulse 2s infinite;
-        }
-
-        .animate-bounce {
-            animation: bounce 1s infinite;
-        }
-
-        .animate-spin {
-            animation: spin 1s linear infinite;
-        }
-
-        .animate-shimmer {
-            background: linear-gradient(90deg,
-                    rgba(255, 255, 255, 0) 0%,
-                    rgba(255, 255, 255, 0.3) 50%,
-                    rgba(255, 255, 255, 0) 100%);
-            background-size: 1000px 100%;
-            animation: shimmer 2s infinite;
-        }
-
-        /* ===========================================
-           UTILITY CLASSES
-        =========================================== */
-        .d-none {
-            display: none !important;
-        }
-
-        .d-flex {
-            display: flex !important;
-        }
-
-        .d-grid {
-            display: grid !important;
-        }
-
-        .w-100 {
-            width: 100%;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .mt-1 {
-            margin-top: 0.5rem;
-        }
-
-        .mt-2 {
-            margin-top: 1rem;
-        }
-
-        .mt-3 {
-            margin-top: 1.5rem;
-        }
-
-        .mt-4 {
-            margin-top: 2rem;
-        }
-
-        .mb-1 {
-            margin-bottom: 0.5rem;
-        }
-
-        .mb-2 {
-            margin-bottom: 1rem;
-        }
-
-        .mb-3 {
-            margin-bottom: 1.5rem;
-        }
-
-        .mb-4 {
-            margin-bottom: 2rem;
-        }
-
-        .p-1 {
-            padding: 0.5rem;
-        }
-
-        .p-2 {
-            padding: 1rem;
-        }
-
-        .p-3 {
-            padding: 1.5rem;
-        }
-
-        .p-4 {
-            padding: 2rem;
-        }
-
-        .gap-1 {
-            gap: 0.5rem;
-        }
-
-        .gap-2 {
-            gap: 1rem;
-        }
-
-        .gap-3 {
-            gap: 1.5rem;
-        }
-
-        .gap-4 {
-            gap: 2rem;
-        }
-
-        .rounded-sm {
-            border-radius: 8px;
-        }
-
-        .rounded {
-            border-radius: 12px;
-        }
-
-        .rounded-lg {
-            border-radius: 20px;
-        }
-
-        .rounded-xl {
-            border-radius: 25px;
-        }
-
-        .shadow-sm {
-            box-shadow: var(--shadow-sm);
-        }
-
-        .shadow {
-            box-shadow: var(--shadow);
-        }
-
-        .shadow-lg {
-            box-shadow: var(--shadow-lg);
-        }
-
-        .shadow-xl {
-            box-shadow: var(--shadow-xl);
-        }
-
-        .text-primary {
-            color: var(--primary-600);
-        }
-
-        .text-accent {
-            color: var(--accent-600);
-        }
-
-        .text-success {
-            color: var(--success-600);
-        }
-
-        .text-warning {
-            color: var(--warning-600);
-        }
-
-        .text-danger {
-            color: var(--danger-600);
-        }
-
-        .text-muted {
-            color: var(--dark-600);
-        }
-
-        .bg-primary {
-            background: var(--primary-50);
-        }
-
-        .bg-accent {
-            background: var(--accent-50);
-        }
-
-        .bg-success {
-            background: var(--success-50);
-        }
-
-        .bg-warning {
-            background: var(--warning-50);
-        }
-
-        .bg-dark {
-            background: var(--dark-50);
-        }
-
-        .transition {
-            transition: var(--transition);
-        }
-
-        .transition-fast {
-            transition: var(--transition-fast);
-        }
-
-        .transition-bounce {
-            transition: var(--transition-bounce);
-        }
-
-        .cursor-pointer {
-            cursor: pointer;
-        }
-
-        .opacity-0 {
-            opacity: 0;
-        }
-
-        .opacity-25 {
-            opacity: 0.25;
-        }
-
-        .opacity-50 {
-            opacity: 0.5;
-        }
-
-        .opacity-75 {
-            opacity: 0.75;
-        }
-
-        .opacity-100 {
-            opacity: 1;
-        }
-
-        .position-relative {
-            position: relative;
-        }
-
-        .position-absolute {
+        /* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+        .sr-only {
             position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
-        .position-fixed {
-            position: fixed;
-        }
-
-        .justify-center {
-            justify-content: center;
-        }
-
-        .justify-between {
-            justify-content: space-between;
-        }
-
-        .align-center {
-            align-items: center;
-        }
-
-        .flex-column {
-            flex-direction: column;
-        }
-
-        .flex-wrap {
-            flex-wrap: wrap;
-        }
-
-        /* ===========================================
-           SCROLLBAR
-        =========================================== */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--dark-100);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-300);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-500);
-        }
-
-        /* ===========================================
-           PRINT STYLES
-        =========================================== */
-        @media print {
-
-            .header,
-            .teacher-assistant,
-            .teacher-menu,
-            .quick-actions-tray,
-            .course-navigator,
-            .progress-tracker,
-            .notification-center,
-            .tour-guide {
-                display: none !important;
-            }
-
-            body {
-                background: white;
-            }
-
-            .container {
-                max-width: 100%;
-            }
+        :focus {
+            outline: 2px solid var(--ai-green);
+            outline-offset: 2px;
         }
     </style>
 </head>
 
 <body>
     <!-- Header -->
-    <header class="header" id="header">
+    <header id="header">
         <div class="container">
-            <div class="header-container">
-                <a href="#" class="logo" aria-label="LearnMath.xyz Home">
-                    <div class="logo-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="logo-brand">Learn<span class="domain">Math</span></div>
+            <nav>
+                <a href="#home" class="logo">
+                    <i class="fas fa-brain"></i>
+                    ALI <span>RIZWAN</span>
                 </a>
-                <nav class="nav-links">
-                    <a href="#dashboard" class="nav-link">Dashboard</a>
-                    <a href="#courses" class="nav-link">Courses</a>
-                    <a href="#learning" class="nav-link">Learning Paths</a>
-                    <a href="#analytics" class="nav-link">Analytics</a>
-                    <a href="#achievements" class="nav-link">Achievements</a>
-                </nav>
-                <div class="user-menu">
-                    <div class="user-avatar" id="userAvatar">JD</div>
-                </div>
-            </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="#skills"><i class="fas fa-cogs"></i> AI Skills</a></li>
+                    <li><a href="#portfolio"><i class="fas fa-code"></i> Projects</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section" id="hero">
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge animate-float">
-                    <i class="fas fa-brain"></i> SMART LEARNING PLATFORM
+                <div class="hero-text animate">
+                    <h1 class="hero-title">Engineering AI Solutions with Precision & Passion</h1>
+                    <p class="hero-subtitle">AI Engineer • Full Stack Developer • Machine Learning Specialist</p>
+
+                    <div class="hero-quote">
+                        <p>"Engineering is the closest thing to magic that exists in the world."</p>
+                        <span class="author">- Elon Musk</span>
+                    </div>
+
+                    <p>As an AI learner under expert supervision, I build intelligent systems that solve real-world
+                        problems. Combining cutting-edge AI research with robust software engineering principles to
+                        create impactful solutions.</p>
+
+                    <div class="button-group">
+                        <a href="#portfolio" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i> View Projects
+                        </a>
+                        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-secondary">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-paper-plane"></i> Hire Me
+                        </a>
+                    </div>
+
+                    <div class="button-group" style="margin-top: 20px;">
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-small btn-primary">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="/resume.pdf" download class="btn btn-small btn-secondary">
+                            <i class="fas fa-download"></i> Resume
+                        </a>
+                        <a href="mailto:rizwanrka826@gmail.com" class="btn btn-small btn-outline">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                    </div>
                 </div>
-                <h1 class="hero-title">
-                    Transform Your Learning Experience<br>
-                    <span
-                        style="background: var(--gradient-success); -webkit-background-clip: text; background-clip: text; color: transparent;">AI-Powered
-                        Education Platform</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Access 1000+ interactive courses, personalized learning paths, and AI-powered recommendations.
-                    Master new skills with our intelligent learning management system.
-                </p>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="hero-stat-number">1,000+</div>
-                        <div class="hero-stat-label">Courses</div>
+
+                <div class="hero-image animate">
+                    <div class="profile-img">
+                        <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Ali Rizwan - AI Engineer">
                     </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-number">50K+</div>
-                        <div class="hero-stat-label">Students</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-number">95%</div>
-                        <div class="hero-stat-label">Success Rate</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-number">24/7</div>
-                        <div class="hero-stat-label">Learning Support</div>
+
+                    <div class="button-group" style="margin-top: 20px;">
+                        <a href="#skills" class="btn btn-small btn-outline">
+                            <i class="fas fa-chart-line"></i> AI Skills
+                        </a>
+                        <a href="https://github.com/yourusername/ai-projects" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-small btn-primary">
+                            <i class="fas fa-code"></i> AI Code
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="main-content" id="main-content">
-        <!-- Course Dashboard -->
-        <section class="section-lg" id="dashboard">
-            <div class="container">
-                <div class="course-dashboard">
-                    <div class="dashboard-header">
-                        <h1 class="dashboard-title">My Learning Dashboard</h1>
-                        <button class="action-btn primary" id="quickStart">
-                            <i class="fas fa-bolt"></i> Start Learning
-                        </button>
-                    </div>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text animate">
+                    <h2 class="section-title">About Me</h2>
+                    <p>I'm Ali Rizwan, an AI Engineer passionate about building intelligent systems that make a
+                        difference. Currently learning and growing under expert supervision, I'm mastering the art of
+                        combining cutting-edge AI research with practical software engineering.</p>
 
-                    <div class="course-grid" id="courseGrid">
-                        <!-- Mathematics Course Card -->
-                        <div class="course-card featured" data-type="math">
-                            <div class="course-header">
-                                <div class="course-icon math">
-                                    <i class="fas fa-calculator"></i>
-                                </div>
-                                <div class="course-info">
-                                    <h3>Advanced Mathematics</h3>
-                                    <div class="course-instructor">Prof. Sarah Johnson</div>
-                                </div>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-label">
-                                    <span>Progress</span>
-                                    <span id="mathProgress">65%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 65%"></div>
-                                </div>
-                            </div>
-                            <div class="course-metrics">
-                                <div class="metric">
-                                    <div class="metric-value" id="mathLessons">24/36</div>
-                                    <div class="metric-label">Lessons</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-value" id="mathScore">92%</div>
-                                    <div class="metric-label">Score</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-value" id="mathTime">15h</div>
-                                    <div class="metric-label">Time</div>
-                                </div>
-                            </div>
-                            <div class="course-actions">
-                                <button class="action-btn primary" data-action="continue-math">
-                                    <i class="fas fa-play"></i> Continue
-                                </button>
-                                <button class="action-btn secondary" data-action="analyze-math">
-                                    <i class="fas fa-chart-line"></i> Analytics
-                                </button>
-                            </div>
+                    <p><strong>Learning Philosophy:</strong> "In AI, every day brings new learning. The best engineers
+                        are perpetual students who build as they learn."</p>
+
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">2+</div>
+                            <div class="stat-label">Years AI Experience</div>
                         </div>
-
-                        <!-- Science Course Card -->
-                        <div class="course-card featured" data-type="science">
-                            <div class="course-header">
-                                <div class="course-icon science">
-                                    <i class="fas fa-flask"></i>
-                                </div>
-                                <div class="course-info">
-                                    <h3>Data Science Fundamentals</h3>
-                                    <div class="course-instructor">Dr. Michael Chen</div>
-                                </div>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-label">
-                                    <span>Progress</span>
-                                    <span id="scienceProgress">45%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 45%"></div>
-                                </div>
-                            </div>
-                            <div class="course-metrics">
-                                <div class="metric">
-                                    <div class="metric-value" id="scienceLessons">18/40</div>
-                                    <div class="metric-label">Lessons</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-value" id="scienceScore">88%</div>
-                                    <div class="metric-label">Score</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-value" id="scienceTime">22h</div>
-                                    <div class="metric-label">Time</div>
-                                </div>
-                            </div>
-                            <div class="course-actions">
-                                <button class="action-btn primary" data-action="continue-science">
-                                    <i class="fas fa-play"></i> Continue
-                                </button>
-                                <button class="action-btn secondary" data-action="analyze-science">
-                                    <i class="fas fa-chart-line"></i> Analytics
-                                </button>
-                            </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Projects Built</div>
                         </div>
-
-                        <!-- Programming Course Card -->
-                        <div class="course-card featured" data-type="programming">
-                            <div class="course-header">
-                                <div class="course-icon programming">
-                                    <i class="fas fa-code"></i>
-                                </div>
-                                <div class="course-info">
-                                    <h3>Full-Stack Development</h3>
-                                    <div class="course-instructor">Alex Rodriguez</div>
-                                </div>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-label">
-                                    <span>Progress</span>
-                                    <span id="programmingProgress">30%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 30%"></div>
-                                </div>
-                            </div>
-                            <div class="course-metrics">
-                                <div class="metric">
-                                    <div class="metric-value" id="programmingLessons">12/48</div>
-                                    <div class="metric-label">Lessons</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-value" id="programmingScore">85%</div>
-                                    <div class="metric-label">Score</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-value" id="programmingTime">18h</div>
-                                    <div class="metric-label">Time</div>
-                                </div>
-                            </div>
-                            <div class="course-actions">
-                                <button class="action-btn primary" data-action="continue-programming">
-                                    <i class="fas fa-play"></i> Continue
-                                </button>
-                                <button class="action-btn secondary" data-action="analyze-programming">
-                                    <i class="fas fa-chart-line"></i> Analytics
-                                </button>
-                            </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Learning Mode</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Passionate</div>
                         </div>
                     </div>
 
-                    <!-- Performance Overview -->
-                    <div class="performance-chart">
-                        <h3 class="text-center mb-3">Learning Progress Overview</h3>
-                        <div class="chart-container" id="performanceChart">
-                            <!-- Chart will be generated by JavaScript -->
+                    <div class="button-group">
+                        <a href="#skills" class="btn btn-primary">
+                            <i class="fas fa-layer-group"></i> Tech Stack
+                        </a>
+                        <a href="https://medium.com/@yourusername" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-secondary">
+                            <i class="fab fa-medium"></i> AI Blog
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-certificate"></i> Certifications
+                        </a>
+                    </div>
+                </div>
+
+                <div class="about-image animate">
+                    <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="AI Engineering Work" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Skills Section -->
+    <section class="ai-skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">AI & Technical Skills</h2>
+            <p style="text-align: center; color: #aaa; margin-bottom: 50px;">Mastering the tools and technologies that
+                power intelligent systems</p>
+
+            <div class="skills-grid">
+                <div class="skill-card animate">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Machine Learning</h3>
+                    <p>Supervised/Unsupervised Learning, Neural Networks, Deep Learning, Model Optimization</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="85"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card animate">
+                    <div class="skill-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Deep Learning</h3>
+                    <p>TensorFlow, PyTorch, Keras, CNN, RNN, Transformers, Computer Vision</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="80"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card animate">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Data Science</h3>
+                    <p>Data Analysis, Visualization, Statistical Modeling, Feature Engineering</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="90"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card animate">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Full Stack Development</h3>
+                    <p>React, Node.js, Python, Django, REST APIs, Database Design</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="95"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="portfolio-header">
+                <h2 class="section-title">AI Projects Portfolio</h2>
+                <div class="button-group">
+                    <button class="btn btn-primary" id="filterAll">All Projects</button>
+                    <button class="btn btn-outline" id="filterAI">AI/ML</button>
+                    <button class="btn btn-outline" id="filterWeb">Web Apps</button>
+                    <button class="btn btn-outline" id="filterMobile">Mobile Apps</button>
+                </div>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-item animate" data-category="ai">
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="AI Assistant" class="portfolio-img">
+                    <div class="portfolio-info">
+                        <h3>Intelligent Chat Assistant</h3>
+                        <p>Advanced AI chatbot using GPT architecture with custom training and context awareness.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">GPT</span>
+                        </div>
+                        <div class="portfolio-buttons">
+                            <a href="https://github.com/yourusername/ai-chatbot" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-small btn-primary">
+                                <i class="fas fa-code"></i> Source Code
+                            </a>
+                            <button class="btn btn-small btn-outline view-demo">
+                                <i class="fas fa-play"></i> Live Demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-item animate" data-category="ai">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Computer Vision" class="portfolio-img">
+                    <div class="portfolio-info">
+                        <h3>Object Detection System</h3>
+                        <p>Real-time object detection using YOLO with custom dataset training and deployment.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">OpenCV</span>
+                            <span class="tag">YOLO</span>
+                            <span class="tag">Computer Vision</span>
+                        </div>
+                        <div class="portfolio-buttons">
+                            <a href="https://github.com/yourusername/object-detection" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-small btn-primary">
+                                <i class="fas fa-code"></i> Source Code
+                            </a>
+                            <button class="btn btn-small btn-outline view-demo">
+                                <i class="fas fa-play"></i> Demo Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-item animate" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="AI Dashboard" class="portfolio-img">
+                    <div class="portfolio-info">
+                        <h3>AI Analytics Dashboard</h3>
+                        <p>Interactive dashboard for ML model monitoring and data visualization with real-time updates.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">D3.js</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">WebSocket</span>
+                        </div>
+                        <div class="portfolio-buttons">
+                            <a href="https://github.com/yourusername/ai-dashboard" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-small btn-primary">
+                                <i class="fas fa-code"></i> Source Code
+                            </a>
+                            <a href="https://yourdashboard.vercel.app" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-small btn-outline">
+                                <i class="fas fa-external-link-alt"></i> Live App
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Learning Path Wizard -->
-        <section class="section" id="learning">
-            <div class="container">
-                <div class="learning-wizard">
-                    <h2 class="text-center mb-4">Personalized Learning Path Wizard</h2>
-                    <div class="wizard-progress" id="wizardProgress">
-                        <div class="wizard-step active" data-step="1">1</div>
-                        <div class="wizard-step" data-step="2">2</div>
-                        <div class="wizard-step" data-step="3">3</div>
-                        <div class="wizard-step" data-step="4">4</div>
-                        <div class="wizard-step" data-step="5">5</div>
-                    </div>
-                    <div class="wizard-content" id="wizardContent">
-                        <!-- Wizard content will be updated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="text-align: center; color: #aaa; margin-bottom: 50px;">Let's collaborate on your next AI project
+                or discuss opportunities</p>
 
-        <!-- Performance Analyzer -->
-        <section class="section" id="analytics">
-            <div class="container">
-                <div class="performance-analyzer">
-                    <h2 class="text-center mb-4">Learning Performance Analyzer</h2>
-                    <div class="analyzer-controls" id="analyzerControls">
-                        <!-- Controls will be generated by JavaScript -->
-                    </div>
-                    <div class="analyzer-results" id="analyzerResults">
-                        <!-- Results will be generated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AI Recommendation Engine -->
-        <section class="section" id="recommendations">
-            <div class="container">
-                <div class="ai-recommender">
-                    <div class="ai-header">
-                        <div class="ai-avatar">
-                            <i class="fas fa-robot"></i>
+            <div class="contact-content">
+                <div class="contact-info animate">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h2>AI Learning Assistant</h2>
-                            <p class="text-muted">Personalized learning recommendations based on your progress</p>
+                            <h3>Email</h3>
+                            <p>rizwanrka826@gmail.com</p>
                         </div>
                     </div>
-                    <div class="recommendations-grid" id="aiRecommendations">
-                        <!-- Recommendations will be generated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Achievement System -->
-        <section class="section" id="achievements">
-            <div class="container">
-                <div class="achievement-system">
-                    <h2 class="text-center mb-4">Your Learning Achievements</h2>
-                    <div class="achievement-grid" id="achievementGrid">
-                        <!-- Achievements will be generated by JavaScript -->
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+91 98975 11437</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Location</h3>
+                            <p>New Delhi, India</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer"
+                            aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer"
+                            aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://medium.com/@yourusername" target="_blank" rel="noopener noreferrer"
+                            aria-label="Medium">
+                            <i class="fab fa-medium"></i>
+                        </a>
                     </div>
                 </div>
+
+                <div class="contact-form animate">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" required>
+                                <option value="">Project Type</option>
+                                <option value="ai">AI/ML Development</option>
+                                <option value="web">Web Development</option>
+                                <option value="consulting">AI Consulting</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Project Details" rows="5" required></textarea>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                            <a href="https://calendly.com/yourusername" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-outline">
+                                <i class="fas fa-calendar"></i> Schedule Call
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="footer" id="footer">
+    <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="footer-logo-text">Learn<span class="domain">Math</span></div>
-                    </div>
-                    <p class="footer-description">
-                        The ultimate learning management system with AI-powered personalization.
-                        Access 1000+ courses, interactive lessons, and personalized learning paths.
-                    </p>
-
-                    <div class="social-section">
-                        <h3 class="footer-heading">Connect With Us</h3>
-                        <div class="social-buttons" id="socialButtons">
-                            <!-- Social buttons will be populated by JavaScript -->
-                        </div>
-
-                        <div class="newsletter-form">
-                            <input type="email" class="newsletter-input" placeholder="Enter your email for updates">
-                            <button class="newsletter-button">Subscribe</button>
-                        </div>
+                <div class="footer-col">
+                    <h3>Ali Rizwan</h3>
+                    <p>Building intelligent solutions, one algorithm at a time.</p>
+                    <div class="button-group" style="margin-top: 20px;">
+                        <a href="#contact" class="btn btn-small btn-primary">
+                            <i class="fas fa-envelope"></i> Contact Me
+                        </a>
                     </div>
                 </div>
 
-                <div class="footer-links">
-                    <h3 class="footer-heading">Platform</h3>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li class="footer-link">
-                            <a href="#dashboard">
-                                <i class="fas fa-tachometer-alt"></i> Dashboard
-                            </a>
-                        </li>
-                        <li class="footer-link">
-                            <a href="#learning">
-                                <i class="fas fa-road"></i> Learning Paths
-                            </a>
-                        </li>
-                        <li class="footer-link">
-                            <a href="#analytics">
-                                <i class="fas fa-chart-line"></i> Performance Analytics
-                            </a>
-                        </li>
-                        <li class="footer-link">
-                            <a href="#recommendations">
-                                <i class="fas fa-robot"></i> AI Assistant
-                            </a>
-                        </li>
-                        <li class="footer-link">
-                            <a href="#achievements">
-                                <i class="fas fa-trophy"></i> Achievements
-                            </a>
-                        </li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">AI Skills</a></li>
+                        <li><a href="#portfolio">Projects</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-links">
-                    <h3 class="footer-heading">Resources</h3>
+                <div class="footer-col">
+                    <h3>AI Services</h3>
                     <ul class="footer-links">
-                        <li class="footer-link">
-                            <a href="#">
-                                <i class="fas fa-book"></i> Course Library
-                            </a>
-                        </li>
-                        <li class="footer-link">
-                            <a href="#">
-                                <i class="fas fa-video"></i> Video Tutorials
-                            </a>
-                        </li>
-                        <li class="footer-link">
-                            <a href="#">
-                                <i class="fas fa-question-circle"></i> Help Center
-                            </a>
-                        </li>
-                        <li class="footer-link">
-                            <a href="#">
-                                <i class="fas fa-comments"></i> Community Forum
-                            </a>
-                        </li>
-                        <li class="footer-link">
-                            <a href="#">
-                                <i class="fas fa-headset"></i> Student Support
-                            </a>
-                        </li>
+                        <li><a href="#portfolio">Machine Learning</a></li>
+                        <li><a href="#portfolio">Computer Vision</a></li>
+                        <li><a href="#portfolio">NLP Solutions</a></li>
+                        <li><a href="#portfolio">AI Integration</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/yourusername" target="_blank"
+                                rel="noopener noreferrer">GitHub</a></li>
+                        <li><a href="https://medium.com/@yourusername" target="_blank" rel="noopener noreferrer">AI
+                                Blog</a></li>
+                        <li><a href="/resume.pdf" download>Resume</a></li>
+                        <li><a href="#contact">Certifications</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <div class="copyright">
-                    &copy; 2024 LearnMath.xyz. All rights reserved.
-                </div>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Accessibility</a>
-                    <a href="#">Contact</a>
-                </div>
+            <div class="copyright">
+                <p>&copy; 2024 Ali Rizwan. All rights reserved. | "Engineering is the closest thing to magic that exists
+                    in the world." - Elon Musk</p>
+                <p style="margin-top: 10px; font-size: 0.8rem; color: #555;">AI Learner under expert supervision |
+                    Continuous growth in Artificial Intelligence</p>
             </div>
         </div>
     </footer>
 
-    <!-- ===========================================
-         TEACHER ASSISTANT COMPONENTS
-    =========================================== -->
-
-    <!-- Teacher Assistant -->
-    <div class="teacher-assistant animate-float" id="teacherAssistant">
-        <i class="fas fa-chalkboard-teacher"></i>
-    </div>
-
-    <!-- Teacher Menu -->
-    <div class="teacher-menu" id="teacherMenu">
-        <div class="teacher-item" data-action="quick-lesson">
-            <div class="teacher-icon">
-                <i class="fas fa-play"></i>
-            </div>
-            <div class="teacher-content">
-                <h4>Continue Learning</h4>
-                <p>Resume your current lesson</p>
-            </div>
-        </div>
-        <div class="teacher-item" data-action="study-plan">
-            <div class="teacher-icon">
-                <i class="fas fa-calendar-alt"></i>
-            </div>
-            <div class="teacher-content">
-                <h4>Study Plan</h4>
-                <p>View today's learning goals</p>
-            </div>
-        </div>
-        <div class="teacher-item" data-action="practice-quiz">
-            <div class="teacher-icon">
-                <i class="fas fa-question-circle"></i>
-            </div>
-            <div class="teacher-content">
-                <h4>Practice Quiz</h4>
-                <p>Test your knowledge</p>
-            </div>
-        </div>
-        <div class="teacher-item" data-action="achievement-unlocked">
-            <div class="teacher-icon">
-                <i class="fas fa-trophy"></i>
-            </div>
-            <div class="teacher-content">
-                <h4>New Achievement</h4>
-                <p>You've earned a badge!</p>
+    <!-- Modals -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeProjectModal" aria-label="Close modal">&times;</button>
+            <h2>Start an AI Project</h2>
+            <p>Let's discuss your AI project requirements and create a strategic plan.</p>
+            <div class="button-group" style="margin: 30px 0;">
+                <a href="mailto:rizwanrka826@gmail.com?subject=AI%20Project%20Discussion&body=Hi%20Ali,%20I%20would%20like%20to%20discuss%20an%20AI%20project."
+                    class="btn btn-primary">
+                    <i class="fas fa-brain"></i> AI/ML Project
+                </a>
+                <a href="https://calendly.com/yourusername/ai-consultation" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-primary">
+                    <i class="fas fa-laptop-code"></i> Web Development
+                </a>
+                <a href="mailto:rizwanrka826@gmail.com?subject=AI%20Consultation" class="btn btn-primary">
+                    <i class="fas fa-users"></i> AI Consultation
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- Quick Actions Tray -->
-    <div class="quick-actions-tray" id="quickActionsTray">
-        <div class="action-item" data-action="start-learning">
-            <i class="fas fa-play text-success"></i>
-            <span>Start Learning</span>
-            <span class="action-badge">Now</span>
-        </div>
-        <div class="action-item" data-action="view-progress">
-            <i class="fas fa-chart-line text-accent"></i>
-            <span>View Progress</span>
-        </div>
-        <div class="action-item" data-action="take-quiz">
-            <i class="fas fa-question-circle text-primary"></i>
-            <span>Take Quiz</span>
-        </div>
+    <!-- AI Tip Notification -->
+    <div id="aiTip"
+        style="display: none; position: fixed; bottom: 20px; right: 20px; background: var(--gradient); color: white; padding: 15px; border-radius: 10px; z-index: 1000; max-width: 300px; box-shadow: var(--shadow); font-size: 0.9rem;">
     </div>
 
-    <!-- Course Navigator -->
-    <div class="course-navigator" id="courseNavigator">
-        <button class="nav-btn" data-action="math" title="Mathematics">
-            <i class="fas fa-calculator"></i>
-        </button>
-        <button class="nav-btn" data-action="science" title="Science">
-            <i class="fas fa-flask"></i>
-        </button>
-        <button class="nav-btn" data-action="programming" title="Programming">
-            <i class="fas fa-code"></i>
-        </button>
-        <button class="nav-btn" data-action="resources" title="Resources">
-            <i class="fas fa-book"></i>
-        </button>
-    </div>
-
-    <!-- Progress Tracker -->
-    <div class="progress-tracker" id="progressTracker">
-        <div class="tracker-header">
-            <h3><i class="fas fa-chart-line"></i> Learning Progress</h3>
-            <button class="nav-btn" id="closeTracker">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="tracker-stats">
-            <div class="tracker-stat">
-                <div class="tracker-value" id="todayProgress">85%</div>
-                <div class="tracker-label">Today's Goal</div>
-            </div>
-            <div class="tracker-stat">
-                <div class="tracker-value" id="weeklyProgress">65%</div>
-                <div class="tracker-label">Weekly Progress</div>
-            </div>
-            <div class="tracker-stat">
-                <div class="tracker-value" id="streakDays">14</div>
-                <div class="tracker-label">Day Streak</div>
-            </div>
-            <div class="tracker-stat">
-                <div class="tracker-value" id="totalHours">156</div>
-                <div class="tracker-label">Total Hours</div>
-            </div>
-        </div>
-        <button class="action-btn success w-100" id="shareProgress">
-            <i class="fas fa-share-alt"></i> Share Progress
-        </button>
-    </div>
-
-    <!-- Interactive Tour Guide -->
-    <div class="tour-guide" id="tourGuide">
-        <div class="tour-content">
-            <div class="tour-avatar">
-                <i class="fas fa-chalkboard-teacher"></i>
-            </div>
-            <h2>Welcome to Your Learning Platform!</h2>
-            <p class="text-muted mt-2">I'm your AI learning assistant. Let me show you how to make the most of your
-                learning experience.</p>
-            <div class="tour-actions">
-                <button class="action-btn secondary" id="skipTour">
-                    Skip Tour
-                </button>
-                <button class="action-btn primary" id="startTour">
-                    Start Guided Tour
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Quick View Modal -->
-    <div class="quick-view" id="quickView">
-        <div class="quick-view-header">
-            <h3 id="quickViewTitle">Course Details</h3>
-            <button class="nav-btn" id="closeQuickView">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="quick-view-content" id="quickViewContent">
-            <!-- Content will be loaded dynamically -->
-        </div>
-    </div>
-
-    <!-- Notification Center -->
-    <div class="notification-center" id="notificationCenter">
-        <!-- Notifications will be added dynamically -->
-    </div>
-
-    <!-- JavaScript -->
     <script>
-        // ===========================================
-        // LEARNING MANAGEMENT SYSTEM - MAIN APPLICATION
-        // ===========================================
-        class LearningManagementSystem {
-            constructor() {
-                this.initialize();
-            }
+        // ===== DEBUGGED & ENHANCED JAVASCRIPT =====
 
-            initialize() {
-                this.setupEventListeners();
-                this.loadUserData();
-                this.initTeacherSystem();
-                this.initSocialButtons();
-                this.showWelcomeTour();
-                this.startBackgroundProcesses();
-                this.generateAIRecommendations();
-                this.updateRealTimeStats();
-                this.initPerformanceAnalyzer();
-                this.updatePerformanceChart();
-            }
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const header = document.getElementById('header');
+        const contactForm = document.getElementById('contactForm');
+        const aiTip = document.getElementById('aiTip');
 
-            // ===========================================
-            // SOCIAL MEDIA BUTTONS SYSTEM
-            // ===========================================
-            initSocialButtons() {
-                const socialButtons = [
-                    { icon: 'twitter', url: 'https://twitter.com/learnmath', label: 'Twitter' },
-                    { icon: 'facebook', url: 'https://facebook.com/learnmath', label: 'Facebook' },
-                    { icon: 'linkedin', url: 'https://linkedin.com/company/learnmath', label: 'LinkedIn' },
-                    { icon: 'instagram', url: 'https://instagram.com/learnmath', label: 'Instagram' },
-                    { icon: 'youtube', url: 'https://youtube.com/c/learnmath', label: 'YouTube' },
-                    { icon: 'github', url: 'https://github.com/learnmath', label: 'GitHub' },
-                    { icon: 'discord', url: 'https://discord.gg/learnmath', label: 'Discord' }
-                ];
+        // ===== MOBILE MENU TOGGLE =====
+        mobileMenuBtn.addEventListener('click', () => {
+            const isActive = navLinks.classList.contains('active');
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = isActive
+                ? '<i class="fas fa-bars"></i>'
+                : '<i class="fas fa-times"></i>';
+            mobileMenuBtn.setAttribute('aria-label', isActive ? 'Open menu' : 'Close menu');
+        });
 
-                const container = document.getElementById('socialButtons');
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuBtn.setAttribute('aria-label', 'Open menu');
+            });
+        });
 
-                // Create toggle button
-                const toggleButton = document.createElement('button');
-                toggleButton.className = 'social-button toggle';
-                toggleButton.innerHTML = '<i class="fas fa-plus"></i>';
-                toggleButton.setAttribute('aria-label', 'Show social media buttons');
+        // ===== HEADER SCROLL EFFECT =====
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 100);
+        });
 
-                const toggleTooltip = document.createElement('div');
-                toggleTooltip.className = 'social-tooltip';
-                toggleTooltip.textContent = 'Show more social links';
-                toggleButton.appendChild(toggleTooltip);
+        // ===== PORTFOLIO FILTERING =====
+        const filterButtons = document.querySelectorAll('#filterAll, #filterAI, #filterWeb, #filterMobile');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-                container.appendChild(toggleButton);
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.id.replace('filter', '').toLowerCase();
 
-                // Create social buttons
-                socialButtons.forEach((social, index) => {
-                    const button = document.createElement('a');
-                    button.href = social.url;
-                    button.target = '_blank';
-                    button.rel = 'noopener noreferrer';
-                    button.className = 'social-button hidden';
-                    button.innerHTML = `<i class="fab fa-${social.icon}"></i>`;
-                    button.setAttribute('aria-label', social.label);
-
-                    const tooltip = document.createElement('div');
-                    tooltip.className = 'social-tooltip';
-                    tooltip.textContent = social.label;
-                    button.appendChild(tooltip);
-
-                    container.appendChild(button);
+                // Update active button
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-outline');
                 });
-
-                // Toggle functionality
-                toggleButton.addEventListener('click', () => {
-                    const isExpanded = toggleButton.classList.contains('expanded');
-
-                    if (isExpanded) {
-                        // Collapse
-                        toggleButton.classList.remove('expanded');
-                        toggleButton.innerHTML = '<i class="fas fa-plus"></i>';
-                        toggleTooltip.textContent = 'Show more social links';
-
-                        // Hide all social buttons
-                        container.querySelectorAll('.social-button.hidden').forEach(btn => {
-                            btn.classList.remove('visible');
-                        });
-                    } else {
-                        // Expand
-                        toggleButton.classList.add('expanded');
-                        toggleButton.innerHTML = '<i class="fas fa-minus"></i>';
-                        toggleTooltip.textContent = 'Hide social links';
-
-                        // Show all social buttons
-                        container.querySelectorAll('.social-button.hidden').forEach(btn => {
-                            btn.classList.add('visible');
-                        });
-                    }
-                });
-
-                // Newsletter form
-                const newsletterForm = document.querySelector('.newsletter-form');
-                const newsletterInput = newsletterForm.querySelector('.newsletter-input');
-                const newsletterButton = newsletterForm.querySelector('.newsletter-button');
-
-                newsletterButton.addEventListener('click', () => {
-                    if (newsletterInput.value) {
-                        this.showNotification('Subscribed!', 'You will receive updates from LearnMath.xyz', 'success');
-                        newsletterInput.value = '';
-                    } else {
-                        this.showNotification('Please enter email', 'Enter your email address to subscribe', 'warning');
-                    }
-                });
-
-                newsletterInput.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') {
-                        newsletterButton.click();
-                    }
-                });
-            }
-
-            // ===========================================
-            // USER DATA & STATE MANAGEMENT
-            // ===========================================
-            userData = {
-                courses: {
-                    math: {
-                        progress: 65,
-                        lessons: 24,
-                        totalLessons: 36,
-                        score: 92,
-                        time: 15,
-                        instructor: 'Prof. Sarah Johnson'
-                    },
-                    science: {
-                        progress: 45,
-                        lessons: 18,
-                        totalLessons: 40,
-                        score: 88,
-                        time: 22,
-                        instructor: 'Dr. Michael Chen'
-                    },
-                    programming: {
-                        progress: 30,
-                        lessons: 12,
-                        totalLessons: 48,
-                        score: 85,
-                        time: 18,
-                        instructor: 'Alex Rodriguez'
-                    }
-                },
-                progress: {
-                    today: 85,
-                    weekly: 65,
-                    streak: 14,
-                    totalHours: 156
-                },
-                achievements: [],
-                recommendations: [],
-                wizardStep: 1
-            }
-
-            loadUserData() {
-                const savedData = localStorage.getItem('learnMathData');
-                if (savedData) {
-                    this.userData = JSON.parse(savedData);
-                }
-                this.updateUI();
-            }
-
-            saveUserData() {
-                localStorage.setItem('learnMathData', JSON.stringify(this.userData));
-            }
-
-            // ===========================================
-            // UI UPDATES
-            // ===========================================
-            updateUI() {
-                // Update course cards
-                this.updateCourseCard('math');
-                this.updateCourseCard('science');
-                this.updateCourseCard('programming');
-
-                // Update progress tracker
-                this.updateProgressTracker();
-
-                // Update wizard
-                this.updateWizard();
-
-                // Update recommendations
-                this.updateRecommendations();
-
-                // Update achievements
-                this.updateAchievements();
-            }
-
-            updateCourseCard(type) {
-                const course = this.userData.courses[type];
-                if (!course) return;
-
-                // Update progress bars
-                document.getElementById(`${type}Progress`).textContent = `${course.progress}%`;
-                document.querySelector(`[data-type="${type}"] .progress-fill`).style.width = `${course.progress}%`;
-
-                // Update metrics
-                document.getElementById(`${type}Lessons`).textContent = `${course.lessons}/${course.totalLessons}`;
-                document.getElementById(`${type}Score`).textContent = `${course.score}%`;
-                document.getElementById(`${type}Time`).textContent = `${course.time}h`;
-            }
-
-            updateProgressTracker() {
-                const progress = this.userData.progress;
-                document.getElementById('todayProgress').textContent = `${progress.today}%`;
-                document.getElementById('weeklyProgress').textContent = `${progress.weekly}%`;
-                document.getElementById('streakDays').textContent = progress.streak;
-                document.getElementById('totalHours').textContent = progress.totalHours;
-            }
-
-            // ===========================================
-            // TEACHER ASSISTANT SYSTEM
-            // ===========================================
-            initTeacherSystem() {
-                const teacher = document.getElementById('teacherAssistant');
-                const menu = document.getElementById('teacherMenu');
-                const tray = document.getElementById('quickActionsTray');
-
-                // Toggle teacher menu
-                teacher.addEventListener('click', () => {
-                    menu.classList.toggle('active');
-                    teacher.classList.toggle('active');
-                    teacher.querySelector('i').classList.toggle('fa-chalkboard-teacher');
-                    teacher.querySelector('i').classList.toggle('fa-times');
-                });
-
-                // Teacher menu items
-                document.querySelectorAll('.teacher-item').forEach(item => {
-                    item.addEventListener('click', () => {
-                        const action = item.dataset.action;
-                        this.handleTeacherAction(action);
-                        menu.classList.remove('active');
-                        teacher.classList.remove('active');
-                    });
-                });
-
-                // Quick actions tray items
-                document.querySelectorAll('.action-item').forEach(item => {
-                    item.addEventListener('click', () => {
-                        const action = item.dataset.action;
-                        this.handleTrayAction(action);
-                    });
-                });
-
-                // Course navigator buttons
-                document.querySelectorAll('.nav-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const action = btn.dataset.action;
-                        if (action === 'math' || action === 'science' || action === 'programming') {
-                            this.showCourseDetails(action);
-                        } else if (action === 'resources') {
-                            this.showResources();
-                        } else if (action === 'close') {
-                            this.hideProgressTracker();
-                        }
-                    });
-                });
-
-                // Show quick actions tray periodically
-                setInterval(() => {
-                    this.showQuickActionsTray();
-                }, 30000);
-            }
-
-            handleTeacherAction(action) {
-                switch (action) {
-                    case 'quick-lesson':
-                        this.startQuickLesson();
-                        break;
-                    case 'study-plan':
-                        this.showStudyPlan();
-                        break;
-                    case 'practice-quiz':
-                        this.startPracticeQuiz();
-                        break;
-                    case 'achievement-unlocked':
-                        this.unlockRandomAchievement();
-                        break;
-                }
-                this.showNotification('Teacher Action', `Processing: ${action.replace('-', ' ')}`, 'info');
-            }
-
-            handleTrayAction(action) {
-                switch (action) {
-                    case 'start-learning':
-                        this.startQuickLesson();
-                        break;
-                    case 'view-progress':
-                        this.showProgressTracker();
-                        break;
-                    case 'take-quiz':
-                        this.startPracticeQuiz();
-                        break;
-                }
-                this.hideQuickActionsTray();
-            }
-
-            showQuickActionsTray() {
-                const tray = document.getElementById('quickActionsTray');
-                if (!tray.classList.contains('active')) {
-                    tray.classList.add('active');
-                    setTimeout(() => {
-                        tray.classList.remove('active');
-                    }, 10000);
-                }
-            }
-
-            hideQuickActionsTray() {
-                document.getElementById('quickActionsTray').classList.remove('active');
-            }
-
-            // ===========================================
-            // PROGRESS TRACKER
-            // ===========================================
-            showProgressTracker() {
-                const tracker = document.getElementById('progressTracker');
-                tracker.classList.add('active');
-            }
-
-            hideProgressTracker() {
-                document.getElementById('progressTracker').classList.remove('active');
-            }
-
-            // ===========================================
-            // LEARNING PATH WIZARD
-            // ===========================================
-            updateWizard() {
-                const step = this.userData.wizardStep;
-                const content = document.getElementById('wizardContent');
-
-                // Update progress steps
-                document.querySelectorAll('.wizard-step').forEach((stepEl, index) => {
-                    stepEl.classList.remove('active', 'completed');
-                    if (index + 1 === step) {
-                        stepEl.classList.add('active');
-                    } else if (index + 1 < step) {
-                        stepEl.classList.add('completed');
-                    }
-                });
-
-                // Update content based on step
-                const steps = [
-                    {
-                        title: "Learning Goals",
-                        content: "What do you want to achieve with your learning journey?",
-                        options: ["Master a new skill", "Career advancement", "Personal growth", "Academic excellence"]
-                    },
-                    {
-                        title: "Time Commitment",
-                        content: "How much time can you dedicate to learning each week?",
-                        options: ["1-5 hours", "5-10 hours", "10-20 hours", "20+ hours"]
-                    },
-                    {
-                        title: "Learning Style",
-                        content: "How do you prefer to learn?",
-                        options: ["Video tutorials", "Interactive exercises", "Reading materials", "Project-based"]
-                    },
-                    {
-                        title: "Skill Level",
-                        content: "What's your current skill level?",
-                        options: ["Beginner", "Intermediate", "Advanced", "Expert"]
-                    },
-                    {
-                        title: "Learning Path",
-                        content: "Your personalized learning path is ready!",
-                        options: ["Mathematics Path", "Data Science Path", "Programming Path", "Business Path"]
-                    }
-                ];
-
-                const currentStep = steps[step - 1];
-                content.innerHTML = `
-                    <h3 class="text-center mb-3">Step ${step}: ${currentStep.title}</h3>
-                    <p class="text-center text-muted mb-4">${currentStep.content}</p>
-                    <div class="path-options">
-                        ${currentStep.options.map((option, index) => `
-                            <div class="path-card" data-option="${option.toLowerCase().replace(/\s+/g, '-')}">
-                                <div class="path-icon">
-                                    <i class="fas fa-${['bullseye', 'clock', 'user-graduate', 'chart-line', 'road'][index]}"></i>
-                                </div>
-                                <h4>${option}</h4>
-                                <div class="path-duration">${['2 months', '3 months', '4 months', '6 months', 'Complete'][index]}</div>
-                                <p class="text-muted">${['Focus on specific goals', 'Flexible schedule', 'Personalized approach', 'Advanced concepts', 'Comprehensive curriculum'][index]}</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                    <div class="d-flex justify-between mt-4">
-                        <button class="action-btn secondary" id="prevStep" ${step === 1 ? 'disabled' : ''}>
-                            <i class="fas fa-arrow-left"></i> Previous
-                        </button>
-                        <button class="action-btn primary" id="nextStep">
-                            ${step === 5 ? 'Complete' : 'Next'} <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-                `;
-
-                // Add event listeners to path cards
-                content.querySelectorAll('.path-card').forEach(card => {
-                    card.addEventListener('click', () => {
-                        document.querySelectorAll('.path-card').forEach(c => c.classList.remove('selected'));
-                        card.classList.add('selected');
-                        this.showNotification('Option Selected', `Selected: ${card.dataset.option}`, 'info');
-                    });
-                });
-
-                // Add event listeners to navigation buttons
-                document.getElementById('prevStep')?.addEventListener('click', () => this.navigateWizard(-1));
-                document.getElementById('nextStep')?.addEventListener('click', () => this.navigateWizard(1));
-            }
-
-            navigateWizard(direction) {
-                let newStep = this.userData.wizardStep + direction;
-                if (newStep < 1) newStep = 1;
-                if (newStep > 5) {
-                    this.completeWizard();
-                    return;
-                }
-
-                this.userData.wizardStep = newStep;
-                this.saveUserData();
-                this.updateWizard();
-                this.showNotification('Wizard Progress', `Moved to step ${newStep}`, 'info');
-            }
-
-            completeWizard() {
-                this.userData.wizardStep = 1;
-                this.showNotification('Congratulations!', 'Your personalized learning path is ready!', 'success');
-                this.unlockAchievement('path-master');
-                this.updateProgress(10);
-            }
-
-            // ===========================================
-            // PERFORMANCE ANALYZER
-            // ===========================================
-            initPerformanceAnalyzer() {
-                const controls = document.getElementById('analyzerControls');
-                const results = document.getElementById('analyzerResults');
-
-                controls.innerHTML = `
-                    <div class="control-group">
-                        <label>Course Selection</label>
-                        <select class="slider mt-2" id="courseSelect">
-                            <option value="math">Mathematics</option>
-                            <option value="science">Data Science</option>
-                            <option value="programming">Programming</option>
-                            <option value="all">All Courses</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <label>Time Period</label>
-                        <select class="slider mt-2" id="timeSelect">
-                            <option value="week">This Week</option>
-                            <option value="month">This Month</option>
-                            <option value="quarter">This Quarter</option>
-                            <option value="year">This Year</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <label>Metric Focus</label>
-                        <select class="slider mt-2" id="metricSelect">
-                            <option value="progress">Learning Progress</option>
-                            <option value="score">Test Scores</option>
-                            <option value="time">Study Time</option>
-                            <option value="completion">Completion Rate</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <label>Comparison</label>
-                        <select class="slider mt-2" id="compareSelect">
-                            <option value="self">Self Comparison</option>
-                            <option value="average">Class Average</option>
-                            <option value="top">Top Performers</option>
-                            <option value="goal">Personal Goals</option>
-                        </select>
-                    </div>
-                `;
-
-                // Calculate and display results
-                const updateResults = () => {
-                    const course = document.getElementById('courseSelect').value;
-                    const timePeriod = document.getElementById('timeSelect').value;
-                    const metric = document.getElementById('metricSelect').value;
-                    const comparison = document.getElementById('compareSelect').value;
-
-                    // Simulated analysis results
-                    const analysisResults = {
-                        performance: Math.floor(Math.random() * 30) + 70,
-                        improvement: Math.floor(Math.random() * 20) + 5,
-                        efficiency: Math.floor(Math.random() * 25) + 65,
-                        consistency: Math.floor(Math.random() * 35) + 60
-                    };
-
-                    results.innerHTML = `
-                        <div class="result-card">
-                            <div class="result-value">${analysisResults.performance}%</div>
-                            <div class="tracker-label">Performance Score</div>
-                        </div>
-                        <div class="result-card">
-                            <div class="result-value">+${analysisResults.improvement}%</div>
-                            <div class="tracker-label">Improvement Rate</div>
-                        </div>
-                        <div class="result-card">
-                            <div class="result-value">${analysisResults.efficiency}%</div>
-                            <div class="tracker-label">Learning Efficiency</div>
-                        </div>
-                        <div class="result-card">
-                            <div class="result-value">${analysisResults.consistency}%</div>
-                            <div class="tracker-label">Consistency</div>
-                        </div>
-                    `;
-                };
-
-                // Update on any change
-                controls.querySelectorAll('select').forEach(element => {
-                    element.addEventListener('change', updateResults);
-                });
-
-                // Initial calculation
-                updateResults();
-            }
-
-            // ===========================================
-            // AI RECOMMENDATION ENGINE
-            // ===========================================
-            generateAIRecommendations() {
-                const recommendations = [
-                    {
-                        title: "Focus on calculus fundamentals",
-                        description: "Review differential calculus concepts for better understanding",
-                        priority: "High",
-                        score: 95,
-                        type: "math"
-                    },
-                    {
-                        title: "Practice data visualization",
-                        description: "Complete exercises on Matplotlib and Seaborn libraries",
-                        priority: "Medium",
-                        score: 88,
-                        type: "science"
-                    },
-                    {
-                        title: "Build a web application",
-                        description: "Create a full-stack project to apply programming concepts",
-                        priority: "High",
-                        score: 92,
-                        type: "programming"
-                    },
-                    {
-                        title: "Join study group",
-                        description: "Collaborate with peers for better learning outcomes",
-                        priority: "Low",
-                        score: 78,
-                        type: "community"
-                    },
-                    {
-                        title: "Watch advanced tutorials",
-                        description: "Review video tutorials on advanced mathematics concepts",
-                        priority: "Medium",
-                        score: 85,
-                        type: "math"
-                    },
-                    {
-                        title: "Complete practice exams",
-                        description: "Take timed practice tests to improve speed and accuracy",
-                        priority: "High",
-                        score: 90,
-                        type: "practice"
-                    }
-                ];
-
-                this.userData.recommendations = recommendations;
-                this.updateRecommendations();
-            }
-
-            updateRecommendations() {
-                const container = document.getElementById('aiRecommendations');
-                if (!container) return;
-
-                container.innerHTML = this.userData.recommendations.map((rec, index) => `
-                    <div class="recommendation-card" data-index="${index}">
-                        <div class="recommendation-badge">${rec.priority} Priority</div>
-                        <h4>${rec.title}</h4>
-                        <p class="text-muted">${rec.description}</p>
-                        <div class="recommendation-score">Score: ${rec.score}</div>
-                        <div class="recommendation-actions">
-                            <button class="action-btn primary btn-sm" data-action="implement">
-                                <i class="fas fa-play"></i> Start
-                            </button>
-                            <button class="action-btn secondary btn-sm" data-action="schedule">
-                                <i class="fas fa-calendar"></i> Schedule
-                            </button>
-                        </div>
-                    </div>
-                `).join('');
-
-                // Add event listeners
-                container.querySelectorAll('.recommendation-card').forEach(card => {
-                    const index = parseInt(card.dataset.index);
-                    const rec = this.userData.recommendations[index];
-
-                    card.querySelector('[data-action="implement"]').addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        this.implementRecommendation(index);
-                    });
-
-                    card.querySelector('[data-action="schedule"]').addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        this.scheduleRecommendation(index);
-                    });
-                });
-            }
-
-            implementRecommendation(index) {
-                const rec = this.userData.recommendations[index];
-                this.showNotification('Starting', `Beginning: ${rec.title}`, 'info');
-
-                setTimeout(() => {
-                    this.updateProgress(5);
-                    this.showNotification('Great job!', `Completed: ${rec.title}`, 'success');
-                    this.unlockAchievement('recommendation-completed');
-                }, 2000);
-            }
-
-            scheduleRecommendation(index) {
-                const rec = this.userData.recommendations[index];
-                this.showNotification('Scheduled', `${rec.title} added to your study plan`, 'info');
-            }
-
-            // ===========================================
-            // ACHIEVEMENT SYSTEM
-            // ===========================================
-            achievementsList = [
-                { id: 'first-lesson', name: 'First Lesson', description: 'Completed your first lesson', icon: 'play-circle', unlocked: true },
-                { id: 'math-master', name: 'Math Master', description: 'Scored 90%+ in mathematics', icon: 'calculator', unlocked: false },
-                { id: 'science-pro', name: 'Science Pro', description: 'Completed all science exercises', icon: 'flask', unlocked: false },
-                { id: 'code-wizard', name: 'Code Wizard', description: 'Built 5+ programming projects', icon: 'code', unlocked: false },
-                { id: 'path-master', name: 'Path Master', description: 'Completed learning path wizard', icon: 'road', unlocked: false },
-                { id: 'streak-champion', name: 'Streak Champion', description: '7+ day learning streak', icon: 'fire', unlocked: true },
-                { id: 'recommendation-completed', name: 'Smart Learner', description: 'Completed AI recommendation', icon: 'brain', unlocked: false },
-                { id: 'time-master', name: 'Time Master', description: '100+ learning hours', icon: 'clock', unlocked: true }
-            ]
-
-            updateAchievements() {
-                const container = document.getElementById('achievementGrid');
-                if (!container) return;
-
-                container.innerHTML = this.achievementsList.map(achievement => `
-                    <div class="achievement-card ${achievement.unlocked ? 'unlocked' : 'locked'}" data-id="${achievement.id}">
-                        <div class="achievement-icon">
-                            <i class="fas fa-${achievement.icon}"></i>
-                        </div>
-                        <h4>${achievement.name}</h4>
-                        <p class="text-muted">${achievement.description}</p>
-                        ${!achievement.unlocked ? `
-                            <div class="achievement-progress">
-                                <div class="achievement-progress-fill" style="width: 0%"></div>
-                            </div>
-                        ` : ''}
-                    </div>
-                `).join('');
-
-                // Add click events for locked achievements
-                container.querySelectorAll('.achievement-card.locked').forEach(card => {
-                    card.addEventListener('click', () => {
-                        this.showNotification('Locked', 'Complete requirements to unlock', 'info');
-                    });
-                });
-            }
-
-            unlockAchievement(achievementId) {
-                const achievement = this.achievementsList.find(a => a.id === achievementId);
-                if (achievement && !achievement.unlocked) {
-                    achievement.unlocked = true;
-                    this.userData.achievements.push(achievementId);
-                    this.saveUserData();
-                    this.showAchievementNotification(achievement);
-                    this.updateAchievements();
-                }
-            }
-
-            unlockRandomAchievement() {
-                const locked = this.achievementsList.filter(a => !a.unlocked);
-                if (locked.length > 0) {
-                    const random = locked[Math.floor(Math.random() * locked.length)];
-                    this.unlockAchievement(random.id);
-                }
-            }
-
-            showAchievementNotification(achievement) {
-                this.showNotification('Achievement Unlocked!', `${achievement.name}: ${achievement.description}`, 'achievement');
-            }
-
-            // ===========================================
-            // LEARNING ACTIONS
-            // ===========================================
-            startQuickLesson() {
-                this.showNotification('Starting Lesson', 'Loading your current lesson...', 'info');
-
-                let progress = 0;
-                const interval = setInterval(() => {
-                    progress += 5;
-                    if (progress >= 100) {
-                        clearInterval(interval);
-                        this.updateProgress(15);
-                        this.showNotification('Lesson Complete!', 'Great job! You earned 15 points', 'success');
-                        this.unlockRandomAchievement();
-
-                        // Update course progress
-                        Object.keys(this.userData.courses).forEach(type => {
-                            const course = this.userData.courses[type];
-                            if (course.progress < 100) {
-                                course.progress = Math.min(100, course.progress + 5);
-                                course.lessons = Math.min(course.totalLessons, course.lessons + 1);
-                                course.time += 0.5;
-                                course.score = Math.min(100, course.score + 2);
-                            }
-                        });
-                        this.saveUserData();
-                        this.updateUI();
-                    }
-                }, 100);
-            }
-
-            showStudyPlan() {
-                this.showNotification('Study Plan', 'Opening your personalized study plan...', 'info');
-                setTimeout(() => {
-                    this.showNotification('Study Plan Ready', 'Your daily learning goals are loaded', 'success');
-                }, 1000);
-            }
-
-            startPracticeQuiz() {
-                this.showNotification('Practice Quiz', 'Starting 10-question practice quiz...', 'info');
-
-                setTimeout(() => {
-                    const score = Math.floor(Math.random() * 30) + 70;
-                    this.showNotification('Quiz Complete!', `You scored ${score}% on the practice quiz`, 'success');
-                    this.updateProgress(10);
-
-                    // Update scores
-                    Object.keys(this.userData.courses).forEach(type => {
-                        this.userData.courses[type].score = Math.min(100,
-                            Math.round((this.userData.courses[type].score * 0.9) + (score * 0.1))
-                        );
-                    });
-                    this.saveUserData();
-                    this.updateUI();
-                }, 3000);
-            }
-
-            // ===========================================
-            // PERFORMANCE CHART
-            // ===========================================
-            updatePerformanceChart() {
-                const container = document.getElementById('performanceChart');
-                if (!container) return;
-
-                // Clear container
-                container.innerHTML = '';
-
-                // Create chart data
-                const weeks = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'];
-                const mathData = [65, 68, 72, 75, 78, 82, 85, 88];
-                const scienceData = [45, 50, 55, 58, 62, 65, 68, 72];
-                const programmingData = [30, 35, 40, 45, 50, 55, 60, 65];
-
-                const maxValue = 100;
-                const barWidth = 20;
-                const spacing = 10;
-
-                weeks.forEach((week, index) => {
-                    const mathHeight = (mathData[index] / maxValue) * 200;
-                    const scienceHeight = (scienceData[index] / maxValue) * 200;
-                    const programmingHeight = (programmingData[index] / maxValue) * 200;
-
-                    const x = index * (barWidth * 3 + spacing * 2) + 20;
-
-                    // Math bar
-                    const mathBar = document.createElement('div');
-                    mathBar.className = 'chart-bar';
-                    mathBar.style.left = `${x}px`;
-                    mathBar.style.height = `${mathHeight}px`;
-                    mathBar.style.background = 'var(--gradient-primary)';
-                    mathBar.title = `Math: ${mathData[index]}%`;
-                    container.appendChild(mathBar);
-
-                    // Science bar
-                    const scienceBar = document.createElement('div');
-                    scienceBar.className = 'chart-bar';
-                    scienceBar.style.left = `${x + barWidth + spacing}px`;
-                    scienceBar.style.height = `${scienceHeight}px`;
-                    scienceBar.style.background = 'var(--gradient-accent)';
-                    scienceBar.title = `Science: ${scienceData[index]}%`;
-                    container.appendChild(scienceBar);
-
-                    // Programming bar
-                    const programmingBar = document.createElement('div');
-                    programmingBar.className = 'chart-bar';
-                    programmingBar.style.left = `${x + (barWidth + spacing) * 2}px`;
-                    programmingBar.style.height = `${programmingHeight}px`;
-                    programmingBar.style.background = 'var(--gradient-success)';
-                    programmingBar.title = `Programming: ${programmingData[index]}%`;
-                    container.appendChild(programmingBar);
-
-                    // Week label
-                    const label = document.createElement('div');
-                    label.style.position = 'absolute';
-                    label.style.bottom = '-25px';
-                    label.style.left = `${x + barWidth * 1.5}px`;
-                    label.style.textAlign = 'center';
-                    label.style.fontSize = '0.85rem';
-                    label.style.color = 'var(--dark-600)';
-                    label.textContent = week;
-                    container.appendChild(label);
-                });
-            }
-
-            // ===========================================
-            // NOTIFICATION SYSTEM
-            // ===========================================
-            showNotification(title, message, type = 'info') {
-                const center = document.getElementById('notificationCenter');
-                const notification = document.createElement('div');
-                notification.className = `notification notification-${type}`;
-
-                const icons = {
-                    info: 'info-circle',
-                    success: 'check-circle',
-                    warning: 'exclamation-triangle',
-                    error: 'exclamation-circle',
-                    achievement: 'trophy'
-                };
-
-                notification.innerHTML = `
-                    <div class="notification-icon">
-                        <i class="fas fa-${icons[type] || 'info-circle'}"></i>
-                    </div>
-                    <div class="notification-content">
-                        <h4>${title}</h4>
-                        <p>${message}</p>
-                    </div>
-                    <button class="nav-btn btn-sm" data-action="close-notification">
-                        <i class="fas fa-times"></i>
-                    </button>
-                `;
-
-                center.appendChild(notification);
-
-                // Auto-remove after 5 seconds
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.style.opacity = '0';
-                        notification.style.transform = 'translateX(100%)';
-                        setTimeout(() => notification.remove(), 300);
-                    }
-                }, 5000);
-
-                // Close button
-                notification.querySelector('[data-action="close-notification"]').addEventListener('click', () => {
-                    notification.style.opacity = '0';
-                    notification.style.transform = 'translateX(100%)';
-                    setTimeout(() => notification.remove(), 300);
-                });
-
-                // Limit to 5 notifications
-                if (center.children.length > 5) {
-                    center.removeChild(center.firstChild);
-                }
-            }
-
-            // ===========================================
-            // TOUR SYSTEM
-            // ===========================================
-            showWelcomeTour() {
-                const tourShown = localStorage.getItem('tourShown');
-                if (!tourShown) {
-                    setTimeout(() => {
-                        document.getElementById('tourGuide').classList.add('active');
-                    }, 1000);
-                }
-            }
-
-            startTour() {
-                document.getElementById('tourGuide').classList.remove('active');
-                localStorage.setItem('tourShown', 'true');
-
-                const steps = [
-                    { element: '#courseGrid', message: 'This is your course dashboard. Track your progress here.' },
-                    { element: '#teacherAssistant', message: 'Your AI teacher assistant is here to help.' },
-                    { element: '#learning', message: 'Create personalized learning paths with our wizard.' },
-                    { element: '#analytics', message: 'Analyze your learning performance here.' },
-                    { element: '#recommendations', message: 'Get AI-powered learning recommendations.' }
-                ];
-
-                let currentStep = 0;
-
-                const showStep = () => {
-                    if (currentStep >= steps.length) return;
-
-                    const step = steps[currentStep];
-                    const element = document.querySelector(step.element);
-
-                    if (element) {
-                        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                        const originalBorder = element.style.border;
-                        element.style.border = '2px solid var(--success-500)';
-                        element.style.boxShadow = 'var(--shadow-success)';
-
-                        this.showNotification('Tour', step.message, 'info');
-
+                button.classList.remove('btn-outline');
+                button.classList.add('btn-primary');
+
+                // Filter items with animation
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
                         setTimeout(() => {
-                            element.style.border = originalBorder;
-                            element.style.boxShadow = '';
-                            currentStep++;
-                            setTimeout(showStep, 2000);
-                        }, 3000);
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 100);
                     } else {
-                        currentStep++;
-                        showStep();
-                    }
-                };
-
-                showStep();
-            }
-
-            // ===========================================
-            // BACKGROUND PROCESSES
-            // ===========================================
-            startBackgroundProcesses() {
-                // Update progress periodically
-                setInterval(() => {
-                    this.updateProgress(Math.floor(Math.random() * 5) + 1);
-                }, 30000);
-
-                // Generate random notifications
-                setInterval(() => {
-                    const notifications = [
-                        { title: 'Study Reminder', message: 'Time for your daily learning session!', type: 'info' },
-                        { title: 'Course Update', message: 'New content added to your mathematics course', type: 'info' },
-                        { title: 'Achievement Near', message: 'You\'re close to unlocking a new achievement', type: 'warning' },
-                        { title: 'Peer Progress', message: 'Your study group members are making great progress', type: 'info' }
-                    ];
-
-                    const randomNotif = notifications[Math.floor(Math.random() * notifications.length)];
-                    this.showNotification(randomNotif.title, randomNotif.message, randomNotif.type);
-                }, 45000);
-
-                // Update course progress
-                setInterval(() => {
-                    Object.keys(this.userData.courses).forEach(type => {
-                        const course = this.userData.courses[type];
-                        if (course.progress < 100) {
-                            course.progress = Math.min(100, course.progress + 0.1);
-                            course.score = Math.min(100, course.score + 0.05);
-                        }
-                    });
-                    this.saveUserData();
-                    this.updateUI();
-                }, 60000);
-            }
-
-            updateProgress(amount) {
-                this.userData.progress.today = Math.min(100, this.userData.progress.today + amount);
-                this.userData.progress.weekly = Math.min(100, this.userData.progress.weekly + (amount / 2));
-                this.userData.progress.totalHours += amount / 10;
-
-                // Check for streak
-                if (amount > 0) {
-                    this.userData.progress.streak = Math.max(1, this.userData.progress.streak);
-                }
-
-                // Check for achievements
-                if (this.userData.progress.streak >= 7 && !this.achievementsList.find(a => a.id === 'streak-champion').unlocked) {
-                    this.unlockAchievement('streak-champion');
-                }
-
-                if (this.userData.progress.totalHours >= 100 && !this.achievementsList.find(a => a.id === 'time-master').unlocked) {
-                    this.unlockAchievement('time-master');
-                }
-
-                this.saveUserData();
-                this.updateProgressTracker();
-
-                if (Math.random() > 0.7) {
-                    this.showNotification('Progress Update', `+${amount} points earned`, 'success');
-                }
-            }
-
-            // ===========================================
-            // EVENT LISTENERS SETUP
-            // ===========================================
-            setupEventListeners() {
-                // Header scroll effect
-                window.addEventListener('scroll', () => {
-                    const header = document.getElementById('header');
-                    if (window.scrollY > 50) {
-                        header.classList.add('scrolled');
-                    } else {
-                        header.classList.remove('scrolled');
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
                     }
                 });
+            });
+        });
 
-                // Course card actions
-                document.addEventListener('click', (e) => {
-                    const actionBtn = e.target.closest('[data-action]');
-                    if (actionBtn) {
-                        const action = actionBtn.dataset.action;
-                        this.handleCourseAction(action);
-                    }
-                });
+        // ===== SKILL PROGRESS ANIMATION =====
+        const skillProgressBars = document.querySelectorAll('.skill-progress');
 
-                // Quick start button
-                document.getElementById('quickStart')?.addEventListener('click', () => {
-                    this.startQuickLesson();
-                });
+        function animateSkillBars() {
+            skillProgressBars.forEach(bar => {
+                const level = bar.getAttribute('data-level');
+                const barPosition = bar.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
 
-                // Close tracker
-                document.getElementById('closeTracker')?.addEventListener('click', () => {
-                    this.hideProgressTracker();
-                });
-
-                // Close quick view
-                document.getElementById('closeQuickView')?.addEventListener('click', () => {
-                    document.getElementById('quickView').classList.remove('active');
-                });
-
-                // Tour buttons
-                document.getElementById('skipTour')?.addEventListener('click', () => {
-                    document.getElementById('tourGuide').classList.remove('active');
-                    localStorage.setItem('tourShown', 'true');
-                });
-
-                document.getElementById('startTour')?.addEventListener('click', () => {
-                    this.startTour();
-                });
-
-                // Share progress
-                document.getElementById('shareProgress')?.addEventListener('click', () => {
-                    this.shareProgress();
-                });
-
-                // User avatar
-                document.getElementById('userAvatar')?.addEventListener('click', () => {
-                    this.showUserProfile();
-                });
-            }
-
-            handleCourseAction(action) {
-                switch (action) {
-                    case 'continue-math':
-                    case 'continue-science':
-                    case 'continue-programming':
-                        const type = action.split('-')[1];
-                        this.startCourseLesson(type);
-                        break;
-                    case 'analyze-math':
-                    case 'analyze-science':
-                    case 'analyze-programming':
-                        const courseType = action.split('-')[1];
-                        this.showCourseAnalytics(courseType);
-                        break;
+                if (barPosition < screenPosition) {
+                    bar.style.width = level + '%';
                 }
-            }
-
-            startCourseLesson(type) {
-                this.showNotification('Starting Lesson', `Loading ${type} lesson...`, 'info');
-
-                setTimeout(() => {
-                    const course = this.userData.courses[type];
-                    if (course.progress < 100) {
-                        course.progress = Math.min(100, course.progress + 10);
-                        course.lessons = Math.min(course.totalLessons, course.lessons + 1);
-                        course.time += 1;
-                        course.score = Math.min(100, course.score + 3);
-                        this.saveUserData();
-                        this.updateUI();
-                        this.showNotification('Lesson Complete!', `Great progress in ${type}!`, 'success');
-                        this.updateProgress(20);
-                    } else {
-                        this.showNotification('Course Complete!', `You've completed all ${type} lessons!`, 'success');
-                    }
-                }, 1500);
-            }
-
-            showCourseAnalytics(type) {
-                this.showCourseDetails(type);
-            }
-
-            showCourseDetails(type) {
-                const course = this.userData.courses[type];
-                const view = document.getElementById('quickView');
-                const title = document.getElementById('quickViewTitle');
-                const content = document.getElementById('quickViewContent');
-
-                const typeNames = {
-                    math: 'Advanced Mathematics',
-                    science: 'Data Science Fundamentals',
-                    programming: 'Full-Stack Development'
-                };
-
-                title.textContent = typeNames[type] || type;
-
-                content.innerHTML = `
-                    <div class="d-flex align-center gap-3 mb-4">
-                        <div class="course-icon ${type}" style="width: 80px; height: 80px; font-size: 2rem;">
-                            <i class="fas fa-${type === 'science' ? 'flask' : type === 'programming' ? 'code' : 'calculator'}"></i>
-                        </div>
-                        <div>
-                            <h2>${typeNames[type]}</h2>
-                            <p class="text-muted">Instructor: ${course.instructor}</p>
-                        </div>
-                    </div>
-                    
-                    <div class="progress-container mb-4">
-                        <div class="progress-label">
-                            <span>Overall Progress</span>
-                            <span>${course.progress}%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${course.progress}%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="d-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;">
-                        <div class="tracker-stat">
-                            <div class="tracker-value">${course.lessons}/${course.totalLessons}</div>
-                            <div class="tracker-label">Lessons Completed</div>
-                        </div>
-                        <div class="tracker-stat">
-                            <div class="tracker-value">${course.score}%</div>
-                            <div class="tracker-label">Average Score</div>
-                        </div>
-                        <div class="tracker-stat">
-                            <div class="tracker-value">${course.time}h</div>
-                            <div class="tracker-label">Time Spent</div>
-                        </div>
-                        <div class="tracker-stat">
-                            <div class="tracker-value">${course.progress >= 100 ? 'Completed' : 'In Progress'}</div>
-                            <div class="tracker-label">Status</div>
-                        </div>
-                    </div>
-                    
-                    <h3 class="mb-3">Course Actions</h3>
-                    <div class="course-actions">
-                        <button class="action-btn primary" data-action="continue-${type}">
-                            <i class="fas fa-play"></i> Continue Learning
-                        </button>
-                        <button class="action-btn secondary" data-action="practice-${type}">
-                            <i class="fas fa-question-circle"></i> Practice Quiz
-                        </button>
-                        <button class="action-btn secondary" data-action="resources-${type}">
-                            <i class="fas fa-book"></i> Resources
-                        </button>
-                    </div>
-                    
-                    <h3 class="mt-4 mb-3">Upcoming Lessons</h3>
-                    <div class="recommendations-grid">
-                        ${this.getUpcomingLessons(type).map(lesson => `
-                            <div class="recommendation-card">
-                                <h4>${lesson.title}</h4>
-                                <p class="text-muted">${lesson.description}</p>
-                                <div class="recommendation-score">${lesson.duration}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-
-                view.classList.add('active');
-            }
-
-            getUpcomingLessons(type) {
-                const lessons = {
-                    math: [
-                        { title: 'Calculus Applications', description: 'Real-world calculus problems', duration: '45 min' },
-                        { title: 'Linear Algebra', description: 'Matrix operations and applications', duration: '60 min' },
-                        { title: 'Statistics Review', description: 'Probability and distributions', duration: '50 min' }
-                    ],
-                    science: [
-                        { title: 'Machine Learning', description: 'Introduction to ML algorithms', duration: '75 min' },
-                        { title: 'Data Visualization', description: 'Advanced charting techniques', duration: '55 min' },
-                        { title: 'Statistical Analysis', description: 'Hypothesis testing methods', duration: '65 min' }
-                    ],
-                    programming: [
-                        { title: 'React Framework', description: 'Building modern UIs', duration: '80 min' },
-                        { title: 'Database Design', description: 'SQL and NoSQL databases', duration: '70 min' },
-                        { title: 'API Development', description: 'REST and GraphQL APIs', duration: '75 min' }
-                    ]
-                };
-                return lessons[type] || [];
-            }
-
-            showResources() {
-                this.showNotification('Resources', 'Opening learning resources library...', 'info');
-                setTimeout(() => {
-                    this.showNotification('Resources Ready', 'Library loaded successfully', 'success');
-                }, 1000);
-            }
-
-            shareProgress() {
-                this.showNotification('Sharing', 'Preparing your progress summary...', 'info');
-                setTimeout(() => {
-                    this.showNotification('Shared!', 'Your progress has been shared with your network', 'success');
-                }, 2000);
-            }
-
-            showUserProfile() {
-                this.showNotification('Profile', 'Opening user profile settings...', 'info');
-                setTimeout(() => {
-                    this.showNotification('Profile Ready', 'Profile settings loaded', 'success');
-                }, 1000);
-            }
-
-            updateRealTimeStats() {
-                setInterval(() => {
-                    Object.keys(this.userData.courses).forEach(type => {
-                        const course = this.userData.courses[type];
-                        if (course.progress < 100) {
-                            course.progress += 0.01;
-                            course.score = Math.min(100, course.score + 0.01);
-                        }
-                    });
-
-                    // Update streak if user is active
-                    if (Math.random() > 0.3) {
-                        this.userData.progress.streak = Math.max(1, this.userData.progress.streak);
-                    }
-
-                    this.saveUserData();
-                    this.updateUI();
-                }, 10000);
-            }
+            });
         }
 
-        // ===========================================
-        // INITIALIZE APPLICATION
-        // ===========================================
-        document.addEventListener('DOMContentLoaded', () => {
-            // Create LMS instance
-            const lms = new LearningManagementSystem();
+        // ===== FORM SUBMISSION =====
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-            // Make LMS globally available for debugging
-            window.LearningManagementSystem = lms;
+            // Get form values
+            const formData = new FormData(this);
+            const name = formData.get('name') || 'User';
 
-            // Add loading animation
-            document.body.style.opacity = '0';
+            // Simulate form submission
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+
             setTimeout(() => {
-                document.body.style.transition = 'opacity 0.5s ease';
-                document.body.style.opacity = '1';
-            }, 100);
-
-            // Add keyboard shortcuts
-            document.addEventListener('keydown', (e) => {
-                // Ctrl/Cmd + L for start learning
-                if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
-                    e.preventDefault();
-                    lms.startQuickLesson();
-                }
-
-                // Ctrl/Cmd + P for progress
-                if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
-                    e.preventDefault();
-                    lms.showProgressTracker();
-                }
-
-                // Ctrl/Cmd + Q for quiz
-                if ((e.ctrlKey || e.metaKey) && e.key === 'q') {
-                    e.preventDefault();
-                    lms.startPracticeQuiz();
-                }
-
-                // Escape to close modals
-                if (e.key === 'Escape') {
-                    document.getElementById('quickView').classList.remove('active');
-                    lms.hideProgressTracker();
-                    document.getElementById('tourGuide').classList.remove('active');
-                }
-            });
-
-            // Add service worker for offline capability
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/sw.js').catch(console.error);
-            }
-
-            // Add beforeunload to save data
-            window.addEventListener('beforeunload', () => {
-                lms.saveUserData();
-            });
-
-            // Show initial notification
-            setTimeout(() => {
-                lms.showNotification('Welcome!', 'Your learning platform is ready. Start learning!', 'success');
+                alert(`✅ Thank you, ${name}! Your message has been sent successfully. I'll get back to you within 24 hours.`);
+                contactForm.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
             }, 1500);
         });
 
-        // ===========================================
-        // SERVICE WORKER FOR OFFLINE SUPPORT
-        // ===========================================
-        const serviceWorkerCode = `
-            self.addEventListener('install', (event) => {
-                event.waitUntil(
-                    caches.open('learnmath-v1').then((cache) => {
-                        return cache.addAll([
-                            '/',
-                            '/index.html',
-                            '/styles.css',
-                            '/app.js'
-                        ]);
-                    })
-                );
+        // ===== VIEW DEMO BUTTONS =====
+        document.querySelectorAll('.view-demo').forEach(button => {
+            button.addEventListener('click', function () {
+                const projectTitle = this.closest('.portfolio-info').querySelector('h3').textContent;
+                alert(`🚀 Launching demo for "${projectTitle}"... This would open a live demo in a production environment.`);
             });
+        });
 
-            self.addEventListener('fetch', (event) => {
-                event.respondWith(
-                    caches.match(event.request).then((response) => {
-                        return response || fetch(event.request);
-                    })
-                );
+        // ===== SMOOTH SCROLLING =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+
+                if (href === '#') return;
+
+                e.preventDefault();
+                const targetElement = document.querySelector(href);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Update URL without page reload
+                    history.pushState(null, null, href);
+                }
             });
-        `;
+        });
 
-        // Create blob URL for service worker
-        const blob = new Blob([serviceWorkerCode], { type: 'application/javascript' });
-        const swUrl = URL.createObjectURL(blob);
+        // ===== ANIMATIONS ON SCROLL =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        // Register service worker if in production
-        if (window.location.hostname !== 'localhost' && 'serviceWorker' in navigator) {
-            navigator.serviceWorker.register(swUrl);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ===== AI LEARNING TIPS =====
+        const aiTips = [
+            "🤖 AI Tip: Start with understanding the problem before choosing the algorithm.",
+            "🧠 Learning: Master fundamentals before diving into deep learning frameworks.",
+            "⚡ Performance: Always benchmark and optimize your ML models.",
+            "📊 Data First: Garbage in, garbage out. Clean data is crucial for good AI.",
+            "🔍 Debugging: Use visualization tools to understand model behavior.",
+            "🚀 Deployment: MLOps is as important as model development.",
+            "🎯 Focus: Specialize in one AI domain before branching out.",
+            "📚 Read Papers: Stay updated with latest AI research papers.",
+            "💡 Innovation: Sometimes simple models outperform complex ones.",
+            "🤝 Collaborate: Join AI communities and contribute to open source."
+        ];
+
+        function showRandomAITip() {
+            const randomTip = aiTips[Math.floor(Math.random() * aiTips.length)];
+            aiTip.textContent = randomTip;
+            aiTip.style.display = 'block';
+
+            setTimeout(() => {
+                aiTip.style.display = 'none';
+            }, 5000);
         }
+
+        // Show tip every 45 seconds
+        setInterval(showRandomAITip, 45000);
+
+        // ===== MODAL FUNCTIONALITY =====
+        const projectBtn = document.querySelector('[href="#contact"]');
+        const projectModal = document.getElementById('projectModal');
+        const closeProjectModal = document.getElementById('closeProjectModal');
+
+        projectBtn?.addEventListener('click', () => {
+            projectModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeProjectModal?.addEventListener('click', () => {
+            projectModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        projectModal?.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                projectModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // ===== INITIALIZATION =====
+        window.addEventListener('load', () => {
+            // Animate skill bars
+            animateSkillBars();
+
+            // Show initial tip after 3 seconds
+            setTimeout(showRandomAITip, 3000);
+
+            // Initialize all animations
+            document.querySelectorAll('.animate').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Animate skill bars on scroll
+        window.addEventListener('scroll', animateSkillBars);
+
+        // ===== KEYBOARD NAVIGATION =====
+        document.addEventListener('keydown', (e) => {
+            // Close modal with Escape key
+            if (e.key === 'Escape' && projectModal.classList.contains('active')) {
+                projectModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            // Tab navigation for accessibility
+            if (e.key === 'Tab' && navLinks.classList.contains('active')) {
+                const focusableElements = navLinks.querySelectorAll('a, button');
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    lastElement.focus();
+                    e.preventDefault();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    firstElement.focus();
+                    e.preventDefault();
+                }
+            }
+        });
+
+        // ===== PERFORMANCE OPTIMIZATION =====
+        // Debounce scroll events
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(animateSkillBars, 100);
+        });
+
+        // ===== CONSOLE GREETING =====
+        console.log(
+            `%c👨‍💻 Ali Rizwan - AI Engineer Portfolio\n%c🎯 Continuous Learning & Growth in AI\n📧 Contact: rizwanrka826@gmail.com\n📱 Phone: +91 98975 11437`,
+            'color: #00ff88; font-size: 16px; font-weight: bold;',
+            'color: #00d4ff; font-size: 14px;'
+        );
     </script>
 </body>
 
