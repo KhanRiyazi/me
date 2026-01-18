@@ -942,8 +942,8 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="#" class="btn btn-small btn-primary" id="newsBtn">
-                            <i class="fas fa-newspaper"></i> Tech News
+                    <li><a href="./pages/ai_index.html" class="btn btn-small btn-primary" id="newsBtn">
+                            <i class="fas fa-robot"></i> AI Page
                         </a></li>
                 </ul>
             </nav>
@@ -1211,16 +1211,18 @@
                 <div class="contact-form animate">
                     <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Project Type" required>
+                            <input type="text" class="form-control" id="projectType" placeholder="Project Type"
+                                required>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Your Message" rows="5" required></textarea>
+                            <textarea class="form-control" id="message" placeholder="Your Message" rows="5"
+                                required></textarea>
                         </div>
                         <div class="button-group">
                             <button type="submit" class="btn btn-primary">
@@ -1366,7 +1368,7 @@
                     <i class="fab fa-react fa-2x" style="color: #61dafb; margin-bottom: 15px;"></i>
                     <h4>React Development</h4>
                     <p>Interactive UI Components</p>
-                    <button class="btn btn-small btn-primary" onclick="showDemo('react')" style="margin-top: 10px;">
+                    <button class="btn btn-small btn-primary" data-tech="react" style="margin-top: 10px;">
                         View Demo
                     </button>
                 </div>
@@ -1374,7 +1376,7 @@
                     <i class="fab fa-node-js fa-2x" style="color: #68a063; margin-bottom: 15px;"></i>
                     <h4>Node.js Backend</h4>
                     <p>REST APIs & Microservices</p>
-                    <button class="btn btn-small btn-primary" onclick="showDemo('node')" style="margin-top: 10px;">
+                    <button class="btn btn-small btn-primary" data-tech="node" style="margin-top: 10px;">
                         View Demo
                     </button>
                 </div>
@@ -1382,7 +1384,7 @@
                     <i class="fas fa-robot fa-2x" style="color: #ff6b6b; margin-bottom: 15px;"></i>
                     <h4>AI/ML Integration</h4>
                     <p>Machine Learning Models</p>
-                    <button class="btn btn-small btn-primary" onclick="showDemo('ai')" style="margin-top: 10px;">
+                    <button class="btn btn-small btn-primary" data-tech="ai" style="margin-top: 10px;">
                         View Demo
                     </button>
                 </div>
@@ -1421,7 +1423,7 @@
     </div>
 
     <script>
-        // Enhanced JavaScript with all buttons functional
+        // Enhanced JavaScript with all buttons functional and FastAPI integration
 
         // Utility Functions
         function showNotification(message, type = 'success') {
@@ -1448,6 +1450,30 @@
         function closeModal(modalId) {
             document.getElementById(modalId).classList.remove('active');
             document.body.style.overflow = 'auto';
+        }
+
+        // FastAPI integration for form submission
+        async function submitToFastAPI(formData) {
+            try {
+                // Replace with your FastAPI endpoint
+                const response = await fetch('http://localhost:8000/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                return null;
+            }
         }
 
         // Mobile Menu Toggle
@@ -1516,13 +1542,17 @@
         document.getElementById('resumeBtn').addEventListener('click', () => {
             showNotification('📄 Downloading resume... Please check your downloads folder!');
             setTimeout(() => {
-                // Simulate download
-                const link = document.createElement('a');
-                link.href = '#';
-                link.download = 'Ali_Rizwan_Resume.pdf';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                // Create a dummy resume blob
+                const text = `Ali Rizwan - Full Stack Developer & AI Engineer\n\nExperience: 5+ years\nSkills: React, Node.js, Python, AI/ML\nContact: rizwanrka826@gmail.com`;
+                const blob = new Blob([text], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Ali_Rizwan_Resume.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
             }, 500);
         });
 
@@ -1537,7 +1567,7 @@
         document.getElementById('liveDemo').addEventListener('click', () => {
             showNotification('🚀 Loading interactive live demo...');
             setTimeout(() => {
-                window.open('https://codepen.io/collection/XpjjBz', '_blank');
+                window.open('https://codepen.io/', '_blank');
             }, 1000);
         });
 
@@ -1563,7 +1593,7 @@
         document.getElementById('certificationsBtn').addEventListener('click', () => {
             showNotification('🎓 Loading certifications...');
             setTimeout(() => {
-                window.open('https://www.linkedin.com/in/alirizwan/details/certifications/', '_blank');
+                window.open('https://www.coursera.org/', '_blank');
             }, 1000);
         });
 
@@ -1583,18 +1613,14 @@
                 button.classList.remove('btn-outline');
                 button.classList.add('btn-primary');
 
-                // Filter items with animation
+                // Filter items
                 portfolioItems.forEach(item => {
                     if (filter === 'all' || item.dataset.category === filter) {
-                        item.style.opacity = '0';
-                        item.style.transform = 'translateY(20px)';
+                        item.style.display = 'block';
                         setTimeout(() => {
-                            item.style.display = 'block';
-                            setTimeout(() => {
-                                item.style.opacity = '1';
-                                item.style.transform = 'translateY(0)';
-                            }, 50);
-                        }, 300);
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 50);
                     } else {
                         item.style.opacity = '0';
                         item.style.transform = 'translateY(20px)';
@@ -1622,7 +1648,7 @@
                 const projectTitle = e.target.closest('.portfolio-item').querySelector('h3').textContent;
                 showNotification(`💻 Opening source code for: ${projectTitle}`);
                 setTimeout(() => {
-                    window.open('https://github.com/alirizwan', '_blank');
+                    window.open('https://github.com/', '_blank');
                 }, 1000);
             });
         });
@@ -1638,48 +1664,62 @@
         });
 
         // Contact Form
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            showNotification('✅ Message sent successfully! I\'ll get back to you within 24 hours.');
-            e.target.reset();
 
-            // Simulate sending email
-            setTimeout(() => {
-                console.log('📧 Email sent to: rizwanrka826@gmail.com');
-            }, 500);
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                projectType: document.getElementById('projectType').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Submit to FastAPI backend
+            const result = await submitToFastAPI(formData);
+
+            if (result) {
+                showNotification('✅ Message sent successfully! I\'ll get back to you within 24 hours.');
+                e.target.reset();
+            } else {
+                showNotification('⚠️ Message sent locally. Backend integration pending.', 'error');
+                // Fallback to local storage if API fails
+                localStorage.setItem('contact_form_backup', JSON.stringify(formData));
+                e.target.reset();
+            }
         });
 
         document.getElementById('scheduleCall').addEventListener('click', () => {
             showNotification('📅 Opening calendar to schedule a call...');
             setTimeout(() => {
-                window.open('https://calendly.com/alirizwan', '_blank');
+                window.open('https://calendly.com/', '_blank');
             }, 1000);
         });
 
         // Social Links
         document.getElementById('githubLink').addEventListener('click', (e) => {
             e.preventDefault();
-            window.open('https://github.com/alirizwan', '_blank');
+            window.open('https://github.com/', '_blank');
         });
 
         document.getElementById('linkedinLink').addEventListener('click', (e) => {
             e.preventDefault();
-            window.open('https://linkedin.com/in/alirizwan', '_blank');
+            window.open('https://linkedin.com/', '_blank');
         });
 
         document.getElementById('twitterLink').addEventListener('click', (e) => {
             e.preventDefault();
-            window.open('https://twitter.com/alirizwan', '_blank');
+            window.open('https://twitter.com/', '_blank');
         });
 
         document.getElementById('instagramLink').addEventListener('click', (e) => {
             e.preventDefault();
-            window.open('https://instagram.com/alirizwan', '_blank');
+            window.open('https://instagram.com/', '_blank');
         });
 
         document.getElementById('codepenLink').addEventListener('click', (e) => {
             e.preventDefault();
-            window.open('https://codepen.io/alirizwan', '_blank');
+            window.open('https://codepen.io/', '_blank');
         });
 
         // Footer Buttons
@@ -1705,7 +1745,7 @@
             e.preventDefault();
             showNotification('📖 Loading blog posts...');
             setTimeout(() => {
-                window.open('https://blog.alirizwan.com', '_blank');
+                window.open('https://dev.to/', '_blank');
             }, 1000);
         });
 
@@ -1713,7 +1753,7 @@
             e.preventDefault();
             showNotification('🎓 Loading tutorials...');
             setTimeout(() => {
-                window.open('https://youtube.com/alirizwan', '_blank');
+                window.open('https://www.youtube.com/', '_blank');
             }, 1000);
         });
 
@@ -1721,7 +1761,7 @@
             e.preventDefault();
             showNotification('🛠️ Opening developer tools...');
             setTimeout(() => {
-                window.open('https://github.com/alirizwan/dev-tools', '_blank');
+                window.open('https://github.com/topics/developer-tools', '_blank');
             }, 1000);
         });
 
@@ -1729,7 +1769,7 @@
             e.preventDefault();
             showNotification('🐙 Opening GitHub profile...');
             setTimeout(() => {
-                window.open('https://github.com/alirizwan', '_blank');
+                window.open('https://github.com/', '_blank');
             }, 1000);
         });
 
@@ -1737,21 +1777,21 @@
         document.getElementById('startITProject').addEventListener('click', () => {
             showNotification('💻 Starting IT Project setup...');
             setTimeout(() => {
-                window.open('mailto:rizwanrka826@gmail.com?subject=IT Project Inquiry', '_blank');
+                window.open('./pages/IT.html', '_blank');
             }, 1000);
         });
 
         document.getElementById('startDigitalProject').addEventListener('click', () => {
             showNotification('📱 Starting Digital Assets project...');
             setTimeout(() => {
-                window.open('mailto:rizwanrka826@gmail.com?subject=Digital Assets Project', '_blank');
+                window.open('./pages/assets.html', '_blank');
             }, 1000);
         });
 
         document.getElementById('startAIProject').addEventListener('click', () => {
             showNotification('🤖 Starting AI Solution project...');
             setTimeout(() => {
-                window.open('mailto:rizwanrka826@gmail.com?subject=AI Project Inquiry', '_blank');
+                window.open('./pages/ai_index.html', '_blank');
             }, 1000);
         });
 
@@ -1760,7 +1800,7 @@
             btn.addEventListener('click', (e) => {
                 const newsType = e.target.dataset.news;
                 const newsLinks = {
-                    ai: 'https://openai.com/blog/gpt-5',
+                    ai: 'https://openai.com/blog',
                     web: 'https://web.dev/blog',
                     mobile: 'https://reactnative.dev/blog'
                 };
@@ -1771,33 +1811,36 @@
             });
         });
 
+        // Skills Modal Buttons
+        document.querySelectorAll('#skillsModal .btn-small').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const tech = e.target.dataset.tech;
+                const demos = {
+                    react: 'https://reactjs.org/',
+                    node: 'https://nodejs.org/',
+                    ai: 'https://www.tensorflow.org/js'
+                };
+                showNotification(`🚀 Loading ${tech.toUpperCase()} demo...`);
+                setTimeout(() => {
+                    window.open(demos[tech] || 'https://codepen.io/', '_blank');
+                }, 1000);
+            });
+        });
+
         // Profile Modal Buttons
         document.getElementById('connectLinkedIn').addEventListener('click', () => {
             showNotification('🔗 Connecting to LinkedIn...');
             setTimeout(() => {
-                window.open('https://linkedin.com/in/alirizwan', '_blank');
+                window.open('https://linkedin.com/', '_blank');
             }, 1000);
         });
 
         document.getElementById('viewFullCV').addEventListener('click', () => {
             showNotification('📄 Opening full CV...');
             setTimeout(() => {
-                window.open('https://drive.google.com/file/d/your-cv-link/view', '_blank');
+                window.open('https://drive.google.com/', '_blank');
             }, 1000);
         });
-
-        // Skills Demo Function
-        window.showDemo = function (tech) {
-            const demos = {
-                react: 'https://react-demo.alirizwan.com',
-                node: 'https://api-demo.alirizwan.com',
-                ai: 'https://ai-demo.alirizwan.com'
-            };
-            showNotification(`🚀 Loading ${tech.toUpperCase()} demo...`);
-            setTimeout(() => {
-                window.open(demos[tech] || 'https://codepen.io/alirizwan', '_blank');
-            }, 1000);
-        };
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1948,6 +1991,26 @@
             console.log('%c 🎨 Custom animations and effects', 'color: #00d4ff;');
             console.log('%c 💡 Try keyboard shortcuts: Ctrl+K (Quick Connect), Ctrl+N (News)', 'color: #68a063;');
         });
+
+        // Fix for skills demo buttons
+        document.querySelectorAll('[data-tech]').forEach(button => {
+            button.addEventListener('click', function () {
+                const tech = this.dataset.tech;
+                showDemo(tech);
+            });
+        });
+
+        function showDemo(tech) {
+            const demos = {
+                react: 'https://reactjs.org/',
+                node: 'https://nodejs.org/',
+                ai: 'https://www.tensorflow.org/js'
+            };
+            showNotification(`🚀 Loading ${tech.toUpperCase()} demo...`);
+            setTimeout(() => {
+                window.open(demos[tech] || 'https://codepen.io/', '_blank');
+            }, 1000);
+        }
     </script>
 </body>
 
